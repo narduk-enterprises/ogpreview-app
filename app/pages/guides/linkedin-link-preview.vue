@@ -1,11 +1,11 @@
 <template>
-  <ArticleLayout
+  <LayoutsArticleLayout
 title="LinkedIn Link Preview Optimization: Professional OG Tag Best Practices"
     description="Optimize your professional content for LinkedIn with the right Open Graph implementation and B2B-focused strategies."
     platform-icon="LinkedIn" :back-link="{ to: '/guides', label: 'Back to Guides' }"
     :metadata="{ date: 'Updated December 2025', readTime: '8 min read' }">
     <template #cta>
-      <ContentCTA
+      <ContentContentCTA
 title="Test Your LinkedIn Link Preview"
         description="Preview how your professional content will appear on LinkedIn, Facebook, Twitter, and other platforms."
         button-text="Try the Free Preview Tool" button-to="/" variant="blue" />
@@ -18,20 +18,20 @@ title="Test Your LinkedIn Link Preview"
       actionable insights.
     </p>
 
-    <ContentCallout variant="info" title="Preview Your LinkedIn Link" icon="i-heroicons-light-bulb">
+    <ContentContentCallout variant="info" title="Preview Your LinkedIn Link" icon="i-heroicons-light-bulb">
       Use our <NuxtLink
 to="/"
         class="font-semibold underline hover:text-blue-600 dark:hover:text-blue-400 transition-colors">LinkedIn Preview
         Tool
       </NuxtLink> to see exactly how your links will appear on LinkedIn before publishing.
-    </ContentCallout>
+    </ContentContentCallout>
 
     <h2 id="required-tags">Required Open Graph Tags for LinkedIn</h2>
     <p>
       LinkedIn follows standard Open Graph protocol. Use these essential tags:
     </p>
 
-    <ContentCodeBlock :code="requiredTagsCode" language="html" />
+    <ContentContentCodeBlock :code="requiredTagsCode" language="html" />
 
     <h2 id="image-requirements">LinkedIn Image Requirements</h2>
     <p>
@@ -55,14 +55,14 @@ to="/"
       <li><strong>Text-heavy works:</strong> LinkedIn users read—don't be afraid of text overlays</li>
     </ul>
 
-    <ContentCallout variant="warning" title="LinkedIn Image Mistakes" icon="i-heroicons-exclamation-triangle">
+    <ContentContentCallout variant="warning" title="LinkedIn Image Mistakes" icon="i-heroicons-exclamation-triangle">
       <ul class="space-y-2 text-sm">
         <li>❌ Using 1200×630px (Facebook size) — LinkedIn prefers 1200×627px</li>
         <li>❌ Casual, meme-style imagery — doesn't match LinkedIn's tone</li>
         <li>❌ Tiny text — LinkedIn previews are often viewed at desk resolution</li>
         <li>❌ Missing company branding — reduces trust</li>
       </ul>
-    </ContentCallout>
+    </ContentContentCallout>
 
     <h2 id="title-description">Title & Description for B2B Audiences</h2>
 
@@ -143,7 +143,7 @@ href="https://www.linkedin.com/post-inspector/" target="_blank"
           <td>"Missing description"</td>
           <td>
 Add
-            <ContentInlineCode code="og:description" /> tag
+            <ContentContentInlineCode code="og:description" /> tag
           </td>
         </tr>
         <tr>
@@ -164,9 +164,9 @@ Add
     <h3>Article vs. Website Content Type</h3>
     <p>
       Use
-      <ContentInlineCode code="og:type=&quot;article&quot;" /> for blog posts and thought leadership:
+      <ContentContentInlineCode code="og:type=&quot;article&quot;" /> for blog posts and thought leadership:
     </p>
-    <ContentCodeBlock :code="articleTagsCode" language="html" />
+    <ContentContentCodeBlock :code="articleTagsCode" language="html" />
 
     <h2 id="engagement-optimization">LinkedIn Engagement Optimization</h2>
     <p>
@@ -239,7 +239,7 @@ Use the <a href="https://www.linkedin.com/post-inspector/" target="_blank" rel="
 </li>
       <li>
 Append a query parameter to your URL (e.g.,
-        <ContentInlineCode code="?v=2" />)
+        <ContentContentInlineCode code="?v=2" />)
       </li>
       <li>Wait 24-48 hours for organic cache expiration if not urgent</li>
     </ol>
@@ -274,7 +274,7 @@ Append a query parameter to your URL (e.g.,
         <NuxtLink to="/guides/og-image-sizes">OG Image Size Guide</NuxtLink>
       </li>
     </ul>
-  </ArticleLayout>
+  </LayoutsArticleLayout>
 </template>
 
 <script setup lang="ts">

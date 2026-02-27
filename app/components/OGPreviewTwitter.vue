@@ -1,5 +1,5 @@
 <template>
-  <PreviewCard
+  <BasePreviewCard
     platform="twitter"
     border-class="border-gray-200 dark:border-gray-700"
     shadow-class="shadow-md"
@@ -89,7 +89,7 @@
         class="text-xs px-1"
       />
     </div>
-  </PreviewCard>
+  </BasePreviewCard>
 </template>
 
 <script setup lang="ts">

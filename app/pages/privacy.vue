@@ -1,5 +1,5 @@
 <template>
-  <SimpleLayout
+  <LayoutsSimpleLayout
 title="Privacy Policy"
     :subtitle="`Last updated: ${new Date().toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric' })}`">
     <section class="mb-8">
@@ -298,7 +298,7 @@ to="/contact"
           class="text-blue-600 dark:text-blue-400 hover:underline">Contact page</NuxtLink>.
       </p>
     </section>
-  </SimpleLayout>
+  </LayoutsSimpleLayout>
 </template>
 
 <script setup lang="ts">

@@ -1,5 +1,5 @@
 <template>
-  <PreviewCard platform="facebook">
+  <BasePreviewCard platform="facebook">
     <!-- Post Header -->
     <div class="p-3 sm:p-3">
       <div class="flex items-center gap-2.5 sm:gap-2.5 mb-2.5 sm:mb-2.5">
@@ -74,7 +74,7 @@
         class="text-sm px-2 sm:px-1.5"
       />
     </div>
-  </PreviewCard>
+  </BasePreviewCard>
 </template>
 
 <script setup lang="ts">

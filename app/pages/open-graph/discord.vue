@@ -295,7 +295,7 @@
             class="bg-white dark:bg-gray-800 rounded-lg p-4 shadow border border-gray-200 dark:border-gray-700 hover:shadow-lg hover:scale-105 transition-all"
           >
             <div class="mb-2 flex justify-center">
-              <PlatformIcon platform="Facebook" size="md" />
+              <ContentPlatformIcon platform="Facebook" size="md" />
             </div>
             <h3 class="font-semibold text-gray-900 dark:text-white text-sm">
               Facebook
@@ -315,7 +315,7 @@
             class="bg-white dark:bg-gray-800 rounded-lg p-4 shadow border border-gray-200 dark:border-gray-700 hover:shadow-lg hover:scale-105 transition-all"
           >
             <div class="mb-2 flex justify-center">
-              <PlatformIcon platform="LinkedIn" size="md" />
+              <ContentPlatformIcon platform="LinkedIn" size="md" />
             </div>
             <h3 class="font-semibold text-gray-900 dark:text-white text-sm">
               LinkedIn
@@ -326,7 +326,7 @@
             class="bg-white dark:bg-gray-800 rounded-lg p-4 shadow border border-gray-200 dark:border-gray-700 hover:shadow-lg hover:scale-105 transition-all"
           >
             <div class="mb-2 flex justify-center">
-              <PlatformIcon platform="Slack" size="md" />
+              <ContentPlatformIcon platform="Slack" size="md" />
             </div>
             <h3 class="font-semibold text-gray-900 dark:text-white text-sm">
               Slack

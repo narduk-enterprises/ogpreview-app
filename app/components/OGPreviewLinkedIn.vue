@@ -1,5 +1,5 @@
 <template>
-  <PreviewCard platform="linkedin">
+  <BasePreviewCard platform="linkedin">
     <!-- Post Header -->
     <div class="p-3">
       <div class="flex items-center gap-2.5 mb-2.5">
@@ -54,7 +54,7 @@ color="neutral" variant="ghost" size="xs" icon="i-lucide-repeat" :padded="false"
     <div class="border-t border-gray-200 dark:border-gray-700 p-3">
       <AdSenseAd />
     </div>
-  </PreviewCard>
+  </BasePreviewCard>
 </template>
 
 <script setup lang="ts">

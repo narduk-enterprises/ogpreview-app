@@ -1,11 +1,11 @@
 <template>
-  <ArticleLayout
+  <LayoutsArticleLayout
 title="Open Graph Preview: Complete Guide for Developers & Marketers"
     description="Everything you need to know about Open Graph protocol, social media previews, and optimizing link cards for maximum engagement."
     :back-link="{ to: '/guides', label: 'Back to Guides' }"
     :metadata="{ date: 'Updated December 2025', readTime: '15 min read' }">
     <template #cta>
-      <ContentCTA
+      <ContentContentCTA
 title="Ready to preview your Open Graph tags?"
         description="Test how your links will appear on Facebook, Twitter, LinkedIn, Slack, Discord, and WhatsApp—all in one place."
         button-text="Try the Free Preview Tool" button-to="/" variant="blue" />
@@ -16,7 +16,7 @@ title="Ready to preview your Open Graph tags?"
         <h2 class="text-2xl font-bold text-gray-900 dark:text-white mb-6">
           Related Guides
         </h2>
-        <PlatformGrid :platforms="relatedGuides" />
+        <ContentPlatformGrid :platforms="relatedGuides" />
       </div>
     </template>
 
@@ -29,20 +29,20 @@ title="Ready to preview your Open Graph tags?"
     </p>
     <p>
       Open Graph tags are HTML
-      <ContentInlineCode code="&lt;meta&gt;" /> elements placed in the
-      <ContentInlineCode code="&lt;head&gt;" /> section of your web pages. They control the title, description, image,
+      <ContentContentInlineCode code="&lt;meta&gt;" /> elements placed in the
+      <ContentContentInlineCode code="&lt;head&gt;" /> section of your web pages. They control the title, description, image,
       and
       other metadata that appears when someone shares your URL.
     </p>
 
     <h3>Basic Example</h3>
-    <ContentCodeBlock :code="basicExampleCode" language="html" />
+    <ContentContentCodeBlock :code="basicExampleCode" language="html" />
 
-    <ContentCallout variant="info" title="Test Your Open Graph Tags" icon="i-heroicons-light-bulb">
+    <ContentContentCallout variant="info" title="Test Your Open Graph Tags" icon="i-heroicons-light-bulb">
       Use our <NuxtLink to="/" class="font-semibold underline">Open Graph Preview Tool</NuxtLink> to instantly see how
       your
       tags will appear across all major platforms.
-    </ContentCallout>
+    </ContentContentCallout>
 
     <h2 id="why-previews-break">Why Open Graph Previews Break</h2>
     <p>
@@ -52,7 +52,7 @@ title="Ready to preview your Open Graph tags?"
       <li><strong>Aggressive caching</strong> - Platforms cache OG tags for days or weeks</li>
       <li>
 <strong>Missing tags</strong> - Forgetting required properties like
-        <ContentInlineCode code="og:image" />
+        <ContentContentInlineCode code="og:image" />
       </li>
       <li><strong>Wrong image sizes</strong> - Images that are too small, too large, or the wrong aspect ratio</li>
       <li><strong>Broken image URLs</strong> - Relative paths, localhost URLs, or blocked resources</li>
@@ -64,24 +64,24 @@ title="Ready to preview your Open Graph tags?"
       While Open Graph is a standard, each platform implements it slightly differently:
     </p>
 
-    <PlatformSection
+    <ContentPlatformSection
 platform="Facebook" recommended-size="1200×630px" minimum-size="200×200px"
       supports="Video tags (og:video)" debugger="Facebook Sharing Debugger"
       debugger-url="https://developers.facebook.com/tools/debug/" />
 
-    <PlatformSection
+    <ContentPlatformSection
 platform="Twitter" recommended-size="1200×675px (summary_large_image)"
       supports="Twitter-specific twitter:card tags" debugger="Twitter Card Validator"
       debugger-url="https://cards-dev.twitter.com/validator">
       <p class="text-sm text-gray-600 dark:text-gray-400 mt-2">
         Falls back to OG tags but prefers Twitter-specific
-        <ContentInlineCode code="twitter:card" /> tags. Learn more in our <NuxtLink
+        <ContentContentInlineCode code="twitter:card" /> tags. Learn more in our <NuxtLink
 to="/guides/twitter-card-preview"
           class="font-semibold">Twitter Card Guide</NuxtLink>.
       </p>
-    </PlatformSection>
+    </ContentPlatformSection>
 
-    <PlatformSection
+    <ContentPlatformSection
 platform="LinkedIn" recommended-size="1200×627px"
       supports="Professional context - focus on business value" debugger="LinkedIn Post Inspector"
       debugger-url="https://www.linkedin.com/post-inspector/">
@@ -89,9 +89,9 @@ platform="LinkedIn" recommended-size="1200×627px"
         Read our <NuxtLink to="/guides/linkedin-link-preview" class="font-semibold">LinkedIn optimization guide
         </NuxtLink>.
       </p>
-    </PlatformSection>
+    </ContentPlatformSection>
 
-    <PlatformSection
+    <ContentPlatformSection
 platform="Slack" supports="Standard OG protocol"
       notes="Discord shows color themes from theme-color meta tag. Both platforms cache aggressively (24+ hours)." />
 
@@ -111,28 +111,28 @@ platform="Slack" supports="Standard OG protocol"
       <tbody>
         <tr>
           <td>
-            <ContentInlineCode code="og:title" />
+            <ContentContentInlineCode code="og:title" />
           </td>
           <td>The title of your content</td>
           <td>60-70 characters max</td>
         </tr>
         <tr>
           <td>
-            <ContentInlineCode code="og:description" />
+            <ContentContentInlineCode code="og:description" />
           </td>
           <td>A brief description</td>
           <td>150-160 characters max</td>
         </tr>
         <tr>
           <td>
-            <ContentInlineCode code="og:image" />
+            <ContentContentInlineCode code="og:image" />
           </td>
           <td>URL to preview image</td>
           <td>Must be absolute HTTPS URL</td>
         </tr>
         <tr>
           <td>
-            <ContentInlineCode code="og:url" />
+            <ContentContentInlineCode code="og:url" />
           </td>
           <td>Canonical URL of the page</td>
           <td>Full URL with protocol</td>
@@ -197,18 +197,18 @@ platform="Slack" supports="Standard OG protocol"
     <h3>1. Using Relative Image URLs</h3>
     <p class="text-red-600 dark:text-red-400">
       ❌
-      <ContentInlineCode code="&lt;meta property=&quot;og:image&quot; content=&quot;/images/og.jpg&quot; /&gt;" />
+      <ContentContentInlineCode code="&lt;meta property=&quot;og:image&quot; content=&quot;/images/og.jpg&quot; /&gt;" />
     </p>
     <p class="text-green-600 dark:text-green-400">
       ✅
-      <ContentInlineCode code="&lt;meta property=&quot;og:image&quot; content=&quot;https://example.com/images/og.jpg&quot; /&gt;" />
+      <ContentContentInlineCode code="&lt;meta property=&quot;og:image&quot; content=&quot;https://example.com/images/og.jpg&quot; /&gt;" />
     </p>
 
     <h3>2. Forgetting Image Dimensions</h3>
     <p>
       Always include width and height for better performance:
     </p>
-    <ContentCodeBlock :code="imageDimensionsCode" language="html" />
+    <ContentContentCodeBlock :code="imageDimensionsCode" language="html" />
 
     <h3>3. Client-Side Meta Tags (React/Vue/Nuxt)</h3>
     <p>
@@ -217,15 +217,15 @@ platform="Slack" supports="Standard OG protocol"
     <ul>
       <li>
 <strong>Next.js:</strong> Use the Metadata API or
-        <ContentInlineCode code="next-seo" />
+        <ContentContentInlineCode code="next-seo" />
       </li>
       <li>
 <strong>Nuxt:</strong> Use
-        <ContentInlineCode code="useSeoMeta()" /> composable
+        <ContentContentInlineCode code="useSeoMeta()" /> composable
       </li>
       <li>
 <strong>Gatsby:</strong> Use
-        <ContentInlineCode code="react-helmet" />
+        <ContentContentInlineCode code="react-helmet" />
       </li>
     </ul>
 
@@ -238,13 +238,13 @@ platform="Slack" supports="Standard OG protocol"
     <h2 id="implementation-examples">Framework-Specific Implementation</h2>
 
     <h3>Nuxt 3</h3>
-    <ContentCodeBlock :code="nuxtExampleCode" language="javascript" />
+    <ContentContentCodeBlock :code="nuxtExampleCode" language="javascript" />
 
     <h3>Next.js 14+</h3>
-    <ContentCodeBlock :code="nextjsExampleCode" language="javascript" />
+    <ContentContentCodeBlock :code="nextjsExampleCode" language="javascript" />
 
     <h3>React + Helmet</h3>
-    <ContentCodeBlock :code="reactHelmetCode" language="javascript" />
+    <ContentContentCodeBlock :code="reactHelmetCode" language="javascript" />
 
     <h2 id="testing-workflow">Complete Testing Workflow</h2>
     <ol>
@@ -297,7 +297,7 @@ platform="Slack" supports="Standard OG protocol"
         <NuxtLink to="/open-graph-debugging" class="font-semibold">Open Graph Debugging Guide</NuxtLink>
       </li>
     </ul>
-  </ArticleLayout>
+  </LayoutsArticleLayout>
 </template>
 
 <script setup lang="ts">

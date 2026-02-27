@@ -1,5 +1,5 @@
 <template>
-  <PreviewCard
+  <BasePreviewCard
     platform="slack"
     class="max-w-md"
   >
@@ -86,7 +86,7 @@
         />
       </div>
     </div>
-  </PreviewCard>
+  </BasePreviewCard>
 </template>
 
 <script setup lang="ts">

@@ -1,11 +1,11 @@
 <template>
-  <ArticleLayout
+  <LayoutsArticleLayout
 title="Twitter Card Preview Guide: Complete Twitter/X OG Optimization"
     description="Master Twitter Cards and learn the differences between Open Graph tags and Twitter-specific meta tags for perfect previews."
     platform-icon="Twitter" :back-link="{ to: '/guides', label: 'Back to Guides' }"
     :metadata="{ date: 'Updated December 2025', readTime: '10 min read' }">
     <template #cta>
-      <ContentCTA
+      <ContentContentCTA
 title="Test Your Twitter Card Preview"
         description="See exactly how your Twitter Card will look before tweeting. Preview across all platforms instantly."
         button-text="Try the Free Preview Tool" button-to="/" variant="blue" />
@@ -16,17 +16,17 @@ title="Test Your Twitter Card Preview"
       Twitter Cards (now on X/Twitter) are rich media previews that appear when you share a link. While Twitter falls
       back
       to standard Open Graph tags, using Twitter-specific
-      <ContentInlineCode code="twitter:*" /> meta tags gives you precise control over how your links appear on the
+      <ContentContentInlineCode code="twitter:*" /> meta tags gives you precise control over how your links appear on the
       platform.
     </p>
 
-    <ContentCallout variant="info" title="Preview Your Twitter Card" icon="i-heroicons-light-bulb">
+    <ContentContentCallout variant="info" title="Preview Your Twitter Card" icon="i-heroicons-light-bulb">
       Use our <NuxtLink
 to="/"
         class="font-semibold underline hover:text-blue-600 dark:hover:text-blue-400 transition-colors">Twitter Card
         Preview
         Tool</NuxtLink> to see exactly how your links will look when shared on X/Twitter.
-    </ContentCallout>
+    </ContentContentCallout>
 
     <h2 id="twitter-vs-og">Twitter Cards vs. Open Graph</h2>
     <p>
@@ -35,15 +35,15 @@ to="/"
     <ol>
       <li>
 Twitter tags (
-        <ContentInlineCode code="twitter:title" />) - highest priority
+        <ContentContentInlineCode code="twitter:title" />) - highest priority
       </li>
       <li>
 Open Graph tags (
-        <ContentInlineCode code="og:title" />) - fallback
+        <ContentContentInlineCode code="og:title" />) - fallback
       </li>
       <li>
 Standard HTML tags (
-        <ContentInlineCode code="&lt;title&gt;" />) - last resort
+        <ContentContentInlineCode code="&lt;title&gt;" />) - last resort
       </li>
     </ol>
 
@@ -68,8 +68,8 @@ Standard HTML tags (
           <td>Different images per platform</td>
           <td>
 Use
-            <ContentInlineCode code="twitter:image" /> +
-            <ContentInlineCode code="og:image" />
+            <ContentContentInlineCode code="twitter:image" /> +
+            <ContentContentInlineCode code="og:image" />
           </td>
         </tr>
       </tbody>
@@ -81,7 +81,7 @@ Use
     </p>
 
     <h3>1. Summary Large Image (Recommended)</h3>
-    <ContentCodeBlock :code="summaryLargeImageCode" language="html" />
+    <ContentContentCodeBlock :code="summaryLargeImageCode" language="html" />
     <ul>
       <li><strong>Use case:</strong> Blog posts, articles, products, landing pages</li>
       <li><strong>Image size:</strong> 1200×675px (16:9 aspect ratio)</li>
@@ -89,7 +89,7 @@ Use
     </ul>
 
     <h3>2. Summary (Small Image)</h3>
-    <ContentCodeBlock :code="summaryCardCode" language="html" />
+    <ContentContentCodeBlock :code="summaryCardCode" language="html" />
     <ul>
       <li><strong>Use case:</strong> Text-focused content</li>
       <li><strong>Image size:</strong> 200×200px (1:1 square)</li>
@@ -101,7 +101,7 @@ Use
       Here's a complete Twitter Card implementation with both OG and Twitter tags:
     </p>
 
-    <ContentCodeBlock :code="completeImplementationCode" language="html" />
+    <ContentContentCodeBlock :code="completeImplementationCode" language="html" />
 
     <h2 id="image-requirements">Twitter Card Image Requirements</h2>
 
@@ -120,14 +120,14 @@ Use
       <li><strong>Maximum size:</strong> 5MB</li>
     </ul>
 
-    <ContentCallout variant="warning" title="Twitter Image Gotchas" icon="i-heroicons-exclamation-triangle">
+    <ContentContentCallout variant="warning" title="Twitter Image Gotchas" icon="i-heroicons-exclamation-triangle">
       <ul class="space-y-2 text-sm">
         <li>❌ 16:9 (1200×675px) is different from Facebook's 1.91:1 (1200×630px)</li>
         <li>❌ Must be under 5MB (stricter than Facebook's 8MB)</li>
         <li>❌ Animated GIFs only work for certain card types</li>
         <li>❌ Must use absolute HTTPS URLs</li>
       </ul>
-    </ContentCallout>
+    </ContentContentCallout>
 
     <h2 id="title-description">Title & Description Optimization</h2>
 
@@ -175,7 +175,7 @@ Use
           <td>Card not showing</td>
           <td>
 Ensure
-            <ContentInlineCode code="twitter:card" /> is set
+            <ContentContentInlineCode code="twitter:card" /> is set
           </td>
         </tr>
         <tr>
@@ -199,13 +199,13 @@ Ensure
     <p>
       For mobile apps, use app cards to drive installs:
     </p>
-    <ContentCodeBlock :code="appCardCode" language="html" />
+    <ContentContentCodeBlock :code="appCardCode" language="html" />
 
     <h3>Player Cards</h3>
     <p>
       For video/audio content, use player cards with embedded media:
     </p>
-    <ContentCodeBlock :code="playerCardCode" language="html" />
+    <ContentContentCodeBlock :code="playerCardCode" language="html" />
 
     <h2 id="attribution">Author Attribution</h2>
     <p>
@@ -213,10 +213,10 @@ Ensure
     </p>
     <ul>
       <li>
-        <ContentInlineCode code="twitter:site" /> - Your brand's Twitter handle (@yourbrand)
+        <ContentContentInlineCode code="twitter:site" /> - Your brand's Twitter handle (@yourbrand)
       </li>
       <li>
-        <ContentInlineCode code="twitter:creator" /> - Article author's handle (@authorname)
+        <ContentContentInlineCode code="twitter:creator" /> - Article author's handle (@authorname)
       </li>
     </ul>
     <p>
@@ -226,10 +226,10 @@ Ensure
     <h2 id="framework-examples">Framework Implementation Examples</h2>
 
     <h3>Nuxt 3</h3>
-    <ContentCodeBlock :code="nuxtExampleCode" language="javascript" />
+    <ContentContentCodeBlock :code="nuxtExampleCode" language="javascript" />
 
     <h3>Next.js</h3>
-    <ContentCodeBlock :code="nextjsExampleCode" language="javascript" />
+    <ContentContentCodeBlock :code="nextjsExampleCode" language="javascript" />
 
     <h2 id="best-practices">Twitter-Specific Best Practices</h2>
     <ul>
@@ -257,7 +257,7 @@ href="https://developer.twitter.com/en/docs/twitter-for-websites/cards/overview/
         <NuxtLink to="/guides/og-image-sizes">Image Size Guide</NuxtLink>
       </li>
     </ul>
-  </ArticleLayout>
+  </LayoutsArticleLayout>
 </template>
 
 <script setup lang="ts">

@@ -1,5 +1,5 @@
 <template>
-  <SimpleLayout
+  <LayoutsSimpleLayout
 title="Terms of Service"
     :subtitle="`Last updated: ${new Date().toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric' })}`">
     <section class="mb-8">
@@ -172,7 +172,7 @@ href="mailto:legal@ogpreview.app"
           class="text-blue-600 dark:text-blue-400 hover:underline">legal@ogpreview.app</a>
       </p>
     </section>
-  </SimpleLayout>
+  </LayoutsSimpleLayout>
 </template>
 
 <script setup lang="ts">

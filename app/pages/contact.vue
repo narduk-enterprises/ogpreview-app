@@ -1,5 +1,5 @@
 <template>
-  <SimpleLayout title="Contact Us" subtitle="Have questions, feedback, or need support? We'd love to hear from you.">
+  <LayoutsSimpleLayout title="Contact Us" subtitle="Have questions, feedback, or need support? We'd love to hear from you.">
     <section class="mb-8">
       <h2 class="text-2xl font-semibold text-gray-900 dark:text-white mb-4">
         General Inquiries
@@ -127,7 +127,7 @@ href="https://ogpreview.app"
         </UButton>
       </div>
     </div>
-  </SimpleLayout>
+  </LayoutsSimpleLayout>
 </template>
 
 <script setup lang="ts">

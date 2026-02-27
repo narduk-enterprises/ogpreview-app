@@ -2,7 +2,7 @@
   <div class="not-prose platform-section my-8">
     <h3 v-if="platform" class="text-xl font-bold mb-6 flex items-center gap-3 text-gray-900 dark:text-white">
       <div class="w-10 h-10 rounded-lg bg-white dark:bg-gray-700 flex items-center justify-center shadow-sm">
-        <PlatformIcon :platform="platform" size="md" />
+        <ContentPlatformIcon :platform="platform" size="md" />
       </div>
       {{ platform }}
     </h3>

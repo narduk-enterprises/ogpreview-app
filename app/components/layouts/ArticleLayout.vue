@@ -16,7 +16,7 @@
       <header class="mb-12">
         <div v-if="platformIcon" class="mb-6 flex items-center gap-4">
           <div class="w-16 h-16 rounded-2xl bg-linear-to-br from-blue-50 to-purple-50 dark:from-gray-800 dark:to-gray-700 flex items-center justify-center shadow-lg">
-            <PlatformIcon :platform="platformIcon" size="xl" />
+            <ContentPlatformIcon :platform="platformIcon" size="xl" />
           </div>
         </div>
         <h1 class="text-4xl sm:text-5xl font-bold text-gray-900 dark:text-white mb-4">

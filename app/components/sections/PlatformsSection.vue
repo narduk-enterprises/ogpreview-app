@@ -27,7 +27,7 @@
             class="w-14 h-14 sm:w-14 sm:h-14 rounded-xl flex items-center justify-center transition-transform group-hover:scale-110"
             :style="{ backgroundColor: platform.color + '15' }"
           >
-            <PlatformIcon :platform="platform.name" size="xl" />
+            <ContentPlatformIcon :platform="platform.name" size="xl" />
           </div>
           <div>
             <h3 class="font-semibold text-gray-900 dark:text-white text-base sm:text-base">

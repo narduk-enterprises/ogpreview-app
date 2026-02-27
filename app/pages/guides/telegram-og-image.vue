@@ -1,12 +1,12 @@
 <template>
-  <ArticleLayout
+  <LayoutsArticleLayout
 title="Telegram OG Image Size Limit & Requirements"
     description="Complete guide to Telegram Open Graph image size limits, maximum file size (5MB), recommended dimensions (1200×630px), and optimization tips for perfect Telegram link previews."
     :back-link="{ to: '/guides', label: 'Back to Guides' }"
     :metadata="{ date: 'Updated December 2025', readTime: '5 min read' }"
     platform-icon="Telegram">
     <template #cta>
-      <ContentCTA
+      <ContentContentCTA
 title="Preview Your Telegram OG Images"
         description="See how your images look on Telegram and 7 other platforms instantly with our free preview tool."
         button-text="Try the Free Preview Tool" button-to="/" variant="purple" />
@@ -49,7 +49,7 @@ title="Preview Your Telegram OG Images"
       <strong>Telegram's maximum OG image file size is 5MB.</strong> The recommended dimensions are <strong>1200×630 pixels (1.91:1 aspect ratio)</strong>. Telegram supports JPG, PNG, and WebP formats.
     </p>
 
-    <ContentCallout variant="info" title="Key Telegram OG Image Requirements" icon="i-heroicons-light-bulb">
+    <ContentContentCallout variant="info" title="Key Telegram OG Image Requirements" icon="i-heroicons-light-bulb">
       <ul class="space-y-2 text-base leading-relaxed">
         <li>✅ Maximum file size: <strong>5MB</strong></li>
         <li>✅ Recommended dimensions: <strong>1200×630px</strong></li>
@@ -57,7 +57,7 @@ title="Preview Your Telegram OG Images"
         <li>✅ Always use <strong>HTTPS URLs</strong> for images</li>
         <li>✅ Use <strong>absolute URLs</strong> (not relative paths)</li>
       </ul>
-    </ContentCallout>
+    </ContentContentCallout>
 
     <h2 id="file-size-limit">Telegram OG Image Maximum File Size</h2>
     <p>
@@ -81,14 +81,14 @@ title="Preview Your Telegram OG Images"
       <li><strong>Test compression:</strong> Find the balance between quality and file size</li>
     </ol>
 
-    <ContentCallout variant="warning" title="Common File Size Mistakes" icon="i-heroicons-exclamation-triangle">
+    <ContentContentCallout variant="warning" title="Common File Size Mistakes" icon="i-heroicons-exclamation-triangle">
       <ul class="space-y-2 text-sm">
         <li>❌ Using uncompressed images (can easily exceed 5MB)</li>
         <li>❌ Including unnecessary metadata in images</li>
         <li>❌ Using dimensions larger than 1200×630px (wastes bandwidth)</li>
         <li>❌ Not testing file size before publishing</li>
       </ul>
-    </ContentCallout>
+    </ContentContentCallout>
 
     <h2 id="recommended-dimensions">Recommended Telegram OG Image Dimensions</h2>
     <p>
@@ -339,7 +339,7 @@ title="Preview Your Telegram OG Images"
       </li>
       <li><a href="https://core.telegram.org/bots/api#getwebhookinfo" target="_blank" rel="noopener">Telegram Bot API Documentation</a></li>
     </ul>
-  </ArticleLayout>
+  </LayoutsArticleLayout>
 </template>
 
 <script setup lang="ts">

@@ -1,11 +1,11 @@
 <template>
-  <ArticleLayout
+  <LayoutsArticleLayout
 title="Open Graph Image Size Guide"
     description="The complete reference for Open Graph image dimensions, aspect ratios, and file formats across all major social media platforms."
     :back-link="{ to: '/guides', label: 'Back to Guides' }"
     :metadata="{ date: 'Updated December 2025', readTime: '6 min read' }">
     <template #cta>
-      <ContentCTA
+      <ContentContentCTA
 title="Preview Your OG Images"
         description="See how your images look across Facebook, Twitter, LinkedIn, and 5 other platforms instantly."
         button-text="Try the Free Preview Tool" button-to="/" variant="purple" />
@@ -16,7 +16,7 @@ title="Preview Your OG Images"
       <strong>OG image dimensions: The universal recommendation is 1200×630 pixels (1.91:1 aspect ratio).</strong> This size works optimally across Facebook, LinkedIn, Slack, Discord, Telegram, and most other platforms that support Open Graph.
     </p>
 
-    <ContentCallout variant="info" title="Quick Reference: OG Image Size" icon="i-heroicons-light-bulb">
+    <ContentContentCallout variant="info" title="Quick Reference: OG Image Size" icon="i-heroicons-light-bulb">
       <ul class="space-y-2 text-base leading-relaxed">
         <li>✅ <strong>Recommended size:</strong> 1200×630px (1.91:1 aspect ratio)</li>
         <li>✅ <strong>OG image width:</strong> 1200 pixels</li>
@@ -24,7 +24,7 @@ title="Preview Your OG Images"
         <li>✅ <strong>File size:</strong> Keep under 5MB (ideally under 1MB)</li>
         <li>✅ <strong>Formats:</strong> JPG, PNG, or WebP</li>
       </ul>
-    </ContentCallout>
+    </ContentContentCallout>
 
     <h2 id="universal-recommendation">Universal Recommendation: 1200×630px</h2>
     <p>
@@ -34,52 +34,52 @@ title="Preview Your OG Images"
       Graph.
     </p>
 
-    <ContentCallout variant="info" title="Quick Tips" icon="i-heroicons-light-bulb">
+    <ContentContentCallout variant="info" title="Quick Tips" icon="i-heroicons-light-bulb">
       <ul class="space-y-2 text-base leading-relaxed">
         <li>✅ Use 1200×630px for maximum compatibility</li>
         <li>✅ Always use HTTPS URLs for images</li>
         <li>✅ Keep file size under 5MB (ideally under 1MB)</li>
         <li>✅ Use JPG or PNG format (WebP for modern platforms)</li>
       </ul>
-    </ContentCallout>
+    </ContentContentCallout>
 
     <h2 id="platform-specifications">Platform-Specific Image Sizes</h2>
 
-    <PlatformSection
+    <ContentPlatformSection
 platform="Facebook" recommended-size="1200×630px (1.91:1)"
       minimum-size="200×200px (below this, images are rejected)" supports="JPG, PNG, WebP, GIF"
       notes="Images smaller than 600×315px display as a small thumbnail. Square images (1:1) also display smaller." />
 
-    <PlatformSection
+    <ContentPlatformSection
 platform="Twitter" recommended-size="1200×628px (1.91:1) for summary_large_image"
       minimum-size="120×120px (1:1, up to 4096×4096px) for summary card" supports="JPG, PNG, WebP, GIF">
       <p class="text-sm text-gray-600 dark:text-gray-400 mt-2">
         Twitter uses its own
-        <ContentInlineCode code="twitter:card" /> meta tags but falls back to OG tags.
+        <ContentContentInlineCode code="twitter:card" /> meta tags but falls back to OG tags.
       </p>
-      <ContentCodeBlock :code="twitterCardCode" language="html" />
-    </PlatformSection>
+      <ContentContentCodeBlock :code="twitterCardCode" language="html" />
+    </ContentPlatformSection>
 
-    <PlatformSection
+    <ContentPlatformSection
 platform="LinkedIn" recommended-size="1200×627px (1.91:1)" minimum-size="200×200px"
       supports="JPG, PNG"
       notes="LinkedIn's algorithm favors high-quality, professional imagery. Avoid overly promotional or low-contrast images." />
 
-    <PlatformSection
+    <ContentPlatformSection
 platform="Slack" recommended-size="1200×630px (1.91:1)" minimum-size="200×200px"
       supports="JPG, PNG, GIF" notes="Max width 400px in unfurls" />
 
-    <PlatformSection
+    <ContentPlatformSection
 platform="Discord" recommended-size="1200×630px (1.91:1)"
       minimum-size="400×300px for full embeds" supports="JPG, PNG, WebP, GIF" />
 
-    <PlatformSection
+    <ContentPlatformSection
 platform="WhatsApp" recommended-size="1200×630px (1.91:1)" supports="JPG, PNG"
       notes="Maximum 300KB file size (strictly enforced). Compress images aggressively while maintaining quality." />
 
-    <PlatformSection platform="Telegram" recommended-size="1200×630px (1.91:1)" supports="JPG, PNG, WebP" />
+    <ContentPlatformSection platform="Telegram" recommended-size="1200×630px (1.91:1)" supports="JPG, PNG, WebP" />
 
-    <PlatformSection
+    <ContentPlatformSection
 platform="iMessage" recommended-size="1200×630px (1.91:1)" minimum-size="400×300px"
       supports="JPG, PNG" />
 
@@ -202,19 +202,19 @@ platform="iMessage" recommended-size="1200×630px (1.91:1)" minimum-size="400×3
       <li><strong>Brand consistency:</strong> Use consistent colors and style across all OG images</li>
     </ul>
 
-    <ContentCallout variant="warning" title="Common Mistakes to Avoid" icon="i-heroicons-exclamation-triangle">
+    <ContentContentCallout variant="warning" title="Common Mistakes to Avoid" icon="i-heroicons-exclamation-triangle">
       <ul class="space-y-2 text-sm">
         <li>❌ Using images smaller than 200×200px</li>
         <li>❌ Exceeding platform file size limits (especially WhatsApp's 300KB)</li>
         <li>❌ Using HTTP instead of HTTPS</li>
         <li>
 ❌ Relative image URLs like
-          <ContentInlineCode code="/images/og.jpg" />
+          <ContentContentInlineCode code="/images/og.jpg" />
         </li>
         <li>❌ Putting critical text near image edges</li>
         <li>❌ Using low-contrast colors that don't work in dark mode</li>
       </ul>
-    </ContentCallout>
+    </ContentContentCallout>
 
     <h2 id="dynamic-images">Dynamic OG Images</h2>
     <p>
@@ -272,7 +272,7 @@ href="https://www.linkedin.com/post-inspector/" target="_blank"
       <li><strong>Cache headers:</strong> Set long cache times (1 year+) for static images</li>
       <li>
 <strong>Lazy loading:</strong> OG images don't need lazy loading (they're in
-        <ContentInlineCode code="&lt;head&gt;" />)
+        <ContentContentInlineCode code="&lt;head&gt;" />)
       </li>
       <li><strong>Responsive images:</strong> Not needed for OG tags (platforms fetch one size)</li>
       <li><strong>Preconnect:</strong> Add DNS preconnect to your image CDN</li>
@@ -353,7 +353,7 @@ href="https://www.linkedin.com/post-inspector/" target="_blank"
       </li>
       <li><a href="https://ogp.me/" target="_blank" rel="noopener">Official Open Graph Protocol</a></li>
     </ul>
-  </ArticleLayout>
+  </LayoutsArticleLayout>
 </template>
 
 <script setup lang="ts">

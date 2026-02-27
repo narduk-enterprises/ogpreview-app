@@ -1,11 +1,11 @@
 <template>
-  <ArticleLayout
+  <LayoutsArticleLayout
 title="Facebook Open Graph Preview Guide"
     description="Master Facebook's Open Graph implementation. Learn the exact image dimensions, required meta tags, and best practices for perfect Facebook link previews that drive engagement."
     :back-link="{ to: '/', label: 'Back to Tool' }"
     :metadata="{ date: 'Updated December 2025', readTime: '8 min read' }">
     <template #cta>
-      <ContentCTA
+      <ContentContentCTA
 title="Test Your Facebook Link Previews"
         description="Preview how your links will appear on Facebook and all other platforms instantly."
         button-text="Try the Free Preview Tool" button-to="/" variant="blue" />
@@ -16,18 +16,18 @@ title="Test Your Facebook Link Previews"
         <h2 class="text-2xl font-bold text-gray-900 dark:text-white mb-6">
           Other Platform Guides
         </h2>
-        <PlatformGrid :platforms="relatedPlatforms" />
+        <ContentPlatformGrid :platforms="relatedPlatforms" />
       </div>
     </template>
 
-    <ContentCallout variant="info" title="Quick Answer" icon="i-heroicons-light-bulb">
+    <ContentContentCallout variant="info" title="Quick Answer" icon="i-heroicons-light-bulb">
       Facebook uses Open Graph protocol with recommended image size of 1200×630px (1.91:1 aspect ratio). Minimum size is
       200×200px. Always use absolute HTTPS URLs and include
-      <ContentInlineCode code="og:title" />,
-      <ContentInlineCode code="og:description" />,
-      <ContentInlineCode code="og:image" />, and
-      <ContentInlineCode code="og:url" /> tags.
-    </ContentCallout>
+      <ContentContentInlineCode code="og:title" />,
+      <ContentContentInlineCode code="og:description" />,
+      <ContentContentInlineCode code="og:image" />, and
+      <ContentContentInlineCode code="og:url" /> tags.
+    </ContentContentCallout>
 
     <h2 id="facebook-og-overview">How Facebook Uses Open Graph Tags</h2>
     <p>
@@ -45,7 +45,7 @@ title="Test Your Facebook Link Previews"
       <li><strong>Pages</strong> - When pages share content</li>
     </ul>
 
-    <PlatformSection
+    <ContentPlatformSection
 platform="Facebook"
       recommended-size="1200×630px (1.91:1 aspect ratio)" minimum-size="200×200px" supports="JPG, PNG, WebP, GIF"
       notes="Maximum file size: 8MB (but aim for under 1MB for faster loading). Image ratio: Between 1.91:1 and 1:1 (square)." />
@@ -65,22 +65,22 @@ platform="Facebook"
       Facebook requires these four essential Open Graph tags for proper link previews:
     </p>
 
-    <ContentCodeBlock :code="requiredTagsCode" language="html" />
+    <ContentContentCodeBlock :code="requiredTagsCode" language="html" />
 
     <h3>Recommended Additional Tags</h3>
     <ul>
       <li>
-        <ContentInlineCode code="og:site_name" /> - Your site name (appears below the title)
+        <ContentContentInlineCode code="og:site_name" /> - Your site name (appears below the title)
       </li>
       <li>
-        <ContentInlineCode code="og:locale" /> - Language locale (e.g., en_US, es_ES)
+        <ContentContentInlineCode code="og:locale" /> - Language locale (e.g., en_US, es_ES)
       </li>
       <li>
-        <ContentInlineCode code="og:image:width" /> and
-        <ContentInlineCode code="og:image:height" /> - Image dimensions for faster rendering
+        <ContentContentInlineCode code="og:image:width" /> and
+        <ContentContentInlineCode code="og:image:height" /> - Image dimensions for faster rendering
       </li>
       <li>
-        <ContentInlineCode code="og:image:alt" /> - Alt text for accessibility
+        <ContentContentInlineCode code="og:image:alt" /> - Alt text for accessibility
       </li>
     </ul>
 
@@ -90,16 +90,16 @@ platform="Facebook"
     </p>
     <ul>
       <li>
-        <ContentInlineCode code="og:type" /> - Set to "article"
+        <ContentContentInlineCode code="og:type" /> - Set to "article"
       </li>
       <li>
-        <ContentInlineCode code="article:published_time" /> - Publication date
+        <ContentContentInlineCode code="article:published_time" /> - Publication date
       </li>
       <li>
-        <ContentInlineCode code="article:author" /> - Author information
+        <ContentContentInlineCode code="article:author" /> - Author information
       </li>
       <li>
-        <ContentInlineCode code="article:section" /> - Article category
+        <ContentContentInlineCode code="article:section" /> - Article category
       </li>
     </ul>
 
@@ -108,11 +108,11 @@ platform="Facebook"
     <h3>1. Relative Image URLs</h3>
     <p class="text-red-600 dark:text-red-400">
       ❌
-      <ContentInlineCode code="&lt;meta property=&quot;og:image&quot; content=&quot;/images/og.jpg&quot; /&gt;" />
+      <ContentContentInlineCode code="&lt;meta property=&quot;og:image&quot; content=&quot;/images/og.jpg&quot; /&gt;" />
     </p>
     <p class="text-green-600 dark:text-green-400">
       ✅
-      <ContentInlineCode code="&lt;meta property=&quot;og:image&quot; content=&quot;https://example.com/images/og.jpg&quot; /&gt;" />
+      <ContentContentInlineCode code="&lt;meta property=&quot;og:image&quot; content=&quot;https://example.com/images/og.jpg&quot; /&gt;" />
     </p>
     <p>
       Facebook requires absolute URLs with the full protocol. Relative paths will not work.
@@ -132,7 +132,7 @@ platform="Facebook"
     <p>
       Including image dimensions helps Facebook render previews faster:
     </p>
-    <ContentCodeBlock :code="imageDimensionsCode" language="html" />
+    <ContentContentCodeBlock :code="imageDimensionsCode" language="html" />
 
     <h3>4. Not Clearing Facebook's Cache</h3>
     <p>
@@ -214,10 +214,10 @@ Use the <a href="https://developers.facebook.com/tools/debug/" target="_blank" r
     <h2 id="implementation-examples">Implementation Examples</h2>
 
     <h3>Nuxt 3</h3>
-    <ContentCodeBlock :code="nuxtExampleCode" language="javascript" />
+    <ContentContentCodeBlock :code="nuxtExampleCode" language="javascript" />
 
     <h3>Next.js 14+</h3>
-    <ContentCodeBlock :code="nextjsExampleCode" language="javascript" />
+    <ContentContentCodeBlock :code="nextjsExampleCode" language="javascript" />
 
     <h2 id="related-resources">Related Resources</h2>
     <ul>
@@ -242,7 +242,7 @@ Use the <a href="https://developers.facebook.com/tools/debug/" target="_blank" r
           Graph Documentation</a>
 </li>
     </ul>
-  </ArticleLayout>
+  </LayoutsArticleLayout>
 </template>
 
 <script setup lang="ts">

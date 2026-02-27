@@ -1,11 +1,11 @@
 <template>
-  <ArticleLayout
+  <LayoutsArticleLayout
 title="Facebook Link Preview Optimization Guide"
     description="Learn how to create perfect Facebook link previews with the right Open Graph tags, image dimensions, and best practices."
     platform-icon="Facebook" :back-link="{ to: '/guides', label: 'Back to Guides' }"
     :metadata="{ date: 'Updated December 2025', readTime: '8 min read' }">
     <template #cta>
-      <ContentCTA
+      <ContentContentCTA
 title="Test Your Facebook Link Preview"
         description="See exactly how your Open Graph tags will appear on Facebook—plus Twitter, LinkedIn, Slack, and more."
         button-text="Try the Free Preview Tool" button-to="/" />
@@ -19,20 +19,20 @@ title="Test Your Facebook Link Preview"
       into an engaging visual element that can dramatically increase click-through rates.
     </p>
 
-    <ContentCallout variant="info" title="Preview Your Facebook Link" icon="i-heroicons-light-bulb">
+    <ContentContentCallout variant="info" title="Preview Your Facebook Link" icon="i-heroicons-light-bulb">
       Use our <NuxtLink
 to="/"
         class="font-semibold underline hover:text-blue-600 dark:hover:text-blue-400 transition-colors">Open Graph
         Preview
         Tool</NuxtLink> to see exactly how your link will appear on Facebook before publishing.
-    </ContentCallout>
+    </ContentContentCallout>
 
     <h2 id="required-tags">Required Open Graph Tags for Facebook</h2>
     <p>
       Facebook requires these four core Open Graph tags for optimal link previews:
     </p>
 
-    <ContentCodeBlock :code="requiredTagsCode" language="html" />
+    <ContentContentCodeBlock :code="requiredTagsCode" language="html" />
 
     <h2 id="image-requirements">Facebook Image Requirements</h2>
     <p>
@@ -55,7 +55,7 @@ to="/"
       upscaled (losing quality), while larger images will be cropped or compressed.
     </p>
 
-    <ContentCallout variant="warning" title="Common Image Mistakes" icon="i-heroicons-exclamation-triangle">
+    <ContentContentCallout variant="warning" title="Common Image Mistakes" icon="i-heroicons-exclamation-triangle">
       <ul class="space-y-2 text-sm">
         <li>❌ Using images under 200×200px (Facebook rejects these)</li>
         <li>❌ Relative URLs like <code>/images/og.jpg</code></li>
@@ -63,7 +63,7 @@ to="/"
         <li>❌ Images behind authentication or paywalls</li>
         <li>❌ Slow-loading images (timeout after 10 seconds)</li>
       </ul>
-    </ContentCallout>
+    </ContentContentCallout>
 
     <h2 id="title-description">Title & Description Best Practices</h2>
 
@@ -156,13 +156,13 @@ to="/"
     <p>
       Facebook supports rich video previews with auto-play:
     </p>
-    <ContentCodeBlock :code="videoTagsCode" language="html" />
+    <ContentContentCodeBlock :code="videoTagsCode" language="html" />
 
     <h3>Article-Specific Tags</h3>
     <p>
       For blog posts and news articles, use <code>og:type="article"</code> with additional metadata:
     </p>
-    <ContentCodeBlock :code="articleTagsCode" language="html" />
+    <ContentContentCodeBlock :code="articleTagsCode" language="html" />
 
     <h2 id="testing-workflow">Facebook Preview Testing Workflow</h2>
     <ol>
@@ -220,7 +220,7 @@ to="/"
         <NuxtLink to="/guides/og-cache-refresh">Cache Refresh Guide</NuxtLink>
       </li>
     </ul>
-  </ArticleLayout>
+  </LayoutsArticleLayout>
 </template>
 
 <script setup lang="ts">

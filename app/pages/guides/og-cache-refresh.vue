@@ -1,11 +1,11 @@
 <template>
-  <ArticleLayout
+  <LayoutsArticleLayout
 title="How to Refresh Open Graph Cache"
     description="Force social media platforms to update your cached Open Graph tags and see your changes immediately with these debugging tools and techniques."
     :back-link="{ to: '/guides', label: 'Back to Guides' }"
     :metadata="{ date: 'Updated December 2025', readTime: '7 min read' }">
     <template #cta>
-      <ContentCTA
+      <ContentContentCTA
 title="Test Before You Share"
         description="Avoid cache headaches by testing your Open Graph tags before sharing. See previews for all major platforms instantly."
         button-text="Preview Your OG Tags Now" button-to="/" variant="green" />
@@ -25,10 +25,10 @@ title="Test Before You Share"
       your old title, description, or image may continue to appear even after you've made changes.
     </p>
 
-    <ContentCallout variant="info" title="Quick Solution" icon="i-heroicons-bolt">
+    <ContentContentCallout variant="info" title="Quick Solution" icon="i-heroicons-bolt">
       Use the platform-specific debugging tools below to force a cache refresh. Each platform provides a free tool that
       re-scrapes your page and updates the cached OG tags.
-    </ContentCallout>
+    </ContentContentCallout>
 
     <h2 id="facebook">Refreshing Facebook Cache</h2>
     <p>
@@ -53,7 +53,7 @@ href="https://developers.facebook.com/tools/debug/" target="_blank"
       <p class="text-sm font-mono text-gray-700 dark:text-gray-300 mb-2">
         <strong>Direct URL format:</strong>
       </p>
-      <ContentInlineCode code="https://developers.facebook.com/tools/debug/?q=https://yoursite.com/page" />
+      <ContentContentInlineCode code="https://developers.facebook.com/tools/debug/?q=https://yoursite.com/page" />
     </div>
 
     <h3>Common Facebook Debugger Errors</h3>
@@ -81,10 +81,10 @@ href="https://developers.facebook.com/tools/debug/" target="_blank"
           <td>Missing OG tags</td>
           <td>
 Add
-            <ContentInlineCode code="og:title" />,
-            <ContentInlineCode code="og:description" />,
-            <ContentInlineCode code="og:image" />,
-            <ContentInlineCode code="og:url" />
+            <ContentContentInlineCode code="og:title" />,
+            <ContentContentInlineCode code="og:description" />,
+            <ContentContentInlineCode code="og:image" />,
+            <ContentContentInlineCode code="og:url" />
           </td>
         </tr>
         <tr>
@@ -118,12 +118,12 @@ href="https://www.linkedin.com/post-inspector/" target="_blank"
       <li>LinkedIn automatically clears cache when you inspect a URL</li>
     </ol>
 
-    <ContentCallout variant="warning" title="LinkedIn Caching Note" icon="i-heroicons-exclamation-triangle">
+    <ContentContentCallout variant="warning" title="LinkedIn Caching Note" icon="i-heroicons-exclamation-triangle">
       LinkedIn's cache is particularly aggressive. After updating OG tags, you may need to wait 24-48 hours even after
       using
       the inspector. For immediate updates, try appending a query parameter like
-      <ContentInlineCode code="?v=2" /> to create a "new" URL.
-    </ContentCallout>
+      <ContentContentInlineCode code="?v=2" /> to create a "new" URL.
+    </ContentContentCallout>
 
     <h2 id="twitter">Refreshing Twitter (X) Cache</h2>
     <p>
@@ -136,8 +136,8 @@ href="https://www.linkedin.com/post-inspector/" target="_blank"
       <li><strong>No official tool:</strong> The Card Validator was sunset in 2023</li>
       <li>
 <strong>Workaround:</strong> Use query parameters like
-        <ContentInlineCode code="?v=1" />,
-        <ContentInlineCode code="?updated=2025-12-16" />
+        <ContentContentInlineCode code="?v=1" />,
+        <ContentContentInlineCode code="?updated=2025-12-16" />
       </li>
     </ul>
 
@@ -164,8 +164,8 @@ href="https://cards-dev.twitter.com/validator" target="_blank"
     <ol>
       <li>
         <strong>Query Parameters:</strong> Add
-        <ContentInlineCode code="?slack=1" /> or any unique parameter to the URL
-        <ContentCodeBlock :code="slackExampleCode" language="text" />
+        <ContentContentInlineCode code="?slack=1" /> or any unique parameter to the URL
+        <ContentContentCodeBlock :code="slackExampleCode" language="text" />
       </li>
       <li>
         <strong>Time-based method:</strong> Wait 24 hours for automatic refresh
@@ -175,7 +175,7 @@ href="https://cards-dev.twitter.com/validator" target="_blank"
       </li>
     </ol>
 
-    <ContentCallout variant="info" title="Pro Tip: Cache-Busting Query Parameters" icon="i-heroicons-light-bulb">
+    <ContentContentCallout variant="info" title="Pro Tip: Cache-Busting Query Parameters" icon="i-heroicons-light-bulb">
       <p class="mb-3">
         For platforms without debugging tools (Slack, Discord, WhatsApp), add query parameters to create a "new" URL
         that
@@ -183,19 +183,19 @@ href="https://cards-dev.twitter.com/validator" target="_blank"
       </p>
       <ul class="space-y-1 mb-2 text-sm">
         <li>
-          <ContentInlineCode code="?v=2" />
+          <ContentContentInlineCode code="?v=2" />
         </li>
         <li>
-          <ContentInlineCode code="?updated=2025-12-16" />
+          <ContentContentInlineCode code="?updated=2025-12-16" />
         </li>
         <li>
-          <ContentInlineCode code="?refresh=true" />
+          <ContentContentInlineCode code="?refresh=true" />
         </li>
       </ul>
       <p class="text-sm">
         Make sure your OG tags use the canonical URL without these parameters!
       </p>
-    </ContentCallout>
+    </ContentContentCallout>
 
     <h2 id="discord">Refreshing Discord Cache</h2>
     <p>
@@ -206,7 +206,7 @@ href="https://cards-dev.twitter.com/validator" target="_blank"
     <ol>
       <li>
 <strong>Query parameters:</strong> Append
-        <ContentInlineCode code="?discord=1" /> to URL
+        <ContentContentInlineCode code="?discord=1" /> to URL
       </li>
       <li><strong>Wait:</strong> Cache typically refreshes within 24 hours</li>
       <li><strong>Delete and repost:</strong> Delete the message and post the link again with a query parameter</li>
@@ -221,7 +221,7 @@ href="https://cards-dev.twitter.com/validator" target="_blank"
     <ul>
       <li>
 <strong>Query parameters:</strong> Add
-        <ContentInlineCode code="?wa=1" /> to create a fresh URL
+        <ContentContentInlineCode code="?wa=1" /> to create a fresh URL
       </li>
       <li><strong>Automatic refresh:</strong> WhatsApp typically updates within 7 days</li>
       <li><strong>File size critical:</strong> Ensure OG image is under 300KB (WhatsApp's strict limit)</li>
@@ -249,7 +249,7 @@ href="https://cards-dev.twitter.com/validator" target="_blank"
       <li><strong>No official tool:</strong> Apple doesn't provide a debugging interface</li>
       <li>
 <strong>Query parameters:</strong> Use
-        <ContentInlineCode code="?ios=1" /> for cache busting
+        <ContentContentInlineCode code="?ios=1" /> for cache busting
       </li>
       <li><strong>Long cache:</strong> iMessage cache can persist for weeks</li>
       <li><strong>User-level clear:</strong> Recipients may need to clear their iMessage cache (reboot device)</li>
@@ -273,7 +273,7 @@ href="https://cards-dev.twitter.com/validator" target="_blank"
       </li>
       <li>
 <strong>Version your images:</strong> Use versioned image URLs like
-        <ContentInlineCode code="og-image-v2.jpg" />
+        <ContentContentInlineCode code="og-image-v2.jpg" />
       </li>
       <li><strong>Set proper cache headers:</strong> Use long cache times for OG images (1 year+) once finalized</li>
     </ol>
@@ -282,7 +282,7 @@ href="https://cards-dev.twitter.com/validator" target="_blank"
     <p>
       While social platforms ignore cache headers for OG tags, you can set them for your images:
     </p>
-    <ContentCodeBlock :code="cacheHeadersCode" language="text" />
+    <ContentContentCodeBlock :code="cacheHeadersCode" language="text" />
 
     <h2 id="troubleshooting">Troubleshooting Checklist</h2>
     <p>
@@ -294,8 +294,8 @@ href="https://cards-dev.twitter.com/validator" target="_blank"
         <label class="flex items-start gap-3 text-gray-700 dark:text-gray-300">
           <input type="checkbox" class="mt-1" />
           <span class="text-sm">OG tags are in the
-            <ContentInlineCode code="&lt;head&gt;" /> section, not
-            <ContentInlineCode code="&lt;body&gt;" />
+            <ContentContentInlineCode code="&lt;head&gt;" /> section, not
+            <ContentContentInlineCode code="&lt;body&gt;" />
           </span>
         </label>
         <label class="flex items-start gap-3 text-gray-700 dark:text-gray-300">
@@ -306,7 +306,7 @@ href="https://cards-dev.twitter.com/validator" target="_blank"
         <label class="flex items-start gap-3 text-gray-700 dark:text-gray-300">
           <input type="checkbox" class="mt-1" />
           <span class="text-sm">Image URLs are absolute (start with
-            <ContentInlineCode code="https://" />)
+            <ContentContentInlineCode code="https://" />)
           </span>
         </label>
         <label class="flex items-start gap-3 text-gray-700 dark:text-gray-300">
@@ -328,7 +328,7 @@ href="https://cards-dev.twitter.com/validator" target="_blank"
         <label class="flex items-start gap-3 text-gray-700 dark:text-gray-300">
           <input type="checkbox" class="mt-1" />
           <span class="text-sm">OG tags use correct property format:
-            <ContentInlineCode code="&lt;meta property=&quot;og:title&quot;&gt;" />
+            <ContentContentInlineCode code="&lt;meta property=&quot;og:title&quot;&gt;" />
           </span>
         </label>
       </div>
@@ -354,7 +354,7 @@ href="https://developers.facebook.com/docs/sharing/opengraph/using-objects#updat
     <p>
       Create a script to hit each platform's debugger API:
     </p>
-    <ContentCodeBlock :code="scriptExampleCode" language="javascript" />
+    <ContentContentCodeBlock :code="scriptExampleCode" language="javascript" />
 
     <h2 id="monitoring">Monitoring Cache Status</h2>
     <p>
@@ -368,7 +368,7 @@ href="https://developers.facebook.com/docs/sharing/opengraph/using-objects#updat
     </ul>
 
     <h3>Social Media Bot User-Agents</h3>
-    <ContentCodeBlock :code="userAgentsCode" language="text" />
+    <ContentContentCodeBlock :code="userAgentsCode" language="text" />
 
     <h2 id="tools-summary">Quick Reference: Debugging Tools</h2>
     <div class="overflow-x-auto">
@@ -444,7 +444,7 @@ href="https://developers.facebook.com/docs/sharing/webmasters/getting-started" t
           rel="noopener">Facebook Webmaster Guide</a>
 </li>
     </ul>
-  </ArticleLayout>
+  </LayoutsArticleLayout>
 </template>
 
 <script setup lang="ts">

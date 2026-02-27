@@ -1,5 +1,5 @@
 <template>
-  <SimpleLayout
+  <LayoutsSimpleLayout
 title="About ogpreview.app"
     subtitle="Your free, powerful Open Graph preview tool for social media optimization">
     <section class="mb-8">
@@ -190,7 +190,7 @@ title="About ogpreview.app"
         Try OG Preview Tool
       </UButton>
     </section>
-  </SimpleLayout>
+  </LayoutsSimpleLayout>
 </template>
 
 <script setup lang="ts">
