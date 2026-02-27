@@ -1,40 +1,3 @@
-<template>
-  <div v-if="src && !imageError" :class="['overflow-hidden bg-gray-200 dark:bg-gray-700 relative', aspectClass]">
-    <Transition name="image-fade" mode="out-in">
-      <!-- Use NuxtImg only for internal assets or explicitly allowed domains -->
-      <NuxtImg
-v-if="isOptimizableImage" :key="`nuxt-${imageSrc}`" :src="imageSrc" :alt="alt"
-        class="w-full h-full object-cover" loading="eager" :class="{ 'opacity-0': !imageLoaded }" format="webp"
-        quality="80" width="1200" height="630" densities="x1 x2" @load="onImageLoad" @error="onImageError" />
-      <!-- Use plain <img> for external OG images (proxied through /api/image to avoid CORS) -->
-      <img
-v-else :key="`img-${imageSrc}`" :src="imageSrc" :alt="alt" class="w-full h-full object-cover" loading="eager"
-        width="1200" height="630" referrerpolicy="no-referrer" crossorigin="anonymous"
-        :class="{ 'opacity-0': !imageLoaded }" @load="onImageLoad" @error="onImageError">
-    </Transition>
-    <!-- Only show spinner on client side after a small delay to avoid hydration issues -->
-    <ClientOnly>
-      <div
-v-if="!imageLoaded && !imageError"
-        class="absolute inset-0 flex items-center justify-center bg-gray-200 dark:bg-gray-700" role="status"
-        aria-live="polite" aria-label="Loading image">
-        <UIcon
-name="i-lucide-loader-circle" class="w-8 h-8 text-gray-400 dark:text-gray-500 animate-spin"
-          aria-hidden="true" />
-      </div>
-    </ClientOnly>
-  </div>
-  <!-- Show "No Image" when src is empty OR when image fails to load -->
-  <div
-v-else :class="['flex items-center justify-center bg-gray-200 dark:bg-gray-700', aspectClass]" role="img"
-    aria-label="No image available">
-    <div class="text-center">
-      <UIcon name="i-lucide-image-off" class="w-12 h-12 text-gray-400 dark:text-gray-500 mb-2" aria-hidden="true" />
-      <span class="text-sm text-gray-400 dark:text-gray-500">No Image</span>
-    </div>
-  </div>
-</template>
-
 <script setup lang="ts">
 interface Props {
   src?: string
@@ -215,5 +178,42 @@ onMounted(() => {
   }
 })
 </script>
+
+<template>
+  <div v-if="src && !imageError" :class="['overflow-hidden bg-gray-200 dark:bg-gray-700 relative', aspectClass]">
+    <Transition name="image-fade" mode="out-in">
+      <!-- Use NuxtImg only for internal assets or explicitly allowed domains -->
+      <NuxtImg
+v-if="isOptimizableImage" :key="`nuxt-${imageSrc}`" :src="imageSrc" :alt="alt"
+        class="w-full h-full object-cover" loading="eager" :class="{ 'opacity-0': !imageLoaded }" format="webp"
+        quality="80" width="1200" height="630" densities="x1 x2" @load="onImageLoad" @error="onImageError" />
+      <!-- Use plain <img> for external OG images (proxied through /api/image to avoid CORS) -->
+      <img
+v-else :key="`img-${imageSrc}`" :src="imageSrc" :alt="alt" class="w-full h-full object-cover" loading="eager"
+        width="1200" height="630" referrerpolicy="no-referrer" crossorigin="anonymous"
+        :class="{ 'opacity-0': !imageLoaded }" @load="onImageLoad" @error="onImageError">
+    </Transition>
+    <!-- Only show spinner on client side after a small delay to avoid hydration issues -->
+    <ClientOnly>
+      <div
+v-if="!imageLoaded && !imageError"
+        class="absolute inset-0 flex items-center justify-center bg-gray-200 dark:bg-gray-700" role="status"
+        aria-live="polite" aria-label="Loading image">
+        <UIcon
+name="i-lucide-loader-circle" class="w-8 h-8 text-gray-400 dark:text-gray-500 animate-spin"
+          aria-hidden="true" />
+      </div>
+    </ClientOnly>
+  </div>
+  <!-- Show "No Image" when src is empty OR when image fails to load -->
+  <div
+v-else :class="['flex items-center justify-center bg-gray-200 dark:bg-gray-700', aspectClass]" role="img"
+    aria-label="No image available">
+    <div class="text-center">
+      <UIcon name="i-lucide-image-off" class="w-12 h-12 text-gray-400 dark:text-gray-500 mb-2" aria-hidden="true" />
+      <span class="text-sm text-gray-400 dark:text-gray-500">No Image</span>
+    </div>
+  </div>
+</template>
 
 

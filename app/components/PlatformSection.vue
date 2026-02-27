@@ -1,3 +1,26 @@
+<script setup lang="ts">
+interface Props {
+  platform: string
+  icon?: string
+  recommendedSize?: string
+  minimumSize?: string
+  supports?: string
+  debugTool?: string
+  debuggerUrl?: string
+  notes?: string
+}
+
+withDefaults(defineProps<Props>(), {
+  icon: undefined,
+  recommendedSize: undefined,
+  minimumSize: undefined,
+  supports: undefined,
+  debugTool: undefined,
+  debuggerUrl: undefined,
+  notes: undefined
+})
+</script>
+
 <template>
   <div class="not-prose platform-section my-8">
     <h3 v-if="platform" class="text-xl font-bold mb-6 flex items-center gap-3 text-gray-900 dark:text-white">
@@ -42,28 +65,5 @@
     </div>
   </div>
 </template>
-
-<script setup lang="ts">
-interface Props {
-  platform: string
-  icon?: string
-  recommendedSize?: string
-  minimumSize?: string
-  supports?: string
-  debugTool?: string
-  debuggerUrl?: string
-  notes?: string
-}
-
-withDefaults(defineProps<Props>(), {
-  icon: undefined,
-  recommendedSize: undefined,
-  minimumSize: undefined,
-  supports: undefined,
-  debugTool: undefined,
-  debuggerUrl: undefined,
-  notes: undefined
-})
-</script>
 
 

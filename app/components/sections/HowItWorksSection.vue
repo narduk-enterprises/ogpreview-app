@@ -1,3 +1,23 @@
+<script setup lang="ts">
+const steps = [
+  {
+    icon: '🔗',
+    title: 'Enter Your URL',
+    description: 'Paste any website URL and we\'ll automatically fetch its Open Graph meta tags, or manually enter your content to test different variations.'
+  },
+  {
+    icon: '👁️',
+    title: 'Preview Instantly',
+    description: 'See real-time previews showing exactly how your link will appear on Facebook, Twitter, LinkedIn, Slack, Discord, WhatsApp, and more.'
+  },
+  {
+    icon: '✨',
+    title: 'Optimize & Share',
+    description: 'Adjust your title, description, and image based on our recommendations. Test different variations to maximize engagement before publishing.'
+  }
+]
+</script>
+
 <template>
   <section
     class="mt-8 sm:mt-8 max-w-5xl mx-auto px-4 sm:px-4"
@@ -55,23 +75,3 @@
     </div>
   </section>
 </template>
-
-<script setup lang="ts">
-const steps = [
-  {
-    icon: '🔗',
-    title: 'Enter Your URL',
-    description: 'Paste any website URL and we\'ll automatically fetch its Open Graph meta tags, or manually enter your content to test different variations.'
-  },
-  {
-    icon: '👁️',
-    title: 'Preview Instantly',
-    description: 'See real-time previews showing exactly how your link will appear on Facebook, Twitter, LinkedIn, Slack, Discord, WhatsApp, and more.'
-  },
-  {
-    icon: '✨',
-    title: 'Optimize & Share',
-    description: 'Adjust your title, description, and image based on our recommendations. Test different variations to maximize engagement before publishing.'
-  }
-]
-</script>

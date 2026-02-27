@@ -1,3 +1,28 @@
+<script setup lang="ts">
+import { formatUrl } from '~/utils/formatUrl'
+
+interface Props {
+  data: {
+    title: string
+    description: string
+    image: string
+    url: string
+    siteName: string
+    type: string
+    imageAlt?: string
+  }
+}
+
+defineProps<Props>()
+
+const handleImageError = (event: Event) => {
+  const target = event.target as HTMLImageElement
+  if (target) {
+    target.style.display = 'none'
+  }
+}
+</script>
+
 <template>
   <BasePreviewCard
     platform="slack"
@@ -88,30 +113,5 @@
     </div>
   </BasePreviewCard>
 </template>
-
-<script setup lang="ts">
-import { formatUrl } from '~/utils/formatUrl'
-
-interface Props {
-  data: {
-    title: string
-    description: string
-    image: string
-    url: string
-    siteName: string
-    type: string
-    imageAlt?: string
-  }
-}
-
-defineProps<Props>()
-
-const handleImageError = (event: Event) => {
-  const target = event.target as HTMLImageElement
-  if (target) {
-    target.style.display = 'none'
-  }
-}
-</script>
 
 

@@ -1,3 +1,89 @@
+<script setup lang="ts">
+useSeoMeta({
+  title: 'Twitter Card Meta Tags & Specs',
+  description: 'The exact open graph and twitter card specifications for X/Twitter. Get the correct 1200x600 image size and copy-paste starter tags.',
+  keywords: 'twitter card tags, summary_large_image, twitter link preview, twitter card metadata, twitter card image size',
+  robots: 'index, follow',
+  ogTitle: 'Twitter Card Meta Tags & Specs',
+  ogDescription: 'The exact open graph and twitter card specifications for X/Twitter. Copy-paste the required meta tags and image sizes.',
+  ogType: 'article',
+  articlePublishedTime: '2025-12-16T00:00:00Z',
+  articleModifiedTime: '2025-12-16T00:00:00Z',
+  articleAuthor: ['ogpreview.app'],
+  articleSection: 'Social Media Optimization'
+})
+
+useSchemaOrg([
+  {
+    '@type': 'WebPage',
+    'name': 'Twitter Card Meta Tags & Specs',
+    'description': 'The exact Open Graph specifications for Twitter link previews',
+    'url': 'https://ogpreview.app/open-graph/twitter',
+    'author': {
+      '@type': 'Organization',
+      'name': 'ogpreview.app',
+      'url': 'https://ogpreview.app'
+    }
+  },
+  {
+    '@type': 'BreadcrumbList',
+    'itemListElement': [
+      {
+        '@type': 'ListItem',
+        'position': 1,
+        'name': 'Home',
+        'item': 'https://ogpreview.app'
+      },
+      {
+        '@type': 'ListItem',
+        'position': 2,
+        'name': 'Twitter Card Specs',
+        'item': 'https://ogpreview.app/open-graph/twitter'
+      }
+    ]
+  }
+])
+
+const requiredTagsCode = `<!-- Essential Twitter Card Tags -->
+<meta name="twitter:card" content="summary_large_image" />
+<meta name="twitter:site" content="@your_twitter_handle" />
+<meta name="twitter:title" content="Your Page Title" />
+<meta name="twitter:description" content="Your compelling description" />
+<meta name="twitter:image" content="https://example.com/image.jpg" />
+
+<!-- Fallback OG Tags (Twitter uses these if missing) -->
+<meta property="og:title" content="Your Page Title" />
+<meta property="og:description" content="Your compelling description" />
+<meta property="og:image" content="https://example.com/image.jpg" />
+<meta property="og:url" content="https://example.com/page" />`
+
+const nuxtExampleCode = `useSeoMeta({
+  twitterCard: 'summary_large_image',
+  twitterTitle: 'Your Page Title',
+  twitterDescription: 'Your compelling description',
+  twitterImage: 'https://example.com/image.jpg',
+  twitterSite: '@your_twitter_handle',
+})`
+
+const nextjsExampleCode = `export const metadata = {
+  twitter: {
+    card: 'summary_large_image',
+    title: 'Your Page Title',
+    description: 'Your compelling description',
+    siteId: '1467726470533754880',
+    creator: '@your_twitter_handle',
+    images: ['https://example.com/image.jpg'],
+  },
+}`
+
+const relatedPlatforms = [
+  { name: 'Facebook', to: '/open-graph/facebook', icon: '📘' },
+  { name: 'LinkedIn', to: '/open-graph/linkedin', icon: '💼' },
+  { name: 'Discord', to: '/open-graph/discord', icon: '🎮' },
+  { name: 'Slack', to: '/open-graph/slack', icon: '💬' }
+]
+</script>
+
 <template>
   <LayoutsArticleLayout
     title="Twitter Card Meta Tags & Specs"
@@ -103,89 +189,3 @@
     </div>
   </LayoutsArticleLayout>
 </template>
-
-<script setup lang="ts">
-useSeoMeta({
-  title: 'Twitter Card Meta Tags & Specs',
-  description: 'The exact open graph and twitter card specifications for X/Twitter. Get the correct 1200x600 image size and copy-paste starter tags.',
-  keywords: 'twitter card tags, summary_large_image, twitter link preview, twitter card metadata, twitter card image size',
-  robots: 'index, follow',
-  ogTitle: 'Twitter Card Meta Tags & Specs',
-  ogDescription: 'The exact open graph and twitter card specifications for X/Twitter. Copy-paste the required meta tags and image sizes.',
-  ogType: 'article',
-  articlePublishedTime: '2025-12-16T00:00:00Z',
-  articleModifiedTime: '2025-12-16T00:00:00Z',
-  articleAuthor: ['ogpreview.app'],
-  articleSection: 'Social Media Optimization'
-})
-
-useSchemaOrg([
-  {
-    '@type': 'WebPage',
-    'name': 'Twitter Card Meta Tags & Specs',
-    'description': 'The exact Open Graph specifications for Twitter link previews',
-    'url': 'https://ogpreview.app/open-graph/twitter',
-    'author': {
-      '@type': 'Organization',
-      'name': 'ogpreview.app',
-      'url': 'https://ogpreview.app'
-    }
-  },
-  {
-    '@type': 'BreadcrumbList',
-    'itemListElement': [
-      {
-        '@type': 'ListItem',
-        'position': 1,
-        'name': 'Home',
-        'item': 'https://ogpreview.app'
-      },
-      {
-        '@type': 'ListItem',
-        'position': 2,
-        'name': 'Twitter Card Specs',
-        'item': 'https://ogpreview.app/open-graph/twitter'
-      }
-    ]
-  }
-])
-
-const requiredTagsCode = `<!-- Essential Twitter Card Tags -->
-<meta name="twitter:card" content="summary_large_image" />
-<meta name="twitter:site" content="@your_twitter_handle" />
-<meta name="twitter:title" content="Your Page Title" />
-<meta name="twitter:description" content="Your compelling description" />
-<meta name="twitter:image" content="https://example.com/image.jpg" />
-
-<!-- Fallback OG Tags (Twitter uses these if missing) -->
-<meta property="og:title" content="Your Page Title" />
-<meta property="og:description" content="Your compelling description" />
-<meta property="og:image" content="https://example.com/image.jpg" />
-<meta property="og:url" content="https://example.com/page" />`
-
-const nuxtExampleCode = `useSeoMeta({
-  twitterCard: 'summary_large_image',
-  twitterTitle: 'Your Page Title',
-  twitterDescription: 'Your compelling description',
-  twitterImage: 'https://example.com/image.jpg',
-  twitterSite: '@your_twitter_handle',
-})`
-
-const nextjsExampleCode = `export const metadata = {
-  twitter: {
-    card: 'summary_large_image',
-    title: 'Your Page Title',
-    description: 'Your compelling description',
-    siteId: '1467726470533754880',
-    creator: '@your_twitter_handle',
-    images: ['https://example.com/image.jpg'],
-  },
-}`
-
-const relatedPlatforms = [
-  { name: 'Facebook', to: '/open-graph/facebook', icon: '📘' },
-  { name: 'LinkedIn', to: '/open-graph/linkedin', icon: '💼' },
-  { name: 'Discord', to: '/open-graph/discord', icon: '🎮' },
-  { name: 'Slack', to: '/open-graph/slack', icon: '💬' }
-]
-</script>

@@ -1,3 +1,18 @@
+<script setup lang="ts">
+interface Breadcrumb {
+  label: string
+  to?: string
+}
+
+interface Props {
+  breadcrumbs?: Breadcrumb[]
+}
+
+withDefaults(defineProps<Props>(), {
+  breadcrumbs: undefined
+})
+</script>
+
 <template>
   <div class="min-h-screen bg-linear-to-br from-gray-50 via-blue-50 to-purple-50 dark:from-gray-900 dark:via-gray-900 dark:to-gray-800">
     <UContainer class="py-12">
@@ -44,18 +59,3 @@
     </UContainer>
   </div>
 </template>
-
-<script setup lang="ts">
-interface Breadcrumb {
-  label: string
-  to?: string
-}
-
-interface Props {
-  breadcrumbs?: Breadcrumb[]
-}
-
-withDefaults(defineProps<Props>(), {
-  breadcrumbs: undefined
-})
-</script>

@@ -1,3 +1,22 @@
+<script setup lang="ts">
+import { formatUrl } from '~/utils/formatUrl'
+
+interface Props {
+  data: {
+    title: string
+    description: string
+    image: string
+    url: string
+    siteName: string
+    type: string
+    imageAlt?: string
+    twitterCard?: string
+  }
+}
+
+defineProps<Props>()
+</script>
+
 <template>
   <BasePreviewCard
     platform="twitter"
@@ -91,24 +110,5 @@
     </div>
   </BasePreviewCard>
 </template>
-
-<script setup lang="ts">
-import { formatUrl } from '~/utils/formatUrl'
-
-interface Props {
-  data: {
-    title: string
-    description: string
-    image: string
-    url: string
-    siteName: string
-    type: string
-    imageAlt?: string
-    twitterCard?: string
-  }
-}
-
-defineProps<Props>()
-</script>
 
 

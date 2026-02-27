@@ -1,3 +1,44 @@
+<script setup lang="ts">
+import type { OGData } from '~~/types/og'
+
+interface Props {
+  modelValue: OGData
+  isLoading?: boolean
+}
+
+interface Emits {
+  (e: 'update:modelValue', value: OGData): void
+  (e: 'reset'): void
+}
+
+const props = withDefaults(defineProps<Props>(), {
+  isLoading: false
+})
+
+const emit = defineEmits<Emits>()
+
+const showAdvanced = ref(false)
+
+const localData = computed({
+  get: () => props.modelValue,
+  set: value => emit('update:modelValue', value)
+})
+
+const typeOptions = [
+  { value: 'website', label: 'Website' },
+  { value: 'article', label: 'Article' },
+  { value: 'product', label: 'Product' },
+  { value: 'video', label: 'Video' }
+]
+
+const twitterCardOptions = [
+  { value: 'summary', label: 'Summary' },
+  { value: 'summary_large_image', label: 'Summary Large Image' },
+  { value: 'app', label: 'App' },
+  { value: 'player', label: 'Player' }
+]
+</script>
+
 <template>
   <UCard :ui="{ body: 'p-6' }">
     <template #header>
@@ -207,44 +248,3 @@
     </form>
   </UCard>
 </template>
-
-<script setup lang="ts">
-import type { OGData } from '~~/types/og'
-
-interface Props {
-  modelValue: OGData
-  isLoading?: boolean
-}
-
-interface Emits {
-  (e: 'update:modelValue', value: OGData): void
-  (e: 'reset'): void
-}
-
-const props = withDefaults(defineProps<Props>(), {
-  isLoading: false
-})
-
-const emit = defineEmits<Emits>()
-
-const showAdvanced = ref(false)
-
-const localData = computed({
-  get: () => props.modelValue,
-  set: value => emit('update:modelValue', value)
-})
-
-const typeOptions = [
-  { value: 'website', label: 'Website' },
-  { value: 'article', label: 'Article' },
-  { value: 'product', label: 'Product' },
-  { value: 'video', label: 'Video' }
-]
-
-const twitterCardOptions = [
-  { value: 'summary', label: 'Summary' },
-  { value: 'summary_large_image', label: 'Summary Large Image' },
-  { value: 'app', label: 'App' },
-  { value: 'player', label: 'Player' }
-]
-</script>

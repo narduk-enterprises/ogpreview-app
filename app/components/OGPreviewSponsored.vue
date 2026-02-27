@@ -1,9 +1,3 @@
-<template>
-  <div class="w-full h-full flex items-center justify-center p-4 min-h-[200px]">
-    <AdSenseAd @ad-status="handleAdStatus" />
-  </div>
-</template>
-
 <script setup lang="ts">
 const emit = defineEmits<{
   adFilled: [filled: boolean]
@@ -28,3 +22,9 @@ const handleAdStatus = (status: 'filled' | 'unfilled' | 'error') => {
   }
 }
 </script>
+
+<template>
+  <div class="w-full h-full flex items-center justify-center p-4 min-h-[200px]">
+    <AdSenseAd @ad-status="handleAdStatus" />
+  </div>
+</template>

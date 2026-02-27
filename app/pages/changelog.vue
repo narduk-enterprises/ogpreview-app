@@ -1,3 +1,44 @@
+<script setup lang="ts">
+// SEO Meta Tags
+useSeoMeta({
+  title: 'Changelog - ogpreview.app Updates & Improvements',
+  description: 'Track updates, improvements, and new features to ogpreview.app. See what\'s changed, what\'s new, and what\'s coming next.',
+  keywords: 'ogpreview changelog, open graph tool updates, og preview tool changelog, what\'s new ogpreview',
+  robots: 'index, follow',
+  ogTitle: 'Changelog - ogpreview.app Updates & Improvements',
+  ogDescription: 'Track updates, improvements, and new features to ogpreview.app. See what\'s changed and what\'s coming next.',
+  ogType: 'website',
+  ogUrl: 'https://ogpreview.app/changelog'
+})
+
+// Structured Data
+useSchemaOrg([
+  {
+    '@type': 'WebPage',
+    'name': 'Changelog - ogpreview.app',
+    'description': 'Track updates, improvements, and new features to ogpreview.app',
+    'url': 'https://ogpreview.app/changelog'
+  },
+  {
+    '@type': 'BreadcrumbList',
+    'itemListElement': [
+      {
+        '@type': 'ListItem',
+        'position': 1,
+        'name': 'Home',
+        'item': 'https://ogpreview.app'
+      },
+      {
+        '@type': 'ListItem',
+        'position': 2,
+        'name': 'Changelog',
+        'item': 'https://ogpreview.app/changelog'
+      }
+    ]
+  }
+])
+</script>
+
 <template>
   <main class="min-h-screen py-8 px-4 sm:px-6 lg:px-8 bg-linear-to-br from-gray-50 via-blue-50 to-purple-50 dark:from-gray-900 dark:via-gray-900 dark:to-gray-800">
     <article class="max-w-4xl mx-auto">
@@ -106,46 +147,5 @@
     </article>
   </main>
 </template>
-
-<script setup lang="ts">
-// SEO Meta Tags
-useSeoMeta({
-  title: 'Changelog - ogpreview.app Updates & Improvements',
-  description: 'Track updates, improvements, and new features to ogpreview.app. See what\'s changed, what\'s new, and what\'s coming next.',
-  keywords: 'ogpreview changelog, open graph tool updates, og preview tool changelog, what\'s new ogpreview',
-  robots: 'index, follow',
-  ogTitle: 'Changelog - ogpreview.app Updates & Improvements',
-  ogDescription: 'Track updates, improvements, and new features to ogpreview.app. See what\'s changed and what\'s coming next.',
-  ogType: 'website',
-  ogUrl: 'https://ogpreview.app/changelog'
-})
-
-// Structured Data
-useSchemaOrg([
-  {
-    '@type': 'WebPage',
-    'name': 'Changelog - ogpreview.app',
-    'description': 'Track updates, improvements, and new features to ogpreview.app',
-    'url': 'https://ogpreview.app/changelog'
-  },
-  {
-    '@type': 'BreadcrumbList',
-    'itemListElement': [
-      {
-        '@type': 'ListItem',
-        'position': 1,
-        'name': 'Home',
-        'item': 'https://ogpreview.app'
-      },
-      {
-        '@type': 'ListItem',
-        'position': 2,
-        'name': 'Changelog',
-        'item': 'https://ogpreview.app/changelog'
-      }
-    ]
-  }
-])
-</script>
 
 

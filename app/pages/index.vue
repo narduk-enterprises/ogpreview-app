@@ -1,7 +1,3 @@
-<template>
-  <PagesPreviewPage :initial-url="initialUrl" :show-seo-sections="true" />
-</template>
-
 <script setup lang="ts">
 // SEO Meta Tags - Optimized per SEO Audit (Dec 2025)
 useSeoMeta({
@@ -94,3 +90,7 @@ const route = useRoute()
 // Get initial URL from query parameter (for backward compatibility)
 const initialUrl = (route.query.url as string) || ''
 </script>
+
+<template>
+  <PagesPreviewPage :initial-url="initialUrl" :show-seo-sections="true" />
+</template>

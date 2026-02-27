@@ -1,3 +1,32 @@
+<script setup lang="ts">
+interface BackLink {
+  to: string
+  label: string
+}
+
+interface ArticleMetadata {
+  date?: string
+  readTime?: string
+}
+
+interface Props {
+  title: string
+  description?: string
+  icon?: string
+  platformIcon?: string
+  backLink?: BackLink
+  metadata?: ArticleMetadata
+}
+
+withDefaults(defineProps<Props>(), {
+  description: undefined,
+  icon: undefined,
+  platformIcon: undefined,
+  backLink: undefined,
+  metadata: undefined
+})
+</script>
+
 <template>
   <main class="min-h-screen py-8 px-4 sm:px-6 lg:px-8 bg-linear-to-br from-gray-50 via-blue-50 to-purple-50 dark:from-gray-900 dark:via-gray-900 dark:to-gray-800">
     <article class="max-w-4xl mx-auto">
@@ -68,32 +97,3 @@
     </article>
   </main>
 </template>
-
-<script setup lang="ts">
-interface BackLink {
-  to: string
-  label: string
-}
-
-interface ArticleMetadata {
-  date?: string
-  readTime?: string
-}
-
-interface Props {
-  title: string
-  description?: string
-  icon?: string
-  platformIcon?: string
-  backLink?: BackLink
-  metadata?: ArticleMetadata
-}
-
-withDefaults(defineProps<Props>(), {
-  description: undefined,
-  icon: undefined,
-  platformIcon: undefined,
-  backLink: undefined,
-  metadata: undefined
-})
-</script>

@@ -1,14 +1,3 @@
-<template>
-  <code
-    :class="[
-      'inline-code-highlight',
-      highlight ? 'highlighted' : ''
-    ]"
-  >
-    {{ code }}
-  </code>
-</template>
-
 <script setup lang="ts">
 interface Props {
   code: string
@@ -19,5 +8,16 @@ withDefaults(defineProps<Props>(), {
   highlight: true
 })
 </script>
+
+<template>
+  <code
+    :class="[
+      'inline-code-highlight',
+      highlight ? 'highlighted' : ''
+    ]"
+  >
+    {{ code }}
+  </code>
+</template>
 
 

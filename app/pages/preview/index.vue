@@ -1,9 +1,3 @@
-<template>
-  <div>
-    <PagesPreviewPage :show-seo-sections="false" />
-  </div>
-</template>
-
 <script setup lang="ts">
 // Redirect to home or show the preview tool
 // This page prevents 404 errors when accessing /preview directly
@@ -63,3 +57,9 @@ useHead({
   ]
 })
 </script>
+
+<template>
+  <div>
+    <PagesPreviewPage :show-seo-sections="false" />
+  </div>
+</template>

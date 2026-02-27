@@ -1,3 +1,106 @@
+<script setup lang="ts">
+// SEO Meta Tags
+useSeoMeta({
+  title: 'Why Are My Open Graph Images Not Updating? Fix Cache Issues (2025)',
+  description: 'Learn why Open Graph images don\'t update and how to force platforms to refresh cached previews. Complete guide to fixing OG image cache issues on Facebook, Twitter, LinkedIn, Slack, and Discord.',
+  keywords: 'og image not updating, open graph image cache, og image not changing, facebook og image cache, linkedin og cache, twitter card cache, clear og image cache, force og image update',
+  robots: 'index, follow',
+  ogTitle: 'Why Are My Open Graph Images Not Updating? Fix Cache Issues',
+  ogDescription: 'Understand why your Open Graph images aren\'t updating and learn how to force platforms to refresh cached previews. Complete troubleshooting guide.',
+  ogType: 'article',
+  articlePublishedTime: '2025-12-16T00:00:00Z',
+  articleModifiedTime: '2025-12-16T00:00:00Z',
+  articleAuthor: ['ogpreview.app'],
+  articleSection: 'Web Development'
+})
+
+// Structured Data
+useSchemaOrg([
+  {
+    '@type': 'WebPage',
+    'name': 'Why Are My Open Graph Images Not Updating?',
+    'description': 'Complete guide to understanding and fixing Open Graph image cache issues',
+    'url': 'https://ogpreview.app/why-og-images-not-updating',
+    'author': {
+      '@type': 'Organization',
+      'name': 'ogpreview.app',
+      'url': 'https://ogpreview.app'
+    },
+    'publisher': {
+      '@type': 'Organization',
+      'name': 'ogpreview.app',
+      'url': 'https://ogpreview.app',
+      'logo': {
+        '@type': 'ImageObject',
+        'url': 'https://ogpreview.app/logo.svg'
+      }
+    }
+  },
+  {
+    '@type': 'FAQPage',
+    'mainEntity': [
+      {
+        '@type': 'Question',
+        'name': 'Why are my Open Graph images not updating?',
+        'acceptedAnswer': {
+          '@type': 'Answer',
+          'text': 'Open Graph images don\'t update because social media platforms cache OG data aggressively (7-30 days). To force an update, use platform debuggers to clear cache: Facebook Sharing Debugger, LinkedIn Post Inspector, or Twitter Card Validator. You can also wait 24-48 hours or add query parameters to create a "new" URL.'
+        }
+      },
+      {
+        '@type': 'Question',
+        'name': 'How do I clear Facebook\'s cache for Open Graph images?',
+        'acceptedAnswer': {
+          '@type': 'Answer',
+          'text': 'Use the Facebook Sharing Debugger (developers.facebook.com/tools/debug/). Enter your URL and click "Scrape Again" to force Facebook to refresh the cached Open Graph data. Wait a few minutes for the cache to clear.'
+        }
+      },
+      {
+        '@type': 'Question',
+        'name': 'How long do platforms cache Open Graph images?',
+        'acceptedAnswer': {
+          '@type': 'Answer',
+          'text': 'Platforms cache for different durations: Facebook 7-30 days, LinkedIn 7-14 days, Twitter 7 days, and Slack/Discord 24-48 hours. You can use platform debuggers to clear cache immediately or wait for natural expiration.'
+        }
+      },
+      {
+        '@type': 'Question',
+        'name': 'How do I force Open Graph images to update?',
+        'acceptedAnswer': {
+          '@type': 'Answer',
+          'text': 'To force an update, use platform debuggers to clear cache (Facebook Sharing Debugger, LinkedIn Post Inspector), add query parameters to create a new URL (?v=2), change the image filename, or wait for natural cache expiration (24-48 hours for most platforms).'
+        }
+      },
+      {
+        '@type': 'Question',
+        'name': 'Why does my Open Graph image show the old image?',
+        'acceptedAnswer': {
+          '@type': 'Answer',
+          'text': 'If your Open Graph image shows the old image, it\'s likely due to platform caching. Clear the cache using platform debuggers, verify the image URL loads the new image in a browser, check that your og:image tag is updated, and ensure tags are in HTML source (not injected by JavaScript).'
+        }
+      }
+    ]
+  },
+  {
+    '@type': 'BreadcrumbList',
+    'itemListElement': [
+      {
+        '@type': 'ListItem',
+        'position': 1,
+        'name': 'Home',
+        'item': 'https://ogpreview.app'
+      },
+      {
+        '@type': 'ListItem',
+        'position': 2,
+        'name': 'Why OG Images Not Updating',
+        'item': 'https://ogpreview.app/why-og-images-not-updating'
+      }
+    ]
+  }
+])
+</script>
+
 <template>
   <main class="min-h-screen py-8 px-4 sm:px-6 lg:px-8 bg-linear-to-br from-gray-50 via-blue-50 to-purple-50 dark:from-gray-900 dark:via-gray-900 dark:to-gray-800">
     <article class="max-w-4xl mx-auto">
@@ -337,108 +440,5 @@ New: https://example.com/og-image-v2.jpg</code></pre>
     </article>
   </main>
 </template>
-
-<script setup lang="ts">
-// SEO Meta Tags
-useSeoMeta({
-  title: 'Why Are My Open Graph Images Not Updating? Fix Cache Issues (2025)',
-  description: 'Learn why Open Graph images don\'t update and how to force platforms to refresh cached previews. Complete guide to fixing OG image cache issues on Facebook, Twitter, LinkedIn, Slack, and Discord.',
-  keywords: 'og image not updating, open graph image cache, og image not changing, facebook og image cache, linkedin og cache, twitter card cache, clear og image cache, force og image update',
-  robots: 'index, follow',
-  ogTitle: 'Why Are My Open Graph Images Not Updating? Fix Cache Issues',
-  ogDescription: 'Understand why your Open Graph images aren\'t updating and learn how to force platforms to refresh cached previews. Complete troubleshooting guide.',
-  ogType: 'article',
-  articlePublishedTime: '2025-12-16T00:00:00Z',
-  articleModifiedTime: '2025-12-16T00:00:00Z',
-  articleAuthor: ['ogpreview.app'],
-  articleSection: 'Web Development'
-})
-
-// Structured Data
-useSchemaOrg([
-  {
-    '@type': 'WebPage',
-    'name': 'Why Are My Open Graph Images Not Updating?',
-    'description': 'Complete guide to understanding and fixing Open Graph image cache issues',
-    'url': 'https://ogpreview.app/why-og-images-not-updating',
-    'author': {
-      '@type': 'Organization',
-      'name': 'ogpreview.app',
-      'url': 'https://ogpreview.app'
-    },
-    'publisher': {
-      '@type': 'Organization',
-      'name': 'ogpreview.app',
-      'url': 'https://ogpreview.app',
-      'logo': {
-        '@type': 'ImageObject',
-        'url': 'https://ogpreview.app/logo.svg'
-      }
-    }
-  },
-  {
-    '@type': 'FAQPage',
-    'mainEntity': [
-      {
-        '@type': 'Question',
-        'name': 'Why are my Open Graph images not updating?',
-        'acceptedAnswer': {
-          '@type': 'Answer',
-          'text': 'Open Graph images don\'t update because social media platforms cache OG data aggressively (7-30 days). To force an update, use platform debuggers to clear cache: Facebook Sharing Debugger, LinkedIn Post Inspector, or Twitter Card Validator. You can also wait 24-48 hours or add query parameters to create a "new" URL.'
-        }
-      },
-      {
-        '@type': 'Question',
-        'name': 'How do I clear Facebook\'s cache for Open Graph images?',
-        'acceptedAnswer': {
-          '@type': 'Answer',
-          'text': 'Use the Facebook Sharing Debugger (developers.facebook.com/tools/debug/). Enter your URL and click "Scrape Again" to force Facebook to refresh the cached Open Graph data. Wait a few minutes for the cache to clear.'
-        }
-      },
-      {
-        '@type': 'Question',
-        'name': 'How long do platforms cache Open Graph images?',
-        'acceptedAnswer': {
-          '@type': 'Answer',
-          'text': 'Platforms cache for different durations: Facebook 7-30 days, LinkedIn 7-14 days, Twitter 7 days, and Slack/Discord 24-48 hours. You can use platform debuggers to clear cache immediately or wait for natural expiration.'
-        }
-      },
-      {
-        '@type': 'Question',
-        'name': 'How do I force Open Graph images to update?',
-        'acceptedAnswer': {
-          '@type': 'Answer',
-          'text': 'To force an update, use platform debuggers to clear cache (Facebook Sharing Debugger, LinkedIn Post Inspector), add query parameters to create a new URL (?v=2), change the image filename, or wait for natural cache expiration (24-48 hours for most platforms).'
-        }
-      },
-      {
-        '@type': 'Question',
-        'name': 'Why does my Open Graph image show the old image?',
-        'acceptedAnswer': {
-          '@type': 'Answer',
-          'text': 'If your Open Graph image shows the old image, it\'s likely due to platform caching. Clear the cache using platform debuggers, verify the image URL loads the new image in a browser, check that your og:image tag is updated, and ensure tags are in HTML source (not injected by JavaScript).'
-        }
-      }
-    ]
-  },
-  {
-    '@type': 'BreadcrumbList',
-    'itemListElement': [
-      {
-        '@type': 'ListItem',
-        'position': 1,
-        'name': 'Home',
-        'item': 'https://ogpreview.app'
-      },
-      {
-        '@type': 'ListItem',
-        'position': 2,
-        'name': 'Why OG Images Not Updating',
-        'item': 'https://ogpreview.app/why-og-images-not-updating'
-      }
-    ]
-  }
-])
-</script>
 
 

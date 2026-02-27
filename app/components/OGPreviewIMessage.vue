@@ -1,3 +1,21 @@
+<script setup lang="ts">
+import { formatUrl } from '~/utils/formatUrl'
+
+interface Props {
+  data: {
+    title: string
+    description: string
+    image: string
+    url: string
+    siteName: string
+    type: string
+    imageAlt?: string
+  }
+}
+
+defineProps<Props>()
+</script>
+
 <template>
   <div class="max-w-sm mx-auto max-h-[500px] overflow-y-auto">
     <div class="bg-linear-to-br from-blue-500 to-purple-600 p-1 rounded-3xl shadow-lg">
@@ -62,23 +80,5 @@
     </div>
   </div>
 </template>
-
-<script setup lang="ts">
-import { formatUrl } from '~/utils/formatUrl'
-
-interface Props {
-  data: {
-    title: string
-    description: string
-    image: string
-    url: string
-    siteName: string
-    type: string
-    imageAlt?: string
-  }
-}
-
-defineProps<Props>()
-</script>
 
 

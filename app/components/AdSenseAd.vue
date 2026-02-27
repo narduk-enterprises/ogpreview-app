@@ -1,22 +1,3 @@
-<template>
-  <ClientOnly>
-    <div class="adsense-container">
-      <ins
-        ref="adSlotRef"
-        class="adsbygoogle"
-        style="display:block"
-        data-ad-client="ca-pub-1144766246490692"
-        data-ad-slot="1911023986"
-        data-ad-format="auto"
-        data-full-width-responsive="true"
-      />
-    </div>
-    <template #fallback>
-      <div class="adsense-container" aria-hidden="true" />
-    </template>
-  </ClientOnly>
-</template>
-
 <script setup lang="ts">
 const adSlotRef = ref<HTMLElement | null>(null)
 let retryTimeout: ReturnType<typeof setTimeout> | undefined
@@ -50,4 +31,23 @@ function initializeAd() {
   }
 }
 </script>
+
+<template>
+  <ClientOnly>
+    <div class="adsense-container">
+      <ins
+        ref="adSlotRef"
+        class="adsbygoogle"
+        style="display:block"
+        data-ad-client="ca-pub-1144766246490692"
+        data-ad-slot="1911023986"
+        data-ad-format="auto"
+        data-full-width-responsive="true"
+      />
+    </div>
+    <template #fallback>
+      <div class="adsense-container" aria-hidden="true" />
+    </template>
+  </ClientOnly>
+</template>
 

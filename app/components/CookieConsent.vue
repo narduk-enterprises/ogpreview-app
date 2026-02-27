@@ -1,3 +1,47 @@
+<script setup lang="ts">
+const consent = useCookie<{ necessary: boolean, analytics: boolean, advertising: boolean } | null>(
+  'ogpreview_cookie_consent',
+  { maxAge: 365 * 24 * 60 * 60, default: () => null }
+)
+
+const showBanner = ref(false)
+
+onMounted(() => {
+  if (!consent.value) {
+    // Show banner after a short delay for a smoother UX
+    setTimeout(() => { showBanner.value = true }, 1000)
+  }
+  else if (consent.value.analytics && consent.value.advertising) {
+    updateGtagConsent('granted')
+  }
+})
+
+function acceptAll() {
+  consent.value = { necessary: true, analytics: true, advertising: true }
+  updateGtagConsent('granted')
+  showBanner.value = false
+}
+
+function acceptNecessary() {
+  consent.value = { necessary: true, analytics: false, advertising: false }
+  updateGtagConsent('denied')
+  showBanner.value = false
+}
+
+function updateGtagConsent(state: 'granted' | 'denied') {
+  if (import.meta.server) return
+  const gtag = (window as any).gtag
+  if (typeof gtag === 'function') {
+    gtag('consent', 'update', {
+      analytics_storage: state,
+      ad_storage: state,
+      ad_user_data: state,
+      ad_personalization: state
+    })
+  }
+}
+</script>
+
 <template>
   <Transition
     enter-active-class="transition transform duration-300 ease-out"
@@ -48,48 +92,4 @@
     </div>
   </Transition>
 </template>
-
-<script setup lang="ts">
-const consent = useCookie<{ necessary: boolean, analytics: boolean, advertising: boolean } | null>(
-  'ogpreview_cookie_consent',
-  { maxAge: 365 * 24 * 60 * 60, default: () => null }
-)
-
-const showBanner = ref(false)
-
-onMounted(() => {
-  if (!consent.value) {
-    // Show banner after a short delay for a smoother UX
-    setTimeout(() => { showBanner.value = true }, 1000)
-  }
-  else if (consent.value.analytics && consent.value.advertising) {
-    updateGtagConsent('granted')
-  }
-})
-
-function acceptAll() {
-  consent.value = { necessary: true, analytics: true, advertising: true }
-  updateGtagConsent('granted')
-  showBanner.value = false
-}
-
-function acceptNecessary() {
-  consent.value = { necessary: true, analytics: false, advertising: false }
-  updateGtagConsent('denied')
-  showBanner.value = false
-}
-
-function updateGtagConsent(state: 'granted' | 'denied') {
-  if (import.meta.server) return
-  const gtag = (window as any).gtag
-  if (typeof gtag === 'function') {
-    gtag('consent', 'update', {
-      analytics_storage: state,
-      ad_storage: state,
-      ad_user_data: state,
-      ad_personalization: state
-    })
-  }
-}
-</script>
 

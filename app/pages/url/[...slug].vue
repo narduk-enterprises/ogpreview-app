@@ -1,189 +1,3 @@
-<template>
-  <main
-    class="min-h-screen py-4 sm:py-4 px-3 sm:px-3 md:px-4 lg:px-6 bg-linear-to-br from-gray-50 via-blue-50 to-purple-50 dark:from-gray-900 dark:via-gray-900 dark:to-gray-800"
-    data-test="preview-page">
-    <div class="max-w-[95rem] mx-auto" role="main">
-      <!-- Hero Section -->
-      <HeroSection />
-
-      <!-- URL Input Section with Refresh -->
-      <div class="mb-4 sm:mb-4">
-        <UCard
-          class="shadow-lg hover:shadow-xl transition-shadow duration-300 ring-1 ring-gray-200/50 dark:ring-gray-700/50"
-          :ui="{
-            root: 'overflow-visible',
-            body: 'p-3 sm:p-3'
-          }">
-          <div class="space-y-3 sm:space-y-2">
-            <!-- URL Input Row -->
-            <div
-class="flex flex-col sm:flex-row gap-2.5 sm:gap-2 items-stretch sm:items-center" role="search"
-              aria-label="URL input section">
-              <UInput
-ref="urlInputRef" v-model="urlInput" type="url" :disabled="isLoading" placeholder="example.com"
-                size="lg" variant="outline" :leading-icon="isLoading ? 'i-lucide-loader-circle' : 'i-lucide-globe'"
-                :loading="isLoading" class="flex-1 min-w-0 w-full text-base"
-                aria-label="Enter website URL to preview Open Graph tags" data-test="url-input" :ui="{
-                  base: 'text-base sm:text-base py-3',
-                  trailing: 'pe-1'
-                }"
-                @pointerdown="markUserUrlFocusIntent"
-                @pointerup="handleUrlInputPointerUp"
-                @focus="handleUrlInputFocus"
-                @keydown.enter.prevent.stop="handlePreview">
-                <template v-if="urlInput && !isLoading" #trailing>
-                  <UButton
-icon="i-lucide-x-circle" color="neutral" variant="ghost" size="sm" aria-label="Clear URL"
-                    class="touch-target" @click="handleClear" />
-                </template>
-              </UInput>
-
-              <!-- Action Buttons Row -->
-              <div class="flex gap-2.5 sm:gap-2 items-center w-full sm:w-auto">
-                <!-- Preview Button -->
-                <UButton
-:disabled="!urlInput || isLoading || !isValidUrl(urlInput)" :loading="isLoading"
-                  :icon="isLoading ? undefined : 'i-lucide-search'" label="Preview" color="primary" variant="solid"
-                  size="lg"
-                  class="shadow-sm hover:shadow-md transition-shadow duration-200 flex-1 sm:flex-initial sm:shrink-0 min-h-[48px] sm:min-h-0 font-semibold text-base"
-                  data-test="preview-button" @click="handlePreview" />
-
-                <!-- Refresh Button (only show when we have data) - ClientOnly to prevent hydration mismatch -->
-                <ClientOnly>
-                  <UButton
-v-if="ogData" :disabled="!urlInput || isLoading" icon="i-lucide-refresh-cw" color="primary"
-                    variant="soft" size="lg"
-                    class="shadow-sm hover:shadow-md transition-shadow duration-200 shrink-0 min-h-[48px] sm:min-h-0 w-[48px]"
-                    title="Force refresh (bypass cache)" aria-label="Force refresh preview" data-test="refresh-button"
-                    @click="handleRefresh" />
-                </ClientOnly>
-              </div>
-            </div>
-
-            <!-- URL History - ClientOnly to prevent hydration mismatch -->
-            <ClientOnly>
-              <UrlHistoryQuick
-v-if="recentHistory.length > 0" :recent-history="recentHistory"
-                class="pt-2 border-t border-gray-200/50 dark:border-gray-700/50" @select="handleHistorySelect"
-                @show-full="showHistoryModal = true" />
-            </ClientOnly>
-
-            <!-- Score Display (if available) - ClientOnly to prevent hydration mismatch -->
-            <ClientOnly>
-              <div
-v-if="fetchedScores"
-                class="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-3 pt-3 border-t border-gray-200/50 dark:border-gray-700/50">
-                <!-- Score Display -->
-                <div class="flex items-center gap-3 sm:gap-3 w-full sm:w-auto">
-                  <div class="flex items-center gap-2.5 sm:gap-2">
-                    <div
-:class="[
-                      'px-3.5 sm:px-3 py-2 sm:py-1.5 rounded-lg font-bold text-lg sm:text-lg shadow-md transition-shadow duration-200 cursor-default',
-                      getScoreColorClass(fetchedScores.overall)
-                    ]">
-                      {{ fetchedScores.overall }}
-                    </div>
-                    <div>
-                      <div
-                        class="text-xs sm:text-xs font-medium text-gray-500 dark:text-gray-400 uppercase tracking-wide">
-                        Quality Score
-                      </div>
-                      <div
-                        :class="['text-sm sm:text-sm font-bold leading-tight', getScoreTextColor(fetchedScores.overall)]">
-                        {{ getScoreLabel(fetchedScores.overall) }}
-                      </div>
-                    </div>
-                  </div>
-                </div>
-
-                <!-- Action Buttons -->
-                <div class="flex items-center gap-2.5 sm:gap-2 w-full sm:w-auto justify-end">
-                  <OGScoreModal v-if="fetchedScores" :scores="fetchedScores" />
-                  <UButton
-icon="i-lucide-bug" color="neutral" variant="ghost" size="sm"
-                    class="min-h-[44px] sm:min-h-0 px-3" :title="showDebug ? 'Hide debug info' : 'Show debug info'"
-                    @click="showDebug = !showDebug" />
-                </div>
-              </div>
-            </ClientOnly>
-
-            <!-- Error Alert - ClientOnly to prevent hydration mismatch -->
-            <ClientOnly>
-              <UAlert
-v-if="errorMessage" color="error" variant="subtle" icon="i-lucide-circle-x" :title="errorMessage"
-                data-test="error-alert">
-                <template #close>
-                  <UButton icon="i-lucide-x" color="error" variant="ghost" size="xs" @click="clearError" />
-                </template>
-              </UAlert>
-            </ClientOnly>
-          </div>
-        </UCard>
-      </div>
-
-      <!-- Cache Debug Panel -->
-      <CacheDebugPanel
-v-if="showDebug" :debug-info="cacheDebugInfo" data-test="cache-debug-panel"
-        @close="showDebug = false" />
-
-      <!-- URL History Modal -->
-      <UrlHistoryModal
-v-model="showHistoryModal" :history="history" @select="handleHistorySelect"
-        @remove="removeFromHistory" @clear-all="clearHistory" />
-
-      <!-- Preview Section - Use ClientOnly to prevent hydration mismatch -->
-      <ClientOnly>
-        <template #default>
-          <div v-if="ogData" class="mb-6 sm:mb-4 mt-4" data-test="preview-area">
-            <SectionsPreviewSection :data="displayData" :validation-result="validationResult" />
-          </div>
-          <div v-else class="text-center py-12 sm:py-16 px-4">
-            <div
-              class="inline-flex items-center justify-center w-20 h-20 sm:w-20 sm:h-20 rounded-full bg-gray-100 dark:bg-gray-800 mb-4 sm:mb-4">
-              <svg
-class="w-10 h-10 sm:w-10 sm:h-10 text-gray-400" fill="none" stroke="currentColor"
-                viewBox="0 0 24 24">
-                <path
-stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                  d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
-              </svg>
-            </div>
-            <h3 class="text-xl sm:text-lg font-semibold text-gray-900 dark:text-white mb-3 sm:mb-2">
-              Enter a URL to preview
-            </h3>
-            <p class="text-base sm:text-base text-gray-600 dark:text-gray-400 max-w-md mx-auto leading-relaxed">
-              Enter any website URL above to see how it appears when shared on social media platforms.
-            </p>
-          </div>
-        </template>
-        <template #fallback>
-          <!-- Server-side fallback - show loading state -->
-          <div class="mb-6 sm:mb-4 mt-4 text-center py-12 sm:py-16 px-4" data-test="preview-area">
-            <div
-              class="inline-flex items-center justify-center w-20 h-20 sm:w-20 sm:h-20 rounded-full bg-gray-100 dark:bg-gray-800 mb-4 sm:mb-4">
-              <svg
-class="w-10 h-10 sm:w-10 sm:h-10 text-gray-400 animate-pulse" fill="none" stroke="currentColor"
-                viewBox="0 0 24 24">
-                <path
-stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                  d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
-              </svg>
-            </div>
-            <h3 class="text-xl sm:text-lg font-semibold text-gray-900 dark:text-white mb-3 sm:mb-2">
-              Loading preview...
-            </h3>
-          </div>
-        </template>
-      </ClientOnly>
-
-      <!-- SEO Content Sections -->
-      <PlatformsSection />
-      <HowItWorksSection />
-      <FAQSection />
-    </div>
-  </main>
-</template>
-
 <script setup lang="ts">
 import type { UnfurlResponse } from '~~/types/og'
 
@@ -699,3 +513,189 @@ onMounted(() => {
   })
 })
 </script>
+
+<template>
+  <main
+    class="min-h-screen py-4 sm:py-4 px-3 sm:px-3 md:px-4 lg:px-6 bg-linear-to-br from-gray-50 via-blue-50 to-purple-50 dark:from-gray-900 dark:via-gray-900 dark:to-gray-800"
+    data-test="preview-page">
+    <div class="max-w-[95rem] mx-auto" role="main">
+      <!-- Hero Section -->
+      <HeroSection />
+
+      <!-- URL Input Section with Refresh -->
+      <div class="mb-4 sm:mb-4">
+        <UCard
+          class="shadow-lg hover:shadow-xl transition-shadow duration-300 ring-1 ring-gray-200/50 dark:ring-gray-700/50"
+          :ui="{
+            root: 'overflow-visible',
+            body: 'p-3 sm:p-3'
+          }">
+          <div class="space-y-3 sm:space-y-2">
+            <!-- URL Input Row -->
+            <div
+class="flex flex-col sm:flex-row gap-2.5 sm:gap-2 items-stretch sm:items-center" role="search"
+              aria-label="URL input section">
+              <UInput
+ref="urlInputRef" v-model="urlInput" type="url" :disabled="isLoading" placeholder="example.com"
+                size="lg" variant="outline" :leading-icon="isLoading ? 'i-lucide-loader-circle' : 'i-lucide-globe'"
+                :loading="isLoading" class="flex-1 min-w-0 w-full text-base"
+                aria-label="Enter website URL to preview Open Graph tags" data-test="url-input" :ui="{
+                  base: 'text-base sm:text-base py-3',
+                  trailing: 'pe-1'
+                }"
+                @pointerdown="markUserUrlFocusIntent"
+                @pointerup="handleUrlInputPointerUp"
+                @focus="handleUrlInputFocus"
+                @keydown.enter.prevent.stop="handlePreview">
+                <template v-if="urlInput && !isLoading" #trailing>
+                  <UButton
+icon="i-lucide-x-circle" color="neutral" variant="ghost" size="sm" aria-label="Clear URL"
+                    class="touch-target" @click="handleClear" />
+                </template>
+              </UInput>
+
+              <!-- Action Buttons Row -->
+              <div class="flex gap-2.5 sm:gap-2 items-center w-full sm:w-auto">
+                <!-- Preview Button -->
+                <UButton
+:disabled="!urlInput || isLoading || !isValidUrl(urlInput)" :loading="isLoading"
+                  :icon="isLoading ? undefined : 'i-lucide-search'" label="Preview" color="primary" variant="solid"
+                  size="lg"
+                  class="shadow-sm hover:shadow-md transition-shadow duration-200 flex-1 sm:flex-initial sm:shrink-0 min-h-[48px] sm:min-h-0 font-semibold text-base"
+                  data-test="preview-button" @click="handlePreview" />
+
+                <!-- Refresh Button (only show when we have data) - ClientOnly to prevent hydration mismatch -->
+                <ClientOnly>
+                  <UButton
+v-if="ogData" :disabled="!urlInput || isLoading" icon="i-lucide-refresh-cw" color="primary"
+                    variant="soft" size="lg"
+                    class="shadow-sm hover:shadow-md transition-shadow duration-200 shrink-0 min-h-[48px] sm:min-h-0 w-[48px]"
+                    title="Force refresh (bypass cache)" aria-label="Force refresh preview" data-test="refresh-button"
+                    @click="handleRefresh" />
+                </ClientOnly>
+              </div>
+            </div>
+
+            <!-- URL History - ClientOnly to prevent hydration mismatch -->
+            <ClientOnly>
+              <UrlHistoryQuick
+v-if="recentHistory.length > 0" :recent-history="recentHistory"
+                class="pt-2 border-t border-gray-200/50 dark:border-gray-700/50" @select="handleHistorySelect"
+                @show-full="showHistoryModal = true" />
+            </ClientOnly>
+
+            <!-- Score Display (if available) - ClientOnly to prevent hydration mismatch -->
+            <ClientOnly>
+              <div
+v-if="fetchedScores"
+                class="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-3 pt-3 border-t border-gray-200/50 dark:border-gray-700/50">
+                <!-- Score Display -->
+                <div class="flex items-center gap-3 sm:gap-3 w-full sm:w-auto">
+                  <div class="flex items-center gap-2.5 sm:gap-2">
+                    <div
+:class="[
+                      'px-3.5 sm:px-3 py-2 sm:py-1.5 rounded-lg font-bold text-lg sm:text-lg shadow-md transition-shadow duration-200 cursor-default',
+                      getScoreColorClass(fetchedScores.overall)
+                    ]">
+                      {{ fetchedScores.overall }}
+                    </div>
+                    <div>
+                      <div
+                        class="text-xs sm:text-xs font-medium text-gray-500 dark:text-gray-400 uppercase tracking-wide">
+                        Quality Score
+                      </div>
+                      <div
+                        :class="['text-sm sm:text-sm font-bold leading-tight', getScoreTextColor(fetchedScores.overall)]">
+                        {{ getScoreLabel(fetchedScores.overall) }}
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
+                <!-- Action Buttons -->
+                <div class="flex items-center gap-2.5 sm:gap-2 w-full sm:w-auto justify-end">
+                  <OGScoreModal v-if="fetchedScores" :scores="fetchedScores" />
+                  <UButton
+icon="i-lucide-bug" color="neutral" variant="ghost" size="sm"
+                    class="min-h-[44px] sm:min-h-0 px-3" :title="showDebug ? 'Hide debug info' : 'Show debug info'"
+                    @click="showDebug = !showDebug" />
+                </div>
+              </div>
+            </ClientOnly>
+
+            <!-- Error Alert - ClientOnly to prevent hydration mismatch -->
+            <ClientOnly>
+              <UAlert
+v-if="errorMessage" color="error" variant="subtle" icon="i-lucide-circle-x" :title="errorMessage"
+                data-test="error-alert">
+                <template #close>
+                  <UButton icon="i-lucide-x" color="error" variant="ghost" size="xs" @click="clearError" />
+                </template>
+              </UAlert>
+            </ClientOnly>
+          </div>
+        </UCard>
+      </div>
+
+      <!-- Cache Debug Panel -->
+      <CacheDebugPanel
+v-if="showDebug" :debug-info="cacheDebugInfo" data-test="cache-debug-panel"
+        @close="showDebug = false" />
+
+      <!-- URL History Modal -->
+      <UrlHistoryModal
+v-model="showHistoryModal" :history="history" @select="handleHistorySelect"
+        @remove="removeFromHistory" @clear-all="clearHistory" />
+
+      <!-- Preview Section - Use ClientOnly to prevent hydration mismatch -->
+      <ClientOnly>
+        <template #default>
+          <div v-if="ogData" class="mb-6 sm:mb-4 mt-4" data-test="preview-area">
+            <SectionsPreviewSection :data="displayData" :validation-result="validationResult" />
+          </div>
+          <div v-else class="text-center py-12 sm:py-16 px-4">
+            <div
+              class="inline-flex items-center justify-center w-20 h-20 sm:w-20 sm:h-20 rounded-full bg-gray-100 dark:bg-gray-800 mb-4 sm:mb-4">
+              <svg
+class="w-10 h-10 sm:w-10 sm:h-10 text-gray-400" fill="none" stroke="currentColor"
+                viewBox="0 0 24 24">
+                <path
+stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                  d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
+              </svg>
+            </div>
+            <h3 class="text-xl sm:text-lg font-semibold text-gray-900 dark:text-white mb-3 sm:mb-2">
+              Enter a URL to preview
+            </h3>
+            <p class="text-base sm:text-base text-gray-600 dark:text-gray-400 max-w-md mx-auto leading-relaxed">
+              Enter any website URL above to see how it appears when shared on social media platforms.
+            </p>
+          </div>
+        </template>
+        <template #fallback>
+          <!-- Server-side fallback - show loading state -->
+          <div class="mb-6 sm:mb-4 mt-4 text-center py-12 sm:py-16 px-4" data-test="preview-area">
+            <div
+              class="inline-flex items-center justify-center w-20 h-20 sm:w-20 sm:h-20 rounded-full bg-gray-100 dark:bg-gray-800 mb-4 sm:mb-4">
+              <svg
+class="w-10 h-10 sm:w-10 sm:h-10 text-gray-400 animate-pulse" fill="none" stroke="currentColor"
+                viewBox="0 0 24 24">
+                <path
+stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                  d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
+              </svg>
+            </div>
+            <h3 class="text-xl sm:text-lg font-semibold text-gray-900 dark:text-white mb-3 sm:mb-2">
+              Loading preview...
+            </h3>
+          </div>
+        </template>
+      </ClientOnly>
+
+      <!-- SEO Content Sections -->
+      <PlatformsSection />
+      <HowItWorksSection />
+      <FAQSection />
+    </div>
+  </main>
+</template>

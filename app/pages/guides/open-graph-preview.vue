@@ -1,3 +1,75 @@
+<script setup lang="ts">
+useSeoMeta({
+  title: 'Open Graph Preview: Complete Developer Guide',
+  description: 'The definitive technical guide for Open Graph. Learn exact implementations for Nuxt, Next.js, and raw HTML to ensure perfect link unfurling.',
+  keywords: 'open graph preview, og tags guide, social media preview tutorial, facebook preview optimization, twitter card guide, linkedin og tags, open graph protocol, og image best practices',
+  robots: 'index, follow',
+  ogTitle: 'Open Graph Preview: Developer Implementation Guide',
+  ogDescription: 'Master Open Graph tags and social media previews. Learn exact Next.js and Nuxt code snippets to fix unfurling bugs.',
+  ogType: 'article'
+})
+
+useSchemaOrg([
+  {
+    '@type': 'Article',
+    'headline': 'Open Graph Preview: Complete Developer Guide',
+    'description': 'The definitive technical guide for Open Graph implementations.',
+    'author': { '@type': 'Organization', 'name': 'ogpreview.app' },
+    'publisher': { '@type': 'Organization', 'name': 'ogpreview.app' },
+    'url': 'https://ogpreview.app/guides/open-graph-preview'
+  }
+])
+
+const basicExampleCode = `<head>
+  <title>Your Page Title</title>
+  
+  <!-- Essential Open Graph -->
+  <meta property="og:title" content="Your Page Title" />
+  <meta property="og:description" content="A compelling description" />
+  <meta property="og:image" content="https://example.com/image.jpg" />
+  <meta property="og:url" content="https://example.com/page" />
+  <meta property="og:type" content="website" />
+  
+  <!-- Essential Twitter -->
+  <meta name="twitter:card" content="summary_large_image" />
+</head>`
+
+const nuxtExampleCode = `useSeoMeta({
+  title: 'Your Page Title',
+  ogTitle: 'Your Page Title',
+  description: 'Your description',
+  ogDescription: 'Your description',
+  ogImage: 'https://example.com/og.jpg',
+  ogUrl: 'https://example.com/page',
+  twitterCard: 'summary_large_image'
+})`
+
+const nextjsExampleCode = `export const metadata = {
+  title: 'Your Page Title',
+  description: 'Your description',
+  openGraph: {
+    title: 'Your Page Title',
+    description: 'Your description',
+    images: ['https://example.com/og.jpg'],
+    url: 'https://example.com/page',
+    type: 'website'
+  },
+  twitter: {
+    card: 'summary_large_image'
+  }
+}`
+
+const platformGuides = [
+  { name: 'Facebook Specs', to: '/open-graph/facebook', icon: 'i-simple-icons-facebook' },
+  { name: 'Twitter / X Specs', to: '/open-graph/twitter', icon: 'i-simple-icons-x' },
+  { name: 'LinkedIn Specs', to: '/open-graph/linkedin', icon: 'i-simple-icons-linkedin' },
+  { name: 'Discord Specs', to: '/open-graph/discord', icon: 'i-simple-icons-discord' },
+  { name: 'Slack Specs', to: '/open-graph/slack', icon: 'i-simple-icons-slack' },
+  { name: 'Image Size Reference', to: '/guides/og-image-sizes', icon: 'i-heroicons-photo' },
+  { name: 'Clear Cached Previews', to: '/guides/og-cache-refresh', icon: 'i-heroicons-arrow-path' }
+]
+</script>
+
 <template>
   <LayoutsArticleLayout
     title="Open Graph Preview: Complete Developer Guide"
@@ -94,75 +166,3 @@
 
   </LayoutsArticleLayout>
 </template>
-
-<script setup lang="ts">
-useSeoMeta({
-  title: 'Open Graph Preview: Complete Developer Guide',
-  description: 'The definitive technical guide for Open Graph. Learn exact implementations for Nuxt, Next.js, and raw HTML to ensure perfect link unfurling.',
-  keywords: 'open graph preview, og tags guide, social media preview tutorial, facebook preview optimization, twitter card guide, linkedin og tags, open graph protocol, og image best practices',
-  robots: 'index, follow',
-  ogTitle: 'Open Graph Preview: Developer Implementation Guide',
-  ogDescription: 'Master Open Graph tags and social media previews. Learn exact Next.js and Nuxt code snippets to fix unfurling bugs.',
-  ogType: 'article'
-})
-
-useSchemaOrg([
-  {
-    '@type': 'Article',
-    'headline': 'Open Graph Preview: Complete Developer Guide',
-    'description': 'The definitive technical guide for Open Graph implementations.',
-    'author': { '@type': 'Organization', 'name': 'ogpreview.app' },
-    'publisher': { '@type': 'Organization', 'name': 'ogpreview.app' },
-    'url': 'https://ogpreview.app/guides/open-graph-preview'
-  }
-])
-
-const basicExampleCode = `<head>
-  <title>Your Page Title</title>
-  
-  <!-- Essential Open Graph -->
-  <meta property="og:title" content="Your Page Title" />
-  <meta property="og:description" content="A compelling description" />
-  <meta property="og:image" content="https://example.com/image.jpg" />
-  <meta property="og:url" content="https://example.com/page" />
-  <meta property="og:type" content="website" />
-  
-  <!-- Essential Twitter -->
-  <meta name="twitter:card" content="summary_large_image" />
-</head>`
-
-const nuxtExampleCode = `useSeoMeta({
-  title: 'Your Page Title',
-  ogTitle: 'Your Page Title',
-  description: 'Your description',
-  ogDescription: 'Your description',
-  ogImage: 'https://example.com/og.jpg',
-  ogUrl: 'https://example.com/page',
-  twitterCard: 'summary_large_image'
-})`
-
-const nextjsExampleCode = `export const metadata = {
-  title: 'Your Page Title',
-  description: 'Your description',
-  openGraph: {
-    title: 'Your Page Title',
-    description: 'Your description',
-    images: ['https://example.com/og.jpg'],
-    url: 'https://example.com/page',
-    type: 'website'
-  },
-  twitter: {
-    card: 'summary_large_image'
-  }
-}`
-
-const platformGuides = [
-  { name: 'Facebook Specs', to: '/open-graph/facebook', icon: 'i-simple-icons-facebook' },
-  { name: 'Twitter / X Specs', to: '/open-graph/twitter', icon: 'i-simple-icons-x' },
-  { name: 'LinkedIn Specs', to: '/open-graph/linkedin', icon: 'i-simple-icons-linkedin' },
-  { name: 'Discord Specs', to: '/open-graph/discord', icon: 'i-simple-icons-discord' },
-  { name: 'Slack Specs', to: '/open-graph/slack', icon: 'i-simple-icons-slack' },
-  { name: 'Image Size Reference', to: '/guides/og-image-sizes', icon: 'i-heroicons-photo' },
-  { name: 'Clear Cached Previews', to: '/guides/og-cache-refresh', icon: 'i-heroicons-arrow-path' }
-]
-</script>

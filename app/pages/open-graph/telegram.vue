@@ -1,3 +1,86 @@
+<script setup lang="ts">
+useSeoMeta({
+  title: 'Telegram Open Graph Meta Tags & Specs',
+  description: 'The exact open graph specifications for Telegram link previews. Add proper image sizing and tags for large rich previews.',
+  keywords: 'telegram og tags, telegram open graph, telegram link preview, webpagebot cache',
+  robots: 'index, follow',
+  ogTitle: 'Telegram Open Graph Meta Tags & Specs',
+  ogDescription: 'The exact open graph specifications for Telegram previews. Include the right image sizes.',
+  ogType: 'article',
+  articlePublishedTime: '2025-12-16T00:00:00Z',
+  articleModifiedTime: '2025-12-16T00:00:00Z',
+  articleAuthor: ['ogpreview.app'],
+  articleSection: 'Social Media Optimization'
+})
+
+useSchemaOrg([
+  {
+    '@type': 'WebPage',
+    'name': 'Telegram Open Graph Meta Tags & Specs',
+    'description': 'The exact Open Graph specifications for Telegram previews',
+    'url': 'https://ogpreview.app/open-graph/telegram',
+    'author': {
+      '@type': 'Organization',
+      'name': 'ogpreview.app',
+      'url': 'https://ogpreview.app'
+    }
+  },
+  {
+    '@type': 'BreadcrumbList',
+    'itemListElement': [
+      {
+        '@type': 'ListItem',
+        'position': 1,
+        'name': 'Home',
+        'item': 'https://ogpreview.app'
+      },
+      {
+        '@type': 'ListItem',
+        'position': 2,
+        'name': 'Telegram Open Graph Specs',
+        'item': 'https://ogpreview.app/open-graph/telegram'
+      }
+    ]
+  }
+])
+
+const requiredTagsCode = `<!-- Standard Open Graph Tags -->
+<meta property="og:title" content="Your Page Title" />
+<meta property="og:description" content="Your compelling description" />
+<meta property="og:image" content="https://example.com/image.jpg" />
+<meta property="og:url" content="https://example.com/page" />
+<meta property="og:type" content="website" />`
+
+const nuxtExampleCode = `useSeoMeta({
+  ogTitle: 'Your Page Title',
+  ogDescription: 'Your compelling description',
+  ogImage: 'https://example.com/image.jpg',
+  ogUrl: 'https://example.com/page',
+  ogType: 'website',
+})`
+
+const nextjsExampleCode = `export const metadata = {
+  openGraph: {
+    title: 'Your Page Title',
+    description: 'Your compelling description',
+    images: [{
+      url: 'https://example.com/image.jpg',
+      width: 1200,
+      height: 630,
+    }],
+    url: 'https://example.com/page',
+    type: 'website'
+  }
+}`
+
+const relatedPlatforms = [
+  { name: 'WhatsApp', to: '/open-graph/whatsapp', icon: '📞' },
+  { name: 'Facebook', to: '/open-graph/facebook', icon: '📘' },
+  { name: 'Twitter', to: '/open-graph/twitter', icon: '𝕏' },
+  { name: 'Discord', to: '/open-graph/discord', icon: '🎮' }
+]
+</script>
+
 <template>
   <LayoutsArticleLayout
     title="Telegram Open Graph Meta Tags & Specs"
@@ -103,86 +186,3 @@
     </div>
   </LayoutsArticleLayout>
 </template>
-
-<script setup lang="ts">
-useSeoMeta({
-  title: 'Telegram Open Graph Meta Tags & Specs',
-  description: 'The exact open graph specifications for Telegram link previews. Add proper image sizing and tags for large rich previews.',
-  keywords: 'telegram og tags, telegram open graph, telegram link preview, webpagebot cache',
-  robots: 'index, follow',
-  ogTitle: 'Telegram Open Graph Meta Tags & Specs',
-  ogDescription: 'The exact open graph specifications for Telegram previews. Include the right image sizes.',
-  ogType: 'article',
-  articlePublishedTime: '2025-12-16T00:00:00Z',
-  articleModifiedTime: '2025-12-16T00:00:00Z',
-  articleAuthor: ['ogpreview.app'],
-  articleSection: 'Social Media Optimization'
-})
-
-useSchemaOrg([
-  {
-    '@type': 'WebPage',
-    'name': 'Telegram Open Graph Meta Tags & Specs',
-    'description': 'The exact Open Graph specifications for Telegram previews',
-    'url': 'https://ogpreview.app/open-graph/telegram',
-    'author': {
-      '@type': 'Organization',
-      'name': 'ogpreview.app',
-      'url': 'https://ogpreview.app'
-    }
-  },
-  {
-    '@type': 'BreadcrumbList',
-    'itemListElement': [
-      {
-        '@type': 'ListItem',
-        'position': 1,
-        'name': 'Home',
-        'item': 'https://ogpreview.app'
-      },
-      {
-        '@type': 'ListItem',
-        'position': 2,
-        'name': 'Telegram Open Graph Specs',
-        'item': 'https://ogpreview.app/open-graph/telegram'
-      }
-    ]
-  }
-])
-
-const requiredTagsCode = `<!-- Standard Open Graph Tags -->
-<meta property="og:title" content="Your Page Title" />
-<meta property="og:description" content="Your compelling description" />
-<meta property="og:image" content="https://example.com/image.jpg" />
-<meta property="og:url" content="https://example.com/page" />
-<meta property="og:type" content="website" />`
-
-const nuxtExampleCode = `useSeoMeta({
-  ogTitle: 'Your Page Title',
-  ogDescription: 'Your compelling description',
-  ogImage: 'https://example.com/image.jpg',
-  ogUrl: 'https://example.com/page',
-  ogType: 'website',
-})`
-
-const nextjsExampleCode = `export const metadata = {
-  openGraph: {
-    title: 'Your Page Title',
-    description: 'Your compelling description',
-    images: [{
-      url: 'https://example.com/image.jpg',
-      width: 1200,
-      height: 630,
-    }],
-    url: 'https://example.com/page',
-    type: 'website'
-  }
-}`
-
-const relatedPlatforms = [
-  { name: 'WhatsApp', to: '/open-graph/whatsapp', icon: '📞' },
-  { name: 'Facebook', to: '/open-graph/facebook', icon: '📘' },
-  { name: 'Twitter', to: '/open-graph/twitter', icon: '𝕏' },
-  { name: 'Discord', to: '/open-graph/discord', icon: '🎮' }
-]
-</script>

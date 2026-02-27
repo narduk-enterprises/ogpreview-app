@@ -1,3 +1,32 @@
+<script setup lang="ts">
+import type { UrlHistoryEntry } from '~/composables/useUrlHistory'
+
+interface Props {
+  recentHistory: UrlHistoryEntry[]
+}
+
+defineProps<Props>()
+
+defineEmits<{
+  'select': [url: string]
+  'show-full': []
+}>()
+
+function getDisplayText(entry: UrlHistoryEntry): string {
+  if (entry.title) {
+    return entry.title
+  }
+
+  try {
+    const url = new URL(entry.url)
+    return url.hostname.replace(/^www\./, '')
+  }
+  catch {
+    return entry.url
+  }
+}
+</script>
+
 <template>
   <div v-if="recentHistory.length > 0" class="flex flex-wrap items-center gap-2 sm:gap-2">
     <span class="text-xs sm:text-xs font-medium text-gray-500 dark:text-gray-400 uppercase tracking-wide">
@@ -31,32 +60,3 @@
       @click="$emit('show-full')" />
   </div>
 </template>
-
-<script setup lang="ts">
-import type { UrlHistoryEntry } from '~/composables/useUrlHistory'
-
-interface Props {
-  recentHistory: UrlHistoryEntry[]
-}
-
-defineProps<Props>()
-
-defineEmits<{
-  'select': [url: string]
-  'show-full': []
-}>()
-
-function getDisplayText(entry: UrlHistoryEntry): string {
-  if (entry.title) {
-    return entry.title
-  }
-
-  try {
-    const url = new URL(entry.url)
-    return url.hostname.replace(/^www\./, '')
-  }
-  catch {
-    return entry.url
-  }
-}
-</script>

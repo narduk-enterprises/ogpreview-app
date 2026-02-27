@@ -1,11 +1,3 @@
-<template>
-  <UIcon
-    :name="iconName"
-    :class="['shrink-0 dark:brightness-[1.2]', sizeClass]"
-    :style="{ color: brandColor }"
-  />
-</template>
-
 <script setup lang="ts">
 interface Props {
   platform: string
@@ -44,4 +36,12 @@ const sizeClass = computed(() => {
   return sizes[props.size]
 })
 </script>
+
+<template>
+  <UIcon
+    :name="iconName"
+    :class="['shrink-0 dark:brightness-[1.2]', sizeClass]"
+    :style="{ color: brandColor }"
+  />
+</template>
 

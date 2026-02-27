@@ -1,3 +1,98 @@
+<script setup lang="ts">
+// SEO Meta Tags
+useSeoMeta({
+  title: 'Open Graph Debugging Guide - Fix OG Tag Issues (2025)',
+  description: 'Complete guide to debugging Open Graph tags. Learn how to fix missing images, incorrect previews, caching problems, JavaScript issues, and common OG tag errors with step-by-step solutions.',
+  keywords: 'open graph debugging, og tag debugging, fix og tags, og image not showing, open graph not working, og preview not updating, debug open graph, og tag validator',
+  robots: 'index, follow',
+  ogTitle: 'Open Graph Debugging Guide - Fix OG Tag Issues',
+  ogDescription: 'Troubleshoot and fix Open Graph tag issues. Learn how to debug missing images, incorrect previews, caching problems, and common OG tag errors.',
+  ogType: 'article',
+  articlePublishedTime: '2025-12-16T00:00:00Z',
+  articleModifiedTime: '2025-12-16T00:00:00Z',
+  articleAuthor: ['ogpreview.app'],
+  articleSection: 'Web Development'
+})
+
+// Structured Data
+useSchemaOrg([
+  {
+    '@type': 'WebPage',
+    'name': 'Open Graph Debugging Guide',
+    'description': 'Complete guide to troubleshooting and fixing Open Graph tag issues',
+    'url': 'https://ogpreview.app/open-graph-debugging',
+    'author': {
+      '@type': 'Organization',
+      'name': 'ogpreview.app',
+      'url': 'https://ogpreview.app'
+    },
+    'publisher': {
+      '@type': 'Organization',
+      'name': 'ogpreview.app',
+      'url': 'https://ogpreview.app',
+      'logo': {
+        '@type': 'ImageObject',
+        'url': 'https://ogpreview.app/logo.svg'
+      }
+    }
+  },
+  {
+    '@type': 'FAQPage',
+    'mainEntity': [
+      {
+        '@type': 'Question',
+        'name': 'How do I debug Open Graph tags?',
+        'acceptedAnswer': {
+          '@type': 'Answer',
+          'text': 'Use platform-specific validators (Facebook Sharing Debugger, Twitter Card Validator, LinkedIn Post Inspector), verify tags are in HTML source (not injected by JavaScript), check that image URLs are absolute HTTPS, and clear platform caches. Use our preview tool to test across all platforms at once.'
+        }
+      },
+      {
+        '@type': 'Question',
+        'name': 'Why is my Open Graph image not showing?',
+        'acceptedAnswer': {
+          '@type': 'Answer',
+          'text': 'Common causes include relative image URLs (must be absolute HTTPS), images blocked by authentication or CORS, images too large or wrong format, or platform caching. Verify the image URL loads in a browser and use platform debuggers to clear cache.'
+        }
+      },
+      {
+        '@type': 'Question',
+        'name': 'How do I fix Open Graph tags not updating?',
+        'acceptedAnswer': {
+          '@type': 'Answer',
+          'text': 'Platforms cache Open Graph data aggressively. Use platform debuggers to clear cache (Facebook Sharing Debugger, LinkedIn Post Inspector), wait 24-48 hours for natural expiration, or add cache-busting query parameters to your URLs.'
+        }
+      },
+      {
+        '@type': 'Question',
+        'name': 'Why don\'t my Open Graph tags work with JavaScript?',
+        'acceptedAnswer': {
+          '@type': 'Answer',
+          'text': 'Social media crawlers don\'t execute JavaScript. If your Open Graph tags are added by JavaScript after page load, crawlers won\'t see them. Use Server-Side Rendering (SSR) or Static Site Generation (SSG) to include tags in the initial HTML.'
+        }
+      }
+    ]
+  },
+  {
+    '@type': 'BreadcrumbList',
+    'itemListElement': [
+      {
+        '@type': 'ListItem',
+        'position': 1,
+        'name': 'Home',
+        'item': 'https://ogpreview.app'
+      },
+      {
+        '@type': 'ListItem',
+        'position': 2,
+        'name': 'Open Graph Debugging Guide',
+        'item': 'https://ogpreview.app/open-graph-debugging'
+      }
+    ]
+  }
+])
+</script>
+
 <template>
   <main class="min-h-screen py-8 px-4 sm:px-6 lg:px-8 bg-linear-to-br from-gray-50 via-blue-50 to-purple-50 dark:from-gray-900 dark:via-gray-900 dark:to-gray-800">
     <article class="max-w-4xl mx-auto">
@@ -387,100 +482,5 @@
     </article>
   </main>
 </template>
-
-<script setup lang="ts">
-// SEO Meta Tags
-useSeoMeta({
-  title: 'Open Graph Debugging Guide - Fix OG Tag Issues (2025)',
-  description: 'Complete guide to debugging Open Graph tags. Learn how to fix missing images, incorrect previews, caching problems, JavaScript issues, and common OG tag errors with step-by-step solutions.',
-  keywords: 'open graph debugging, og tag debugging, fix og tags, og image not showing, open graph not working, og preview not updating, debug open graph, og tag validator',
-  robots: 'index, follow',
-  ogTitle: 'Open Graph Debugging Guide - Fix OG Tag Issues',
-  ogDescription: 'Troubleshoot and fix Open Graph tag issues. Learn how to debug missing images, incorrect previews, caching problems, and common OG tag errors.',
-  ogType: 'article',
-  articlePublishedTime: '2025-12-16T00:00:00Z',
-  articleModifiedTime: '2025-12-16T00:00:00Z',
-  articleAuthor: ['ogpreview.app'],
-  articleSection: 'Web Development'
-})
-
-// Structured Data
-useSchemaOrg([
-  {
-    '@type': 'WebPage',
-    'name': 'Open Graph Debugging Guide',
-    'description': 'Complete guide to troubleshooting and fixing Open Graph tag issues',
-    'url': 'https://ogpreview.app/open-graph-debugging',
-    'author': {
-      '@type': 'Organization',
-      'name': 'ogpreview.app',
-      'url': 'https://ogpreview.app'
-    },
-    'publisher': {
-      '@type': 'Organization',
-      'name': 'ogpreview.app',
-      'url': 'https://ogpreview.app',
-      'logo': {
-        '@type': 'ImageObject',
-        'url': 'https://ogpreview.app/logo.svg'
-      }
-    }
-  },
-  {
-    '@type': 'FAQPage',
-    'mainEntity': [
-      {
-        '@type': 'Question',
-        'name': 'How do I debug Open Graph tags?',
-        'acceptedAnswer': {
-          '@type': 'Answer',
-          'text': 'Use platform-specific validators (Facebook Sharing Debugger, Twitter Card Validator, LinkedIn Post Inspector), verify tags are in HTML source (not injected by JavaScript), check that image URLs are absolute HTTPS, and clear platform caches. Use our preview tool to test across all platforms at once.'
-        }
-      },
-      {
-        '@type': 'Question',
-        'name': 'Why is my Open Graph image not showing?',
-        'acceptedAnswer': {
-          '@type': 'Answer',
-          'text': 'Common causes include relative image URLs (must be absolute HTTPS), images blocked by authentication or CORS, images too large or wrong format, or platform caching. Verify the image URL loads in a browser and use platform debuggers to clear cache.'
-        }
-      },
-      {
-        '@type': 'Question',
-        'name': 'How do I fix Open Graph tags not updating?',
-        'acceptedAnswer': {
-          '@type': 'Answer',
-          'text': 'Platforms cache Open Graph data aggressively. Use platform debuggers to clear cache (Facebook Sharing Debugger, LinkedIn Post Inspector), wait 24-48 hours for natural expiration, or add cache-busting query parameters to your URLs.'
-        }
-      },
-      {
-        '@type': 'Question',
-        'name': 'Why don\'t my Open Graph tags work with JavaScript?',
-        'acceptedAnswer': {
-          '@type': 'Answer',
-          'text': 'Social media crawlers don\'t execute JavaScript. If your Open Graph tags are added by JavaScript after page load, crawlers won\'t see them. Use Server-Side Rendering (SSR) or Static Site Generation (SSG) to include tags in the initial HTML.'
-        }
-      }
-    ]
-  },
-  {
-    '@type': 'BreadcrumbList',
-    'itemListElement': [
-      {
-        '@type': 'ListItem',
-        'position': 1,
-        'name': 'Home',
-        'item': 'https://ogpreview.app'
-      },
-      {
-        '@type': 'ListItem',
-        'position': 2,
-        'name': 'Open Graph Debugging Guide',
-        'item': 'https://ogpreview.app/open-graph-debugging'
-      }
-    ]
-  }
-])
-</script>
 
 

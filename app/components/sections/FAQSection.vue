@@ -1,52 +1,3 @@
-<template>
-  <section
-    class="mt-8 sm:mt-8 max-w-4xl mx-auto px-4 sm:px-4 mb-8"
-    aria-labelledby="faq-heading"
-  >
-    <h2
-      id="faq-heading"
-      class="text-2xl sm:text-2xl font-bold text-gray-900 dark:text-white text-center mb-6 sm:mb-6"
-    >
-      Frequently Asked Questions
-    </h2>
-
-    <!-- AdSense Ad - Placement in FAQ section -->
-    <div class="mb-6 sm:mb-6 flex justify-center">
-      <div class="w-full max-w-[728px]">
-        <AdSenseAd />
-      </div>
-    </div>
-
-    <div class="space-y-3 sm:space-y-4">
-      <details
-        v-for="(faq, index) in faqs"
-        :key="index"
-        class="group bg-white dark:bg-gray-800 rounded-lg shadow-sm border border-gray-200 dark:border-gray-700 overflow-hidden transition-all hover:shadow-md"
-      >
-        <summary class="flex justify-between items-center cursor-pointer px-5 sm:px-6 py-4 sm:py-4 font-medium text-gray-900 dark:text-white text-base sm:text-base list-none min-h-[60px] sm:min-h-0">
-          <span class="pr-4 leading-snug">{{ faq.question }}</span>
-          <svg
-            class="w-6 h-6 sm:w-5 sm:h-5 text-gray-500 transition-transform group-open:rotate-180 shrink-0"
-            fill="none"
-            viewBox="0 0 24 24"
-            stroke="currentColor"
-          >
-            <path
-              stroke-linecap="round"
-              stroke-linejoin="round"
-              stroke-width="2"
-              d="M19 9l-7 7-7-7"
-            />
-          </svg>
-        </summary>
-        <div class="px-5 sm:px-6 pb-4 sm:pb-4 pt-2 text-gray-600 dark:text-gray-400 text-base sm:text-base leading-relaxed">
-          <p v-html="faq.answer" />
-        </div>
-      </details>
-    </div>
-  </section>
-</template>
-
 <script setup lang="ts">
 // FAQ data with SEO-optimized Q&A
 const faqs = [
@@ -107,5 +58,54 @@ useSchemaOrg([
   }
 ])
 </script>
+
+<template>
+  <section
+    class="mt-8 sm:mt-8 max-w-4xl mx-auto px-4 sm:px-4 mb-8"
+    aria-labelledby="faq-heading"
+  >
+    <h2
+      id="faq-heading"
+      class="text-2xl sm:text-2xl font-bold text-gray-900 dark:text-white text-center mb-6 sm:mb-6"
+    >
+      Frequently Asked Questions
+    </h2>
+
+    <!-- AdSense Ad - Placement in FAQ section -->
+    <div class="mb-6 sm:mb-6 flex justify-center">
+      <div class="w-full max-w-[728px]">
+        <AdSenseAd />
+      </div>
+    </div>
+
+    <div class="space-y-3 sm:space-y-4">
+      <details
+        v-for="(faq, index) in faqs"
+        :key="index"
+        class="group bg-white dark:bg-gray-800 rounded-lg shadow-sm border border-gray-200 dark:border-gray-700 overflow-hidden transition-all hover:shadow-md"
+      >
+        <summary class="flex justify-between items-center cursor-pointer px-5 sm:px-6 py-4 sm:py-4 font-medium text-gray-900 dark:text-white text-base sm:text-base list-none min-h-[60px] sm:min-h-0">
+          <span class="pr-4 leading-snug">{{ faq.question }}</span>
+          <svg
+            class="w-6 h-6 sm:w-5 sm:h-5 text-gray-500 transition-transform group-open:rotate-180 shrink-0"
+            fill="none"
+            viewBox="0 0 24 24"
+            stroke="currentColor"
+          >
+            <path
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              stroke-width="2"
+              d="M19 9l-7 7-7-7"
+            />
+          </svg>
+        </summary>
+        <div class="px-5 sm:px-6 pb-4 sm:pb-4 pt-2 text-gray-600 dark:text-gray-400 text-base sm:text-base leading-relaxed">
+          <p v-html="faq.answer" />
+        </div>
+      </details>
+    </div>
+  </section>
+</template>
 
 

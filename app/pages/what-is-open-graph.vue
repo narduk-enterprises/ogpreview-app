@@ -1,3 +1,106 @@
+<script setup lang="ts">
+// SEO Meta Tags
+useSeoMeta({
+  title: 'What is Open Graph? Complete Beginner\'s Guide (2025)',
+  description: 'Learn what Open Graph is, how it works, and why it\'s essential for social media link previews. Complete guide to OG tags, implementation examples, and best practices.',
+  keywords: 'what is open graph, open graph protocol, og tags explained, open graph meta tags, social media preview tags, og:title og:description, open graph tutorial',
+  robots: 'index, follow',
+  ogTitle: 'What is Open Graph? Complete Beginner\'s Guide',
+  ogDescription: 'Learn the fundamentals of Open Graph protocol, how it works, and why it\'s essential for social media link previews. Complete beginner\'s guide with examples.',
+  ogType: 'article',
+  articlePublishedTime: '2025-12-16T00:00:00Z',
+  articleModifiedTime: '2025-12-16T00:00:00Z',
+  articleAuthor: ['ogpreview.app'],
+  articleSection: 'Web Development'
+})
+
+// Structured Data
+useSchemaOrg([
+  {
+    '@type': 'WebPage',
+    'name': 'What is Open Graph?',
+    'description': 'Complete beginner\'s guide to Open Graph protocol, how it works, and why it\'s essential for social media link previews',
+    'url': 'https://ogpreview.app/what-is-open-graph',
+    'author': {
+      '@type': 'Organization',
+      'name': 'ogpreview.app',
+      'url': 'https://ogpreview.app'
+    },
+    'publisher': {
+      '@type': 'Organization',
+      'name': 'ogpreview.app',
+      'url': 'https://ogpreview.app',
+      'logo': {
+        '@type': 'ImageObject',
+        'url': 'https://ogpreview.app/logo.svg'
+      }
+    }
+  },
+  {
+    '@type': 'FAQPage',
+    'mainEntity': [
+      {
+        '@type': 'Question',
+        'name': 'What is Open Graph?',
+        'acceptedAnswer': {
+          '@type': 'Answer',
+          'text': 'Open Graph is a protocol created by Facebook in 2010 that uses HTML meta tags to control how web pages appear when shared on social media. It allows you to specify the title, description, image, and other metadata that platforms display in link previews.'
+        }
+      },
+      {
+        '@type': 'Question',
+        'name': 'How does Open Graph work?',
+        'acceptedAnswer': {
+          '@type': 'Answer',
+          'text': 'When someone shares your URL on social media, the platform fetches your page, reads the Open Graph meta tags from the HTML head section, and uses that data to create a rich preview card with your specified title, description, and image.'
+        }
+      },
+      {
+        '@type': 'Question',
+        'name': 'What are the required Open Graph tags?',
+        'acceptedAnswer': {
+          '@type': 'Answer',
+          'text': 'The four essential Open Graph tags are: og:title (page title), og:description (page description), og:image (preview image URL), and og:url (canonical page URL).'
+        }
+      },
+      {
+        '@type': 'Question',
+        'name': 'Why is Open Graph important?',
+        'acceptedAnswer': {
+          '@type': 'Answer',
+          'text': 'Open Graph is important because rich link previews with images and descriptions get significantly more clicks than plain URLs. It also gives you control over how your content appears on social media, ensuring a professional and brand-consistent appearance.'
+        }
+      },
+      {
+        '@type': 'Question',
+        'name': 'How do I test my Open Graph tags?',
+        'acceptedAnswer': {
+          '@type': 'Answer',
+          'text': 'You can test your Open Graph tags using our free preview tool, or use platform-specific validators like Facebook Sharing Debugger, Twitter Card Validator, or LinkedIn Post Inspector.'
+        }
+      }
+    ]
+  },
+  {
+    '@type': 'BreadcrumbList',
+    'itemListElement': [
+      {
+        '@type': 'ListItem',
+        'position': 1,
+        'name': 'Home',
+        'item': 'https://ogpreview.app'
+      },
+      {
+        '@type': 'ListItem',
+        'position': 2,
+        'name': 'What is Open Graph?',
+        'item': 'https://ogpreview.app/what-is-open-graph'
+      }
+    ]
+  }
+])
+</script>
+
 <template>
   <main class="min-h-screen py-8 px-4 sm:px-6 lg:px-8 bg-linear-to-br from-gray-50 via-blue-50 to-purple-50 dark:from-gray-900 dark:via-gray-900 dark:to-gray-800">
     <article class="max-w-4xl mx-auto">
@@ -344,107 +447,4 @@ Test with platform-specific validators:
     </article>
   </main>
 </template>
-
-<script setup lang="ts">
-// SEO Meta Tags
-useSeoMeta({
-  title: 'What is Open Graph? Complete Beginner\'s Guide (2025)',
-  description: 'Learn what Open Graph is, how it works, and why it\'s essential for social media link previews. Complete guide to OG tags, implementation examples, and best practices.',
-  keywords: 'what is open graph, open graph protocol, og tags explained, open graph meta tags, social media preview tags, og:title og:description, open graph tutorial',
-  robots: 'index, follow',
-  ogTitle: 'What is Open Graph? Complete Beginner\'s Guide',
-  ogDescription: 'Learn the fundamentals of Open Graph protocol, how it works, and why it\'s essential for social media link previews. Complete beginner\'s guide with examples.',
-  ogType: 'article',
-  articlePublishedTime: '2025-12-16T00:00:00Z',
-  articleModifiedTime: '2025-12-16T00:00:00Z',
-  articleAuthor: ['ogpreview.app'],
-  articleSection: 'Web Development'
-})
-
-// Structured Data
-useSchemaOrg([
-  {
-    '@type': 'WebPage',
-    'name': 'What is Open Graph?',
-    'description': 'Complete beginner\'s guide to Open Graph protocol, how it works, and why it\'s essential for social media link previews',
-    'url': 'https://ogpreview.app/what-is-open-graph',
-    'author': {
-      '@type': 'Organization',
-      'name': 'ogpreview.app',
-      'url': 'https://ogpreview.app'
-    },
-    'publisher': {
-      '@type': 'Organization',
-      'name': 'ogpreview.app',
-      'url': 'https://ogpreview.app',
-      'logo': {
-        '@type': 'ImageObject',
-        'url': 'https://ogpreview.app/logo.svg'
-      }
-    }
-  },
-  {
-    '@type': 'FAQPage',
-    'mainEntity': [
-      {
-        '@type': 'Question',
-        'name': 'What is Open Graph?',
-        'acceptedAnswer': {
-          '@type': 'Answer',
-          'text': 'Open Graph is a protocol created by Facebook in 2010 that uses HTML meta tags to control how web pages appear when shared on social media. It allows you to specify the title, description, image, and other metadata that platforms display in link previews.'
-        }
-      },
-      {
-        '@type': 'Question',
-        'name': 'How does Open Graph work?',
-        'acceptedAnswer': {
-          '@type': 'Answer',
-          'text': 'When someone shares your URL on social media, the platform fetches your page, reads the Open Graph meta tags from the HTML head section, and uses that data to create a rich preview card with your specified title, description, and image.'
-        }
-      },
-      {
-        '@type': 'Question',
-        'name': 'What are the required Open Graph tags?',
-        'acceptedAnswer': {
-          '@type': 'Answer',
-          'text': 'The four essential Open Graph tags are: og:title (page title), og:description (page description), og:image (preview image URL), and og:url (canonical page URL).'
-        }
-      },
-      {
-        '@type': 'Question',
-        'name': 'Why is Open Graph important?',
-        'acceptedAnswer': {
-          '@type': 'Answer',
-          'text': 'Open Graph is important because rich link previews with images and descriptions get significantly more clicks than plain URLs. It also gives you control over how your content appears on social media, ensuring a professional and brand-consistent appearance.'
-        }
-      },
-      {
-        '@type': 'Question',
-        'name': 'How do I test my Open Graph tags?',
-        'acceptedAnswer': {
-          '@type': 'Answer',
-          'text': 'You can test your Open Graph tags using our free preview tool, or use platform-specific validators like Facebook Sharing Debugger, Twitter Card Validator, or LinkedIn Post Inspector.'
-        }
-      }
-    ]
-  },
-  {
-    '@type': 'BreadcrumbList',
-    'itemListElement': [
-      {
-        '@type': 'ListItem',
-        'position': 1,
-        'name': 'Home',
-        'item': 'https://ogpreview.app'
-      },
-      {
-        '@type': 'ListItem',
-        'position': 2,
-        'name': 'What is Open Graph?',
-        'item': 'https://ogpreview.app/what-is-open-graph'
-      }
-    ]
-  }
-])
-</script>
 

@@ -1,33 +1,3 @@
-<template>
-  <div
-    :class="[
-      'not-prose my-8 rounded-xl p-6 border-l-4 shadow-sm',
-      variantClasses
-    ]"
-  >
-    <div class="flex items-start gap-4">
-      <div v-if="icon" :class="['w-10 h-10 rounded-lg flex items-center justify-center shrink-0', iconBgClass]">
-        <UIcon
-          :name="icon"
-          class="w-5 h-5"
-          :class="iconColorClass"
-        />
-      </div>
-      <span v-else-if="emoji" class="text-2xl shrink-0">
-        {{ emoji }}
-      </span>
-      <div class="flex-1">
-        <p v-if="title" :class="['mb-3 font-bold text-lg', titleColorClass]">
-          {{ title }}
-        </p>
-        <div :class="['leading-relaxed', textColorClass]">
-          <slot />
-        </div>
-      </div>
-    </div>
-  </div>
-</template>
-
 <script setup lang="ts">
 import { computed } from 'vue'
 
@@ -97,3 +67,33 @@ const iconBgClass = computed(() => {
   return backgrounds[props.variant]
 })
 </script>
+
+<template>
+  <div
+    :class="[
+      'not-prose my-8 rounded-xl p-6 border-l-4 shadow-sm',
+      variantClasses
+    ]"
+  >
+    <div class="flex items-start gap-4">
+      <div v-if="icon" :class="['w-10 h-10 rounded-lg flex items-center justify-center shrink-0', iconBgClass]">
+        <UIcon
+          :name="icon"
+          class="w-5 h-5"
+          :class="iconColorClass"
+        />
+      </div>
+      <span v-else-if="emoji" class="text-2xl shrink-0">
+        {{ emoji }}
+      </span>
+      <div class="flex-1">
+        <p v-if="title" :class="['mb-3 font-bold text-lg', titleColorClass]">
+          {{ title }}
+        </p>
+        <div :class="['leading-relaxed', textColorClass]">
+          <slot />
+        </div>
+      </div>
+    </div>
+  </div>
+</template>

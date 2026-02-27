@@ -1,3 +1,19 @@
+<script setup lang="ts">
+interface Platform {
+  name: string
+  to: string
+  icon?: string
+  iconName?: string
+  description?: string
+}
+
+interface Props {
+  platforms: Platform[]
+}
+
+defineProps<Props>()
+</script>
+
 <template>
   <div class="not-prose my-8">
     <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
@@ -34,19 +50,3 @@
     </div>
   </div>
 </template>
-
-<script setup lang="ts">
-interface Platform {
-  name: string
-  to: string
-  icon?: string
-  iconName?: string
-  description?: string
-}
-
-interface Props {
-  platforms: Platform[]
-}
-
-defineProps<Props>()
-</script>

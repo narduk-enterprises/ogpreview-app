@@ -1,3 +1,54 @@
+<script setup lang="ts">
+import type { PlatformScores } from '~~/types/og'
+
+interface Props {
+  scores: PlatformScores
+}
+
+defineProps<Props>()
+
+const showDetails = ref(false)
+
+function getScoreColorClass(score: number): string {
+  if (score >= 80) {
+    return 'bg-green-500 text-white'
+  }
+  else if (score >= 60) {
+    return 'bg-yellow-500 text-white'
+  }
+  else {
+    return 'bg-red-500 text-white'
+  }
+}
+
+function getScoreTextColor(score: number): string {
+  if (score >= 80) {
+    return 'text-green-600 dark:text-green-400'
+  }
+  else if (score >= 60) {
+    return 'text-yellow-600 dark:text-yellow-400'
+  }
+  else {
+    return 'text-red-600 dark:text-red-400'
+  }
+}
+
+function getScoreLabel(score: number): string {
+  if (score >= 80) {
+    return 'Excellent'
+  }
+  else if (score >= 60) {
+    return 'Good'
+  }
+  else if (score >= 40) {
+    return 'Fair'
+  }
+  else {
+    return 'Needs Improvement'
+  }
+}
+</script>
+
 <template>
   <div
     class="mt-6 p-4 sm:p-6 bg-linear-to-br from-blue-50 to-purple-50 dark:from-gray-700 dark:to-gray-800 rounded-xl border border-blue-200 dark:border-gray-600"
@@ -218,54 +269,3 @@
     </div>
   </div>
 </template>
-
-<script setup lang="ts">
-import type { PlatformScores } from '~~/types/og'
-
-interface Props {
-  scores: PlatformScores
-}
-
-defineProps<Props>()
-
-const showDetails = ref(false)
-
-function getScoreColorClass(score: number): string {
-  if (score >= 80) {
-    return 'bg-green-500 text-white'
-  }
-  else if (score >= 60) {
-    return 'bg-yellow-500 text-white'
-  }
-  else {
-    return 'bg-red-500 text-white'
-  }
-}
-
-function getScoreTextColor(score: number): string {
-  if (score >= 80) {
-    return 'text-green-600 dark:text-green-400'
-  }
-  else if (score >= 60) {
-    return 'text-yellow-600 dark:text-yellow-400'
-  }
-  else {
-    return 'text-red-600 dark:text-red-400'
-  }
-}
-
-function getScoreLabel(score: number): string {
-  if (score >= 80) {
-    return 'Excellent'
-  }
-  else if (score >= 60) {
-    return 'Good'
-  }
-  else if (score >= 40) {
-    return 'Fair'
-  }
-  else {
-    return 'Needs Improvement'
-  }
-}
-</script>

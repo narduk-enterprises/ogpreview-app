@@ -1,3 +1,64 @@
+<script setup lang="ts">
+const platforms = [
+  {
+    name: 'Facebook',
+    type: 'Social Media',
+    icon: '📘',
+    color: '#1877F2',
+    guideUrl: '/open-graph/facebook'
+  },
+  {
+    name: 'Twitter',
+    type: 'Social Media',
+    icon: '𝕏',
+    color: '#000000',
+    guideUrl: '/open-graph/twitter'
+  },
+  {
+    name: 'LinkedIn',
+    type: 'Professional',
+    icon: '💼',
+    color: '#0A66C2',
+    guideUrl: '/open-graph/linkedin'
+  },
+  {
+    name: 'Slack',
+    type: 'Team Chat',
+    icon: '💬',
+    color: '#4A154B',
+    guideUrl: '/open-graph/slack'
+  },
+  {
+    name: 'Discord',
+    type: 'Community',
+    icon: '🎮',
+    color: '#5865F2',
+    guideUrl: '/open-graph/discord'
+  },
+  {
+    name: 'WhatsApp',
+    type: 'Messaging',
+    icon: '💚',
+    color: '#25D366',
+    guideUrl: '/open-graph/whatsapp'
+  },
+  {
+    name: 'Telegram',
+    type: 'Messaging',
+    icon: '✈️',
+    color: '#26A5E4',
+    guideUrl: '/open-graph/telegram'
+  },
+  {
+    name: 'iMessage',
+    type: 'Messaging',
+    icon: '💙',
+    color: '#007AFF',
+    guideUrl: '/open-graph/imessage'
+  }
+]
+</script>
+
 <template>
   <section
     class="mt-8 sm:mt-8 max-w-5xl mx-auto px-4 sm:px-4"
@@ -78,64 +139,3 @@
     </div>
   </section>
 </template>
-
-<script setup lang="ts">
-const platforms = [
-  {
-    name: 'Facebook',
-    type: 'Social Media',
-    icon: '📘',
-    color: '#1877F2',
-    guideUrl: '/open-graph/facebook'
-  },
-  {
-    name: 'Twitter',
-    type: 'Social Media',
-    icon: '𝕏',
-    color: '#000000',
-    guideUrl: '/open-graph/twitter'
-  },
-  {
-    name: 'LinkedIn',
-    type: 'Professional',
-    icon: '💼',
-    color: '#0A66C2',
-    guideUrl: '/open-graph/linkedin'
-  },
-  {
-    name: 'Slack',
-    type: 'Team Chat',
-    icon: '💬',
-    color: '#4A154B',
-    guideUrl: '/open-graph/slack'
-  },
-  {
-    name: 'Discord',
-    type: 'Community',
-    icon: '🎮',
-    color: '#5865F2',
-    guideUrl: '/open-graph/discord'
-  },
-  {
-    name: 'WhatsApp',
-    type: 'Messaging',
-    icon: '💚',
-    color: '#25D366',
-    guideUrl: '/open-graph/whatsapp'
-  },
-  {
-    name: 'Telegram',
-    type: 'Messaging',
-    icon: '✈️',
-    color: '#26A5E4',
-    guideUrl: '/open-graph/telegram'
-  },
-  {
-    name: 'iMessage',
-    type: 'Messaging',
-    icon: '💙',
-    color: '#007AFF',
-    guideUrl: '/open-graph/imessage'
-  }
-]
-</script>

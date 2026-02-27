@@ -1,3 +1,74 @@
+<script setup lang="ts">
+// SEO Meta Tags
+useSeoMeta({
+  title: 'Open Graph Guides & Tutorials - Learn Social Media Preview Optimization',
+  description: 'Complete guides on Open Graph tags, Twitter Cards, and social media link previews. Learn how to optimize your content for Facebook, Twitter, LinkedIn, Slack, and Discord.',
+  keywords: 'open graph guide, og tags tutorial, social media preview optimization, facebook link preview guide, twitter card tutorial, linkedin preview best practices',
+  robots: 'index, follow'
+})
+
+// Structured Data
+useSchemaOrg([
+  {
+    '@type': 'CollectionPage',
+    'name': 'Open Graph Guides',
+    'description': 'Comprehensive guides on Open Graph protocol, social media previews, and link optimization',
+    'author': {
+      '@type': 'Organization',
+      'name': 'ogpreview.app',
+      'url': 'https://ogpreview.app'
+    },
+    'publisher': {
+      '@type': 'Organization',
+      'name': 'ogpreview.app',
+      'url': 'https://ogpreview.app',
+      'logo': {
+        '@type': 'ImageObject',
+        'url': 'https://ogpreview.app/logo.svg'
+      }
+    }
+  },
+  {
+    '@type': 'BreadcrumbList',
+    'itemListElement': [
+      {
+        '@type': 'ListItem',
+        'position': 1,
+        'name': 'Home',
+        'item': 'https://ogpreview.app'
+      },
+      {
+        '@type': 'ListItem',
+        'position': 2,
+        'name': 'Guides',
+        'item': 'https://ogpreview.app/guides'
+      }
+    ]
+  }
+])
+
+const guides = [
+  {
+    slug: 'open-graph-preview',
+    title: 'Complete Open Graph Preview Guide',
+    description: 'The ultimate guide to Open Graph tags, how they work, and how to optimize them for all major platforms.',
+    icon: 'i-heroicons-book-open'
+  },
+  {
+    slug: 'og-image-sizes',
+    title: 'Open Graph Image Size Guide',
+    description: 'Recommended image dimensions, aspect ratios, and file formats for every social media platform.',
+    icon: 'i-heroicons-photo'
+  },
+  {
+    slug: 'og-cache-refresh',
+    title: 'How to Refresh Open Graph Cache',
+    description: 'Force social media platforms to update your cached OG tags and see your changes immediately.',
+    icon: 'i-heroicons-arrow-path'
+  }
+]
+</script>
+
 <template>
   <main class="min-h-screen py-8 px-4 sm:px-6 lg:px-8 bg-linear-to-br from-gray-50 via-blue-50 to-purple-50 dark:from-gray-900 dark:via-gray-900 dark:to-gray-800">
     <div class="max-w-5xl mx-auto">
@@ -196,74 +267,3 @@
     </div>
   </main>
 </template>
-
-<script setup lang="ts">
-// SEO Meta Tags
-useSeoMeta({
-  title: 'Open Graph Guides & Tutorials - Learn Social Media Preview Optimization',
-  description: 'Complete guides on Open Graph tags, Twitter Cards, and social media link previews. Learn how to optimize your content for Facebook, Twitter, LinkedIn, Slack, and Discord.',
-  keywords: 'open graph guide, og tags tutorial, social media preview optimization, facebook link preview guide, twitter card tutorial, linkedin preview best practices',
-  robots: 'index, follow'
-})
-
-// Structured Data
-useSchemaOrg([
-  {
-    '@type': 'CollectionPage',
-    'name': 'Open Graph Guides',
-    'description': 'Comprehensive guides on Open Graph protocol, social media previews, and link optimization',
-    'author': {
-      '@type': 'Organization',
-      'name': 'ogpreview.app',
-      'url': 'https://ogpreview.app'
-    },
-    'publisher': {
-      '@type': 'Organization',
-      'name': 'ogpreview.app',
-      'url': 'https://ogpreview.app',
-      'logo': {
-        '@type': 'ImageObject',
-        'url': 'https://ogpreview.app/logo.svg'
-      }
-    }
-  },
-  {
-    '@type': 'BreadcrumbList',
-    'itemListElement': [
-      {
-        '@type': 'ListItem',
-        'position': 1,
-        'name': 'Home',
-        'item': 'https://ogpreview.app'
-      },
-      {
-        '@type': 'ListItem',
-        'position': 2,
-        'name': 'Guides',
-        'item': 'https://ogpreview.app/guides'
-      }
-    ]
-  }
-])
-
-const guides = [
-  {
-    slug: 'open-graph-preview',
-    title: 'Complete Open Graph Preview Guide',
-    description: 'The ultimate guide to Open Graph tags, how they work, and how to optimize them for all major platforms.',
-    icon: 'i-heroicons-book-open'
-  },
-  {
-    slug: 'og-image-sizes',
-    title: 'Open Graph Image Size Guide',
-    description: 'Recommended image dimensions, aspect ratios, and file formats for every social media platform.',
-    icon: 'i-heroicons-photo'
-  },
-  {
-    slug: 'og-cache-refresh',
-    title: 'How to Refresh Open Graph Cache',
-    description: 'Force social media platforms to update your cached OG tags and see your changes immediately.',
-    icon: 'i-heroicons-arrow-path'
-  }
-]
-</script>

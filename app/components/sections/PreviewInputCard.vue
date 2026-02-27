@@ -1,140 +1,3 @@
-<template>
-  <div class="mb-4 sm:mb-4">
-    <UCard
-      class="shadow-lg hover:shadow-xl transition-shadow duration-300 ring-1 ring-gray-200/50 dark:ring-gray-700/50"
-      :ui="{
-        root: 'overflow-visible',
-        body: 'p-3 sm:p-3'
-      }">
-      <div class="space-y-3 sm:space-y-2">
-        <!-- URL Input Row -->
-        <div class="flex flex-col sm:flex-row gap-2.5 sm:gap-2 items-stretch sm:items-center" role="search" aria-label="URL input section">
-          <div class="flex-1 min-w-0 w-full">
-            <UInput
-ref="urlInputRef" v-model="localUrlInput" type="url" :disabled="isLoading"
-              placeholder="example.com" size="lg" variant="outline"
-              :leading-icon="isLoading ? 'i-lucide-loader-circle' : 'i-lucide-globe'" :loading="isLoading"
-              :color="showValidationError ? 'error' : undefined"
-              class="w-full text-base" aria-label="Enter website URL to preview Open Graph tags" data-test="url-input" :ui="{
-                base: 'text-base sm:text-base py-3',
-                trailing: 'pe-1'
-              }"
-              @pointerdown="markUserUrlFocusIntent"
-              @pointerup="handleUrlInputPointerUp"
-              @focus="handleUrlInputFocus"
-              @blur="handleUrlInputBlur"
-              @keydown.enter.prevent="handlePreview">
-              <template v-if="localUrlInput && !isLoading" #trailing>
-                <UButton
-icon="i-lucide-x-circle" color="neutral" variant="ghost" size="sm" aria-label="Clear URL"
-                  class="touch-target"
-                  @click="handleClear" />
-              </template>
-            </UInput>
-            <!-- Validation Error Message -->
-            <div v-if="showValidationError" class="mt-1.5 text-sm text-red-600 dark:text-red-400 flex items-center gap-1.5">
-              <UIcon name="i-lucide-alert-circle" class="w-4 h-4 flex-shrink-0" />
-              <span>Please enter a valid URL (e.g., example.com or https://example.com)</span>
-            </div>
-          </div>
-
-          <!-- Action Buttons Row -->
-          <div class="flex gap-2.5 sm:gap-2 items-center w-full sm:w-auto">
-            <!-- Preview Button -->
-            <UButton
-              :disabled="!localUrlInput || isLoading || !isValidUrl(localUrlInput)"
-              :loading="isLoading"
-              :icon="isLoading ? undefined : 'i-lucide-search'"
-              label="Preview"
-              color="primary"
-              variant="solid"
-              size="lg"
-              class="shadow-sm hover:shadow-md transition-shadow duration-200 flex-1 sm:flex-initial sm:shrink-0 min-h-[48px] sm:min-h-0 font-semibold text-base"
-              data-test="preview-button"
-              @click="handlePreview"
-            />
-
-            <!-- Refresh Button (only show when we have data) -->
-            <ClientOnly v-if="showRefreshButton">
-              <UButton
-                v-if="ogData"
-                :disabled="!localUrlInput || isLoading"
-                icon="i-lucide-refresh-cw"
-                color="primary"
-                variant="soft"
-                size="lg"
-                class="shadow-sm hover:shadow-md transition-shadow duration-200 shrink-0 min-h-[48px] sm:min-h-0 w-[48px]"
-                title="Force refresh (bypass cache)"
-                aria-label="Force refresh preview"
-                data-test="refresh-button"
-                @click="handleRefresh"
-              />
-            </ClientOnly>
-          </div>
-        </div>
-
-        <!-- URL History - ClientOnly to prevent hydration mismatch -->
-        <ClientOnly>
-          <UrlHistoryQuick
-            v-if="recentHistory.length > 0"
-            :recent-history="recentHistory"
-            class="pt-2 border-t border-gray-200/50 dark:border-gray-700/50"
-            @select="handleHistorySelect"
-            @show-full="$emit('show-history-modal')" />
-        </ClientOnly>
-
-        <!-- Score Display (if available) - ClientOnly to prevent hydration mismatch -->
-        <ClientOnly>
-          <div
-v-if="fetchedScores"
-            class="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-3 pt-3 border-t border-gray-200/50 dark:border-gray-700/50">
-            <!-- Score Display -->
-            <div class="flex items-center gap-3 sm:gap-3 w-full sm:w-auto">
-              <div class="flex items-center gap-2.5 sm:gap-2">
-                <div
-:class="[
-                  'px-3.5 sm:px-3 py-2 sm:py-1.5 rounded-lg font-bold text-lg sm:text-lg shadow-md transition-shadow duration-200 cursor-default',
-                  getScoreColorClass(fetchedScores.overall)
-                ]">
-                  {{ fetchedScores.overall }}
-                </div>
-                <div>
-                  <div class="text-xs sm:text-xs font-medium text-gray-500 dark:text-gray-400 uppercase tracking-wide">
-                    Quality Score
-                  </div>
-                  <div :class="['text-sm sm:text-sm font-bold leading-tight', getScoreTextColor(fetchedScores.overall)]">
-                    {{ getScoreLabel(fetchedScores.overall) }}
-                  </div>
-                </div>
-              </div>
-            </div>
-
-            <!-- Action Buttons -->
-            <div class="flex items-center gap-2.5 sm:gap-2 w-full sm:w-auto justify-end">
-              <OGScoreModal v-if="fetchedScores" :scores="fetchedScores" />
-              <UButton
-icon="i-lucide-bug" color="neutral" variant="ghost" size="sm"
-                class="min-h-[44px] sm:min-h-0 px-3"
-                :title="showDebug ? 'Hide debug info' : 'Show debug info'" @click="$emit('toggle-debug')" />
-            </div>
-          </div>
-        </ClientOnly>
-
-        <!-- Error Alert - ClientOnly to prevent hydration mismatch -->
-        <ClientOnly>
-          <UAlert
-v-if="errorMessage" color="error" variant="subtle" icon="i-lucide-circle-x" :title="errorMessage"
-            data-test="error-alert">
-            <template #close>
-              <UButton icon="i-lucide-x" color="error" variant="ghost" size="xs" @click="$emit('clear-error')" />
-            </template>
-          </UAlert>
-        </ClientOnly>
-      </div>
-    </UCard>
-  </div>
-</template>
-
 <script setup lang="ts">
 import type { PlatformScores } from '~~/types/og'
 import type { UrlHistoryEntry } from '~/composables/useUrlHistory'
@@ -324,3 +187,140 @@ defineExpose({
   }
 })
 </script>
+
+<template>
+  <div class="mb-4 sm:mb-4">
+    <UCard
+      class="shadow-lg hover:shadow-xl transition-shadow duration-300 ring-1 ring-gray-200/50 dark:ring-gray-700/50"
+      :ui="{
+        root: 'overflow-visible',
+        body: 'p-3 sm:p-3'
+      }">
+      <div class="space-y-3 sm:space-y-2">
+        <!-- URL Input Row -->
+        <div class="flex flex-col sm:flex-row gap-2.5 sm:gap-2 items-stretch sm:items-center" role="search" aria-label="URL input section">
+          <div class="flex-1 min-w-0 w-full">
+            <UInput
+ref="urlInputRef" v-model="localUrlInput" type="url" :disabled="isLoading"
+              placeholder="example.com" size="lg" variant="outline"
+              :leading-icon="isLoading ? 'i-lucide-loader-circle' : 'i-lucide-globe'" :loading="isLoading"
+              :color="showValidationError ? 'error' : undefined"
+              class="w-full text-base" aria-label="Enter website URL to preview Open Graph tags" data-test="url-input" :ui="{
+                base: 'text-base sm:text-base py-3',
+                trailing: 'pe-1'
+              }"
+              @pointerdown="markUserUrlFocusIntent"
+              @pointerup="handleUrlInputPointerUp"
+              @focus="handleUrlInputFocus"
+              @blur="handleUrlInputBlur"
+              @keydown.enter.prevent="handlePreview">
+              <template v-if="localUrlInput && !isLoading" #trailing>
+                <UButton
+icon="i-lucide-x-circle" color="neutral" variant="ghost" size="sm" aria-label="Clear URL"
+                  class="touch-target"
+                  @click="handleClear" />
+              </template>
+            </UInput>
+            <!-- Validation Error Message -->
+            <div v-if="showValidationError" class="mt-1.5 text-sm text-red-600 dark:text-red-400 flex items-center gap-1.5">
+              <UIcon name="i-lucide-alert-circle" class="w-4 h-4 flex-shrink-0" />
+              <span>Please enter a valid URL (e.g., example.com or https://example.com)</span>
+            </div>
+          </div>
+
+          <!-- Action Buttons Row -->
+          <div class="flex gap-2.5 sm:gap-2 items-center w-full sm:w-auto">
+            <!-- Preview Button -->
+            <UButton
+              :disabled="!localUrlInput || isLoading || !isValidUrl(localUrlInput)"
+              :loading="isLoading"
+              :icon="isLoading ? undefined : 'i-lucide-search'"
+              label="Preview"
+              color="primary"
+              variant="solid"
+              size="lg"
+              class="shadow-sm hover:shadow-md transition-shadow duration-200 flex-1 sm:flex-initial sm:shrink-0 min-h-[48px] sm:min-h-0 font-semibold text-base"
+              data-test="preview-button"
+              @click="handlePreview"
+            />
+
+            <!-- Refresh Button (only show when we have data) -->
+            <ClientOnly v-if="showRefreshButton">
+              <UButton
+                v-if="ogData"
+                :disabled="!localUrlInput || isLoading"
+                icon="i-lucide-refresh-cw"
+                color="primary"
+                variant="soft"
+                size="lg"
+                class="shadow-sm hover:shadow-md transition-shadow duration-200 shrink-0 min-h-[48px] sm:min-h-0 w-[48px]"
+                title="Force refresh (bypass cache)"
+                aria-label="Force refresh preview"
+                data-test="refresh-button"
+                @click="handleRefresh"
+              />
+            </ClientOnly>
+          </div>
+        </div>
+
+        <!-- URL History - ClientOnly to prevent hydration mismatch -->
+        <ClientOnly>
+          <UrlHistoryQuick
+            v-if="recentHistory.length > 0"
+            :recent-history="recentHistory"
+            class="pt-2 border-t border-gray-200/50 dark:border-gray-700/50"
+            @select="handleHistorySelect"
+            @show-full="$emit('show-history-modal')" />
+        </ClientOnly>
+
+        <!-- Score Display (if available) - ClientOnly to prevent hydration mismatch -->
+        <ClientOnly>
+          <div
+v-if="fetchedScores"
+            class="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-3 pt-3 border-t border-gray-200/50 dark:border-gray-700/50">
+            <!-- Score Display -->
+            <div class="flex items-center gap-3 sm:gap-3 w-full sm:w-auto">
+              <div class="flex items-center gap-2.5 sm:gap-2">
+                <div
+:class="[
+                  'px-3.5 sm:px-3 py-2 sm:py-1.5 rounded-lg font-bold text-lg sm:text-lg shadow-md transition-shadow duration-200 cursor-default',
+                  getScoreColorClass(fetchedScores.overall)
+                ]">
+                  {{ fetchedScores.overall }}
+                </div>
+                <div>
+                  <div class="text-xs sm:text-xs font-medium text-gray-500 dark:text-gray-400 uppercase tracking-wide">
+                    Quality Score
+                  </div>
+                  <div :class="['text-sm sm:text-sm font-bold leading-tight', getScoreTextColor(fetchedScores.overall)]">
+                    {{ getScoreLabel(fetchedScores.overall) }}
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Action Buttons -->
+            <div class="flex items-center gap-2.5 sm:gap-2 w-full sm:w-auto justify-end">
+              <OGScoreModal v-if="fetchedScores" :scores="fetchedScores" />
+              <UButton
+icon="i-lucide-bug" color="neutral" variant="ghost" size="sm"
+                class="min-h-[44px] sm:min-h-0 px-3"
+                :title="showDebug ? 'Hide debug info' : 'Show debug info'" @click="$emit('toggle-debug')" />
+            </div>
+          </div>
+        </ClientOnly>
+
+        <!-- Error Alert - ClientOnly to prevent hydration mismatch -->
+        <ClientOnly>
+          <UAlert
+v-if="errorMessage" color="error" variant="subtle" icon="i-lucide-circle-x" :title="errorMessage"
+            data-test="error-alert">
+            <template #close>
+              <UButton icon="i-lucide-x" color="error" variant="ghost" size="xs" @click="$emit('clear-error')" />
+            </template>
+          </UAlert>
+        </ClientOnly>
+      </div>
+    </UCard>
+  </div>
+</template>

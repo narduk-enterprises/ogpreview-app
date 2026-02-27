@@ -1,3 +1,21 @@
+<script setup lang="ts">
+import { formatUrl } from '~/utils/formatUrl'
+
+interface Props {
+  data: {
+    title: string
+    description: string
+    image: string
+    url: string
+    siteName: string
+    type: string
+    imageAlt?: string
+  }
+}
+
+defineProps<Props>()
+</script>
+
 <template>
   <div class="max-w-sm mx-auto bg-gray-100 dark:bg-gray-900 p-3 rounded-lg max-h-[500px] overflow-y-auto">
     <!-- Chat Header -->
@@ -70,23 +88,5 @@
     </div>
   </div>
 </template>
-
-<script setup lang="ts">
-import { formatUrl } from '~/utils/formatUrl'
-
-interface Props {
-  data: {
-    title: string
-    description: string
-    image: string
-    url: string
-    siteName: string
-    type: string
-    imageAlt?: string
-  }
-}
-
-defineProps<Props>()
-</script>
 
 

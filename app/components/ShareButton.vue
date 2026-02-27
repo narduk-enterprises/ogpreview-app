@@ -1,18 +1,3 @@
-<template>
-  <UButton
-    :icon="copied ? 'i-lucide-check' : 'i-lucide-share-2'"
-    :label="buttonLabel"
-    :color="copied ? 'success' : 'neutral'"
-    variant="outline"
-    size="sm"
-    :disabled="!url || isLoading"
-    class="transition-all duration-200"
-    :class="{ 'scale-105': copied }"
-    aria-label="Share preview URL"
-    @click="handleShare"
-  />
-</template>
-
 <script setup lang="ts">
 interface Props {
   url: string
@@ -79,3 +64,18 @@ onUnmounted(() => {
   }
 })
 </script>
+
+<template>
+  <UButton
+    :icon="copied ? 'i-lucide-check' : 'i-lucide-share-2'"
+    :label="buttonLabel"
+    :color="copied ? 'success' : 'neutral'"
+    variant="outline"
+    size="sm"
+    :disabled="!url || isLoading"
+    class="transition-all duration-200"
+    :class="{ 'scale-105': copied }"
+    aria-label="Share preview URL"
+    @click="handleShare"
+  />
+</template>

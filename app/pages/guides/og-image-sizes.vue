@@ -1,3 +1,24 @@
+<script setup lang="ts">
+useSeoMeta({
+  title: 'OG Image Size & Dimensions Guide (2026 Reference)',
+  description: 'The definitive cheat sheet for Open Graph image dimensions. Get exact pixel sizes, aspect ratios, and compression limits for Facebook, Twitter, Slack, and Discord.',
+  keywords: 'og image dimensions, og image size, facebook og image size, twitter card image size, linkedin og image, og:image dimensions, social media image sizes, ideal og image size',
+  robots: 'index, follow',
+  ogTitle: 'OG Image Size Master Reference',
+  ogDescription: 'Stop guessing what size your previews should be. Check the universal 1200x630 pixel breakdown.',
+  ogType: 'article'
+})
+
+const platformSpecs = [
+  { name: 'Facebook', icon: 'i-simple-icons-facebook', colorClass: 'text-blue-600', optimal: '1200x630px', ratio: '1.91:1', maxSize: '8MB' },
+  { name: 'X / Twitter', icon: 'i-simple-icons-x', colorClass: 'text-zinc-900 dark:text-white', optimal: '1200x600px', ratio: '2:1', maxSize: '5MB' },
+  { name: 'LinkedIn', icon: 'i-simple-icons-linkedin', colorClass: 'text-blue-700', optimal: '1200x627px', ratio: '1.91:1', maxSize: '5MB' },
+  { name: 'Slack', icon: 'i-simple-icons-slack', colorClass: 'text-purple-600', optimal: '1200x630px', ratio: '1.91:1', maxSize: '12MB' },
+  { name: 'Discord', icon: 'i-simple-icons-discord', colorClass: 'text-indigo-500', optimal: '1200x630px', ratio: '1.91:1', maxSize: '10MB' },
+  { name: 'WhatsApp', icon: 'i-simple-icons-whatsapp', colorClass: 'text-green-500', optimal: '1200x630px', ratio: '1.91:1', maxSize: '300KB (Critical)' }
+]
+</script>
+
 <template>
   <LayoutsArticleLayout
     title="Open Graph Image Size Guide 2026"
@@ -106,24 +127,3 @@
 
   </LayoutsArticleLayout>
 </template>
-
-<script setup lang="ts">
-useSeoMeta({
-  title: 'OG Image Size & Dimensions Guide (2026 Reference)',
-  description: 'The definitive cheat sheet for Open Graph image dimensions. Get exact pixel sizes, aspect ratios, and compression limits for Facebook, Twitter, Slack, and Discord.',
-  keywords: 'og image dimensions, og image size, facebook og image size, twitter card image size, linkedin og image, og:image dimensions, social media image sizes, ideal og image size',
-  robots: 'index, follow',
-  ogTitle: 'OG Image Size Master Reference',
-  ogDescription: 'Stop guessing what size your previews should be. Check the universal 1200x630 pixel breakdown.',
-  ogType: 'article'
-})
-
-const platformSpecs = [
-  { name: 'Facebook', icon: 'i-simple-icons-facebook', colorClass: 'text-blue-600', optimal: '1200x630px', ratio: '1.91:1', maxSize: '8MB' },
-  { name: 'X / Twitter', icon: 'i-simple-icons-x', colorClass: 'text-zinc-900 dark:text-white', optimal: '1200x600px', ratio: '2:1', maxSize: '5MB' },
-  { name: 'LinkedIn', icon: 'i-simple-icons-linkedin', colorClass: 'text-blue-700', optimal: '1200x627px', ratio: '1.91:1', maxSize: '5MB' },
-  { name: 'Slack', icon: 'i-simple-icons-slack', colorClass: 'text-purple-600', optimal: '1200x630px', ratio: '1.91:1', maxSize: '12MB' },
-  { name: 'Discord', icon: 'i-simple-icons-discord', colorClass: 'text-indigo-500', optimal: '1200x630px', ratio: '1.91:1', maxSize: '10MB' },
-  { name: 'WhatsApp', icon: 'i-simple-icons-whatsapp', colorClass: 'text-green-500', optimal: '1200x630px', ratio: '1.91:1', maxSize: '300KB (Critical)' }
-]
-</script>

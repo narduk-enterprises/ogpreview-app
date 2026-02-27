@@ -1,3 +1,64 @@
+<script setup lang="ts">
+import type { PlatformScores } from '~~/types/og'
+
+interface Props {
+  scores: PlatformScores
+}
+
+const props = defineProps<Props>()
+type PlatformKey = Exclude<keyof PlatformScores, 'overall'>
+const selectablePlatforms: PlatformKey[] = ['facebook', 'twitter', 'linkedin', 'slack', 'discord', 'whatsapp', 'telegram', 'imessage']
+const selectedPlatform = ref<PlatformKey>('facebook')
+
+const isOpen = ref(false)
+
+function getScoreColorClass(score: number): string {
+  if (score >= 80) {
+    return 'bg-green-500 text-white'
+  }
+  else if (score >= 60) {
+    return 'bg-yellow-500 text-white'
+  }
+  else {
+    return 'bg-red-500 text-white'
+  }
+}
+
+function getScoreTextColor(score: number): string {
+  if (score >= 80) {
+    return 'text-green-600 dark:text-green-400'
+  }
+  else if (score >= 60) {
+    return 'text-yellow-600 dark:text-yellow-400'
+  }
+  else {
+    return 'text-red-600 dark:text-red-400'
+  }
+}
+
+function getScoreLabel(score: number): string {
+  if (score >= 80) {
+    return 'Excellent'
+  }
+  else if (score >= 60) {
+    return 'Good'
+  }
+  else if (score >= 40) {
+    return 'Fair'
+  }
+  else {
+    return 'Needs Improvement'
+  }
+}
+
+type ButtonColor = 'success' | 'warning' | 'error'
+function getButtonColor(score: number): ButtonColor {
+  if (score >= 80) return 'success'
+  if (score >= 60) return 'warning'
+  return 'error'
+}
+</script>
+
 <template>
   <UModal
     v-model:open="isOpen"
@@ -168,64 +229,3 @@
     </template>
   </UModal>
 </template>
-
-<script setup lang="ts">
-import type { PlatformScores } from '~~/types/og'
-
-interface Props {
-  scores: PlatformScores
-}
-
-const props = defineProps<Props>()
-type PlatformKey = Exclude<keyof PlatformScores, 'overall'>
-const selectablePlatforms: PlatformKey[] = ['facebook', 'twitter', 'linkedin', 'slack', 'discord', 'whatsapp', 'telegram', 'imessage']
-const selectedPlatform = ref<PlatformKey>('facebook')
-
-const isOpen = ref(false)
-
-function getScoreColorClass(score: number): string {
-  if (score >= 80) {
-    return 'bg-green-500 text-white'
-  }
-  else if (score >= 60) {
-    return 'bg-yellow-500 text-white'
-  }
-  else {
-    return 'bg-red-500 text-white'
-  }
-}
-
-function getScoreTextColor(score: number): string {
-  if (score >= 80) {
-    return 'text-green-600 dark:text-green-400'
-  }
-  else if (score >= 60) {
-    return 'text-yellow-600 dark:text-yellow-400'
-  }
-  else {
-    return 'text-red-600 dark:text-red-400'
-  }
-}
-
-function getScoreLabel(score: number): string {
-  if (score >= 80) {
-    return 'Excellent'
-  }
-  else if (score >= 60) {
-    return 'Good'
-  }
-  else if (score >= 40) {
-    return 'Fair'
-  }
-  else {
-    return 'Needs Improvement'
-  }
-}
-
-type ButtonColor = 'success' | 'warning' | 'error'
-function getButtonColor(score: number): ButtonColor {
-  if (score >= 80) return 'success'
-  if (score >= 60) return 'warning'
-  return 'error'
-}
-</script>

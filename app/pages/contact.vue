@@ -1,3 +1,40 @@
+<script setup lang="ts">
+useSeoMeta({
+  title: 'Contact Us - ogpreview.app',
+  description: 'Get in touch with the ogpreview.app team. Contact us for support, partnerships, or general inquiries about our Open Graph preview tool.',
+  ogTitle: 'Contact Us - ogpreview.app',
+  ogDescription: 'Get in touch with the ogpreview.app team. Contact us for support, partnerships, or general inquiries.',
+  ogType: 'website'
+})
+
+// Schema.org LocalBusiness/Organization
+useSchemaOrg([
+  {
+    '@type': 'Organization',
+    'name': 'ogpreview.app',
+    'url': 'https://ogpreview.app',
+    'logo': 'https://ogpreview.app/logo.svg',
+    'contactPoint': [
+      {
+        '@type': 'ContactPoint',
+        'email': 'hello@ogpreview.app',
+        'contactType': 'customer service',
+        'availableLanguage': 'English'
+      },
+      {
+        '@type': 'ContactPoint',
+        'email': 'support@ogpreview.app',
+        'contactType': 'technical support',
+        'availableLanguage': 'English'
+      }
+    ],
+    'sameAs': [
+      'https://twitter.com/ogpreview'
+    ]
+  }
+])
+</script>
+
 <template>
   <LayoutsSimpleLayout title="Contact Us" subtitle="Have questions, feedback, or need support? We'd love to hear from you.">
     <section class="mb-8">
@@ -129,40 +166,3 @@ href="https://ogpreview.app"
     </div>
   </LayoutsSimpleLayout>
 </template>
-
-<script setup lang="ts">
-useSeoMeta({
-  title: 'Contact Us - ogpreview.app',
-  description: 'Get in touch with the ogpreview.app team. Contact us for support, partnerships, or general inquiries about our Open Graph preview tool.',
-  ogTitle: 'Contact Us - ogpreview.app',
-  ogDescription: 'Get in touch with the ogpreview.app team. Contact us for support, partnerships, or general inquiries.',
-  ogType: 'website'
-})
-
-// Schema.org LocalBusiness/Organization
-useSchemaOrg([
-  {
-    '@type': 'Organization',
-    'name': 'ogpreview.app',
-    'url': 'https://ogpreview.app',
-    'logo': 'https://ogpreview.app/logo.svg',
-    'contactPoint': [
-      {
-        '@type': 'ContactPoint',
-        'email': 'hello@ogpreview.app',
-        'contactType': 'customer service',
-        'availableLanguage': 'English'
-      },
-      {
-        '@type': 'ContactPoint',
-        'email': 'support@ogpreview.app',
-        'contactType': 'technical support',
-        'availableLanguage': 'English'
-      }
-    ],
-    'sameAs': [
-      'https://twitter.com/ogpreview'
-    ]
-  }
-])
-</script>

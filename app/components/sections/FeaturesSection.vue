@@ -1,3 +1,23 @@
+<script setup lang="ts">
+const features = [
+  {
+    emoji: '🎨',
+    title: 'Beautiful Previews',
+    description: 'See exactly how your content will appear on different platforms with pixel-perfect accuracy'
+  },
+  {
+    emoji: '⚡',
+    title: 'Real-time Updates',
+    description: 'Preview updates instantly as you type with zero delay or page refresh needed'
+  },
+  {
+    emoji: '🚀',
+    title: 'SEO Optimized',
+    description: 'Ensure your content is perfectly optimized for search engines and social media'
+  }
+]
+</script>
+
 <template>
   <div class="mt-16">
     <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
@@ -22,23 +42,3 @@
     </div>
   </div>
 </template>
-
-<script setup lang="ts">
-const features = [
-  {
-    emoji: '🎨',
-    title: 'Beautiful Previews',
-    description: 'See exactly how your content will appear on different platforms with pixel-perfect accuracy'
-  },
-  {
-    emoji: '⚡',
-    title: 'Real-time Updates',
-    description: 'Preview updates instantly as you type with zero delay or page refresh needed'
-  },
-  {
-    emoji: '🚀',
-    title: 'SEO Optimized',
-    description: 'Ensure your content is perfectly optimized for search engines and social media'
-  }
-]
-</script>

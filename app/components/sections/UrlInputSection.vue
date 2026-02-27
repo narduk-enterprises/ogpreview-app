@@ -1,99 +1,3 @@
-<template>
-  <div class="mb-4">
-    <UCard
-      class="shadow-lg hover:shadow-xl transition-shadow duration-300 ring-1 ring-gray-200/50 dark:ring-gray-700/50"
-      :ui="{
-        root: 'overflow-visible',
-        body: 'p-3'
-      }">
-      <div class="space-y-2">
-        <!-- URL Input Row -->
-        <div class="flex gap-2 items-center" role="search" aria-label="URL input section">
-          <UInput
-ref="urlInputRef" v-model="localUrl" type="url" :disabled="isLoading"
-            placeholder="example.com or https://example.com" size="md" variant="outline"
-            :leading-icon="isLoading ? 'i-lucide-loader-circle' : 'i-lucide-globe'" :loading="isLoading" class="flex-1"
-            aria-label="Enter website URL to preview Open Graph tags" autofocus :ui="{
-              base: 'text-sm',
-              trailing: 'pe-1'
-            }"
-            @pointerdown="markUserUrlFocusIntent"
-            @pointerup="handleUrlInputPointerUp"
-            @focus="handleUrlInputFocus"
-            @keydown.enter.prevent="handleFetch">
-            <template v-if="localUrl && !isLoading" #trailing>
-              <UButton
-icon="i-lucide-x-circle" color="neutral" variant="ghost" size="xs" aria-label="Clear URL"
-                @click="handleClear" />
-            </template>
-          </UInput>
-
-          <!-- Load Preview Button -->
-          <UButton
-:disabled="!localUrl || isLoading || !isValidUrl" :loading="isLoading"
-            :icon="isLoading ? undefined : hasScores ? 'i-lucide-refresh-cw' : 'i-lucide-search'"
-            :label="isLoading ? 'Loading...' : hasScores ? 'Refresh' : 'Load Preview'" color="primary" variant="solid"
-            size="sm" class="shadow-sm hover:shadow-md transition-shadow duration-200 shrink-0" @click="handleFetch" />
-        </div>
-
-        <!-- Score Display and Action Buttons -->
-        <div
-v-if="hasScores && scores"
-          class="flex items-center justify-between gap-3 pt-2 border-t border-gray-200/50 dark:border-gray-700/50 score-appear">
-          <!-- Score Display -->
-          <div class="flex items-center gap-3">
-            <div class="flex items-center gap-2">
-              <div
-:class="[
-                'px-3 py-1.5 rounded-lg font-bold text-lg shadow-md transition-shadow duration-200 cursor-default',
-                getScoreColorClass(scores.overall)
-              ]">
-                {{ scores.overall }}
-              </div>
-              <div>
-                <div class="text-xs font-medium text-gray-500 dark:text-gray-400 uppercase tracking-wide">
-                  Quality Score
-                </div>
-                <div :class="['text-sm font-bold leading-tight', getScoreTextColor(scores.overall)]">
-                  {{ getScoreLabel(scores.overall) }}
-                </div>
-              </div>
-            </div>
-
-            <!-- Mini Progress Bar -->
-            <div class="hidden md:flex items-center gap-2">
-              <div class="w-24 bg-gray-200 dark:bg-gray-700 rounded-full h-2 overflow-hidden">
-                <div
-:class="['h-full transition-all duration-500', getScoreColorClass(scores.overall)]"
-                  :style="{ width: `${scores.overall}%` }" />
-              </div>
-              <span :class="['text-xs font-semibold', getScoreTextColor(scores.overall)]">
-                {{ scores.overall }}/100
-              </span>
-            </div>
-          </div>
-
-          <!-- Action Buttons -->
-          <div class="flex items-center gap-2">
-            <ShareButton :url="localUrl" :is-loading="isLoading" />
-            <slot name="score-button" />
-            <slot name="edit-button" />
-          </div>
-        </div>
-
-        <!-- Error Alert -->
-        <UAlert
-v-if="error" color="error" variant="subtle" icon="i-lucide-circle-x" :title="error"
-          description="You can still manually enter the OG tag information below.">
-          <template #close>
-            <UButton icon="i-lucide-x" color="error" variant="ghost" size="xs" @click="$emit('clear-error')" />
-          </template>
-        </UAlert>
-      </div>
-    </UCard>
-  </div>
-</template>
-
 <script setup lang="ts">
 import type { PlatformScores } from '~~/types/og'
 
@@ -294,3 +198,99 @@ function getScoreLabel(score: number): string {
   }
 }
 </script>
+
+<template>
+  <div class="mb-4">
+    <UCard
+      class="shadow-lg hover:shadow-xl transition-shadow duration-300 ring-1 ring-gray-200/50 dark:ring-gray-700/50"
+      :ui="{
+        root: 'overflow-visible',
+        body: 'p-3'
+      }">
+      <div class="space-y-2">
+        <!-- URL Input Row -->
+        <div class="flex gap-2 items-center" role="search" aria-label="URL input section">
+          <UInput
+ref="urlInputRef" v-model="localUrl" type="url" :disabled="isLoading"
+            placeholder="example.com or https://example.com" size="md" variant="outline"
+            :leading-icon="isLoading ? 'i-lucide-loader-circle' : 'i-lucide-globe'" :loading="isLoading" class="flex-1"
+            aria-label="Enter website URL to preview Open Graph tags" autofocus :ui="{
+              base: 'text-sm',
+              trailing: 'pe-1'
+            }"
+            @pointerdown="markUserUrlFocusIntent"
+            @pointerup="handleUrlInputPointerUp"
+            @focus="handleUrlInputFocus"
+            @keydown.enter.prevent="handleFetch">
+            <template v-if="localUrl && !isLoading" #trailing>
+              <UButton
+icon="i-lucide-x-circle" color="neutral" variant="ghost" size="xs" aria-label="Clear URL"
+                @click="handleClear" />
+            </template>
+          </UInput>
+
+          <!-- Load Preview Button -->
+          <UButton
+:disabled="!localUrl || isLoading || !isValidUrl" :loading="isLoading"
+            :icon="isLoading ? undefined : hasScores ? 'i-lucide-refresh-cw' : 'i-lucide-search'"
+            :label="isLoading ? 'Loading...' : hasScores ? 'Refresh' : 'Load Preview'" color="primary" variant="solid"
+            size="sm" class="shadow-sm hover:shadow-md transition-shadow duration-200 shrink-0" @click="handleFetch" />
+        </div>
+
+        <!-- Score Display and Action Buttons -->
+        <div
+v-if="hasScores && scores"
+          class="flex items-center justify-between gap-3 pt-2 border-t border-gray-200/50 dark:border-gray-700/50 score-appear">
+          <!-- Score Display -->
+          <div class="flex items-center gap-3">
+            <div class="flex items-center gap-2">
+              <div
+:class="[
+                'px-3 py-1.5 rounded-lg font-bold text-lg shadow-md transition-shadow duration-200 cursor-default',
+                getScoreColorClass(scores.overall)
+              ]">
+                {{ scores.overall }}
+              </div>
+              <div>
+                <div class="text-xs font-medium text-gray-500 dark:text-gray-400 uppercase tracking-wide">
+                  Quality Score
+                </div>
+                <div :class="['text-sm font-bold leading-tight', getScoreTextColor(scores.overall)]">
+                  {{ getScoreLabel(scores.overall) }}
+                </div>
+              </div>
+            </div>
+
+            <!-- Mini Progress Bar -->
+            <div class="hidden md:flex items-center gap-2">
+              <div class="w-24 bg-gray-200 dark:bg-gray-700 rounded-full h-2 overflow-hidden">
+                <div
+:class="['h-full transition-all duration-500', getScoreColorClass(scores.overall)]"
+                  :style="{ width: `${scores.overall}%` }" />
+              </div>
+              <span :class="['text-xs font-semibold', getScoreTextColor(scores.overall)]">
+                {{ scores.overall }}/100
+              </span>
+            </div>
+          </div>
+
+          <!-- Action Buttons -->
+          <div class="flex items-center gap-2">
+            <ShareButton :url="localUrl" :is-loading="isLoading" />
+            <slot name="score-button" />
+            <slot name="edit-button" />
+          </div>
+        </div>
+
+        <!-- Error Alert -->
+        <UAlert
+v-if="error" color="error" variant="subtle" icon="i-lucide-circle-x" :title="error"
+          description="You can still manually enter the OG tag information below.">
+          <template #close>
+            <UButton icon="i-lucide-x" color="error" variant="ghost" size="xs" @click="$emit('clear-error')" />
+          </template>
+        </UAlert>
+      </div>
+    </UCard>
+  </div>
+</template>

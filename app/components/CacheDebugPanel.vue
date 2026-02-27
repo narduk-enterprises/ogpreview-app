@@ -1,3 +1,44 @@
+<script setup lang="ts">
+interface CacheDebugInfo {
+  endpoint: 'cached' | 'refresh'
+  timestamp: number
+  age?: string
+  cacheControl?: string
+}
+
+interface Props {
+  debugInfo: CacheDebugInfo | null
+}
+
+defineProps<Props>()
+defineEmits<{
+  close: []
+}>()
+
+
+function formatAge(ageSeconds: string): string {
+  const seconds = Number.parseInt(ageSeconds)
+  if (Number.isNaN(seconds)) return ageSeconds
+
+  if (seconds < 60) {
+    return `${seconds}s (fresh)`
+  }
+  else if (seconds < 3600) {
+    const minutes = Math.floor(seconds / 60)
+    return `${minutes}m ${seconds % 60}s`
+  }
+  else {
+    const hours = Math.floor(seconds / 3600)
+    const minutes = Math.floor((seconds % 3600) / 60)
+    return `${hours}h ${minutes}m`
+  }
+}
+
+function formatTimestamp(timestamp: number): string {
+  return new Date(timestamp).toLocaleTimeString()
+}
+</script>
+
 <template>
   <div
     v-if="debugInfo"
@@ -107,44 +148,3 @@
     </div>
   </div>
 </template>
-
-<script setup lang="ts">
-interface CacheDebugInfo {
-  endpoint: 'cached' | 'refresh'
-  timestamp: number
-  age?: string
-  cacheControl?: string
-}
-
-interface Props {
-  debugInfo: CacheDebugInfo | null
-}
-
-defineProps<Props>()
-defineEmits<{
-  close: []
-}>()
-
-
-function formatAge(ageSeconds: string): string {
-  const seconds = Number.parseInt(ageSeconds)
-  if (Number.isNaN(seconds)) return ageSeconds
-
-  if (seconds < 60) {
-    return `${seconds}s (fresh)`
-  }
-  else if (seconds < 3600) {
-    const minutes = Math.floor(seconds / 60)
-    return `${minutes}m ${seconds % 60}s`
-  }
-  else {
-    const hours = Math.floor(seconds / 3600)
-    const minutes = Math.floor((seconds % 3600) / 60)
-    return `${hours}h ${minutes}m`
-  }
-}
-
-function formatTimestamp(timestamp: number): string {
-  return new Date(timestamp).toLocaleTimeString()
-}
-</script>

@@ -1,3 +1,94 @@
+<script setup lang="ts">
+useSeoMeta({
+  title: 'Discord Open Graph Meta Tags & Specs',
+  description: 'The exact open graph specifications for Discord previews. Add theme colors and proper image sizing for your web links.',
+  keywords: 'discord og tags, discord open graph, discord link preview, discord theme color embed',
+  robots: 'index, follow',
+  ogTitle: 'Discord Open Graph Meta Tags & Specs',
+  ogDescription: 'The exact open graph specifications for Discord previews. Add theme colors and proper image sizing.',
+  ogType: 'article',
+  articlePublishedTime: '2025-12-16T00:00:00Z',
+  articleModifiedTime: '2025-12-16T00:00:00Z',
+  articleAuthor: ['ogpreview.app'],
+  articleSection: 'Social Media Optimization'
+})
+
+useSchemaOrg([
+  {
+    '@type': 'WebPage',
+    'name': 'Discord Open Graph Meta Tags & Specs',
+    'description': 'The exact Open Graph specifications for Discord previews',
+    'url': 'https://ogpreview.app/open-graph/discord',
+    'author': {
+      '@type': 'Organization',
+      'name': 'ogpreview.app',
+      'url': 'https://ogpreview.app'
+    }
+  },
+  {
+    '@type': 'BreadcrumbList',
+    'itemListElement': [
+      {
+        '@type': 'ListItem',
+        'position': 1,
+        'name': 'Home',
+        'item': 'https://ogpreview.app'
+      },
+      {
+        '@type': 'ListItem',
+        'position': 2,
+        'name': 'Discord Open Graph Specs',
+        'item': 'https://ogpreview.app/open-graph/discord'
+      }
+    ]
+  }
+])
+
+const requiredTagsCode = `<!-- Discord Specific Overrides -->
+<meta name="theme-color" content="#5865F2" />
+<meta name="twitter:card" content="summary_large_image" />
+
+<!-- Standard Open Graph Requirements -->
+<meta property="og:title" content="Your Page Title" />
+<meta property="og:description" content="Your compelling description" />
+<meta property="og:image" content="https://example.com/image.jpg" />
+<meta property="og:url" content="https://example.com/page" />`
+
+const nuxtExampleCode = `useSeoMeta({
+  themeColor: '#5865F2',
+  twitterCard: 'summary_large_image',
+  ogTitle: 'Your Page Title',
+  ogDescription: 'Your compelling description',
+  ogImage: 'https://example.com/image.jpg',
+  ogUrl: 'https://example.com/page',
+})`
+
+const nextjsExampleCode = `export const metadata = {
+  themeColor: '#5865F2',
+  openGraph: {
+    title: 'Your Page Title',
+    description: 'Your compelling description',
+    images: [{
+      url: 'https://example.com/image.jpg',
+      width: 1200,
+      height: 630,
+    }],
+    url: 'https://example.com/page',
+    type: 'website'
+  },
+  twitter: {
+    card: 'summary_large_image'
+  }
+}`
+
+const relatedPlatforms = [
+  { name: 'Facebook', to: '/open-graph/facebook', icon: '📘' },
+  { name: 'Twitter', to: '/open-graph/twitter', icon: '𝕏' },
+  { name: 'LinkedIn', to: '/open-graph/linkedin', icon: '💼' },
+  { name: 'Slack', to: '/open-graph/slack', icon: '💬' }
+]
+</script>
+
 <template>
   <LayoutsArticleLayout
     title="Discord Open Graph Meta Tags & Specs"
@@ -103,94 +194,3 @@
     </div>
   </LayoutsArticleLayout>
 </template>
-
-<script setup lang="ts">
-useSeoMeta({
-  title: 'Discord Open Graph Meta Tags & Specs',
-  description: 'The exact open graph specifications for Discord previews. Add theme colors and proper image sizing for your web links.',
-  keywords: 'discord og tags, discord open graph, discord link preview, discord theme color embed',
-  robots: 'index, follow',
-  ogTitle: 'Discord Open Graph Meta Tags & Specs',
-  ogDescription: 'The exact open graph specifications for Discord previews. Add theme colors and proper image sizing.',
-  ogType: 'article',
-  articlePublishedTime: '2025-12-16T00:00:00Z',
-  articleModifiedTime: '2025-12-16T00:00:00Z',
-  articleAuthor: ['ogpreview.app'],
-  articleSection: 'Social Media Optimization'
-})
-
-useSchemaOrg([
-  {
-    '@type': 'WebPage',
-    'name': 'Discord Open Graph Meta Tags & Specs',
-    'description': 'The exact Open Graph specifications for Discord previews',
-    'url': 'https://ogpreview.app/open-graph/discord',
-    'author': {
-      '@type': 'Organization',
-      'name': 'ogpreview.app',
-      'url': 'https://ogpreview.app'
-    }
-  },
-  {
-    '@type': 'BreadcrumbList',
-    'itemListElement': [
-      {
-        '@type': 'ListItem',
-        'position': 1,
-        'name': 'Home',
-        'item': 'https://ogpreview.app'
-      },
-      {
-        '@type': 'ListItem',
-        'position': 2,
-        'name': 'Discord Open Graph Specs',
-        'item': 'https://ogpreview.app/open-graph/discord'
-      }
-    ]
-  }
-])
-
-const requiredTagsCode = `<!-- Discord Specific Overrides -->
-<meta name="theme-color" content="#5865F2" />
-<meta name="twitter:card" content="summary_large_image" />
-
-<!-- Standard Open Graph Requirements -->
-<meta property="og:title" content="Your Page Title" />
-<meta property="og:description" content="Your compelling description" />
-<meta property="og:image" content="https://example.com/image.jpg" />
-<meta property="og:url" content="https://example.com/page" />`
-
-const nuxtExampleCode = `useSeoMeta({
-  themeColor: '#5865F2',
-  twitterCard: 'summary_large_image',
-  ogTitle: 'Your Page Title',
-  ogDescription: 'Your compelling description',
-  ogImage: 'https://example.com/image.jpg',
-  ogUrl: 'https://example.com/page',
-})`
-
-const nextjsExampleCode = `export const metadata = {
-  themeColor: '#5865F2',
-  openGraph: {
-    title: 'Your Page Title',
-    description: 'Your compelling description',
-    images: [{
-      url: 'https://example.com/image.jpg',
-      width: 1200,
-      height: 630,
-    }],
-    url: 'https://example.com/page',
-    type: 'website'
-  },
-  twitter: {
-    card: 'summary_large_image'
-  }
-}`
-
-const relatedPlatforms = [
-  { name: 'Facebook', to: '/open-graph/facebook', icon: '📘' },
-  { name: 'Twitter', to: '/open-graph/twitter', icon: '𝕏' },
-  { name: 'LinkedIn', to: '/open-graph/linkedin', icon: '💼' },
-  { name: 'Slack', to: '/open-graph/slack', icon: '💬' }
-]
-</script>

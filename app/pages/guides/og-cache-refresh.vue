@@ -1,3 +1,28 @@
+<script setup lang="ts">
+useSeoMeta({
+  title: 'How to Refresh & Clear Open Graph Text/Image Cache',
+  description: 'Force social media platforms like Facebook, Twitter, and LinkedIn to update your cached Open Graph tags instantly with these dev tools.',
+  keywords: 'refresh og cache, clear facebook cache, facebook sharing debugger, linkedin post inspector, twitter card validator, clear og tags cache',
+  robots: 'index, follow',
+  ogTitle: 'How to Refresh Open Graph Cache Instantly',
+  ogDescription: 'Force Facebook, LinkedIn, Twitter, and Slack to drop their cached previews and show your newest Open Graph tags.',
+  ogType: 'article'
+})
+
+const scriptExampleCode = `// Batch clear Facebook Open Graph cache via Node.js
+const urlsToClear = ['https://mysite.com/1', 'https://mysite.com/2'];
+
+for (const url of urlsToClear) {
+  await fetch(\`https://graph.facebook.com/?id=\${encodeURIComponent(url)}&scrape=true\`, {
+    method: 'POST'
+  });
+  
+  // Throttle to avoid rate limiting
+  await new Promise(resolve => setTimeout(resolve, 1000));
+}
+console.log('Cache purging complete');`
+</script>
+
 <template>
   <LayoutsArticleLayout
     title="How to Refresh Open Graph Cache"
@@ -115,28 +140,3 @@
 
   </LayoutsArticleLayout>
 </template>
-
-<script setup lang="ts">
-useSeoMeta({
-  title: 'How to Refresh & Clear Open Graph Text/Image Cache',
-  description: 'Force social media platforms like Facebook, Twitter, and LinkedIn to update your cached Open Graph tags instantly with these dev tools.',
-  keywords: 'refresh og cache, clear facebook cache, facebook sharing debugger, linkedin post inspector, twitter card validator, clear og tags cache',
-  robots: 'index, follow',
-  ogTitle: 'How to Refresh Open Graph Cache Instantly',
-  ogDescription: 'Force Facebook, LinkedIn, Twitter, and Slack to drop their cached previews and show your newest Open Graph tags.',
-  ogType: 'article'
-})
-
-const scriptExampleCode = `// Batch clear Facebook Open Graph cache via Node.js
-const urlsToClear = ['https://mysite.com/1', 'https://mysite.com/2'];
-
-for (const url of urlsToClear) {
-  await fetch(\`https://graph.facebook.com/?id=\${encodeURIComponent(url)}&scrape=true\`, {
-    method: 'POST'
-  });
-  
-  // Throttle to avoid rate limiting
-  await new Promise(resolve => setTimeout(resolve, 1000));
-}
-console.log('Cache purging complete');`
-</script>

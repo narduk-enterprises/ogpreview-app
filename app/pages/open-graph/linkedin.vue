@@ -1,3 +1,91 @@
+<script setup lang="ts">
+useSeoMeta({
+  title: 'LinkedIn Open Graph Meta Tags & Specs',
+  description: 'The exact open graph specifications for LinkedIn metadata. Get the correct 1200x627 image size and copy-paste starter tags.',
+  keywords: 'linkedin og tags, linkedin open graph, linkedin link preview, linkedin post inspector, linkedin og image size',
+  robots: 'index, follow',
+  ogTitle: 'LinkedIn Open Graph Meta Tags & Specs',
+  ogDescription: 'The exact Open Graph specifications for LinkedIn. Copy-paste the required meta tags and image sizes.',
+  ogType: 'article',
+  articlePublishedTime: '2025-12-16T00:00:00Z',
+  articleModifiedTime: '2025-12-16T00:00:00Z',
+  articleAuthor: ['ogpreview.app'],
+  articleSection: 'Social Media Optimization'
+})
+
+useSchemaOrg([
+  {
+    '@type': 'WebPage',
+    'name': 'LinkedIn Open Graph Meta Tags & Specs',
+    'description': 'The exact Open Graph specifications for LinkedIn link previews',
+    'url': 'https://ogpreview.app/open-graph/linkedin',
+    'author': {
+      '@type': 'Organization',
+      'name': 'ogpreview.app',
+      'url': 'https://ogpreview.app'
+    }
+  },
+  {
+    '@type': 'BreadcrumbList',
+    'itemListElement': [
+      {
+        '@type': 'ListItem',
+        'position': 1,
+        'name': 'Home',
+        'item': 'https://ogpreview.app'
+      },
+      {
+        '@type': 'ListItem',
+        'position': 2,
+        'name': 'LinkedIn Open Graph Specs',
+        'item': 'https://ogpreview.app/open-graph/linkedin'
+      }
+    ]
+  }
+])
+
+const requiredTagsCode = `<!-- Essential Open Graph Tags for LinkedIn -->
+<meta property="og:title" content="Your Page Title" />
+<meta property="og:description" content="Your compelling description" />
+<meta property="og:image" content="https://example.com/image.jpg" />
+<meta property="og:url" content="https://example.com/page" />
+<meta property="og:type" content="article" />
+<!-- Recommended specific author tag for LinkedIn -->
+<meta name="author" content="Author Name" />`
+
+const nuxtExampleCode = `useSeoMeta({
+  ogTitle: 'Your Page Title',
+  ogDescription: 'Your compelling description',
+  ogImage: 'https://example.com/image.jpg',
+  ogUrl: 'https://example.com/page',
+  ogType: 'article',
+  author: 'Author Name',
+})`
+
+const nextjsExampleCode = `export const metadata = {
+  openGraph: {
+    title: 'Your Page Title',
+    description: 'Your compelling description',
+    images: [{
+      url: 'https://example.com/image.jpg',
+      width: 1200,
+      height: 627,
+      alt: 'Image alt text'
+    }],
+    url: 'https://example.com/page',
+    type: 'article',
+    authors: ['Author Name']
+  }
+}`
+
+const relatedPlatforms = [
+  { name: 'Facebook', to: '/open-graph/facebook', icon: '📘' },
+  { name: 'Twitter', to: '/open-graph/twitter', icon: '𝕏' },
+  { name: 'Discord', to: '/open-graph/discord', icon: '🎮' },
+  { name: 'Slack', to: '/open-graph/slack', icon: '💬' }
+]
+</script>
+
 <template>
   <LayoutsArticleLayout
     title="LinkedIn Open Graph Meta Tags & Specs"
@@ -112,91 +200,3 @@
     </div>
   </LayoutsArticleLayout>
 </template>
-
-<script setup lang="ts">
-useSeoMeta({
-  title: 'LinkedIn Open Graph Meta Tags & Specs',
-  description: 'The exact open graph specifications for LinkedIn metadata. Get the correct 1200x627 image size and copy-paste starter tags.',
-  keywords: 'linkedin og tags, linkedin open graph, linkedin link preview, linkedin post inspector, linkedin og image size',
-  robots: 'index, follow',
-  ogTitle: 'LinkedIn Open Graph Meta Tags & Specs',
-  ogDescription: 'The exact Open Graph specifications for LinkedIn. Copy-paste the required meta tags and image sizes.',
-  ogType: 'article',
-  articlePublishedTime: '2025-12-16T00:00:00Z',
-  articleModifiedTime: '2025-12-16T00:00:00Z',
-  articleAuthor: ['ogpreview.app'],
-  articleSection: 'Social Media Optimization'
-})
-
-useSchemaOrg([
-  {
-    '@type': 'WebPage',
-    'name': 'LinkedIn Open Graph Meta Tags & Specs',
-    'description': 'The exact Open Graph specifications for LinkedIn link previews',
-    'url': 'https://ogpreview.app/open-graph/linkedin',
-    'author': {
-      '@type': 'Organization',
-      'name': 'ogpreview.app',
-      'url': 'https://ogpreview.app'
-    }
-  },
-  {
-    '@type': 'BreadcrumbList',
-    'itemListElement': [
-      {
-        '@type': 'ListItem',
-        'position': 1,
-        'name': 'Home',
-        'item': 'https://ogpreview.app'
-      },
-      {
-        '@type': 'ListItem',
-        'position': 2,
-        'name': 'LinkedIn Open Graph Specs',
-        'item': 'https://ogpreview.app/open-graph/linkedin'
-      }
-    ]
-  }
-])
-
-const requiredTagsCode = `<!-- Essential Open Graph Tags for LinkedIn -->
-<meta property="og:title" content="Your Page Title" />
-<meta property="og:description" content="Your compelling description" />
-<meta property="og:image" content="https://example.com/image.jpg" />
-<meta property="og:url" content="https://example.com/page" />
-<meta property="og:type" content="article" />
-<!-- Recommended specific author tag for LinkedIn -->
-<meta name="author" content="Author Name" />`
-
-const nuxtExampleCode = `useSeoMeta({
-  ogTitle: 'Your Page Title',
-  ogDescription: 'Your compelling description',
-  ogImage: 'https://example.com/image.jpg',
-  ogUrl: 'https://example.com/page',
-  ogType: 'article',
-  author: 'Author Name',
-})`
-
-const nextjsExampleCode = `export const metadata = {
-  openGraph: {
-    title: 'Your Page Title',
-    description: 'Your compelling description',
-    images: [{
-      url: 'https://example.com/image.jpg',
-      width: 1200,
-      height: 627,
-      alt: 'Image alt text'
-    }],
-    url: 'https://example.com/page',
-    type: 'article',
-    authors: ['Author Name']
-  }
-}`
-
-const relatedPlatforms = [
-  { name: 'Facebook', to: '/open-graph/facebook', icon: '📘' },
-  { name: 'Twitter', to: '/open-graph/twitter', icon: '𝕏' },
-  { name: 'Discord', to: '/open-graph/discord', icon: '🎮' },
-  { name: 'Slack', to: '/open-graph/slack', icon: '💬' }
-]
-</script>

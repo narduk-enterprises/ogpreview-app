@@ -1,3 +1,10 @@
+<script setup lang="ts">
+useSeoMeta({
+  title: 'Terms of Service - ogpreview.app',
+  description: 'Terms of Service for ogpreview.app - Read our terms and conditions for using our service.'
+})
+</script>
+
 <template>
   <LayoutsSimpleLayout
 title="Terms of Service"
@@ -174,10 +181,3 @@ href="mailto:legal@ogpreview.app"
     </section>
   </LayoutsSimpleLayout>
 </template>
-
-<script setup lang="ts">
-useSeoMeta({
-  title: 'Terms of Service - ogpreview.app',
-  description: 'Terms of Service for ogpreview.app - Read our terms and conditions for using our service.'
-})
-</script>

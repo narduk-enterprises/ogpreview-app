@@ -1,3 +1,92 @@
+<script setup lang="ts">
+useSeoMeta({
+  title: 'Facebook Open Graph Meta Tags & Image Specs',
+  description: 'The exact open graph specifications for Facebook meta tags. Get the correct 1200x630 image size, copy-paste starter tags, and learn to clear cached previews.',
+  keywords: 'facebook og tags, facebook open graph, facebook link preview, facebook sharing debugger, facebook og image size, facebook meta tags',
+  robots: 'index, follow',
+  ogTitle: 'Facebook Open Graph Meta Tags & Image Specs',
+  ogDescription: 'The exact Open Graph specifications for Facebook. Copy-paste the required meta tags, image sizes, and best practices.',
+  ogType: 'article',
+  articlePublishedTime: '2025-12-16T00:00:00Z',
+  articleModifiedTime: '2025-12-16T00:00:00Z',
+  articleAuthor: ['ogpreview.app'],
+  articleSection: 'Social Media Optimization'
+})
+
+useSchemaOrg([
+  {
+    '@type': 'WebPage',
+    'name': 'Facebook Open Graph Meta Tags & Image Specs',
+    'description': 'The exact Open Graph specifications for Facebook link previews',
+    'url': 'https://ogpreview.app/open-graph/facebook',
+    'author': {
+      '@type': 'Organization',
+      'name': 'ogpreview.app',
+      'url': 'https://ogpreview.app'
+    }
+  },
+  {
+    '@type': 'BreadcrumbList',
+    'itemListElement': [
+      {
+        '@type': 'ListItem',
+        'position': 1,
+        'name': 'Home',
+        'item': 'https://ogpreview.app'
+      },
+      {
+        '@type': 'ListItem',
+        'position': 2,
+        'name': 'Facebook Open Graph Specs',
+        'item': 'https://ogpreview.app/open-graph/facebook'
+      }
+    ]
+  }
+])
+
+const requiredTagsCode = `<!-- Essential Open Graph Tags for Facebook -->
+<meta property="og:title" content="Your Page Title" />
+<meta property="og:description" content="Your compelling description" />
+<meta property="og:image" content="https://example.com/image.jpg" />
+<meta property="og:url" content="https://example.com/page" />
+<meta property="og:type" content="website" />
+<!-- Recommended specific sizing for faster load times -->
+<meta property="og:image:width" content="1200" />
+<meta property="og:image:height" content="630" />`
+
+const nuxtExampleCode = `useSeoMeta({
+  ogTitle: 'Your Page Title',
+  ogDescription: 'Your compelling description',
+  ogImage: 'https://example.com/image.jpg',
+  ogUrl: 'https://example.com/page',
+  ogType: 'website',
+  ogImageWidth: '1200',
+  ogImageHeight: '630',
+})`
+
+const nextjsExampleCode = `export const metadata = {
+  openGraph: {
+    title: 'Your Page Title',
+    description: 'Your compelling description',
+    images: [{
+      url: 'https://example.com/image.jpg',
+      width: 1200,
+      height: 630,
+      alt: 'Image alt text'
+    }],
+    url: 'https://example.com/page',
+    type: 'website'
+  }
+}`
+
+const relatedPlatforms = [
+  { name: 'Twitter', to: '/open-graph/twitter', icon: '𝕏' },
+  { name: 'LinkedIn', to: '/open-graph/linkedin', icon: '💼' },
+  { name: 'Discord', to: '/open-graph/discord', icon: '🎮' },
+  { name: 'Slack', to: '/open-graph/slack', icon: '💬' }
+]
+</script>
+
 <template>
   <LayoutsArticleLayout
     title="Facebook Open Graph Meta Tags & Specs"
@@ -112,92 +201,3 @@
     </div>
   </LayoutsArticleLayout>
 </template>
-
-<script setup lang="ts">
-useSeoMeta({
-  title: 'Facebook Open Graph Meta Tags & Image Specs',
-  description: 'The exact open graph specifications for Facebook meta tags. Get the correct 1200x630 image size, copy-paste starter tags, and learn to clear cached previews.',
-  keywords: 'facebook og tags, facebook open graph, facebook link preview, facebook sharing debugger, facebook og image size, facebook meta tags',
-  robots: 'index, follow',
-  ogTitle: 'Facebook Open Graph Meta Tags & Image Specs',
-  ogDescription: 'The exact Open Graph specifications for Facebook. Copy-paste the required meta tags, image sizes, and best practices.',
-  ogType: 'article',
-  articlePublishedTime: '2025-12-16T00:00:00Z',
-  articleModifiedTime: '2025-12-16T00:00:00Z',
-  articleAuthor: ['ogpreview.app'],
-  articleSection: 'Social Media Optimization'
-})
-
-useSchemaOrg([
-  {
-    '@type': 'WebPage',
-    'name': 'Facebook Open Graph Meta Tags & Image Specs',
-    'description': 'The exact Open Graph specifications for Facebook link previews',
-    'url': 'https://ogpreview.app/open-graph/facebook',
-    'author': {
-      '@type': 'Organization',
-      'name': 'ogpreview.app',
-      'url': 'https://ogpreview.app'
-    }
-  },
-  {
-    '@type': 'BreadcrumbList',
-    'itemListElement': [
-      {
-        '@type': 'ListItem',
-        'position': 1,
-        'name': 'Home',
-        'item': 'https://ogpreview.app'
-      },
-      {
-        '@type': 'ListItem',
-        'position': 2,
-        'name': 'Facebook Open Graph Specs',
-        'item': 'https://ogpreview.app/open-graph/facebook'
-      }
-    ]
-  }
-])
-
-const requiredTagsCode = `<!-- Essential Open Graph Tags for Facebook -->
-<meta property="og:title" content="Your Page Title" />
-<meta property="og:description" content="Your compelling description" />
-<meta property="og:image" content="https://example.com/image.jpg" />
-<meta property="og:url" content="https://example.com/page" />
-<meta property="og:type" content="website" />
-<!-- Recommended specific sizing for faster load times -->
-<meta property="og:image:width" content="1200" />
-<meta property="og:image:height" content="630" />`
-
-const nuxtExampleCode = `useSeoMeta({
-  ogTitle: 'Your Page Title',
-  ogDescription: 'Your compelling description',
-  ogImage: 'https://example.com/image.jpg',
-  ogUrl: 'https://example.com/page',
-  ogType: 'website',
-  ogImageWidth: '1200',
-  ogImageHeight: '630',
-})`
-
-const nextjsExampleCode = `export const metadata = {
-  openGraph: {
-    title: 'Your Page Title',
-    description: 'Your compelling description',
-    images: [{
-      url: 'https://example.com/image.jpg',
-      width: 1200,
-      height: 630,
-      alt: 'Image alt text'
-    }],
-    url: 'https://example.com/page',
-    type: 'website'
-  }
-}`
-
-const relatedPlatforms = [
-  { name: 'Twitter', to: '/open-graph/twitter', icon: '𝕏' },
-  { name: 'LinkedIn', to: '/open-graph/linkedin', icon: '💼' },
-  { name: 'Discord', to: '/open-graph/discord', icon: '🎮' },
-  { name: 'Slack', to: '/open-graph/slack', icon: '💬' }
-]
-</script>

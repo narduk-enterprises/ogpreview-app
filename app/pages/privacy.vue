@@ -1,3 +1,10 @@
+<script setup lang="ts">
+useSeoMeta({
+  title: 'Privacy Policy - ogpreview.app',
+  description: 'Privacy Policy for ogpreview.app - Learn how we collect, use, and protect your information.'
+})
+</script>
+
 <template>
   <LayoutsSimpleLayout
 title="Privacy Policy"
@@ -300,10 +307,3 @@ to="/contact"
     </section>
   </LayoutsSimpleLayout>
 </template>
-
-<script setup lang="ts">
-useSeoMeta({
-  title: 'Privacy Policy - ogpreview.app',
-  description: 'Privacy Policy for ogpreview.app - Learn how we collect, use, and protect your information.'
-})
-</script>

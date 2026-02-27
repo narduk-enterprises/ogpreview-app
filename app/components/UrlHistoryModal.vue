@@ -1,3 +1,78 @@
+<script setup lang="ts">
+import type { UrlHistoryEntry } from '~/composables/useUrlHistory'
+
+interface Props {
+  modelValue: boolean
+  history: UrlHistoryEntry[]
+}
+
+const props = defineProps<Props>()
+
+const emit = defineEmits<{
+  'update:modelValue': [value: boolean]
+  'select': [url: string]
+  'remove': [url: string]
+  'clear-all': []
+}>()
+
+const isOpen = computed({
+  get: () => props.modelValue,
+  set: value => emit('update:modelValue', value)
+})
+
+function handleSelect(url: string) {
+  emit('select', url)
+  isOpen.value = false
+}
+
+function handleRemove(url: string) {
+  emit('remove', url)
+}
+
+function handleClearAll() {
+  if (confirm('Are you sure you want to clear all history?')) {
+    emit('clear-all')
+    isOpen.value = false
+  }
+}
+
+function handleImageError(event: Event) {
+  const target = event.target as HTMLImageElement
+  target.style.display = 'none'
+}
+
+function formatTimestamp(timestamp: number): string {
+  const now = Date.now()
+  const diff = now - timestamp
+
+  const seconds = Math.floor(diff / 1000)
+  const minutes = Math.floor(seconds / 60)
+  const hours = Math.floor(minutes / 60)
+  const days = Math.floor(hours / 24)
+
+  if (seconds < 60) {
+    return 'Just now'
+  }
+  else if (minutes < 60) {
+    return `${minutes}m ago`
+  }
+  else if (hours < 24) {
+    return `${hours}h ago`
+  }
+  else if (days < 7) {
+    return `${days}d ago`
+  }
+  else {
+    const date = new Date(timestamp)
+    return date.toLocaleDateString(undefined, {
+      month: 'short',
+      day: 'numeric',
+      year: date.getFullYear() !== new Date().getFullYear() ? 'numeric' : undefined
+    })
+  }
+}
+</script>
+
 <template>
   <UModal
     v-model:open="isOpen"
@@ -100,78 +175,3 @@
     </template>
   </UModal>
 </template>
-
-<script setup lang="ts">
-import type { UrlHistoryEntry } from '~/composables/useUrlHistory'
-
-interface Props {
-  modelValue: boolean
-  history: UrlHistoryEntry[]
-}
-
-const props = defineProps<Props>()
-
-const emit = defineEmits<{
-  'update:modelValue': [value: boolean]
-  'select': [url: string]
-  'remove': [url: string]
-  'clear-all': []
-}>()
-
-const isOpen = computed({
-  get: () => props.modelValue,
-  set: value => emit('update:modelValue', value)
-})
-
-function handleSelect(url: string) {
-  emit('select', url)
-  isOpen.value = false
-}
-
-function handleRemove(url: string) {
-  emit('remove', url)
-}
-
-function handleClearAll() {
-  if (confirm('Are you sure you want to clear all history?')) {
-    emit('clear-all')
-    isOpen.value = false
-  }
-}
-
-function handleImageError(event: Event) {
-  const target = event.target as HTMLImageElement
-  target.style.display = 'none'
-}
-
-function formatTimestamp(timestamp: number): string {
-  const now = Date.now()
-  const diff = now - timestamp
-
-  const seconds = Math.floor(diff / 1000)
-  const minutes = Math.floor(seconds / 60)
-  const hours = Math.floor(minutes / 60)
-  const days = Math.floor(hours / 24)
-
-  if (seconds < 60) {
-    return 'Just now'
-  }
-  else if (minutes < 60) {
-    return `${minutes}m ago`
-  }
-  else if (hours < 24) {
-    return `${hours}h ago`
-  }
-  else if (days < 7) {
-    return `${days}d ago`
-  }
-  else {
-    const date = new Date(timestamp)
-    return date.toLocaleDateString(undefined, {
-      month: 'short',
-      day: 'numeric',
-      year: date.getFullYear() !== new Date().getFullYear() ? 'numeric' : undefined
-    })
-  }
-}
-</script>

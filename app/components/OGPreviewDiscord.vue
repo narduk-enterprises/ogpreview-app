@@ -1,3 +1,28 @@
+<script setup lang="ts">
+import { formatUrl } from '~/utils/formatUrl'
+
+interface Props {
+  data: {
+    title: string
+    description: string
+    image: string
+    url: string
+    siteName: string
+    type: string
+    imageAlt?: string
+  }
+}
+
+defineProps<Props>()
+
+const handleImageError = (event: Event) => {
+  const target = event.target as HTMLImageElement
+  if (target) {
+    target.style.display = 'none'
+  }
+}
+</script>
+
 <template>
   <div class="bg-gray-700 dark:bg-gray-800 rounded-lg p-3 max-w-md max-h-[500px] overflow-y-auto shadow-lg">
     <!-- Message Header -->
@@ -86,30 +111,5 @@
     </div>
   </div>
 </template>
-
-<script setup lang="ts">
-import { formatUrl } from '~/utils/formatUrl'
-
-interface Props {
-  data: {
-    title: string
-    description: string
-    image: string
-    url: string
-    siteName: string
-    type: string
-    imageAlt?: string
-  }
-}
-
-defineProps<Props>()
-
-const handleImageError = (event: Event) => {
-  const target = event.target as HTMLImageElement
-  if (target) {
-    target.style.display = 'none'
-  }
-}
-</script>
 
 

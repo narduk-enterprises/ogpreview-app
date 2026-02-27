@@ -1,3 +1,87 @@
+<script setup lang="ts">
+useSeoMeta({
+  title: 'Slack Open Graph Meta Tags & Specs',
+  description: 'The exact open graph specifications for Slack workspaces. Build properly scaled image links, copy-paste starter tags, and configure unfurling correctly.',
+  keywords: 'slack og tags, slack open graph, slack link preview, slackbot link fetch, default slack unfurl',
+  robots: 'index, follow',
+  ogTitle: 'Slack Open Graph Meta Tags & Specs',
+  ogDescription: 'The exact open graph specifications for Slack workspaces. Build properly scaled image links and configure unfurling.',
+  ogType: 'article',
+  articlePublishedTime: '2025-12-16T00:00:00Z',
+  articleModifiedTime: '2025-12-16T00:00:00Z',
+  articleAuthor: ['ogpreview.app'],
+  articleSection: 'Social Media Optimization'
+})
+
+useSchemaOrg([
+  {
+    '@type': 'WebPage',
+    'name': 'Slack Open Graph Meta Tags & Specs',
+    'description': 'The exact Open Graph specifications for Slack link unfurling',
+    'url': 'https://ogpreview.app/open-graph/slack',
+    'author': {
+      '@type': 'Organization',
+      'name': 'ogpreview.app',
+      'url': 'https://ogpreview.app'
+    }
+  },
+  {
+    '@type': 'BreadcrumbList',
+    'itemListElement': [
+      {
+        '@type': 'ListItem',
+        'position': 1,
+        'name': 'Home',
+        'item': 'https://ogpreview.app'
+      },
+      {
+        '@type': 'ListItem',
+        'position': 2,
+        'name': 'Slack Open Graph Specs',
+        'item': 'https://ogpreview.app/open-graph/slack'
+      }
+    ]
+  }
+])
+
+const requiredTagsCode = `<!-- Essential Slack Tags -->
+<meta property="og:site_name" content="Your Brand Name" />
+<meta property="og:title" content="Your Page Title" />
+<meta property="og:description" content="Your compelling description" />
+<meta property="og:image" content="https://example.com/image.jpg" />
+<meta property="og:url" content="https://example.com/page" />`
+
+const nuxtExampleCode = `useSeoMeta({
+  ogSiteName: 'Your Brand Name',
+  ogTitle: 'Your Page Title',
+  ogDescription: 'Your compelling description',
+  ogImage: 'https://example.com/image.jpg',
+  ogUrl: 'https://example.com/page',
+})`
+
+const nextjsExampleCode = `export const metadata = {
+  openGraph: {
+    title: 'Your Page Title',
+    description: 'Your compelling description',
+    images: [{
+      url: 'https://example.com/image.jpg',
+      width: 1200,
+      height: 630,
+    }],
+    url: 'https://example.com/page',
+    siteName: 'Your Brand Name',
+    type: 'website'
+  },
+}`
+
+const relatedPlatforms = [
+  { name: 'Facebook', to: '/open-graph/facebook', icon: '📘' },
+  { name: 'Twitter', to: '/open-graph/twitter', icon: '𝕏' },
+  { name: 'LinkedIn', to: '/open-graph/linkedin', icon: '💼' },
+  { name: 'Discord', to: '/open-graph/discord', icon: '🎮' }
+]
+</script>
+
 <template>
   <LayoutsArticleLayout
     title="Slack Open Graph Meta Tags & Specs"
@@ -103,87 +187,3 @@
     </div>
   </LayoutsArticleLayout>
 </template>
-
-<script setup lang="ts">
-useSeoMeta({
-  title: 'Slack Open Graph Meta Tags & Specs',
-  description: 'The exact open graph specifications for Slack workspaces. Build properly scaled image links, copy-paste starter tags, and configure unfurling correctly.',
-  keywords: 'slack og tags, slack open graph, slack link preview, slackbot link fetch, default slack unfurl',
-  robots: 'index, follow',
-  ogTitle: 'Slack Open Graph Meta Tags & Specs',
-  ogDescription: 'The exact open graph specifications for Slack workspaces. Build properly scaled image links and configure unfurling.',
-  ogType: 'article',
-  articlePublishedTime: '2025-12-16T00:00:00Z',
-  articleModifiedTime: '2025-12-16T00:00:00Z',
-  articleAuthor: ['ogpreview.app'],
-  articleSection: 'Social Media Optimization'
-})
-
-useSchemaOrg([
-  {
-    '@type': 'WebPage',
-    'name': 'Slack Open Graph Meta Tags & Specs',
-    'description': 'The exact Open Graph specifications for Slack link unfurling',
-    'url': 'https://ogpreview.app/open-graph/slack',
-    'author': {
-      '@type': 'Organization',
-      'name': 'ogpreview.app',
-      'url': 'https://ogpreview.app'
-    }
-  },
-  {
-    '@type': 'BreadcrumbList',
-    'itemListElement': [
-      {
-        '@type': 'ListItem',
-        'position': 1,
-        'name': 'Home',
-        'item': 'https://ogpreview.app'
-      },
-      {
-        '@type': 'ListItem',
-        'position': 2,
-        'name': 'Slack Open Graph Specs',
-        'item': 'https://ogpreview.app/open-graph/slack'
-      }
-    ]
-  }
-])
-
-const requiredTagsCode = `<!-- Essential Slack Tags -->
-<meta property="og:site_name" content="Your Brand Name" />
-<meta property="og:title" content="Your Page Title" />
-<meta property="og:description" content="Your compelling description" />
-<meta property="og:image" content="https://example.com/image.jpg" />
-<meta property="og:url" content="https://example.com/page" />`
-
-const nuxtExampleCode = `useSeoMeta({
-  ogSiteName: 'Your Brand Name',
-  ogTitle: 'Your Page Title',
-  ogDescription: 'Your compelling description',
-  ogImage: 'https://example.com/image.jpg',
-  ogUrl: 'https://example.com/page',
-})`
-
-const nextjsExampleCode = `export const metadata = {
-  openGraph: {
-    title: 'Your Page Title',
-    description: 'Your compelling description',
-    images: [{
-      url: 'https://example.com/image.jpg',
-      width: 1200,
-      height: 630,
-    }],
-    url: 'https://example.com/page',
-    siteName: 'Your Brand Name',
-    type: 'website'
-  },
-}`
-
-const relatedPlatforms = [
-  { name: 'Facebook', to: '/open-graph/facebook', icon: '📘' },
-  { name: 'Twitter', to: '/open-graph/twitter', icon: '𝕏' },
-  { name: 'LinkedIn', to: '/open-graph/linkedin', icon: '💼' },
-  { name: 'Discord', to: '/open-graph/discord', icon: '🎮' }
-]
-</script>

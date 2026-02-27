@@ -1,3 +1,17 @@
+<script setup lang="ts">
+interface Props {
+  title: string
+  description?: string
+  color?: 'error' | 'info' | 'primary' | 'secondary' | 'success' | 'warning' | 'neutral'
+  icon?: string
+}
+
+withDefaults(defineProps<Props>(), {
+  color: 'info',
+  icon: 'i-lucide-lightbulb'
+})
+</script>
+
 <template>
   <UAlert
     :color="color"
@@ -21,17 +35,3 @@
     </template>
   </UAlert>
 </template>
-
-<script setup lang="ts">
-interface Props {
-  title: string
-  description?: string
-  color?: 'error' | 'info' | 'primary' | 'secondary' | 'success' | 'warning' | 'neutral'
-  icon?: string
-}
-
-withDefaults(defineProps<Props>(), {
-  color: 'info',
-  icon: 'i-lucide-lightbulb'
-})
-</script>

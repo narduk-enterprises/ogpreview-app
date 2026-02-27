@@ -1,9 +1,3 @@
-<template>
-  <div>
-    <PagesPreviewPage :show-seo-sections="false" />
-  </div>
-</template>
-
 <script setup lang="ts">
 // SEO Meta Tags - Platform-specific for LinkedIn preview
 useSeoMeta({
@@ -61,3 +55,9 @@ useHead({
   ]
 })
 </script>
+
+<template>
+  <div>
+    <PagesPreviewPage :show-seo-sections="false" />
+  </div>
+</template>

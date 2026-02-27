@@ -1,3 +1,33 @@
+<script setup lang="ts">
+import { ref } from 'vue'
+
+interface Props {
+  code: string
+  language?: string
+  showCopy?: boolean
+}
+
+const props = withDefaults(defineProps<Props>(), {
+  language: undefined,
+  showCopy: true
+})
+
+const copied = ref(false)
+
+async function copyToClipboard() {
+  try {
+    await navigator.clipboard.writeText(props.code)
+    copied.value = true
+    setTimeout(() => {
+      copied.value = false
+    }, 2000)
+  }
+  catch (err) {
+    console.error('Failed to copy:', err)
+  }
+}
+</script>
+
 <template>
   <div class="not-prose my-8">
     <div class="relative rounded-xl overflow-hidden bg-gray-900 dark:bg-gray-950 border border-gray-800 dark:border-gray-700 shadow-xl">
@@ -36,33 +66,3 @@
     </div>
   </div>
 </template>
-
-<script setup lang="ts">
-import { ref } from 'vue'
-
-interface Props {
-  code: string
-  language?: string
-  showCopy?: boolean
-}
-
-const props = withDefaults(defineProps<Props>(), {
-  language: undefined,
-  showCopy: true
-})
-
-const copied = ref(false)
-
-async function copyToClipboard() {
-  try {
-    await navigator.clipboard.writeText(props.code)
-    copied.value = true
-    setTimeout(() => {
-      copied.value = false
-    }, 2000)
-  }
-  catch (err) {
-    console.error('Failed to copy:', err)
-  }
-}
-</script>

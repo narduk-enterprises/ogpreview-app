@@ -1,3 +1,87 @@
+<script setup lang="ts">
+useSeoMeta({
+  title: 'WhatsApp Open Graph Meta Tags & Specs',
+  description: 'The exact open graph specifications for WhatsApp link previews. Keep images under 300KB for them to appear reliably in chats.',
+  keywords: 'whatsapp og tags, whatsapp open graph, whatsapp link preview, whatsapp image limit',
+  robots: 'index, follow',
+  ogTitle: 'WhatsApp Open Graph Meta Tags & Specs',
+  ogDescription: 'The exact open graph specifications for WhatsApp previews. Keep images under 300KB.',
+  ogType: 'article',
+  articlePublishedTime: '2025-12-16T00:00:00Z',
+  articleModifiedTime: '2025-12-16T00:00:00Z',
+  articleAuthor: ['ogpreview.app'],
+  articleSection: 'Social Media Optimization'
+})
+
+useSchemaOrg([
+  {
+    '@type': 'WebPage',
+    'name': 'WhatsApp Open Graph Meta Tags & Specs',
+    'description': 'The exact Open Graph specifications for WhatsApp previews',
+    'url': 'https://ogpreview.app/open-graph/whatsapp',
+    'author': {
+      '@type': 'Organization',
+      'name': 'ogpreview.app',
+      'url': 'https://ogpreview.app'
+    }
+  },
+  {
+    '@type': 'BreadcrumbList',
+    'itemListElement': [
+      {
+        '@type': 'ListItem',
+        'position': 1,
+        'name': 'Home',
+        'item': 'https://ogpreview.app'
+      },
+      {
+        '@type': 'ListItem',
+        'position': 2,
+        'name': 'WhatsApp Open Graph Specs',
+        'item': 'https://ogpreview.app/open-graph/whatsapp'
+      }
+    ]
+  }
+])
+
+const requiredTagsCode = `<!-- WhatsApp Requirements (Standard OG) -->
+<meta property="og:title" content="Your Page Title" />
+<meta property="og:description" content="Your compelling description" />
+<!-- CRITICAL: Image must be under 300KB! -->
+<meta property="og:image" content="https://example.com/image-optimized.jpg" />
+<meta property="og:url" content="https://example.com/page" />
+<meta property="og:type" content="website" />`
+
+const nuxtExampleCode = `useSeoMeta({
+  ogTitle: 'Your Page Title',
+  ogDescription: 'Your compelling description',
+  ogImage: 'https://example.com/image-optimized.jpg',
+  ogUrl: 'https://example.com/page',
+  ogType: 'website',
+})`
+
+const nextjsExampleCode = `export const metadata = {
+  openGraph: {
+    title: 'Your Page Title',
+    description: 'Your compelling description',
+    images: [{
+      url: 'https://example.com/image-optimized.jpg',
+      width: 1200,
+      height: 630,
+    }],
+    url: 'https://example.com/page',
+    type: 'website'
+  }
+}`
+
+const relatedPlatforms = [
+  { name: 'Telegram', to: '/open-graph/telegram', icon: '✈️' },
+  { name: 'Facebook', to: '/open-graph/facebook', icon: '📘' },
+  { name: 'LinkedIn', to: '/open-graph/linkedin', icon: '💼' },
+  { name: 'iMessage', to: '/open-graph/imessage', icon: '💬' }
+]
+</script>
+
 <template>
   <LayoutsArticleLayout
     title="WhatsApp Open Graph Meta Tags & Specs"
@@ -103,87 +187,3 @@
     </div>
   </LayoutsArticleLayout>
 </template>
-
-<script setup lang="ts">
-useSeoMeta({
-  title: 'WhatsApp Open Graph Meta Tags & Specs',
-  description: 'The exact open graph specifications for WhatsApp link previews. Keep images under 300KB for them to appear reliably in chats.',
-  keywords: 'whatsapp og tags, whatsapp open graph, whatsapp link preview, whatsapp image limit',
-  robots: 'index, follow',
-  ogTitle: 'WhatsApp Open Graph Meta Tags & Specs',
-  ogDescription: 'The exact open graph specifications for WhatsApp previews. Keep images under 300KB.',
-  ogType: 'article',
-  articlePublishedTime: '2025-12-16T00:00:00Z',
-  articleModifiedTime: '2025-12-16T00:00:00Z',
-  articleAuthor: ['ogpreview.app'],
-  articleSection: 'Social Media Optimization'
-})
-
-useSchemaOrg([
-  {
-    '@type': 'WebPage',
-    'name': 'WhatsApp Open Graph Meta Tags & Specs',
-    'description': 'The exact Open Graph specifications for WhatsApp previews',
-    'url': 'https://ogpreview.app/open-graph/whatsapp',
-    'author': {
-      '@type': 'Organization',
-      'name': 'ogpreview.app',
-      'url': 'https://ogpreview.app'
-    }
-  },
-  {
-    '@type': 'BreadcrumbList',
-    'itemListElement': [
-      {
-        '@type': 'ListItem',
-        'position': 1,
-        'name': 'Home',
-        'item': 'https://ogpreview.app'
-      },
-      {
-        '@type': 'ListItem',
-        'position': 2,
-        'name': 'WhatsApp Open Graph Specs',
-        'item': 'https://ogpreview.app/open-graph/whatsapp'
-      }
-    ]
-  }
-])
-
-const requiredTagsCode = `<!-- WhatsApp Requirements (Standard OG) -->
-<meta property="og:title" content="Your Page Title" />
-<meta property="og:description" content="Your compelling description" />
-<!-- CRITICAL: Image must be under 300KB! -->
-<meta property="og:image" content="https://example.com/image-optimized.jpg" />
-<meta property="og:url" content="https://example.com/page" />
-<meta property="og:type" content="website" />`
-
-const nuxtExampleCode = `useSeoMeta({
-  ogTitle: 'Your Page Title',
-  ogDescription: 'Your compelling description',
-  ogImage: 'https://example.com/image-optimized.jpg',
-  ogUrl: 'https://example.com/page',
-  ogType: 'website',
-})`
-
-const nextjsExampleCode = `export const metadata = {
-  openGraph: {
-    title: 'Your Page Title',
-    description: 'Your compelling description',
-    images: [{
-      url: 'https://example.com/image-optimized.jpg',
-      width: 1200,
-      height: 630,
-    }],
-    url: 'https://example.com/page',
-    type: 'website'
-  }
-}`
-
-const relatedPlatforms = [
-  { name: 'Telegram', to: '/open-graph/telegram', icon: '✈️' },
-  { name: 'Facebook', to: '/open-graph/facebook', icon: '📘' },
-  { name: 'LinkedIn', to: '/open-graph/linkedin', icon: '💼' },
-  { name: 'iMessage', to: '/open-graph/imessage', icon: '💬' }
-]
-</script>

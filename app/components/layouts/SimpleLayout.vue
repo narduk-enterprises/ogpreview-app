@@ -1,3 +1,15 @@
+<script setup lang="ts">
+interface Props {
+  title?: string
+  subtitle?: string
+}
+
+withDefaults(defineProps<Props>(), {
+  title: undefined,
+  subtitle: undefined
+})
+</script>
+
 <template>
   <div class="min-h-screen bg-gray-50 dark:bg-gray-900">
     <UContainer class="py-12">
@@ -32,15 +44,3 @@
     </UContainer>
   </div>
 </template>
-
-<script setup lang="ts">
-interface Props {
-  title?: string
-  subtitle?: string
-}
-
-withDefaults(defineProps<Props>(), {
-  title: undefined,
-  subtitle: undefined
-})
-</script>

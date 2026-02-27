@@ -1,3 +1,40 @@
+<script setup lang="ts">
+useSeoMeta({
+  title: 'About Us - ogpreview.app',
+  description: 'Learn about ogpreview.app, the free Open Graph preview tool trusted by developers and marketers. Discover our mission, technology, and commitment to privacy.',
+  ogTitle: 'About ogpreview.app - Free Open Graph Preview Tool',
+  ogDescription: 'Learn about our mission to provide the best free Open Graph preview tool for developers and content creators.',
+  ogType: 'website'
+})
+
+// Schema.org AboutPage
+useSchemaOrg([
+  {
+    '@type': 'AboutPage',
+    'name': 'About ogpreview.app',
+    'description': 'Learn about ogpreview.app, the free Open Graph preview tool for developers and marketers',
+    'url': 'https://ogpreview.app/about',
+    'mainEntity': {
+      '@type': 'Organization',
+      'name': 'ogpreview.app',
+      'url': 'https://ogpreview.app',
+      'logo': 'https://ogpreview.app/logo.svg',
+      'description': 'Free Open Graph preview tool for testing social media link cards',
+      'foundingDate': '2024',
+      'contactPoint': {
+        '@type': 'ContactPoint',
+        'email': 'hello@ogpreview.app',
+        'contactType': 'customer service',
+        'availableLanguage': 'English'
+      },
+      'sameAs': [
+        'https://twitter.com/ogpreview'
+      ]
+    }
+  }
+])
+</script>
+
 <template>
   <LayoutsSimpleLayout
 title="About ogpreview.app"
@@ -192,40 +229,3 @@ title="About ogpreview.app"
     </section>
   </LayoutsSimpleLayout>
 </template>
-
-<script setup lang="ts">
-useSeoMeta({
-  title: 'About Us - ogpreview.app',
-  description: 'Learn about ogpreview.app, the free Open Graph preview tool trusted by developers and marketers. Discover our mission, technology, and commitment to privacy.',
-  ogTitle: 'About ogpreview.app - Free Open Graph Preview Tool',
-  ogDescription: 'Learn about our mission to provide the best free Open Graph preview tool for developers and content creators.',
-  ogType: 'website'
-})
-
-// Schema.org AboutPage
-useSchemaOrg([
-  {
-    '@type': 'AboutPage',
-    'name': 'About ogpreview.app',
-    'description': 'Learn about ogpreview.app, the free Open Graph preview tool for developers and marketers',
-    'url': 'https://ogpreview.app/about',
-    'mainEntity': {
-      '@type': 'Organization',
-      'name': 'ogpreview.app',
-      'url': 'https://ogpreview.app',
-      'logo': 'https://ogpreview.app/logo.svg',
-      'description': 'Free Open Graph preview tool for testing social media link cards',
-      'foundingDate': '2024',
-      'contactPoint': {
-        '@type': 'ContactPoint',
-        'email': 'hello@ogpreview.app',
-        'contactType': 'customer service',
-        'availableLanguage': 'English'
-      },
-      'sameAs': [
-        'https://twitter.com/ogpreview'
-      ]
-    }
-  }
-])
-</script>

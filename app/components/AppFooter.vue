@@ -1,3 +1,7 @@
+<script setup lang="ts">
+// Footer component - no special logic needed
+</script>
+
 <template>
   <footer class="bg-white dark:bg-gray-800 border-t border-gray-200 dark:border-gray-700 mt-12">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
@@ -113,7 +117,3 @@
     </div>
   </footer>
 </template>
-
-<script setup lang="ts">
-// Footer component - no special logic needed
-</script>
