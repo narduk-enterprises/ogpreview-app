@@ -63,25 +63,7 @@
         </span>
       </div>
 
-      <div
-        v-if="debugInfo.vercelCache"
-        class="flex items-start gap-2"
-        data-test="debug-vercel-cache"
-      >
-        <span class="text-gray-500 dark:text-gray-400 min-w-[120px]">x-vercel-cache:</span>
-        <span
-          :class="[
-            'px-2 py-0.5 rounded text-xs font-semibold',
-            getCacheStatusClass(debugInfo.vercelCache)
-          ]"
-          data-test="debug-cache-status"
-        >
-          {{ debugInfo.vercelCache }}
-        </span>
-        <span class="text-gray-600 dark:text-gray-400 text-xs">
-          {{ getCacheStatusDescription(debugInfo.vercelCache) }}
-        </span>
-      </div>
+
 
       <div
         v-if="debugInfo.age"
@@ -130,7 +112,6 @@
 interface CacheDebugInfo {
   endpoint: 'cached' | 'refresh'
   timestamp: number
-  vercelCache?: string
   age?: string
   cacheControl?: string
 }
@@ -144,39 +125,6 @@ defineEmits<{
   close: []
 }>()
 
-function getCacheStatusClass(status: string): string {
-  const statusUpper = status.toUpperCase()
-  switch (statusUpper) {
-    case 'HIT':
-      return 'bg-green-100 text-green-800 dark:bg-green-900 dark:text-green-200'
-    case 'MISS':
-      return 'bg-yellow-100 text-yellow-800 dark:bg-yellow-900 dark:text-yellow-200'
-    case 'STALE':
-      return 'bg-orange-100 text-orange-800 dark:bg-orange-900 dark:text-orange-200'
-    case 'BYPASS':
-      return 'bg-gray-100 text-gray-800 dark:bg-gray-800 dark:text-gray-200'
-    default:
-      return 'bg-blue-100 text-blue-800 dark:bg-blue-900 dark:text-blue-200'
-  }
-}
-
-function getCacheStatusDescription(status: string): string {
-  const statusUpper = status.toUpperCase()
-  switch (statusUpper) {
-    case 'HIT':
-      return 'Response served from CDN cache'
-    case 'MISS':
-      return 'Cache miss, fetched from origin'
-    case 'STALE':
-      return 'Stale cache served while revalidating'
-    case 'BYPASS':
-      return 'Cache bypassed'
-    case 'REVALIDATED':
-      return 'Background revalidation completed'
-    default:
-      return ''
-  }
-}
 
 function formatAge(ageSeconds: string): string {
   const seconds = Number.parseInt(ageSeconds)

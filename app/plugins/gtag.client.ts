@@ -8,7 +8,7 @@ export default defineNuxtPlugin(() => {
   const runtimeConfig = useRuntimeConfig()
   const measurementId = runtimeConfig.public.gaMeasurementId as string
 
-  if (!measurementId || import.meta.server) return
+  if (!measurementId) return
 
   // Skip on localhost
   if (

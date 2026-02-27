@@ -51,7 +51,6 @@ export interface UnfurlResponse {
 export interface CacheDebugInfo {
   endpoint: 'cached' | 'refresh'
   timestamp: number
-  vercelCache?: string
   age?: string
   cacheControl?: string
 }

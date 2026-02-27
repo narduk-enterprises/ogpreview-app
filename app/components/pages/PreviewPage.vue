@@ -199,11 +199,8 @@ const {
   addToHistory,
   removeFromHistory,
   clearHistory,
-  getRecentHistory
+  recentHistory
 } = useUrlHistory()
-
-// Get recent history - computed already handles SSR (returns empty array on server)
-const recentHistory = getRecentHistory(5)
 
 // Validation composable
 const { validateOGTags } = useOGValidation()

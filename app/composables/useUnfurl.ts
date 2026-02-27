@@ -1,9 +1,10 @@
 /**
- * Composable for fetching OG data using the new unfurl endpoints
- * Supports both cached and force-refresh modes
+ * Composable for fetching OG data using the unfurl endpoints.
+ * Supports both cached and force-refresh modes.
  */
 
 import type { CacheDebugInfo, OGData, PlatformScores, UnfurlResponse } from '~~/types/og'
+import { isValidUrl, normalizeUrl } from '~/utils/url'
 
 interface UseUnfurlOptions {
   initialScores?: PlatformScores | null
@@ -25,46 +26,7 @@ export const useUnfurl = (options: UseUnfurlOptions = {}) => {
   const cacheDebugInfo = computed(() => _cacheDebugInfo.value)
   const cacheBustToken = computed(() => _cacheBustToken.value)
 
-  const isValidUrl = (urlString: string): boolean => {
-    if (!urlString) return false
 
-    try {
-      // Add protocol if missing
-      const urlToTest = /^https?:\/\//i.test(urlString.trim())
-        ? urlString.trim()
-        : `https://${urlString.trim()}`
-
-      const urlObj = new URL(urlToTest)
-
-      // Must have valid protocol
-      if (!['http:', 'https:'].includes(urlObj.protocol)) {
-        return false
-      }
-
-      // Must have hostname
-      if (!urlObj.hostname || urlObj.hostname.length === 0) {
-        return false
-      }
-
-      // Must have dot in hostname or be localhost (for dev)
-      if (!urlObj.hostname.includes('.') && urlObj.hostname !== 'localhost') {
-        return false
-      }
-
-      return true
-    }
-    catch {
-      return false
-    }
-  }
-
-  /**
-   * Normalize URL by adding protocol if missing
-   */
-  const normalizeUrl = (url: string): string => {
-    const trimmed = url.trim()
-    return /^https?:\/\//i.test(trimmed) ? trimmed : `https://${trimmed}`
-  }
 
   /**
    * Fetch OG data using cached endpoint
@@ -85,23 +47,12 @@ export const useUnfurl = (options: UseUnfurlOptions = {}) => {
     try {
       const response = await $fetch<UnfurlResponse>('/api/unfurl', {
         method: 'GET',
-        params: {
-          url: normalizedUrl,
-          // Add cache busting timestamp to prevent stale cache issues
-          _t: Date.now()
-        },
-        // Add headers to prevent aggressive caching
-        headers: {
-          'Cache-Control': 'no-cache',
-          'Pragma': 'no-cache'
-        },
-        // Capture response headers
+        params: { url: normalizedUrl },
         onResponse({ response }) {
           const headers = response.headers
           _cacheDebugInfo.value = {
             endpoint: 'cached',
             timestamp: Date.now(),
-            vercelCache: headers.get('x-vercel-cache') || undefined,
             age: headers.get('age') || undefined,
             cacheControl: headers.get('cache-control') || undefined
           }
@@ -146,24 +97,12 @@ export const useUnfurl = (options: UseUnfurlOptions = {}) => {
     try {
       const response = await $fetch<UnfurlResponse>('/api/unfurl/refresh', {
         method: 'GET',
-        params: {
-          url: normalizedUrl,
-          // Add cache busting timestamp
-          _t: Date.now()
-        },
-        // Add headers to force refresh
-        headers: {
-          'Cache-Control': 'no-cache, no-store, must-revalidate',
-          'Pragma': 'no-cache',
-          'Expires': '0'
-        },
-        // Capture response headers
+        params: { url: normalizedUrl },
         onResponse({ response }) {
           const headers = response.headers
           _cacheDebugInfo.value = {
             endpoint: 'refresh',
             timestamp: Date.now(),
-            vercelCache: headers.get('x-vercel-cache') || undefined,
             age: headers.get('age') || undefined,
             cacheControl: headers.get('cache-control') || undefined
           }

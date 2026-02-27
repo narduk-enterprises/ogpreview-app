@@ -5,7 +5,7 @@ export default defineNuxtPlugin(() => {
   const posthogApiKey = runtimeConfig.public.posthogPublicKey
   const posthogHost = runtimeConfig.public.posthogHost
 
-  if (!posthogApiKey || import.meta.server) return
+  if (!posthogApiKey) return
 
   const posthogClient = posthog.init(posthogApiKey as string, {
     api_host: (posthogHost as string) || 'https://us.i.posthog.com',
@@ -24,7 +24,7 @@ export default defineNuxtPlugin(() => {
       }
 
       // Tag internal traffic
-      if (window.location.hostname.endsWith('.pages.dev')) {
+      if (window.location.hostname.endsWith('.workers.dev')) {
         ph.register({ is_internal_user: true })
       }
     }

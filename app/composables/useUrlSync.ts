@@ -51,9 +51,7 @@ export const useUrlSync = () => {
    * Get the shareable URL with the current preview URL
    */
   const getShareableUrl = (previewUrl: string): string => {
-    if (typeof window === 'undefined') {
-      return ''
-    }
+    if (import.meta.server) return ''
 
     const url = new URL(window.location.href)
     if (previewUrl) {

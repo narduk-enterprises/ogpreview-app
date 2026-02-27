@@ -54,7 +54,7 @@ export default defineNuxtConfig({
   site: {
     url: process.env.SITE_URL || 'https://ogpreview-app.workers.dev',
     name: 'OG Preview',
-    description: 'A production-ready demo template showcasing Nuxt 4, Nuxt UI 4, Tailwind CSS 4, and Cloudflare Workers with D1 database.',
+    description: 'Free Open Graph preview tool. Test how your links appear on Facebook, Twitter, LinkedIn, Slack, Discord, and WhatsApp before publishing.',
     defaultLocale: 'en',
   },
 
@@ -172,7 +172,7 @@ export default defineNuxtConfig({
     head: {
       htmlAttrs: { lang: 'en' },
       meta: [
-        { name: 'theme-color', content: '#0a0f1a' },
+        { name: 'theme-color', content: '#f0f4ff' },
       ],
       link: [
         { rel: 'icon', type: 'image/svg+xml', href: '/favicon.svg' },
@@ -181,6 +181,13 @@ export default defineNuxtConfig({
         { rel: 'apple-touch-icon', sizes: '180x180', href: '/apple-touch-icon.png' },
         { rel: 'manifest', href: '/site.webmanifest' },
       ],
+      script: [
+        {
+          src: 'https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-1144766246490692',
+          async: true,
+          crossorigin: 'anonymous'
+        }
+      ]
     },
     pageTransition: { name: 'page', mode: 'out-in' }
   }

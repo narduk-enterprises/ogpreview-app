@@ -20,20 +20,23 @@
             </p>
           </div>
           <div class="flex flex-col sm:flex-row gap-2 w-full sm:w-auto">
-            <button
-              class="px-4 py-2 bg-blue-600 hover:bg-blue-700 text-white text-sm font-medium rounded-md transition-colors focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2"
+            <UButton
+              color="primary"
+              size="sm"
               aria-label="Accept all cookies"
-              @click="acceptCookies"
+              @click="acceptAll"
             >
               Accept All
-            </button>
-            <button
-              class="px-4 py-2 bg-gray-200 hover:bg-gray-300 dark:bg-gray-700 dark:hover:bg-gray-600 text-gray-900 dark:text-gray-100 text-sm font-medium rounded-md transition-colors focus:outline-none focus:ring-2 focus:ring-gray-500 focus:ring-offset-2"
+            </UButton>
+            <UButton
+              color="neutral"
+              variant="outline"
+              size="sm"
               aria-label="Accept only necessary cookies"
-              @click="acceptNecessaryCookies"
+              @click="acceptNecessary"
             >
               Necessary Only
-            </button>
+            </UButton>
           </div>
         </div>
       </div>
@@ -42,110 +45,46 @@
 </template>
 
 <script setup lang="ts">
-const COOKIE_CONSENT_KEY = 'ogpreview_cookie_consent'
-const CONSENT_EXPIRY_DAYS = 365
+const consent = useCookie<{ necessary: boolean, analytics: boolean, advertising: boolean } | null>(
+  'ogpreview_cookie_consent',
+  { maxAge: 365 * 24 * 60 * 60, default: () => null }
+)
 
 const showBanner = ref(false)
 
-// Check if user has already made a choice
 onMounted(() => {
-  if (import.meta.client) {
-    const consent = localStorage.getItem(COOKIE_CONSENT_KEY)
-    if (!consent) {
-      // During AdSense review: Auto-accept all cookies after 3 seconds if no interaction
-      // This ensures reviewers see ads. Remove or modify this after approval.
-      setTimeout(() => {
-        showBanner.value = true
-      }, 1000)
-
-      // Auto-accept after 10 seconds to ensure AdSense reviewers see ads
-      setTimeout(() => {
-        if (showBanner.value) {
-          acceptCookies()
-        }
-      }, 10000)
-    }
-    else {
-      // Apply existing consent settings
-      const consentData = JSON.parse(consent)
-      if (consentData.analytics && consentData.advertising) {
-        enableAllCookies()
-      }
-    }
+  if (!consent.value) {
+    // Show banner after a short delay for a smoother UX
+    setTimeout(() => { showBanner.value = true }, 1000)
+  }
+  else if (consent.value.analytics && consent.value.advertising) {
+    updateGtagConsent('granted')
   }
 })
 
-function acceptCookies() {
-  if (import.meta.client) {
-    const consentData = {
-      necessary: true,
-      analytics: true,
-      advertising: true,
-      timestamp: new Date().toISOString()
-    }
-    localStorage.setItem(COOKIE_CONSENT_KEY, JSON.stringify(consentData))
-
-    // Set consent cookie for ad partners
-    setCookie('cookie_consent', 'all', CONSENT_EXPIRY_DAYS)
-
-    enableAllCookies()
-    showBanner.value = false
-  }
+function acceptAll() {
+  consent.value = { necessary: true, analytics: true, advertising: true }
+  updateGtagConsent('granted')
+  showBanner.value = false
 }
 
-function acceptNecessaryCookies() {
-  if (import.meta.client) {
-    const consentData = {
-      necessary: true,
-      analytics: false,
-      advertising: false,
-      timestamp: new Date().toISOString()
-    }
-    localStorage.setItem(COOKIE_CONSENT_KEY, JSON.stringify(consentData))
-
-    // Set consent cookie for ad partners
-    setCookie('cookie_consent', 'necessary', CONSENT_EXPIRY_DAYS)
-
-    disableNonEssentialCookies()
-    showBanner.value = false
-  }
+function acceptNecessary() {
+  consent.value = { necessary: true, analytics: false, advertising: false }
+  updateGtagConsent('denied')
+  showBanner.value = false
 }
 
-function enableAllCookies() {
-  // Enable Google AdSense personalized ads
-  if (typeof window !== 'undefined' && (window as any).adsbygoogle) {
-    console.log('[Cookie Consent] All cookies accepted - enabling personalized ads')
-  }
-
-  // Update consent for Google Analytics
-  if (typeof window !== 'undefined' && (window as any).gtag) {
-    (window as any).gtag('consent', 'update', {
-      analytics_storage: 'granted',
-      ad_storage: 'granted',
-      ad_user_data: 'granted',
-      ad_personalization: 'granted'
+function updateGtagConsent(state: 'granted' | 'denied') {
+  if (import.meta.server) return
+  const gtag = (window as any).gtag
+  if (typeof gtag === 'function') {
+    gtag('consent', 'update', {
+      analytics_storage: state,
+      ad_storage: state,
+      ad_user_data: state,
+      ad_personalization: state
     })
   }
-}
-
-function disableNonEssentialCookies() {
-  console.log('[Cookie Consent] Only necessary cookies accepted - disabling analytics and ads')
-
-  // Update consent for Google Analytics
-  if (typeof window !== 'undefined' && (window as any).gtag) {
-    (window as any).gtag('consent', 'update', {
-      analytics_storage: 'denied',
-      ad_storage: 'denied',
-      ad_user_data: 'denied',
-      ad_personalization: 'denied'
-    })
-  }
-}
-
-function setCookie(name: string, value: string, days: number) {
-  const expires = new Date()
-  expires.setTime(expires.getTime() + days * 24 * 60 * 60 * 1000)
-  document.cookie = `${name}=${value};expires=${expires.toUTCString()};path=/;SameSite=Lax`
 }
 </script>
 
