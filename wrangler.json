@@ -6,7 +6,9 @@
     "directory": ".output/public"
   },
   "compatibility_date": "2025-07-15",
-  "compatibility_flags": ["nodejs_compat"],
+  "compatibility_flags": [
+    "nodejs_compat"
+  ],
   "observability": {
     "enabled": true
   },
@@ -15,6 +17,12 @@
       "binding": "DB",
       "database_name": "ogpreview-app-db",
       "database_id": "cfd0824d-ebe0-4ec5-ba10-f913f914e8c6"
+    }
+  ],
+  "routes": [
+    {
+      "pattern": "ogpreview.app",
+      "custom_domain": true
     }
   ]
 }
