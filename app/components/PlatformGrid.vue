@@ -1,13 +1,16 @@
 <template>
   <div class="not-prose my-8">
     <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
-      <UCard
+      <NuxtLink
         v-for="platform in platforms"
         :key="platform.to"
         :to="platform.to"
-        class="hover:shadow-lg transition-shadow cursor-pointer"
+        class="block group"
       >
-        <div class="flex flex-col items-center text-center p-4">
+        <UCard
+          class="hover:shadow-lg transition-shadow cursor-pointer h-full"
+        >
+          <div class="flex flex-col items-center text-center p-4">
           <div
             v-if="platform.icon"
             class="text-4xl mb-3"
@@ -26,7 +29,8 @@
             {{ platform.description }}
           </p>
         </div>
-      </UCard>
+        </UCard>
+      </NuxtLink>
     </div>
   </div>
 </template>

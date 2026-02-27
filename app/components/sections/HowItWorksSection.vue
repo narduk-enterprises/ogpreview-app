@@ -16,7 +16,7 @@
         :key="index"
         class="bg-white dark:bg-gray-800 rounded-lg p-6 sm:p-6 shadow-sm border border-gray-200 dark:border-gray-700 relative"
       >
-        <div class="absolute -top-3 -left-3 w-10 h-10 sm:w-10 sm:h-10 bg-gradient-to-br from-blue-500 to-purple-600 rounded-full flex items-center justify-center text-white font-bold text-base sm:text-base shadow-lg">
+        <div class="absolute -top-3 -left-3 w-10 h-10 sm:w-10 sm:h-10 bg-linear-to-br from-blue-500 to-purple-600 rounded-full flex items-center justify-center text-white font-bold text-base sm:text-base shadow-lg">
           {{ index + 1 }}
         </div>
         <div class="pt-3 sm:pt-2">
@@ -33,7 +33,7 @@
       </div>
     </div>
 
-    <div class="bg-gradient-to-br from-blue-50 to-purple-50 dark:from-gray-800 dark:to-gray-700 rounded-xl p-6 sm:p-6 border border-blue-200 dark:border-gray-600">
+    <div class="bg-linear-to-br from-blue-50 to-purple-50 dark:from-gray-800 dark:to-gray-700 rounded-xl p-6 sm:p-6 border border-blue-200 dark:border-gray-600">
       <h3 class="font-semibold text-gray-900 dark:text-white mb-3 text-lg sm:text-lg">
         💡 What are Open Graph tags?
       </h3>

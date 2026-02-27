@@ -216,22 +216,4 @@ onMounted(() => {
 })
 </script>
 
-<style scoped>
-.image-fade-enter-active,
-.image-fade-leave-active {
-  transition: opacity 0.3s ease;
-}
 
-.image-fade-enter-from,
-.image-fade-leave-to {
-  opacity: 0;
-}
-
-img {
-  transition: opacity 0.3s ease;
-}
-
-img:not(.opacity-0) {
-  opacity: 1;
-}
-</style>

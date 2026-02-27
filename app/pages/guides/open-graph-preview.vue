@@ -1,416 +1,168 @@
 <template>
   <LayoutsArticleLayout
-title="Open Graph Preview: Complete Guide for Developers & Marketers"
-    description="Everything you need to know about Open Graph protocol, social media previews, and optimizing link cards for maximum engagement."
+    title="Open Graph Preview: Complete Developer Guide"
+    description="The definitive technical guide for Open Graph. Learn exact implementations for Nuxt, Next.js, and raw HTML to ensure perfect link unfurling."
     :back-link="{ to: '/guides', label: 'Back to Guides' }"
-    :metadata="{ date: 'Updated December 2025', readTime: '15 min read' }">
+    :metadata="{ date: 'Updated December 2025', readTime: '5 min read' }"
+  >
     <template #cta>
-      <ContentContentCTA
-title="Ready to preview your Open Graph tags?"
-        description="Test how your links will appear on Facebook, Twitter, LinkedIn, Slack, Discord, and WhatsApp—all in one place."
-        button-text="Try the Free Preview Tool" button-to="/" variant="blue" />
+      <ContentCTA
+        title="Stop Guessing. Start Testing."
+        description="Verify your Open Graph tags locally before you deploy to production."
+        button-text="Try the Free Preview Tool" 
+        button-to="/" 
+        variant="blue" 
+      />
     </template>
 
-    <template #related>
-      <div class="not-prose mt-12">
-        <h2 class="text-2xl font-bold text-gray-900 dark:text-white mb-6">
-          Related Guides
-        </h2>
-        <ContentPlatformGrid :platforms="relatedGuides" />
+    <ContentCallout variant="info" title="The Golden Rule of Open Graph" icon="i-heroicons-star">
+      For 99% of use cases, you only need four tags: <code>og:title</code>, <code>og:description</code>, <code>og:image</code>, and <code>og:url</code>. 
+      Use a <strong>1200x630px JPG</strong> and ensure your tags are rendered <strong>Server-Side (SSR)</strong>.
+    </ContentCallout>
+
+    <h2 id="required-tags" class="text-2xl font-bold text-gray-900 dark:text-white mb-6 mt-12">Required Implementation</h2>
+    
+    <div class="space-y-6">
+      <div class="grid md:grid-cols-2 gap-6">
+        <div>
+          <h3 class="font-semibold text-gray-900 dark:text-white mb-2">Nuxt 3 (useSeoMeta)</h3>
+          <ContentCodeBlock :code="nuxtExampleCode" language="typescript" />
+        </div>
+        <div>
+          <h3 class="font-semibold text-gray-900 dark:text-white mb-2">Next.js 14+ (App Router)</h3>
+          <ContentCodeBlock :code="nextjsExampleCode" language="typescript" />
+        </div>
       </div>
-    </template>
+      <div>
+        <h3 class="font-semibold text-gray-900 dark:text-white mb-2">Raw HTML (&lt;head&gt;)</h3>
+        <ContentCodeBlock :code="basicExampleCode" language="html" />
+      </div>
+    </div>
 
-    <h2 id="what-is-open-graph">What is Open Graph?</h2>
-    <p>
-      The <strong>Open Graph protocol</strong> was created by Facebook in 2010 to standardize how web pages are
-      represented
-      when shared on social media. Today, it's used by virtually every major platform including Facebook, Twitter (X),
-      LinkedIn, Slack, Discord, WhatsApp, Telegram, and iMessage.
-    </p>
-    <p>
-      Open Graph tags are HTML
-      <ContentContentInlineCode code="&lt;meta&gt;" /> elements placed in the
-      <ContentContentInlineCode code="&lt;head&gt;" /> section of your web pages. They control the title, description, image,
-      and
-      other metadata that appears when someone shares your URL.
-    </p>
+    <!-- Common Failures section -->
+    <div class="my-12">
+      <h2 class="text-2xl font-bold text-gray-900 dark:text-white mb-6">Why Your Previews Are Breaking</h2>
+      
+      <div class="grid sm:grid-cols-2 gap-4">
+        <UCard class="border-red-200 dark:border-red-900/50">
+          <div class="flex items-center gap-2 mb-2">
+            <UIcon name="i-heroicons-x-circle" class="w-5 h-5 text-red-500" />
+            <h3 class="font-bold text-gray-900 dark:text-white">Client-Side Rendering (SPA)</h3>
+          </div>
+          <p class="text-sm text-gray-600 dark:text-gray-300">
+            Social bots (Facebook, Twitter, Slack) do not execute JavaScript. If you are using standard React/Vue without SSR/SSG, the bots will scrape an empty <code>&lt;head&gt;</code> tag and default to nothing.
+          </p>
+        </UCard>
+        
+        <UCard class="border-red-200 dark:border-red-900/50">
+          <div class="flex items-center gap-2 mb-2">
+            <UIcon name="i-heroicons-x-circle" class="w-5 h-5 text-red-500" />
+            <h3 class="font-bold text-gray-900 dark:text-white">Relative Image URLs</h3>
+          </div>
+          <p class="text-sm text-gray-600 dark:text-gray-300">
+            Using <code>content="/img/og.png"</code> will fail. Social crawlers resolve absolute paths. You MUST use <code>content="https://yoursite.com/img/og.png"</code>.
+          </p>
+        </UCard>
 
-    <h3>Basic Example</h3>
-    <ContentContentCodeBlock :code="basicExampleCode" language="html" />
+        <UCard class="border-red-200 dark:border-red-900/50">
+          <div class="flex items-center gap-2 mb-2">
+            <UIcon name="i-heroicons-x-circle" class="w-5 h-5 text-red-500" />
+            <h3 class="font-bold text-gray-900 dark:text-white">Missing Twitter Card Type</h3>
+          </div>
+          <p class="text-sm text-gray-600 dark:text-gray-300">
+            Even with perfect OG tags, Twitter will crop your 1200x630px image into a tiny thumbnail square unless you explicitly provide <code>&lt;meta name="twitter:card" content="summary_large_image"&gt;</code>.
+          </p>
+        </UCard>
+        
+        <UCard class="border-red-200 dark:border-red-900/50">
+          <div class="flex items-center gap-2 mb-2">
+            <UIcon name="i-heroicons-x-circle" class="w-5 h-5 text-red-500" />
+            <h3 class="font-bold text-gray-900 dark:text-white">Aggressive Caching</h3>
+          </div>
+          <p class="text-sm text-gray-600 dark:text-gray-300">
+            If you just pushed a fix to your production OG tags, they <strong>will not update automatically</strong>. You must read our <NuxtLink to="/guides/og-cache-refresh" class="text-blue-500 hover:underline">Cache Refresh Guide</NuxtLink> to force bots to re-scrape.
+          </p>
+        </UCard>
+      </div>
+    </div>
 
-    <ContentContentCallout variant="info" title="Test Your Open Graph Tags" icon="i-heroicons-light-bulb">
-      Use our <NuxtLink to="/" class="font-semibold underline">Open Graph Preview Tool</NuxtLink> to instantly see how
-      your
-      tags will appear across all major platforms.
-    </ContentContentCallout>
+    <!-- Platform Specs Grid -->
+    <div class="my-12">
+      <h2 class="text-2xl font-bold text-gray-900 dark:text-white mb-6">Platform Quick Specs</h2>
+      <PlatformGrid :platforms="platformGuides" />
+    </div>
 
-    <h2 id="why-previews-break">Why Open Graph Previews Break</h2>
-    <p>
-      The most common frustrations developers face with Open Graph:
-    </p>
-    <ul>
-      <li><strong>Aggressive caching</strong> - Platforms cache OG tags for days or weeks</li>
-      <li>
-<strong>Missing tags</strong> - Forgetting required properties like
-        <ContentContentInlineCode code="og:image" />
-      </li>
-      <li><strong>Wrong image sizes</strong> - Images that are too small, too large, or the wrong aspect ratio</li>
-      <li><strong>Broken image URLs</strong> - Relative paths, localhost URLs, or blocked resources</li>
-      <li><strong>Client-side rendering issues</strong> - SPAs that inject meta tags after the page loads</li>
-    </ul>
-
-    <h2 id="platform-differences">Platform-Specific Differences</h2>
-    <p>
-      While Open Graph is a standard, each platform implements it slightly differently:
-    </p>
-
-    <ContentPlatformSection
-platform="Facebook" recommended-size="1200×630px" minimum-size="200×200px"
-      supports="Video tags (og:video)" debugger="Facebook Sharing Debugger"
-      debugger-url="https://developers.facebook.com/tools/debug/" />
-
-    <ContentPlatformSection
-platform="Twitter" recommended-size="1200×675px (summary_large_image)"
-      supports="Twitter-specific twitter:card tags" debugger="Twitter Card Validator"
-      debugger-url="https://cards-dev.twitter.com/validator">
-      <p class="text-sm text-gray-600 dark:text-gray-400 mt-2">
-        Falls back to OG tags but prefers Twitter-specific
-        <ContentContentInlineCode code="twitter:card" /> tags. Learn more in our <NuxtLink
-to="/guides/twitter-card-preview"
-          class="font-semibold">Twitter Card Guide</NuxtLink>.
-      </p>
-    </ContentPlatformSection>
-
-    <ContentPlatformSection
-platform="LinkedIn" recommended-size="1200×627px"
-      supports="Professional context - focus on business value" debugger="LinkedIn Post Inspector"
-      debugger-url="https://www.linkedin.com/post-inspector/">
-      <p class="text-sm text-gray-600 dark:text-gray-400 mt-2">
-        Read our <NuxtLink to="/guides/linkedin-link-preview" class="font-semibold">LinkedIn optimization guide
-        </NuxtLink>.
-      </p>
-    </ContentPlatformSection>
-
-    <ContentPlatformSection
-platform="Slack" supports="Standard OG protocol"
-      notes="Discord shows color themes from theme-color meta tag. Both platforms cache aggressively (24+ hours)." />
-
-    <h2 id="required-tags">Required Open Graph Tags</h2>
-    <p>
-      At minimum, you need these four tags for proper previews:
-    </p>
-
-    <table>
-      <thead>
-        <tr>
-          <th>Tag</th>
-          <th>Description</th>
-          <th>Example</th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr>
-          <td>
-            <ContentContentInlineCode code="og:title" />
-          </td>
-          <td>The title of your content</td>
-          <td>60-70 characters max</td>
-        </tr>
-        <tr>
-          <td>
-            <ContentContentInlineCode code="og:description" />
-          </td>
-          <td>A brief description</td>
-          <td>150-160 characters max</td>
-        </tr>
-        <tr>
-          <td>
-            <ContentContentInlineCode code="og:image" />
-          </td>
-          <td>URL to preview image</td>
-          <td>Must be absolute HTTPS URL</td>
-        </tr>
-        <tr>
-          <td>
-            <ContentContentInlineCode code="og:url" />
-          </td>
-          <td>Canonical URL of the page</td>
-          <td>Full URL with protocol</td>
-        </tr>
-      </tbody>
-    </table>
-
-    <h2 id="image-best-practices">Open Graph Image Best Practices</h2>
-    <p>
-      Your OG image is the most important visual element. Here's how to optimize it:
-    </p>
-
-    <h3>Dimensions & Size</h3>
-    <ul>
-      <li><strong>Recommended:</strong> 1200×630px (1.91:1 aspect ratio)</li>
-      <li><strong>Minimum:</strong> 600×315px</li>
-      <li><strong>File size:</strong> Under 1MB (ideally under 300KB)</li>
-      <li><strong>Format:</strong> JPG, PNG, or WebP</li>
-    </ul>
-
-    <h3>Design Tips</h3>
-    <ul>
-      <li>Keep text large and readable (min 40px font size)</li>
-      <li>Use high contrast colors</li>
-      <li>Avoid placing important content near edges (safe zone: 100px margin)</li>
-      <li>Include your brand/logo</li>
-      <li>Test on mobile - many previews are viewed on phones</li>
-    </ul>
-
-    <p>
-      See our complete <NuxtLink to="/guides/og-image-sizes" class="font-semibold">OG Image Size Guide</NuxtLink> for
-      platform-specific recommendations.
-    </p>
-
-    <h2 id="cache-busting">Cache Busting & Debugging</h2>
-    <p>
-      After updating your OG tags, social platforms often show old cached versions. Here's how to force a refresh:
-    </p>
-
-    <h3>Debug Tools</h3>
-    <ul>
-      <li>
-<a href="https://developers.facebook.com/tools/debug/" target="_blank" rel="noopener">Facebook Sharing
-          Debugger</a> - Also clears cache
-</li>
-      <li>
-<a href="https://cards-dev.twitter.com/validator" target="_blank" rel="noopener">Twitter Card Validator</a>
-      </li>
-      <li>
-<a href="https://www.linkedin.com/post-inspector/" target="_blank" rel="noopener">LinkedIn Post Inspector</a>
-      </li>
-      <li><a href="/" class="font-semibold">Our Open Graph Preview Tool</a> - Test all platforms at once</li>
-    </ul>
-
-    <p>
-      Learn detailed cache refresh techniques in our <NuxtLink to="/guides/og-cache-refresh" class="font-semibold">Cache
-        Refresh Guide</NuxtLink>.
-    </p>
-
-    <h2 id="common-mistakes">Common Open Graph Mistakes</h2>
-
-    <h3>1. Using Relative Image URLs</h3>
-    <p class="text-red-600 dark:text-red-400">
-      ❌
-      <ContentContentInlineCode code="&lt;meta property=&quot;og:image&quot; content=&quot;/images/og.jpg&quot; /&gt;" />
-    </p>
-    <p class="text-green-600 dark:text-green-400">
-      ✅
-      <ContentContentInlineCode code="&lt;meta property=&quot;og:image&quot; content=&quot;https://example.com/images/og.jpg&quot; /&gt;" />
-    </p>
-
-    <h3>2. Forgetting Image Dimensions</h3>
-    <p>
-      Always include width and height for better performance:
-    </p>
-    <ContentContentCodeBlock :code="imageDimensionsCode" language="html" />
-
-    <h3>3. Client-Side Meta Tags (React/Vue/Nuxt)</h3>
-    <p>
-      Social media crawlers don't execute JavaScript! Use SSR (Server-Side Rendering) or static generation:
-    </p>
-    <ul>
-      <li>
-<strong>Next.js:</strong> Use the Metadata API or
-        <ContentContentInlineCode code="next-seo" />
-      </li>
-      <li>
-<strong>Nuxt:</strong> Use
-        <ContentContentInlineCode code="useSeoMeta()" /> composable
-      </li>
-      <li>
-<strong>Gatsby:</strong> Use
-        <ContentContentInlineCode code="react-helmet" />
-      </li>
-    </ul>
-
-    <h3>4. Not Testing Before Launch</h3>
-    <p>
-      Always preview your tags before publishing. Use our <NuxtLink to="/" class="font-semibold">free preview tool
-      </NuxtLink> to catch issues early.
-    </p>
-
-    <h2 id="implementation-examples">Framework-Specific Implementation</h2>
-
-    <h3>Nuxt 3</h3>
-    <ContentContentCodeBlock :code="nuxtExampleCode" language="javascript" />
-
-    <h3>Next.js 14+</h3>
-    <ContentContentCodeBlock :code="nextjsExampleCode" language="javascript" />
-
-    <h3>React + Helmet</h3>
-    <ContentContentCodeBlock :code="reactHelmetCode" language="javascript" />
-
-    <h2 id="testing-workflow">Complete Testing Workflow</h2>
-    <ol>
-      <li><strong>Implement tags</strong> in your framework using SSR/SSG</li>
-      <li>
-<strong>Preview locally</strong> using our <NuxtLink to="/" class="font-semibold">Open Graph Preview Tool
-        </NuxtLink>
-      </li>
-      <li><strong>Deploy to staging</strong> with HTTPS enabled</li>
-      <li><strong>Test with official debuggers</strong> (Facebook, Twitter, LinkedIn)</li>
-      <li><strong>Monitor real shares</strong> - check actual social posts</li>
-      <li><strong>Iterate</strong> based on engagement metrics (CTR, shares, etc.)</li>
-    </ol>
-
-    <h2 id="resources">Additional Resources</h2>
-    <ul>
-      <li><a href="https://ogp.me/" target="_blank" rel="noopener">Official Open Graph Protocol Specification</a></li>
-      <li>
-        <NuxtLink to="/what-is-open-graph" class="font-semibold">What is Open Graph? - Complete Beginner's Guide
-        </NuxtLink>
-      </li>
-      <li>
-        <NuxtLink to="/open-graph/facebook" class="font-semibold">Facebook Open Graph Guide</NuxtLink>
-      </li>
-      <li>
-        <NuxtLink to="/open-graph/twitter" class="font-semibold">Twitter Open Graph Guide</NuxtLink>
-      </li>
-      <li>
-        <NuxtLink to="/open-graph/linkedin" class="font-semibold">LinkedIn Open Graph Guide</NuxtLink>
-      </li>
-      <li>
-        <NuxtLink to="/open-graph/discord" class="font-semibold">Discord Open Graph Guide</NuxtLink>
-      </li>
-      <li>
-        <NuxtLink to="/open-graph/slack" class="font-semibold">Slack Open Graph Guide</NuxtLink>
-      </li>
-      <li>
-        <NuxtLink to="/guides/facebook-link-preview">Facebook Link Preview Guide</NuxtLink>
-      </li>
-      <li>
-        <NuxtLink to="/guides/twitter-card-preview">Twitter Card Preview Guide</NuxtLink>
-      </li>
-      <li>
-        <NuxtLink to="/guides/linkedin-link-preview">LinkedIn Preview Optimization</NuxtLink>
-      </li>
-      <li>
-        <NuxtLink to="/og-image-size-guide" class="font-semibold">Complete OG Image Size Guide</NuxtLink>
-      </li>
-      <li>
-        <NuxtLink to="/open-graph-debugging" class="font-semibold">Open Graph Debugging Guide</NuxtLink>
-      </li>
-    </ul>
   </LayoutsArticleLayout>
 </template>
 
 <script setup lang="ts">
 useSeoMeta({
-  title: 'Open Graph Preview: Complete Guide for Developers & Marketers (2025)',
-  description: 'Learn everything about Open Graph protocol, social media previews, and link optimization. Includes Facebook, Twitter, LinkedIn best practices, image sizes, and debugging tips.',
+  title: 'Open Graph Preview: Complete Developer Guide',
+  description: 'The definitive technical guide for Open Graph. Learn exact implementations for Nuxt, Next.js, and raw HTML to ensure perfect link unfurling.',
   keywords: 'open graph preview, og tags guide, social media preview tutorial, facebook preview optimization, twitter card guide, linkedin og tags, open graph protocol, og image best practices',
   robots: 'index, follow',
-  ogTitle: 'Open Graph Preview: Complete Guide for Developers & Marketers',
-  ogDescription: 'Master Open Graph tags and social media previews. Learn platform differences, image requirements, cache busting, and common mistakes to avoid.',
-  ogType: 'article',
-  articlePublishedTime: '2025-12-16T00:00:00Z',
-  articleModifiedTime: '2025-12-16T00:00:00Z',
-  articleAuthor: ['ogpreview.app'],
-  articleSection: 'Web Development'
+  ogTitle: 'Open Graph Preview: Developer Implementation Guide',
+  ogDescription: 'Master Open Graph tags and social media previews. Learn exact Next.js and Nuxt code snippets to fix unfurling bugs.',
+  ogType: 'article'
 })
 
 useSchemaOrg([
   {
     '@type': 'Article',
-    'headline': 'Open Graph Preview: Complete Guide for Developers & Marketers',
-    'description': 'Everything you need to know about Open Graph protocol, social media previews, and optimizing link cards for maximum engagement',
-    'author': {
-      '@type': 'Organization',
-      'name': 'ogpreview.app'
-    },
-    'publisher': {
-      '@type': 'Organization',
-      'name': 'ogpreview.app'
-    },
-    'datePublished': '2025-12-16',
-    'dateModified': '2025-12-16',
-    'articleSection': 'Web Development',
-    'keywords': 'open graph, og tags, social media preview, facebook, twitter, linkedin'
-  },
-  {
-    '@type': 'BreadcrumbList',
-    'itemListElement': [
-      {
-        '@type': 'ListItem',
-        'position': 1,
-        'name': 'Home',
-        'item': 'https://ogpreview.app'
-      },
-      {
-        '@type': 'ListItem',
-        'position': 2,
-        'name': 'Guides',
-        'item': 'https://ogpreview.app/guides'
-      },
-      {
-        '@type': 'ListItem',
-        'position': 3,
-        'name': 'Open Graph Preview Guide',
-        'item': 'https://ogpreview.app/guides/open-graph-preview'
-      }
-    ]
+    'headline': 'Open Graph Preview: Complete Developer Guide',
+    'description': 'The definitive technical guide for Open Graph implementations.',
+    'author': { '@type': 'Organization', 'name': 'ogpreview.app' },
+    'publisher': { '@type': 'Organization', 'name': 'ogpreview.app' },
+    'url': 'https://ogpreview.app/guides/open-graph-preview'
   }
 ])
 
 const basicExampleCode = `<head>
+  <title>Your Page Title</title>
+  
+  <!-- Essential Open Graph -->
   <meta property="og:title" content="Your Page Title" />
   <meta property="og:description" content="A compelling description" />
   <meta property="og:image" content="https://example.com/image.jpg" />
   <meta property="og:url" content="https://example.com/page" />
   <meta property="og:type" content="website" />
+  
+  <!-- Essential Twitter -->
+  <meta name="twitter:card" content="summary_large_image" />
 </head>`
 
-const imageDimensionsCode = `<meta property="og:image:width" content="1200" />
-<meta property="og:image:height" content="630" />`
-
-const nuxtExampleCode = `// pages/index.vue
-useSeoMeta({
+const nuxtExampleCode = `useSeoMeta({
+  title: 'Your Page Title',
   ogTitle: 'Your Page Title',
+  description: 'Your description',
   ogDescription: 'Your description',
-  ogImage: 'https://example.com/og-image.jpg',
-  ogUrl: 'https://example.com',
+  ogImage: 'https://example.com/og.jpg',
+  ogUrl: 'https://example.com/page',
   twitterCard: 'summary_large_image'
 })`
 
-const nextjsExampleCode = `// app/page.tsx
-export const metadata = {
+const nextjsExampleCode = `export const metadata = {
+  title: 'Your Page Title',
+  description: 'Your description',
   openGraph: {
     title: 'Your Page Title',
     description: 'Your description',
-    images: ['https://example.com/og-image.jpg'],
-    url: 'https://example.com'
+    images: ['https://example.com/og.jpg'],
+    url: 'https://example.com/page',
+    type: 'website'
+  },
+  twitter: {
+    card: 'summary_large_image'
   }
 }`
 
-const reactHelmetCode = `import { Helmet } from 'react-helmet-async'
-
-<Helmet>
-  <meta property="og:title" content="Your Page Title" />
-  <meta property="og:description" content="Your description" />
-  <meta property="og:image" content="https://example.com/og-image.jpg" />
-</Helmet>`
-
-const relatedGuides = [
-  {
-    name: 'Facebook Link Preview',
-    to: '/guides/facebook-link-preview',
-    icon: '📘'
-  },
-  {
-    name: 'Twitter Card Preview',
-    to: '/guides/twitter-card-preview',
-    icon: '𝕏'
-  },
-  {
-    name: 'OG Image Sizes',
-    to: '/guides/og-image-sizes',
-    icon: '🖼️'
-  }
+const platformGuides = [
+  { name: 'Facebook Specs', to: '/open-graph/facebook', icon: 'i-simple-icons-facebook' },
+  { name: 'Twitter / X Specs', to: '/open-graph/twitter', icon: 'i-simple-icons-x' },
+  { name: 'LinkedIn Specs', to: '/open-graph/linkedin', icon: 'i-simple-icons-linkedin' },
+  { name: 'Discord Specs', to: '/open-graph/discord', icon: 'i-simple-icons-discord' },
+  { name: 'Slack Specs', to: '/open-graph/slack', icon: 'i-simple-icons-slack' },
+  { name: 'Image Size Reference', to: '/guides/og-image-sizes', icon: 'i-heroicons-photo' },
+  { name: 'Clear Cached Previews', to: '/guides/og-cache-refresh', icon: 'i-heroicons-arrow-path' }
 ]
 </script>

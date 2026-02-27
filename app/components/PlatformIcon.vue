@@ -1,7 +1,7 @@
 <template>
   <UIcon
     :name="iconName"
-    :class="['platform-icon', sizeClass]"
+    :class="['shrink-0 dark:brightness-[1.2]', sizeClass]"
     :style="{ color: brandColor }"
   />
 </template>
@@ -45,14 +45,3 @@ const sizeClass = computed(() => {
 })
 </script>
 
-<style scoped>
-.platform-icon {
-  flex-shrink: 0;
-}
-
-@media (prefers-color-scheme: dark) {
-  .platform-icon {
-    filter: brightness(1.2);
-  }
-}
-</style>

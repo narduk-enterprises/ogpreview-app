@@ -55,7 +55,7 @@ name="i-lucide-sparkles" class="w-4 h-4 sm:w-3 sm:h-3 text-amber-600 dark:text-a
                 <component :is="item.component" :data="data" />
               </template>
               <template #fallback>
-                <div class="skeleton w-full h-40 sm:h-48 rounded-lg" :aria-label="`Loading ${item.name} preview`" />
+                <div class="animate-pulse bg-gray-200 dark:bg-gray-800 w-full h-40 sm:h-48 rounded-lg" :aria-label="`Loading ${item.name} preview`" />
               </template>
             </Suspense>
           </div>
@@ -135,7 +135,7 @@ v-if="selectedPlatform" role="region" :aria-label="`Detailed ${selectedPlatform.
             </template>
             <template #fallback>
               <div
-class="skeleton w-full h-64 rounded-lg max-w-lg mx-auto"
+class="animate-pulse bg-gray-200 dark:bg-gray-800 w-full h-64 rounded-lg max-w-lg mx-auto"
                 :aria-label="`Loading ${selectedPlatform.name} preview`" />
             </template>
           </Suspense>

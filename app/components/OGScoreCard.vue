@@ -137,7 +137,7 @@
         <div class="flex items-center justify-between mb-2">
           <div class="flex items-center gap-2.5 sm:gap-2">
             <div class="w-9 h-9 sm:w-8 sm:h-8 bg-indigo-600 rounded-full flex items-center justify-center text-white font-bold text-sm">
-              <ContentPlatformIcon platform="Discord" size="sm" />
+              <PlatformIcon platform="Discord" size="sm" />
             </div>
             <span class="text-base sm:text-sm font-medium text-gray-700 dark:text-gray-300">Discord</span>
           </div>
@@ -158,7 +158,7 @@
         <div class="flex items-center justify-between mb-2">
           <div class="flex items-center gap-2.5 sm:gap-2">
             <div class="w-9 h-9 sm:w-8 sm:h-8 bg-green-600 rounded-full flex items-center justify-center text-white font-bold text-sm">
-              <ContentPlatformIcon platform="WhatsApp" size="sm" />
+              <PlatformIcon platform="WhatsApp" size="sm" />
             </div>
             <span class="text-base sm:text-sm font-medium text-gray-700 dark:text-gray-300">WhatsApp</span>
           </div>
@@ -179,7 +179,7 @@
         <div class="flex items-center justify-between mb-2">
           <div class="flex items-center gap-2.5 sm:gap-2">
             <div class="w-9 h-9 sm:w-8 sm:h-8 bg-cyan-600 rounded-full flex items-center justify-center text-white font-bold text-sm">
-              <ContentPlatformIcon platform="Telegram" size="sm" />
+              <PlatformIcon platform="Telegram" size="sm" />
             </div>
             <span class="text-base sm:text-sm font-medium text-gray-700 dark:text-gray-300">Telegram</span>
           </div>
@@ -200,7 +200,7 @@
         <div class="flex items-center justify-between mb-2">
           <div class="flex items-center gap-2.5 sm:gap-2">
             <div class="w-9 h-9 sm:w-8 sm:h-8 bg-gray-600 rounded-full flex items-center justify-center text-white font-bold text-sm">
-              <ContentPlatformIcon platform="iMessage" size="sm" />
+              <PlatformIcon platform="iMessage" size="sm" />
             </div>
             <span class="text-base sm:text-sm font-medium text-gray-700 dark:text-gray-300">iMessage</span>
           </div>

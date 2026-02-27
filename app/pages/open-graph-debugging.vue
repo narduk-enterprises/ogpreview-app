@@ -1,5 +1,5 @@
 <template>
-  <main class="min-h-screen py-8 px-4 sm:px-6 lg:px-8 bg-gradient-to-br from-gray-50 via-blue-50 to-purple-50 dark:from-gray-900 dark:via-gray-900 dark:to-gray-800">
+  <main class="min-h-screen py-8 px-4 sm:px-6 lg:px-8 bg-linear-to-br from-gray-50 via-blue-50 to-purple-50 dark:from-gray-900 dark:via-gray-900 dark:to-gray-800">
     <article class="max-w-4xl mx-auto">
       <!-- Navigation -->
       <nav class="mb-8">
@@ -318,14 +318,14 @@
         <h2 id="related-resources">Related Resources</h2>
         <ul>
           <li><NuxtLink to="/why-og-images-not-updating" class="font-semibold">Why OG Images Not Updating</NuxtLink></li>
-          <li><NuxtLink to="/og-image-size-guide" class="font-semibold">OG Image Size Guide</NuxtLink></li>
+          <li><NuxtLink to="/guides/og-image-sizes" class="font-semibold">OG Image Size Guide</NuxtLink></li>
           <li><NuxtLink to="/what-is-open-graph" class="font-semibold">What is Open Graph?</NuxtLink></li>
           <li><NuxtLink to="/guides/og-cache-refresh" class="font-semibold">How to Refresh Open Graph Cache</NuxtLink></li>
         </ul>
       </div>
 
       <!-- CTA -->
-      <div class="mt-12 bg-gradient-to-br from-blue-600 to-purple-600 rounded-xl p-8 text-center text-white">
+      <div class="mt-12 bg-linear-to-br from-blue-600 to-purple-600 rounded-xl p-8 text-center text-white">
         <h2 class="text-2xl sm:text-3xl font-bold mb-4">
           Debug Your Open Graph Tags
         </h2>
@@ -483,133 +483,4 @@ useSchemaOrg([
 ])
 </script>
 
-<style scoped>
-.prose :deep(code) {
-  background-color: rgb(243 244 246);
-  padding: 0.125rem 0.375rem;
-  border-radius: 0.25rem;
-  font-size: 0.875rem;
-  line-height: 1.25rem;
-  font-family: 'Monaco', 'Menlo', 'Ubuntu Mono', monospace;
-  color: rgb(220 38 38);
-}
 
-@media (prefers-color-scheme: dark) {
-  .prose :deep(code) {
-    background-color: rgb(30 41 59);
-    color: rgb(248 113 113);
-  }
-}
-
-.prose :deep(pre) {
-  background-color: rgb(17 24 39);
-  padding: 1.25rem;
-  border-radius: 0.5rem;
-  overflow-x: auto;
-  border: 1px solid rgb(55 65 81);
-  margin: 1.5rem 0;
-}
-
-@media (prefers-color-scheme: dark) {
-  .prose :deep(pre) {
-    background-color: rgb(3 7 18);
-    border-color: rgb(30 41 59);
-  }
-}
-
-.prose :deep(pre code) {
-  background-color: transparent;
-  padding: 0;
-  color: rgb(229 231 235);
-  font-size: 0.875rem;
-}
-
-@media (prefers-color-scheme: dark) {
-  .prose :deep(pre code) {
-    color: rgb(209 213 219);
-  }
-}
-
-.prose :deep(a) {
-  color: rgb(37 99 235);
-  text-decoration: none;
-  font-weight: 500;
-  transition: color 0.2s;
-}
-
-.prose :deep(a:hover) {
-  text-decoration: underline;
-  color: rgb(29 78 216);
-}
-
-@media (prefers-color-scheme: dark) {
-  .prose :deep(a) {
-    color: rgb(96 165 250);
-  }
-
-  .prose :deep(a:hover) {
-    color: rgb(147 197 253);
-  }
-}
-
-.prose :deep(table) {
-  width: 100%;
-  border-collapse: collapse;
-  margin: 1.5rem 0;
-  border-radius: 0.5rem;
-  overflow: hidden;
-  box-shadow: 0 1px 3px 0 rgb(0 0 0 / 0.1);
-}
-
-.prose :deep(thead) {
-  background-color: rgb(249 250 251);
-}
-
-@media (prefers-color-scheme: dark) {
-  .prose :deep(thead) {
-    background-color: rgb(31 41 55);
-  }
-}
-
-.prose :deep(th) {
-  padding: 0.75rem 1rem;
-  text-align: left;
-  font-weight: 600;
-  color: rgb(17 24 39);
-  border-bottom: 2px solid rgb(229 231 235);
-}
-
-@media (prefers-color-scheme: dark) {
-  .prose :deep(th) {
-    color: rgb(243 244 246);
-    border-bottom-color: rgb(55 65 81);
-  }
-}
-
-.prose :deep(td) {
-  padding: 0.75rem 1rem;
-  border-bottom: 1px solid rgb(229 231 235);
-  color: rgb(55 65 81);
-}
-
-@media (prefers-color-scheme: dark) {
-  .prose :deep(td) {
-    border-bottom-color: rgb(55 65 81);
-    color: rgb(209 213 219);
-  }
-}
-
-.prose :deep(tbody tr:hover) {
-  background-color: rgb(249 250 251);
-}
-
-@media (prefers-color-scheme: dark) {
-  .prose :deep(tbody tr:hover) {
-    background-color: rgb(31 41 55);
-  }
-}
-
-.prose :deep(tbody tr:last-child td) {
-  border-bottom: none;
-}
-</style>

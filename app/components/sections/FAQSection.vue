@@ -108,16 +108,4 @@ useSchemaOrg([
 ])
 </script>
 
-<style scoped>
-details summary::-webkit-details-marker {
-  display: none;
-}
 
-details[open] summary {
-  border-bottom: 1px solid rgb(229 231 235 / 1);
-}
-
-.dark details[open] summary {
-  border-bottom-color: rgb(55 65 81 / 1);
-}
-</style>

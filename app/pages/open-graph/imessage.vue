@@ -1,14 +1,14 @@
 <template>
   <LayoutsArticleLayout
-    title="Slack Open Graph Meta Tags & Specs"
-    description="The exact Open Graph specifications for Slack previews. Learn the exact image dimensions, required meta tags, and best practices for perfect workspace link unfurling."
+    title="iMessage Open Graph Meta Tags & Specs"
+    description="The exact Open Graph specifications for Apple's iMessage. Ensure your links generate beautiful rich link previews in iOS and macOS Messages."
     :back-link="{ to: '/', label: 'Back to Tool' }"
     :metadata="{ date: 'Updated December 2025', readTime: '3 min read' }"
   >
     <template #cta>
       <ContentCTA
-        title="Test Your Slack Link Previews"
-        description="Preview how your links will appear on Slack and all other platforms instantly."
+        title="Test Your iMessage Link Previews"
+        description="Preview how your links will appear in iMessage and all other platforms instantly."
         button-text="Try the Free Preview Tool" 
         button-to="/" 
         variant="blue" 
@@ -25,31 +25,31 @@
     </template>
 
     <ContentCallout variant="info" title="Quick Answer" icon="i-heroicons-light-bulb">
-      Slack reads standard Open Graph properties and heavily prioritizes the <code>og:site_name</code> and <code>twitter:image</code> (if provided). Keep aspect ratios between 1.91:1 and 2:1. Slack will automatically compress files over 10MB but smaller is safer.
+      iMessage reliably loads standard Open Graph tags. However, it requires a secure URL (`https`) everywhere and is strict about file size and caching. The recommended image is <strong>1200x630px</strong>.
     </ContentCallout>
 
     <!-- Specs Dashboard -->
     <div class="my-12">
-      <h2 class="text-2xl font-bold text-gray-900 dark:text-white mb-6">Slack Image Specs</h2>
+      <h2 class="text-2xl font-bold text-gray-900 dark:text-white mb-6">iMessage Image Specs</h2>
       <div class="grid sm:grid-cols-2 gap-4">
         <UCard>
           <div class="flex items-center gap-3 mb-2">
-            <UIcon name="i-heroicons-photo" class="w-6 h-6 text-fuchsia-600" />
+            <UIcon name="i-heroicons-photo" class="w-6 h-6 text-gray-500" />
             <h3 class="font-semibold text-gray-900 dark:text-white">Recommended Size</h3>
           </div>
           <p class="text-2xl font-bold text-gray-900 dark:text-white">
             1200 × 630px
           </p>
-          <p class="text-sm text-gray-500 mt-1">1:1 square images also display differently, rendering as side-thumbs.</p>
+          <p class="text-sm text-gray-500 mt-1">Aspect Ratio: 1.91:1.</p>
         </UCard>
         
         <UCard>
           <div class="flex items-center gap-3 mb-2">
-            <UIcon name="i-heroicons-document-arrow-down" class="w-6 h-6 text-fuchsia-600" />
+            <UIcon name="i-heroicons-document-arrow-down" class="w-6 h-6 text-gray-500" />
             <h3 class="font-semibold text-gray-900 dark:text-white">File Limitations</h3>
           </div>
           <p class="text-2xl font-bold text-gray-900 dark:text-white">
-            Max 12MB
+            Max 10MB
           </p>
           <p class="text-sm text-gray-500 mt-1">Formats: JPG, PNG, GIF</p>
         </UCard>
@@ -78,25 +78,25 @@
         <ul class="space-y-3">
           <li class="flex items-start gap-2">
             <UIcon name="i-heroicons-check-circle" class="w-5 h-5 text-green-500 shrink-0 mt-0.5" />
-            <span class="text-gray-700 dark:text-gray-300"><strong>Use a recognizable og:site_name.</strong> Slack bolds this at the top of the "unfurled" preview for context.</span>
+            <span class="text-gray-700 dark:text-gray-300"><strong>Use HTTPS for all image paths.</strong> iMessage strictly refuses to load preview images served via HTTP.</span>
           </li>
           <li class="flex items-start gap-2">
             <UIcon name="i-heroicons-check-circle" class="w-5 h-5 text-green-500 shrink-0 mt-0.5" />
-            <span class="text-gray-700 dark:text-gray-300"><strong>Images should be strictly absolute URLs.</strong> Slackbot fails completely on root relative paths (e.g. <code>/images/cool.png</code>).</span>
+            <span class="text-gray-700 dark:text-gray-300"><strong>Include the Apple Touch Icon.</strong> Use <code>&lt;link rel="apple-touch-icon" href="..."&gt;</code> to provide a site icon representing the source link domain.</span>
           </li>
           <li class="flex items-start gap-2">
             <UIcon name="i-heroicons-check-circle" class="w-5 h-5 text-green-500 shrink-0 mt-0.5" />
-            <span class="text-gray-700 dark:text-gray-300"><strong>Ensure quick TTFB limits.</strong> Slackbot times out internally if crawling your linked page takes too long. Setup CDN caching.</span>
+            <span class="text-gray-700 dark:text-gray-300"><strong>Expect caching.</strong> iMessage caches link previews on Apple's servers very intensely. Append a cache-buster query parameter to the link if testing.</span>
           </li>
         </ul>
       </div>
 
       <div>
         <h2 class="text-2xl font-bold text-gray-900 dark:text-white mb-4">Troubleshooting</h2>
-        <UCard class="bg-fuchsia-50 dark:bg-fuchsia-900/10 border-fuchsia-100 dark:border-fuchsia-900">
-          <h3 class="font-semibold text-fuchsia-900 dark:text-fuchsia-300 mb-2">Preview Not Generating?</h3>
-          <p class="text-sm text-fuchsia-800 dark:text-fuchsia-200 mb-4">
-            If your domain is new or Slackbot failed to fetch once, it may temporarily blacklist fetching your preview. The user usually has to enter `/url` or right click to force unfurl.
+        <UCard class="bg-gray-50 dark:bg-gray-900/10 border-gray-100 dark:border-gray-900">
+          <h3 class="font-semibold text-gray-900 dark:text-gray-300 mb-2">My Image Won't Appear in iMessage</h3>
+          <p class="text-sm text-gray-800 dark:text-gray-200 mb-4">
+            If your image doesn't appear in iMessage, check if the URL provided in <code>og:image</code> is fully qualified and uses <code>https://</code>. Also, make sure Apple's bot isn't blocked by your web server or firewall.
           </p>
         </UCard>
       </div>
@@ -106,12 +106,12 @@
 
 <script setup lang="ts">
 useSeoMeta({
-  title: 'Slack Open Graph Meta Tags & Specs',
-  description: 'The exact open graph specifications for Slack workspaces. Build properly scaled image links, copy-paste starter tags, and configure unfurling correctly.',
-  keywords: 'slack og tags, slack open graph, slack link preview, slackbot link fetch, default slack unfurl',
+  title: 'iMessage Open Graph Meta Tags & Specs',
+  description: 'The exact open graph specifications for iMessage previews. Ensure iOS devices display rich links to your site correctly.',
+  keywords: 'imessage og tags, imessage open graph, ios link preview, apple message preview',
   robots: 'index, follow',
-  ogTitle: 'Slack Open Graph Meta Tags & Specs',
-  ogDescription: 'The exact open graph specifications for Slack workspaces. Build properly scaled image links and configure unfurling.',
+  ogTitle: 'iMessage Open Graph Meta Tags & Specs',
+  ogDescription: 'The exact open graph specifications for iMessage previews. Ensure iOS devices display rich links successfully.',
   ogType: 'article',
   articlePublishedTime: '2025-12-16T00:00:00Z',
   articleModifiedTime: '2025-12-16T00:00:00Z',
@@ -122,9 +122,9 @@ useSeoMeta({
 useSchemaOrg([
   {
     '@type': 'WebPage',
-    'name': 'Slack Open Graph Meta Tags & Specs',
-    'description': 'The exact Open Graph specifications for Slack link unfurling',
-    'url': 'https://ogpreview.app/open-graph/slack',
+    'name': 'iMessage Open Graph Meta Tags & Specs',
+    'description': 'The exact Open Graph specifications for iMessage previews',
+    'url': 'https://ogpreview.app/open-graph/imessage',
     'author': {
       '@type': 'Organization',
       'name': 'ogpreview.app',
@@ -143,22 +143,23 @@ useSchemaOrg([
       {
         '@type': 'ListItem',
         'position': 2,
-        'name': 'Slack Open Graph Specs',
-        'item': 'https://ogpreview.app/open-graph/slack'
+        'name': 'iMessage Open Graph Specs',
+        'item': 'https://ogpreview.app/open-graph/imessage'
       }
     ]
   }
 ])
 
-const requiredTagsCode = `<!-- Essential Slack Tags -->
-<meta property="og:site_name" content="Your Brand Name" />
+const requiredTagsCode = `<!-- Standard Open Graph Requirements -->
 <meta property="og:title" content="Your Page Title" />
 <meta property="og:description" content="Your compelling description" />
 <meta property="og:image" content="https://example.com/image.jpg" />
-<meta property="og:url" content="https://example.com/page" />`
+<meta property="og:url" content="https://example.com/page" />
+
+<!-- Helpful Additional Tag -->
+<link rel="apple-touch-icon" href="https://example.com/icon.png" />`
 
 const nuxtExampleCode = `useSeoMeta({
-  ogSiteName: 'Your Brand Name',
   ogTitle: 'Your Page Title',
   ogDescription: 'Your compelling description',
   ogImage: 'https://example.com/image.jpg',
@@ -175,15 +176,17 @@ const nextjsExampleCode = `export const metadata = {
       height: 630,
     }],
     url: 'https://example.com/page',
-    siteName: 'Your Brand Name',
     type: 'website'
   },
+  icons: {
+    apple: 'https://example.com/icon.png',
+  }
 }`
 
 const relatedPlatforms = [
-  { name: 'Facebook', to: '/open-graph/facebook', icon: '📘' },
+  { name: 'WhatsApp', to: '/open-graph/whatsapp', icon: '📞' },
+  { name: 'Telegram', to: '/open-graph/telegram', icon: '✈️' },
   { name: 'Twitter', to: '/open-graph/twitter', icon: '𝕏' },
-  { name: 'LinkedIn', to: '/open-graph/linkedin', icon: '💼' },
-  { name: 'Discord', to: '/open-graph/discord', icon: '🎮' }
+  { name: 'Slack', to: '/open-graph/slack', icon: '💬' }
 ]
 </script>

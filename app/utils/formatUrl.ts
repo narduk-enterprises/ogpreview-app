@@ -1,3 +1,5 @@
+import { normalizeUrl } from './url'
+
 /**
  * Format a URL to display only the hostname
  */
@@ -24,26 +26,6 @@ export function extractDomain(url: string): string {
   catch {
     return 'domain'
   }
-}
-
-/**
- * Normalize a URL by adding protocol if missing
- * Accepts URLs with or without protocol
- * @param url - The URL to normalize
- * @returns Normalized URL with protocol
- */
-export function normalizeUrl(url: string): string {
-  if (!url) return ''
-
-  const trimmed = url.trim()
-
-  // Already has protocol
-  if (/^https?:\/\//i.test(trimmed)) {
-    return trimmed
-  }
-
-  // Add https:// by default
-  return `https://${trimmed}`
 }
 
 /**

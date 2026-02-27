@@ -1,5 +1,5 @@
 <template>
-  <main class="min-h-screen py-8 px-4 sm:px-6 lg:px-8 bg-gradient-to-br from-gray-50 via-blue-50 to-purple-50 dark:from-gray-900 dark:via-gray-900 dark:to-gray-800">
+  <main class="min-h-screen py-8 px-4 sm:px-6 lg:px-8 bg-linear-to-br from-gray-50 via-blue-50 to-purple-50 dark:from-gray-900 dark:via-gray-900 dark:to-gray-800">
     <div class="max-w-5xl mx-auto">
       <!-- Header -->
       <div class="text-center mb-12">
@@ -57,7 +57,7 @@
             class="group bg-white dark:bg-gray-800 rounded-lg p-4 shadow border border-gray-200 dark:border-gray-700 hover:shadow-lg hover:scale-105 transition-all"
           >
             <div class="mb-3 flex items-center justify-center w-10 h-10 rounded-lg bg-black/5 dark:bg-white/5 group-hover:scale-110 transition-transform">
-              <ContentPlatformIcon platform="Twitter" size="md" />
+              <PlatformIcon platform="Twitter" size="md" />
             </div>
             <h3 class="font-semibold text-gray-900 dark:text-white text-sm mb-1">
               Twitter Open Graph Guide
@@ -71,7 +71,7 @@
             class="group bg-white dark:bg-gray-800 rounded-lg p-4 shadow border border-gray-200 dark:border-gray-700 hover:shadow-lg hover:scale-105 transition-all"
           >
             <div class="mb-3 flex items-center justify-center w-10 h-10 rounded-lg bg-blue-50 dark:bg-blue-900/20 group-hover:scale-110 transition-transform">
-              <ContentPlatformIcon platform="Facebook" size="md" />
+              <PlatformIcon platform="Facebook" size="md" />
             </div>
             <h3 class="font-semibold text-gray-900 dark:text-white text-sm mb-1">
               Facebook Open Graph Guide
@@ -85,7 +85,7 @@
             class="group bg-white dark:bg-gray-800 rounded-lg p-4 shadow border border-gray-200 dark:border-gray-700 hover:shadow-lg hover:scale-105 transition-all"
           >
             <div class="mb-3 flex items-center justify-center w-10 h-10 rounded-lg bg-blue-50 dark:bg-blue-900/20 group-hover:scale-110 transition-transform">
-              <ContentPlatformIcon platform="LinkedIn" size="md" />
+              <PlatformIcon platform="LinkedIn" size="md" />
             </div>
             <h3 class="font-semibold text-gray-900 dark:text-white text-sm mb-1">
               LinkedIn Open Graph Guide
@@ -99,7 +99,7 @@
             class="group bg-white dark:bg-gray-800 rounded-lg p-4 shadow border border-gray-200 dark:border-gray-700 hover:shadow-lg hover:scale-105 transition-all"
           >
             <div class="mb-3 flex items-center justify-center w-10 h-10 rounded-lg bg-indigo-50 dark:bg-indigo-900/20 group-hover:scale-110 transition-transform">
-              <ContentPlatformIcon platform="Discord" size="md" />
+              <PlatformIcon platform="Discord" size="md" />
             </div>
             <h3 class="font-semibold text-gray-900 dark:text-white text-sm mb-1">
               Discord Open Graph Guide
@@ -113,7 +113,7 @@
             class="group bg-white dark:bg-gray-800 rounded-lg p-4 shadow border border-gray-200 dark:border-gray-700 hover:shadow-lg hover:scale-105 transition-all"
           >
             <div class="mb-3 flex items-center justify-center w-10 h-10 rounded-lg bg-purple-50 dark:bg-purple-900/20 group-hover:scale-110 transition-transform">
-              <ContentPlatformIcon platform="Slack" size="md" />
+              <PlatformIcon platform="Slack" size="md" />
             </div>
             <h3 class="font-semibold text-gray-900 dark:text-white text-sm mb-1">
               Slack Open Graph Guide
@@ -143,7 +143,7 @@
             </p>
           </NuxtLink>
           <NuxtLink
-            to="/og-image-size-guide"
+            to="/guides/og-image-sizes"
             class="group bg-white dark:bg-gray-800 rounded-lg p-4 shadow border border-gray-200 dark:border-gray-700 hover:shadow-lg transition-all"
           >
             <h3 class="font-semibold text-gray-900 dark:text-white mb-2">
@@ -179,7 +179,7 @@
       </div>
 
       <!-- CTA -->
-      <div class="bg-gradient-to-br from-blue-600 to-purple-600 rounded-xl p-8 text-center text-white">
+      <div class="bg-linear-to-br from-blue-600 to-purple-600 rounded-xl p-8 text-center text-white">
         <h2 class="text-2xl sm:text-3xl font-bold mb-4">
           Ready to test your Open Graph tags?
         </h2>
@@ -254,34 +254,10 @@ const guides = [
     icon: 'i-heroicons-book-open'
   },
   {
-    slug: 'facebook-link-preview',
-    title: 'Facebook Link Preview Optimization',
-    description: 'Learn how to create perfect Facebook link previews with the right OG tags, image sizes, and best practices.',
-    icon: 'i-simple-icons-facebook'
-  },
-  {
-    slug: 'twitter-card-preview',
-    title: 'Twitter Card Preview Guide',
-    description: 'Master Twitter Cards and learn the differences between OG tags and Twitter-specific meta tags.',
-    icon: 'i-simple-icons-x'
-  },
-  {
-    slug: 'linkedin-link-preview',
-    title: 'LinkedIn Link Preview Best Practices',
-    description: 'Optimize your professional content for LinkedIn with the right Open Graph implementation.',
-    icon: 'i-simple-icons-linkedin'
-  },
-  {
     slug: 'og-image-sizes',
     title: 'Open Graph Image Size Guide',
     description: 'Recommended image dimensions, aspect ratios, and file formats for every social media platform.',
     icon: 'i-heroicons-photo'
-  },
-  {
-    slug: 'telegram-og-image',
-    title: 'Telegram OG Image Size Limit Guide',
-    description: 'Complete guide to Telegram Open Graph image size limits (5MB max), recommended dimensions (1200×630px), and optimization tips.',
-    icon: 'i-simple-icons-telegram'
   },
   {
     slug: 'og-cache-refresh',

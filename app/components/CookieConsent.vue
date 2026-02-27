@@ -1,5 +1,10 @@
 <template>
-  <Transition name="slide-up">
+  <Transition
+    enter-active-class="transition transform duration-300 ease-out"
+    enter-from-class="translate-y-full"
+    leave-active-class="transition transform duration-300 ease-out"
+    leave-to-class="translate-y-full"
+  >
     <div
       v-if="showBanner"
       class="fixed bottom-0 left-0 right-0 z-50 bg-white dark:bg-gray-800 border-t border-gray-200 dark:border-gray-700 shadow-lg"
@@ -88,14 +93,3 @@ function updateGtagConsent(state: 'granted' | 'denied') {
 }
 </script>
 
-<style scoped>
-.slide-up-enter-active,
-.slide-up-leave-active {
-  transition: transform 0.3s ease-out;
-}
-
-.slide-up-enter-from,
-.slide-up-leave-to {
-  transform: translateY(100%);
-}
-</style>

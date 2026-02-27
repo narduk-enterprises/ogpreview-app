@@ -4,7 +4,6 @@ export default defineNuxtConfig({
     '@nuxt/ui',
     '@nuxt/fonts',
     '@nuxt/image',
-    '@nuxt/content',
     '@nuxtjs/seo',
     '@nuxt/eslint',
     'nuxt-og-image',
@@ -20,7 +19,13 @@ export default defineNuxtConfig({
   },
 
   ui: {
-    colorMode: true
+    colorMode: true,
+  },
+
+  icon: {
+    serverBundle: {
+      collections: ['heroicons', 'simple-icons', 'lucide']
+    }
   },
 
   colorMode: {
@@ -90,18 +95,6 @@ export default defineNuxtConfig({
     }
   },
 
-  content: {
-    // @nuxt/content v3 — edge-compatible, SQL-based storage
-    build: {
-      markdown: {
-        toc: { depth: 3 },
-        highlight: {
-          langs: ['typescript', 'vue', 'bash', 'json', 'css', 'html'],
-        },
-      },
-    },
-  },
-
   sitemap: {},
 
   robots: {
@@ -135,11 +128,7 @@ export default defineNuxtConfig({
         '/why-og-images-not-updating',
         '/guides',
         '/guides/open-graph-preview',
-        '/guides/og-image-sizes',
-        '/guides/twitter-card-preview',
         '/guides/og-cache-refresh',
-        '/guides/facebook-link-preview',
-        '/guides/linkedin-link-preview',
         '/about',
         '/changelog',
         '/sitemap.xml',

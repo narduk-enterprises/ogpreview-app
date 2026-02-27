@@ -1,6 +1,6 @@
 <template>
   <ClientOnly>
-    <div class="adsense-container">
+    <div class="adsense-container min-h-[100px]">
       <ins
         ref="adSlotRef"
         class="adsbygoogle"
@@ -12,7 +12,7 @@
       />
     </div>
     <template #fallback>
-      <div class="adsense-container" aria-hidden="true" />
+      <div class="adsense-container min-h-[100px]" aria-hidden="true" />
     </template>
   </ClientOnly>
 </template>
@@ -51,8 +51,3 @@ function initializeAd() {
 }
 </script>
 
-<style scoped>
-.adsense-container {
-  min-height: 100px;
-}
-</style>

@@ -15,30 +15,51 @@
     </p>
 
     <div class="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-4 sm:gap-4">
-      <NuxtLink
-        v-for="platform in platforms"
-        :key="platform.name"
-        :to="platform.guideUrl || '#'"
-        class="bg-white dark:bg-gray-800 rounded-lg p-5 sm:p-5 shadow-sm border border-gray-200 dark:border-gray-700 hover:shadow-md transition-all hover:scale-105 duration-200"
-        :class="{ 'cursor-pointer': platform.guideUrl, 'cursor-default': !platform.guideUrl }"
-      >
-        <div class="flex flex-col items-center text-center gap-3 sm:gap-3">
-          <div
-            class="w-14 h-14 sm:w-14 sm:h-14 rounded-xl flex items-center justify-center transition-transform group-hover:scale-110"
-            :style="{ backgroundColor: platform.color + '15' }"
-          >
-            <ContentPlatformIcon :platform="platform.name" size="xl" />
+      <template v-for="platform in platforms" :key="platform.name">
+        <NuxtLink
+          v-if="platform.guideUrl"
+          :to="platform.guideUrl"
+          class="bg-white dark:bg-gray-800 rounded-lg p-5 sm:p-5 shadow-sm border border-gray-200 dark:border-gray-700 hover:shadow-md transition-all hover:scale-105 duration-200 cursor-pointer"
+        >
+          <div class="flex flex-col items-center text-center gap-3 sm:gap-3">
+            <div
+              class="w-14 h-14 sm:w-14 sm:h-14 rounded-xl flex items-center justify-center transition-transform group-hover:scale-110"
+              :style="{ backgroundColor: platform.color + '15' }"
+            >
+              <PlatformIcon :platform="platform.name" size="xl" />
+            </div>
+            <div>
+              <h3 class="font-semibold text-gray-900 dark:text-white text-base sm:text-base">
+                {{ platform.name }}
+              </h3>
+              <p class="text-sm sm:text-xs text-gray-500 dark:text-gray-400 mt-1 sm:mt-0.5">
+                {{ platform.type }}
+              </p>
+            </div>
           </div>
-          <div>
-            <h3 class="font-semibold text-gray-900 dark:text-white text-base sm:text-base">
-              {{ platform.name }}
-            </h3>
-            <p class="text-sm sm:text-xs text-gray-500 dark:text-gray-400 mt-1 sm:mt-0.5">
-              {{ platform.type }}
-            </p>
+        </NuxtLink>
+        <div
+          v-else
+          class="bg-white dark:bg-gray-800 rounded-lg p-5 sm:p-5 shadow-sm border border-gray-200 dark:border-gray-700 hover:shadow-md transition-all hover:scale-105 duration-200 cursor-default"
+        >
+          <div class="flex flex-col items-center text-center gap-3 sm:gap-3">
+            <div
+              class="w-14 h-14 sm:w-14 sm:h-14 rounded-xl flex items-center justify-center transition-transform group-hover:scale-110"
+              :style="{ backgroundColor: platform.color + '15' }"
+            >
+              <PlatformIcon :platform="platform.name" size="xl" />
+            </div>
+            <div>
+              <h3 class="font-semibold text-gray-900 dark:text-white text-base sm:text-base">
+                {{ platform.name }}
+              </h3>
+              <p class="text-sm sm:text-xs text-gray-500 dark:text-gray-400 mt-1 sm:mt-0.5">
+                {{ platform.type }}
+              </p>
+            </div>
           </div>
         </div>
-      </NuxtLink>
+      </template>
     </div>
 
     <div class="mt-6 sm:mt-8 text-center">

@@ -2,7 +2,7 @@
   <div class="not-prose platform-section my-8">
     <h3 v-if="platform" class="text-xl font-bold mb-6 flex items-center gap-3 text-gray-900 dark:text-white">
       <div class="w-10 h-10 rounded-lg bg-white dark:bg-gray-700 flex items-center justify-center shadow-sm">
-        <ContentPlatformIcon :platform="platform" size="md" />
+        <PlatformIcon :platform="platform" size="md" />
       </div>
       {{ platform }}
     </h3>
@@ -66,31 +66,4 @@ withDefaults(defineProps<Props>(), {
 })
 </script>
 
-<style scoped>
-.platform-section {
-  background: linear-gradient(to bottom right, rgb(249 250 251), rgb(243 244 246));
-  border: 1px solid rgb(229 231 235);
-  border-left: 4px solid rgb(59 130 246);
-  border-radius: 0.75rem;
-  padding: 2rem;
-  box-shadow: 0 1px 3px 0 rgb(0 0 0 / 0.1);
-  transition: all 0.2s ease;
-}
 
-.platform-section:hover {
-  box-shadow: 0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1);
-  border-left-color: rgb(37 99 235);
-}
-
-@media (prefers-color-scheme: dark) {
-  .platform-section {
-    background: linear-gradient(to bottom right, rgb(31 41 55), rgb(17 24 39));
-    border-color: rgb(55 65 81);
-    border-left-color: rgb(96 165 250);
-  }
-
-  .platform-section:hover {
-    border-left-color: rgb(147 197 253);
-  }
-}
-</style>

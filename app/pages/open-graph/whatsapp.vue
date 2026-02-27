@@ -1,17 +1,17 @@
 <template>
   <LayoutsArticleLayout
-    title="Slack Open Graph Meta Tags & Specs"
-    description="The exact Open Graph specifications for Slack previews. Learn the exact image dimensions, required meta tags, and best practices for perfect workspace link unfurling."
+    title="WhatsApp Open Graph Meta Tags & Specs"
+    description="The exact Open Graph specifications for WhatsApp. Learn how to display images and descriptions correctly in WhatsApp link previews."
     :back-link="{ to: '/', label: 'Back to Tool' }"
     :metadata="{ date: 'Updated December 2025', readTime: '3 min read' }"
   >
     <template #cta>
       <ContentCTA
-        title="Test Your Slack Link Previews"
-        description="Preview how your links will appear on Slack and all other platforms instantly."
+        title="Test Your WhatsApp Link Previews"
+        description="Preview how your links will appear on WhatsApp and all other platforms instantly."
         button-text="Try the Free Preview Tool" 
         button-to="/" 
-        variant="blue" 
+        variant="green" 
       />
     </template>
 
@@ -25,33 +25,33 @@
     </template>
 
     <ContentCallout variant="info" title="Quick Answer" icon="i-heroicons-light-bulb">
-      Slack reads standard Open Graph properties and heavily prioritizes the <code>og:site_name</code> and <code>twitter:image</code> (if provided). Keep aspect ratios between 1.91:1 and 2:1. Slack will automatically compress files over 10MB but smaller is safer.
+      WhatsApp requires smaller images to ensure previews load. Recommended size is <strong>300x200px</strong> (or a small square), and the image file must be <strong>under 300KB</strong> to appear reliably in chats.
     </ContentCallout>
 
     <!-- Specs Dashboard -->
     <div class="my-12">
-      <h2 class="text-2xl font-bold text-gray-900 dark:text-white mb-6">Slack Image Specs</h2>
+      <h2 class="text-2xl font-bold text-gray-900 dark:text-white mb-6">WhatsApp Image Specs</h2>
       <div class="grid sm:grid-cols-2 gap-4">
         <UCard>
           <div class="flex items-center gap-3 mb-2">
-            <UIcon name="i-heroicons-photo" class="w-6 h-6 text-fuchsia-600" />
+            <UIcon name="i-heroicons-photo" class="w-6 h-6 text-green-500" />
             <h3 class="font-semibold text-gray-900 dark:text-white">Recommended Size</h3>
           </div>
           <p class="text-2xl font-bold text-gray-900 dark:text-white">
             1200 × 630px
           </p>
-          <p class="text-sm text-gray-500 mt-1">1:1 square images also display differently, rendering as side-thumbs.</p>
+          <p class="text-sm text-gray-500 mt-1">Automatically downscaled. Direct small images (300x200) work best if below 300KB.</p>
         </UCard>
         
         <UCard>
           <div class="flex items-center gap-3 mb-2">
-            <UIcon name="i-heroicons-document-arrow-down" class="w-6 h-6 text-fuchsia-600" />
+            <UIcon name="i-heroicons-document-arrow-down" class="w-6 h-6 text-green-500" />
             <h3 class="font-semibold text-gray-900 dark:text-white">File Limitations</h3>
           </div>
           <p class="text-2xl font-bold text-gray-900 dark:text-white">
-            Max 12MB
+            Max 300KB
           </p>
-          <p class="text-sm text-gray-500 mt-1">Formats: JPG, PNG, GIF</p>
+          <p class="text-sm text-gray-500 mt-1">If larger, WhatsApp may omit the image preview entirely.</p>
         </UCard>
       </div>
     </div>
@@ -78,25 +78,25 @@
         <ul class="space-y-3">
           <li class="flex items-start gap-2">
             <UIcon name="i-heroicons-check-circle" class="w-5 h-5 text-green-500 shrink-0 mt-0.5" />
-            <span class="text-gray-700 dark:text-gray-300"><strong>Use a recognizable og:site_name.</strong> Slack bolds this at the top of the "unfurled" preview for context.</span>
+            <span class="text-gray-700 dark:text-gray-300"><strong>Compress images heavily.</strong> The absolute most common reason WhatsApp previews fail is the image being over 300KB.</span>
           </li>
           <li class="flex items-start gap-2">
             <UIcon name="i-heroicons-check-circle" class="w-5 h-5 text-green-500 shrink-0 mt-0.5" />
-            <span class="text-gray-700 dark:text-gray-300"><strong>Images should be strictly absolute URLs.</strong> Slackbot fails completely on root relative paths (e.g. <code>/images/cool.png</code>).</span>
+            <span class="text-gray-700 dark:text-gray-300"><strong>Include standard Open Graph tags.</strong> WhatsApp reads <code>og:title</code>, <code>og:description</code>, and <code>og:image</code>.</span>
           </li>
           <li class="flex items-start gap-2">
             <UIcon name="i-heroicons-check-circle" class="w-5 h-5 text-green-500 shrink-0 mt-0.5" />
-            <span class="text-gray-700 dark:text-gray-300"><strong>Ensure quick TTFB limits.</strong> Slackbot times out internally if crawling your linked page takes too long. Setup CDN caching.</span>
+            <span class="text-gray-700 dark:text-gray-300"><strong>Provide a square fallback.</strong> Although landscapes work, a 1:1 image prevents cropping issues in smaller mobile contexts.</span>
           </li>
         </ul>
       </div>
 
       <div>
         <h2 class="text-2xl font-bold text-gray-900 dark:text-white mb-4">Troubleshooting</h2>
-        <UCard class="bg-fuchsia-50 dark:bg-fuchsia-900/10 border-fuchsia-100 dark:border-fuchsia-900">
-          <h3 class="font-semibold text-fuchsia-900 dark:text-fuchsia-300 mb-2">Preview Not Generating?</h3>
-          <p class="text-sm text-fuchsia-800 dark:text-fuchsia-200 mb-4">
-            If your domain is new or Slackbot failed to fetch once, it may temporarily blacklist fetching your preview. The user usually has to enter `/url` or right click to force unfurl.
+        <UCard class="bg-green-50 dark:bg-green-900/10 border-green-100 dark:border-green-900">
+          <h3 class="font-semibold text-green-900 dark:text-green-300 mb-2">My Image Won't Appear in WhatsApp</h3>
+          <p class="text-sm text-green-800 dark:text-green-200 mb-4">
+            If your image doesn't appear when tested in a chat, it is almost certainly because the image file size is over 300KB. Optimize your image file size immediately. Use formats like JPEG for photos to save space.
           </p>
         </UCard>
       </div>
@@ -106,12 +106,12 @@
 
 <script setup lang="ts">
 useSeoMeta({
-  title: 'Slack Open Graph Meta Tags & Specs',
-  description: 'The exact open graph specifications for Slack workspaces. Build properly scaled image links, copy-paste starter tags, and configure unfurling correctly.',
-  keywords: 'slack og tags, slack open graph, slack link preview, slackbot link fetch, default slack unfurl',
+  title: 'WhatsApp Open Graph Meta Tags & Specs',
+  description: 'The exact open graph specifications for WhatsApp link previews. Keep images under 300KB for them to appear reliably in chats.',
+  keywords: 'whatsapp og tags, whatsapp open graph, whatsapp link preview, whatsapp image limit',
   robots: 'index, follow',
-  ogTitle: 'Slack Open Graph Meta Tags & Specs',
-  ogDescription: 'The exact open graph specifications for Slack workspaces. Build properly scaled image links and configure unfurling.',
+  ogTitle: 'WhatsApp Open Graph Meta Tags & Specs',
+  ogDescription: 'The exact open graph specifications for WhatsApp previews. Keep images under 300KB.',
   ogType: 'article',
   articlePublishedTime: '2025-12-16T00:00:00Z',
   articleModifiedTime: '2025-12-16T00:00:00Z',
@@ -122,9 +122,9 @@ useSeoMeta({
 useSchemaOrg([
   {
     '@type': 'WebPage',
-    'name': 'Slack Open Graph Meta Tags & Specs',
-    'description': 'The exact Open Graph specifications for Slack link unfurling',
-    'url': 'https://ogpreview.app/open-graph/slack',
+    'name': 'WhatsApp Open Graph Meta Tags & Specs',
+    'description': 'The exact Open Graph specifications for WhatsApp previews',
+    'url': 'https://ogpreview.app/open-graph/whatsapp',
     'author': {
       '@type': 'Organization',
       'name': 'ogpreview.app',
@@ -143,26 +143,27 @@ useSchemaOrg([
       {
         '@type': 'ListItem',
         'position': 2,
-        'name': 'Slack Open Graph Specs',
-        'item': 'https://ogpreview.app/open-graph/slack'
+        'name': 'WhatsApp Open Graph Specs',
+        'item': 'https://ogpreview.app/open-graph/whatsapp'
       }
     ]
   }
 ])
 
-const requiredTagsCode = `<!-- Essential Slack Tags -->
-<meta property="og:site_name" content="Your Brand Name" />
+const requiredTagsCode = `<!-- WhatsApp Requirements (Standard OG) -->
 <meta property="og:title" content="Your Page Title" />
 <meta property="og:description" content="Your compelling description" />
-<meta property="og:image" content="https://example.com/image.jpg" />
-<meta property="og:url" content="https://example.com/page" />`
+<!-- CRITICAL: Image must be under 300KB! -->
+<meta property="og:image" content="https://example.com/image-optimized.jpg" />
+<meta property="og:url" content="https://example.com/page" />
+<meta property="og:type" content="website" />`
 
 const nuxtExampleCode = `useSeoMeta({
-  ogSiteName: 'Your Brand Name',
   ogTitle: 'Your Page Title',
   ogDescription: 'Your compelling description',
-  ogImage: 'https://example.com/image.jpg',
+  ogImage: 'https://example.com/image-optimized.jpg',
   ogUrl: 'https://example.com/page',
+  ogType: 'website',
 })`
 
 const nextjsExampleCode = `export const metadata = {
@@ -170,20 +171,19 @@ const nextjsExampleCode = `export const metadata = {
     title: 'Your Page Title',
     description: 'Your compelling description',
     images: [{
-      url: 'https://example.com/image.jpg',
+      url: 'https://example.com/image-optimized.jpg',
       width: 1200,
       height: 630,
     }],
     url: 'https://example.com/page',
-    siteName: 'Your Brand Name',
     type: 'website'
-  },
+  }
 }`
 
 const relatedPlatforms = [
+  { name: 'Telegram', to: '/open-graph/telegram', icon: '✈️' },
   { name: 'Facebook', to: '/open-graph/facebook', icon: '📘' },
-  { name: 'Twitter', to: '/open-graph/twitter', icon: '𝕏' },
   { name: 'LinkedIn', to: '/open-graph/linkedin', icon: '💼' },
-  { name: 'Discord', to: '/open-graph/discord', icon: '🎮' }
+  { name: 'iMessage', to: '/open-graph/imessage', icon: '💬' }
 ]
 </script>

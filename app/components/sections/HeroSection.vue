@@ -24,21 +24,4 @@
   </header>
 </template>
 
-<style scoped>
-@keyframes gradient {
 
-  0%,
-  100% {
-    background-position: 0% 50%;
-  }
-
-  50% {
-    background-position: 100% 50%;
-  }
-}
-
-.animate-gradient {
-  background-size: 200% auto;
-  animation: gradient 8s ease infinite;
-}
-</style>
