@@ -25,6 +25,7 @@
     "setup:gsc:verify": "npx jiti tools/setup-analytics.ts gsc:verify",
     "setup:ga": "npx jiti tools/setup-analytics.ts ga",
     "setup:indexnow": "npx jiti tools/setup-analytics.ts indexnow",
+    "submit:indexnow": "npx tsx tools/indexnow.ts",
     "build:plugins": "cd eslint-plugin-nuxt-ui && pnpm run build && cd ../eslint-plugin-nuxt-guardrails && pnpm run build && cd ../tools/eslint-plugin-vue-official-best-practices && pnpm run build"
   },
   "dependencies": {
