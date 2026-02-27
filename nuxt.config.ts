@@ -39,7 +39,7 @@ export default defineNuxtConfig({
     gaPropertyId: process.env.GA_PROPERTY_ID || '',
     posthogProjectId: process.env.POSTHOG_PROJECT_ID || '',
     public: {
-      appUrl: process.env.SITE_URL || 'https://ogpreview-app.workers.dev',
+      appUrl: process.env.SITE_URL || 'https://ogpreview.app',
       appName: process.env.APP_NAME || 'OG Preview',
       // Analytics
       posthogPublicKey: process.env.POSTHOG_PUBLIC_KEY || '',
@@ -57,7 +57,7 @@ export default defineNuxtConfig({
   // these via the `useSeo()` composable.
 
   site: {
-    url: process.env.SITE_URL || 'https://ogpreview-app.workers.dev',
+    url: process.env.SITE_URL || 'https://ogpreview.app',
     name: 'OG Preview',
     description: 'Free Open Graph preview tool. Test how your links appear on Facebook, Twitter, LinkedIn, Slack, Discord, and WhatsApp before publishing.',
     defaultLocale: 'en',
@@ -73,7 +73,7 @@ export default defineNuxtConfig({
     identity: {
       type: 'Organization',
       name: 'OG Preview',
-      url: process.env.SITE_URL || 'https://ogpreview-app.workers.dev',
+      url: process.env.SITE_URL || 'https://ogpreview.app',
       logo: '/favicon.svg',
     },
   },
@@ -81,7 +81,7 @@ export default defineNuxtConfig({
   image: {
     provider: 'cloudflare',
     cloudflare: {
-      baseURL: process.env.SITE_URL || 'https://ogpreview-app.workers.dev',
+      baseURL: process.env.SITE_URL || 'https://ogpreview.app',
     },
     domains: ['images.unsplash.com'],
     presets: {
@@ -122,6 +122,9 @@ export default defineNuxtConfig({
         '/open-graph/linkedin',
         '/open-graph/discord',
         '/open-graph/slack',
+        '/open-graph/telegram',
+        '/open-graph/whatsapp',
+        '/open-graph/imessage',
         '/what-is-open-graph',
         '/og-image-size-guide',
         '/open-graph-debugging',
