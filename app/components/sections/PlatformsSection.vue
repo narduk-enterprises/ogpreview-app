@@ -121,21 +121,21 @@ const platforms = [
     type: 'Messaging',
     icon: '💚',
     color: '#25D366',
-    guideUrl: null
+    guideUrl: '/open-graph/whatsapp'
   },
   {
     name: 'Telegram',
     type: 'Messaging',
     icon: '✈️',
     color: '#26A5E4',
-    guideUrl: null
+    guideUrl: '/open-graph/telegram'
   },
   {
     name: 'iMessage',
     type: 'Messaging',
     icon: '💙',
     color: '#007AFF',
-    guideUrl: null
+    guideUrl: '/open-graph/imessage'
   }
 ]
 </script>
