@@ -51,10 +51,10 @@ function getScoreLabel(score: number): string {
 
 <template>
   <div
-    class="mt-6 p-4 sm:p-6 bg-linear-to-br from-blue-50 to-purple-50 dark:from-gray-700 dark:to-gray-800 rounded-xl border border-blue-200 dark:border-gray-600"
+    class="mt-6 p-4 sm:p-6 bg-linear-to-br from-primary-500 to-primary-500 dark:from-primary-500 dark:to-primary-500 rounded-xl border border-default dark:border-default"
   >
     <div class="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-3 sm:gap-0 mb-4">
-      <h3 class="text-lg sm:text-lg font-bold text-gray-800 dark:text-gray-100">
+      <h3 class="text-lg sm:text-lg font-bold text-primary dark:text-primary">
         OG Tag Quality Score
       </h3>
       <div class="flex items-center gap-2 w-full sm:w-auto justify-start sm:justify-end">
@@ -71,12 +71,12 @@ function getScoreLabel(score: number): string {
 
     <div class="mb-4">
       <div class="flex items-center justify-between mb-2">
-        <span class="text-sm sm:text-sm font-medium text-gray-700 dark:text-gray-300">Overall Score</span>
+        <span class="text-sm sm:text-sm font-medium text-primary dark:text-dimmed">Overall Score</span>
         <span :class="['text-sm sm:text-sm font-semibold', getScoreTextColor(scores.overall)]">
           {{ getScoreLabel(scores.overall) }}
         </span>
       </div>
-      <div class="w-full bg-gray-200 dark:bg-gray-700 rounded-full h-3 sm:h-3 overflow-hidden">
+      <div class="w-full bg-muted dark:bg-elevated rounded-full h-3 sm:h-3 overflow-hidden">
         <div
           :class="['h-full transition-all duration-500', getScoreColorClass(scores.overall)]"
           :style="{ width: `${scores.overall}%` }"
@@ -97,22 +97,22 @@ function getScoreLabel(score: number): string {
 
     <div
       v-show="showDetails"
-      class="space-y-3 mt-4 pt-4 border-t border-gray-200 dark:border-gray-600"
+      class="space-y-3 mt-4 pt-4 border-t border-default dark:border-default"
     >
       <!-- Facebook Score -->
       <div>
         <div class="flex items-center justify-between mb-2">
           <div class="flex items-center gap-2.5 sm:gap-2">
-            <div class="w-9 h-9 sm:w-8 sm:h-8 bg-blue-600 rounded-full flex items-center justify-center text-white font-bold text-sm">
+            <div class="w-9 h-9 sm:w-8 sm:h-8 bg-elevated rounded-full flex items-center justify-center text-white font-bold text-sm">
               F
             </div>
-            <span class="text-base sm:text-sm font-medium text-gray-700 dark:text-gray-300">Facebook</span>
+            <span class="text-base sm:text-sm font-medium text-primary dark:text-dimmed">Facebook</span>
           </div>
           <span :class="['text-sm sm:text-sm font-semibold', getScoreTextColor(scores.facebook.score)]">
             {{ scores.facebook.score }}/100
           </span>
         </div>
-        <div class="w-full bg-gray-200 dark:bg-gray-700 rounded-full h-2.5 sm:h-2 overflow-hidden">
+        <div class="w-full bg-muted dark:bg-elevated rounded-full h-2.5 sm:h-2 overflow-hidden">
           <div
             :class="['h-full transition-all duration-500', getScoreColorClass(scores.facebook.score)]"
             :style="{ width: `${scores.facebook.score}%` }"
@@ -124,16 +124,16 @@ function getScoreLabel(score: number): string {
       <div>
         <div class="flex items-center justify-between mb-2">
           <div class="flex items-center gap-2.5 sm:gap-2">
-            <div class="w-9 h-9 sm:w-8 sm:h-8 bg-sky-500 rounded-full flex items-center justify-center text-white font-bold text-sm">
+            <div class="w-9 h-9 sm:w-8 sm:h-8 bg-muted rounded-full flex items-center justify-center text-white font-bold text-sm">
               🐦
             </div>
-            <span class="text-base sm:text-sm font-medium text-gray-700 dark:text-gray-300">Twitter</span>
+            <span class="text-base sm:text-sm font-medium text-primary dark:text-dimmed">Twitter</span>
           </div>
           <span :class="['text-sm sm:text-sm font-semibold', getScoreTextColor(scores.twitter.score)]">
             {{ scores.twitter.score }}/100
           </span>
         </div>
-        <div class="w-full bg-gray-200 dark:bg-gray-700 rounded-full h-2.5 sm:h-2 overflow-hidden">
+        <div class="w-full bg-muted dark:bg-elevated rounded-full h-2.5 sm:h-2 overflow-hidden">
           <div
             :class="['h-full transition-all duration-500', getScoreColorClass(scores.twitter.score)]"
             :style="{ width: `${scores.twitter.score}%` }"
@@ -145,16 +145,16 @@ function getScoreLabel(score: number): string {
       <div>
         <div class="flex items-center justify-between mb-2">
           <div class="flex items-center gap-2.5 sm:gap-2">
-            <div class="w-9 h-9 sm:w-8 sm:h-8 bg-blue-700 rounded-full flex items-center justify-center text-white font-bold text-sm">
+            <div class="w-9 h-9 sm:w-8 sm:h-8 bg-elevated rounded-full flex items-center justify-center text-white font-bold text-sm">
               in
             </div>
-            <span class="text-base sm:text-sm font-medium text-gray-700 dark:text-gray-300">LinkedIn</span>
+            <span class="text-base sm:text-sm font-medium text-primary dark:text-dimmed">LinkedIn</span>
           </div>
           <span :class="['text-sm sm:text-sm font-semibold', getScoreTextColor(scores.linkedin.score)]">
             {{ scores.linkedin.score }}/100
           </span>
         </div>
-        <div class="w-full bg-gray-200 dark:bg-gray-700 rounded-full h-2.5 sm:h-2 overflow-hidden">
+        <div class="w-full bg-muted dark:bg-elevated rounded-full h-2.5 sm:h-2 overflow-hidden">
           <div
             :class="['h-full transition-all duration-500', getScoreColorClass(scores.linkedin.score)]"
             :style="{ width: `${scores.linkedin.score}%` }"
@@ -166,16 +166,16 @@ function getScoreLabel(score: number): string {
       <div>
         <div class="flex items-center justify-between mb-2">
           <div class="flex items-center gap-2.5 sm:gap-2">
-            <div class="w-9 h-9 sm:w-8 sm:h-8 bg-purple-600 rounded-full flex items-center justify-center text-white font-bold text-sm">
+            <div class="w-9 h-9 sm:w-8 sm:h-8 bg-elevated rounded-full flex items-center justify-center text-white font-bold text-sm">
               #
             </div>
-            <span class="text-base sm:text-sm font-medium text-gray-700 dark:text-gray-300">Slack</span>
+            <span class="text-base sm:text-sm font-medium text-primary dark:text-dimmed">Slack</span>
           </div>
           <span :class="['text-sm sm:text-sm font-semibold', getScoreTextColor(scores.slack.score)]">
             {{ scores.slack.score }}/100
           </span>
         </div>
-        <div class="w-full bg-gray-200 dark:bg-gray-700 rounded-full h-2.5 sm:h-2 overflow-hidden">
+        <div class="w-full bg-muted dark:bg-elevated rounded-full h-2.5 sm:h-2 overflow-hidden">
           <div
             :class="['h-full transition-all duration-500', getScoreColorClass(scores.slack.score)]"
             :style="{ width: `${scores.slack.score}%` }"
@@ -187,16 +187,16 @@ function getScoreLabel(score: number): string {
       <div>
         <div class="flex items-center justify-between mb-2">
           <div class="flex items-center gap-2.5 sm:gap-2">
-            <div class="w-9 h-9 sm:w-8 sm:h-8 bg-indigo-600 rounded-full flex items-center justify-center text-white font-bold text-sm">
+            <div class="w-9 h-9 sm:w-8 sm:h-8 bg-elevated rounded-full flex items-center justify-center text-white font-bold text-sm">
               <PlatformIcon platform="Discord" size="sm" />
             </div>
-            <span class="text-base sm:text-sm font-medium text-gray-700 dark:text-gray-300">Discord</span>
+            <span class="text-base sm:text-sm font-medium text-primary dark:text-dimmed">Discord</span>
           </div>
           <span :class="['text-sm sm:text-sm font-semibold', getScoreTextColor(scores.discord.score)]">
             {{ scores.discord.score }}/100
           </span>
         </div>
-        <div class="w-full bg-gray-200 dark:bg-gray-700 rounded-full h-2.5 sm:h-2 overflow-hidden">
+        <div class="w-full bg-muted dark:bg-elevated rounded-full h-2.5 sm:h-2 overflow-hidden">
           <div
             :class="['h-full transition-all duration-500', getScoreColorClass(scores.discord.score)]"
             :style="{ width: `${scores.discord.score}%` }"
@@ -208,16 +208,16 @@ function getScoreLabel(score: number): string {
       <div>
         <div class="flex items-center justify-between mb-2">
           <div class="flex items-center gap-2.5 sm:gap-2">
-            <div class="w-9 h-9 sm:w-8 sm:h-8 bg-green-600 rounded-full flex items-center justify-center text-white font-bold text-sm">
+            <div class="w-9 h-9 sm:w-8 sm:h-8 bg-elevated rounded-full flex items-center justify-center text-white font-bold text-sm">
               <PlatformIcon platform="WhatsApp" size="sm" />
             </div>
-            <span class="text-base sm:text-sm font-medium text-gray-700 dark:text-gray-300">WhatsApp</span>
+            <span class="text-base sm:text-sm font-medium text-primary dark:text-dimmed">WhatsApp</span>
           </div>
           <span :class="['text-sm sm:text-sm font-semibold', getScoreTextColor(scores.whatsapp.score)]">
             {{ scores.whatsapp.score }}/100
           </span>
         </div>
-        <div class="w-full bg-gray-200 dark:bg-gray-700 rounded-full h-2.5 sm:h-2 overflow-hidden">
+        <div class="w-full bg-muted dark:bg-elevated rounded-full h-2.5 sm:h-2 overflow-hidden">
           <div
             :class="['h-full transition-all duration-500', getScoreColorClass(scores.whatsapp.score)]"
             :style="{ width: `${scores.whatsapp.score}%` }"
@@ -229,16 +229,16 @@ function getScoreLabel(score: number): string {
       <div>
         <div class="flex items-center justify-between mb-2">
           <div class="flex items-center gap-2.5 sm:gap-2">
-            <div class="w-9 h-9 sm:w-8 sm:h-8 bg-cyan-600 rounded-full flex items-center justify-center text-white font-bold text-sm">
+            <div class="w-9 h-9 sm:w-8 sm:h-8 bg-elevated rounded-full flex items-center justify-center text-white font-bold text-sm">
               <PlatformIcon platform="Telegram" size="sm" />
             </div>
-            <span class="text-base sm:text-sm font-medium text-gray-700 dark:text-gray-300">Telegram</span>
+            <span class="text-base sm:text-sm font-medium text-primary dark:text-dimmed">Telegram</span>
           </div>
           <span :class="['text-sm sm:text-sm font-semibold', getScoreTextColor(scores.telegram.score)]">
             {{ scores.telegram.score }}/100
           </span>
         </div>
-        <div class="w-full bg-gray-200 dark:bg-gray-700 rounded-full h-2.5 sm:h-2 overflow-hidden">
+        <div class="w-full bg-muted dark:bg-elevated rounded-full h-2.5 sm:h-2 overflow-hidden">
           <div
             :class="['h-full transition-all duration-500', getScoreColorClass(scores.telegram.score)]"
             :style="{ width: `${scores.telegram.score}%` }"
@@ -250,16 +250,16 @@ function getScoreLabel(score: number): string {
       <div>
         <div class="flex items-center justify-between mb-2">
           <div class="flex items-center gap-2.5 sm:gap-2">
-            <div class="w-9 h-9 sm:w-8 sm:h-8 bg-gray-600 rounded-full flex items-center justify-center text-white font-bold text-sm">
+            <div class="w-9 h-9 sm:w-8 sm:h-8 bg-elevated rounded-full flex items-center justify-center text-white font-bold text-sm">
               <PlatformIcon platform="iMessage" size="sm" />
             </div>
-            <span class="text-base sm:text-sm font-medium text-gray-700 dark:text-gray-300">iMessage</span>
+            <span class="text-base sm:text-sm font-medium text-primary dark:text-dimmed">iMessage</span>
           </div>
           <span :class="['text-sm sm:text-sm font-semibold', getScoreTextColor(scores.imessage.score)]">
             {{ scores.imessage.score }}/100
           </span>
         </div>
-        <div class="w-full bg-gray-200 dark:bg-gray-700 rounded-full h-2.5 sm:h-2 overflow-hidden">
+        <div class="w-full bg-muted dark:bg-elevated rounded-full h-2.5 sm:h-2 overflow-hidden">
           <div
             :class="['h-full transition-all duration-500', getScoreColorClass(scores.imessage.score)]"
             :style="{ width: `${scores.imessage.score}%` }"

@@ -13,13 +13,21 @@
  */
 
 import { getQuery, setResponseHeaders, setResponseStatus } from 'h3'
+import { z } from 'zod'
 import { unfurlUrl } from '../../utils/unfurlCore'
 import type { UnfurlResponse } from '~~/types/og'
 
+const QuerySchema = z.object({ url: z.string().optional() })
+
 export default defineEventHandler(async (event): Promise<UnfurlResponse> => {
   const query = getQuery(event)
-  // Ignore cache busting parameter (_t)
-  const url = query.url as string
+  const parsed = QuerySchema.safeParse(query)
+  const url = parsed.success ? parsed.data.url : undefined
+  
+  if (!url) {
+    setResponseStatus(event, 400)
+    return { ok: false, error: { code: 'MISSING_URL', message: 'URL parameter is required' } }
+  }
 
   // Use shared core unfurl logic with no-store cache mode
   const { response, status } = await unfurlUrl(url, { cacheMode: 'no-store' })

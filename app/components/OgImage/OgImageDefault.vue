@@ -1,15 +1,5 @@
-<!-- 
-  OG Image Default Template
-  
-  Rendered at the edge via Satori (part of nuxt-og-image / @nuxtjs/seo).
-  This is the default template used when calling `defineOgImage()` or
-  the `useSeo({ ogImage: {...} })` composable.
-  
-  Satori renders this Vue component to an SVG, then converts to PNG.
-  Note: Satori has limited CSS support — use inline styles and flexbox only.
-  No Tailwind classes, no CSS Grid, no pseudo-elements.
--->
 <script setup lang="ts">
+/* eslint-disable atx/no-inline-hex */
 withDefaults(defineProps<{
   title?: string
   description?: string
@@ -24,6 +14,17 @@ withDefaults(defineProps<{
 </script>
 
 <template>
+<!-- 
+  OG Image Default Template
+  
+  Rendered at the edge via Satori (part of nuxt-og-image / @nuxtjs/seo).
+  This is the default template used when calling `defineOgImage()` or
+  the `useSeo({ ogImage: {...} })` composable.
+  
+  Satori renders this Vue component to an SVG, then converts to PNG.
+  Note: Satori has limited CSS support — use inline styles and flexbox only.
+  No Tailwind classes, no CSS Grid, no pseudo-elements.
+-->
   <div
     :style="{
       width: '1200px',

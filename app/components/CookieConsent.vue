@@ -51,7 +51,7 @@ function updateGtagConsent(state: 'granted' | 'denied') {
   >
     <div
       v-if="showBanner"
-      class="fixed bottom-0 left-0 right-0 z-50 bg-white dark:bg-gray-800 border-t border-gray-200 dark:border-gray-700 shadow-lg"
+      class="fixed bottom-0 left-0 right-0 z-50 bg-white dark:bg-elevated border-t border-default dark:border-default shadow-lg"
       role="dialog"
       aria-label="Cookie consent banner"
       aria-describedby="cookie-banner-description"
@@ -59,11 +59,11 @@ function updateGtagConsent(state: 'granted' | 'denied') {
       <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-4">
         <div class="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4">
           <div class="flex-1">
-            <p id="cookie-banner-description" class="text-sm text-gray-700 dark:text-gray-300">
+            <p id="cookie-banner-description" class="text-sm text-primary dark:text-dimmed">
               We use cookies and similar technologies to enhance your browsing experience, serve personalized
               ads or content, and analyze our traffic. We also share information about your use of our site
               with our advertising and analytics partners, including Google AdSense.
-              <NuxtLink to="/privacy" class="text-blue-600 dark:text-blue-400 hover:underline font-medium ml-1">
+              <NuxtLink to="/privacy" class="text-muted dark:text-dimmed hover:underline font-medium ml-1">
                 Learn more in our Privacy Policy
               </NuxtLink>
             </p>

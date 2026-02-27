@@ -27,7 +27,9 @@ function handleError() {
 
 function refreshPage() {
   clearError()
-  window.location.reload()
+  if (import.meta.client) {
+    window.location.reload()
+  }
 }
 
 useSeoMeta({
@@ -37,7 +39,7 @@ useSeoMeta({
 </script>
 
 <template>
-  <div class="min-h-screen flex items-center justify-center bg-gray-50 dark:bg-gray-950 px-4">
+  <div class="min-h-screen flex items-center justify-center bg-muted dark:bg-muted px-4">
     <div class="text-center max-w-md">
       <!-- Error code -->
       <p class="text-7xl font-bold font-display text-primary mb-2">
@@ -45,12 +47,12 @@ useSeoMeta({
       </p>
 
       <!-- Title -->
-      <h1 class="text-2xl font-semibold text-gray-900 dark:text-white mb-3">
+      <h1 class="text-2xl font-semibold text-primary dark:text-white mb-3">
         {{ title }}
       </h1>
 
       <!-- Description -->
-      <p class="text-gray-500 dark:text-gray-400 mb-8">
+      <p class="text-muted dark:text-dimmed mb-8">
         {{ description }}
       </p>
 

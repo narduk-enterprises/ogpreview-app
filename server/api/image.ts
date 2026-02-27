@@ -14,14 +14,18 @@
  */
 
 import { getQuery, setResponseHeader, setResponseHeaders, setResponseStatus } from 'h3'
+import { z } from 'zod'
 import { validateUrl } from '../utils/urlValidator'
 import { sanitizeUrlForLog } from '../utils/logSanitizer'
 
 const MAX_IMAGE_SIZE = 5 * 1024 * 1024 // 5MB limit
 
+const QuerySchema = z.object({ url: z.string().optional() })
+
 export default defineEventHandler(async (event) => {
   const query = getQuery(event)
-  const imageUrl = query.url as string
+  const parsed = QuerySchema.safeParse(query)
+  const imageUrl = parsed.success ? parsed.data.url : undefined
 
   // Validate URL parameter
   if (!imageUrl) {

@@ -16,11 +16,17 @@
  */
 
 import { getQuery, getRequestHeader, setResponseHeader, setResponseHeaders, setResponseStatus } from 'h3'
+import { z } from 'zod'
 import { generateETag } from '../utils/etag'
 import { unfurlUrl } from '../utils/unfurlCore'
 import { checkRateLimit } from '../utils/rateLimiter'
 import { sanitizeUrlForLog, sanitizeErrorForLog } from '../utils/logSanitizer'
 import type { UnfurlResponse } from '~~/types/og'
+
+const QuerySchema = z.object({
+  url: z.string().optional(),
+  debug: z.string().optional()
+})
 
 export default defineEventHandler(async (event): Promise<UnfurlResponse> => {
   // Rate limiting check
@@ -38,9 +44,12 @@ export default defineEventHandler(async (event): Promise<UnfurlResponse> => {
   }
 
   const query = getQuery(event)
+  const parsed = QuerySchema.safeParse(query)
+  const parsedQuery = parsed.success ? parsed.data : { url: undefined, debug: undefined }
+  
   // Ignore cache busting parameter
-  const url = query.url as string
-  const includeRaw = query.debug === '1'
+  const url = parsedQuery.url
+  const includeRaw = parsedQuery.debug === '1'
 
   // Validate URL parameter early
   if (!url) {

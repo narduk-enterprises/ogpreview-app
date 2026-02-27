@@ -11,12 +11,12 @@ withDefaults(defineProps<Props>(), {
 </script>
 
 <template>
-  <div class="min-h-screen bg-gray-50 dark:bg-gray-900">
+  <div class="min-h-screen bg-muted dark:bg-elevated">
     <UContainer class="py-12">
       <UCard>
         <template #header>
           <div v-if="title" class="flex items-center justify-between">
-            <h1 class="text-3xl font-bold text-gray-900 dark:text-white">
+            <h1 class="text-3xl font-bold text-primary dark:text-white">
               {{ title }}
             </h1>
             <div v-if="$slots.headerActions" class="flex items-center gap-2">
@@ -24,7 +24,7 @@ withDefaults(defineProps<Props>(), {
             </div>
           </div>
           <div v-if="subtitle" class="mt-2">
-            <p class="text-sm text-gray-600 dark:text-gray-400">
+            <p class="text-sm text-muted dark:text-dimmed">
               {{ subtitle }}
             </p>
           </div>

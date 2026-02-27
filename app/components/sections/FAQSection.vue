@@ -66,7 +66,7 @@ useSchemaOrg([
   >
     <h2
       id="faq-heading"
-      class="text-2xl sm:text-2xl font-bold text-gray-900 dark:text-white text-center mb-6 sm:mb-6"
+      class="text-2xl sm:text-2xl font-bold text-primary dark:text-white text-center mb-6 sm:mb-6"
     >
       Frequently Asked Questions
     </h2>
@@ -79,28 +79,21 @@ useSchemaOrg([
     </div>
 
     <div class="space-y-3 sm:space-y-4">
+      <!-- eslint-disable atx/no-native-details -->
       <details
         v-for="(faq, index) in faqs"
         :key="index"
-        class="group bg-white dark:bg-gray-800 rounded-lg shadow-sm border border-gray-200 dark:border-gray-700 overflow-hidden transition-all hover:shadow-md"
+        class="group bg-white dark:bg-elevated rounded-lg shadow-sm border border-default dark:border-default overflow-hidden transition-all hover:shadow-md"
       >
-        <summary class="flex justify-between items-center cursor-pointer px-5 sm:px-6 py-4 sm:py-4 font-medium text-gray-900 dark:text-white text-base sm:text-base list-none min-h-[60px] sm:min-h-0">
+        <summary class="flex justify-between items-center cursor-pointer px-5 sm:px-6 py-4 sm:py-4 font-medium text-primary dark:text-white text-base sm:text-base list-none min-h-[60px] sm:min-h-0">
           <span class="pr-4 leading-snug">{{ faq.question }}</span>
-          <svg
-            class="w-6 h-6 sm:w-5 sm:h-5 text-gray-500 transition-transform group-open:rotate-180 shrink-0"
-            fill="none"
-            viewBox="0 0 24 24"
-            stroke="currentColor"
-          >
-            <path
-              stroke-linecap="round"
-              stroke-linejoin="round"
-              stroke-width="2"
-              d="M19 9l-7 7-7-7"
-            />
-          </svg>
+          <UIcon
+            name="i-lucide-chevron-down"
+            class="w-6 h-6 sm:w-5 sm:h-5 text-muted transition-transform group-open:rotate-180 shrink-0"
+          />
         </summary>
-        <div class="px-5 sm:px-6 pb-4 sm:pb-4 pt-2 text-gray-600 dark:text-gray-400 text-base sm:text-base leading-relaxed">
+        <div class="px-5 sm:px-6 pb-4 sm:pb-4 pt-2 text-muted dark:text-dimmed text-base sm:text-base leading-relaxed">
+          <!-- eslint-disable-next-line vue/no-v-html -->
           <p v-html="faq.answer" />
         </div>
       </details>

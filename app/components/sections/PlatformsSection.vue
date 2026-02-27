@@ -1,4 +1,6 @@
 <script setup lang="ts">
+/* eslint-disable atx/no-inline-hex */
+ 
 const platforms = [
   {
     name: 'Facebook',
@@ -66,12 +68,12 @@ const platforms = [
   >
     <h2
       id="platforms-heading"
-      class="text-2xl sm:text-2xl font-bold text-gray-900 dark:text-white text-center mb-4 sm:mb-6"
+      class="text-2xl sm:text-2xl font-bold text-primary dark:text-white text-center mb-4 sm:mb-6"
     >
       Supported Platforms
     </h2>
 
-    <p class="text-center text-gray-600 dark:text-gray-400 mb-6 sm:mb-8 max-w-3xl mx-auto text-base sm:text-base px-4 leading-relaxed">
+    <p class="text-center text-muted dark:text-dimmed mb-6 sm:mb-8 max-w-3xl mx-auto text-base sm:text-base px-4 leading-relaxed">
       Preview your Open Graph tags across all major social media platforms and messaging apps. Each platform renders link previews differently—see exactly how yours will look.
     </p>
 
@@ -80,7 +82,7 @@ const platforms = [
         <NuxtLink
           v-if="platform.guideUrl"
           :to="platform.guideUrl"
-          class="bg-white dark:bg-gray-800 rounded-lg p-5 sm:p-5 shadow-sm border border-gray-200 dark:border-gray-700 hover:shadow-md transition-all hover:scale-105 duration-200 cursor-pointer"
+          class="bg-white dark:bg-elevated rounded-lg p-5 sm:p-5 shadow-sm border border-default dark:border-default hover:shadow-md transition-all hover:scale-105 duration-200 cursor-pointer"
         >
           <div class="flex flex-col items-center text-center gap-3 sm:gap-3">
             <div
@@ -90,10 +92,10 @@ const platforms = [
               <PlatformIcon :platform="platform.name" size="xl" />
             </div>
             <div>
-              <h3 class="font-semibold text-gray-900 dark:text-white text-base sm:text-base">
+              <h3 class="font-semibold text-primary dark:text-white text-base sm:text-base">
                 {{ platform.name }}
               </h3>
-              <p class="text-sm sm:text-xs text-gray-500 dark:text-gray-400 mt-1 sm:mt-0.5">
+              <p class="text-sm sm:text-xs text-muted dark:text-dimmed mt-1 sm:mt-0.5">
                 {{ platform.type }}
               </p>
             </div>
@@ -101,7 +103,7 @@ const platforms = [
         </NuxtLink>
         <div
           v-else
-          class="bg-white dark:bg-gray-800 rounded-lg p-5 sm:p-5 shadow-sm border border-gray-200 dark:border-gray-700 hover:shadow-md transition-all hover:scale-105 duration-200 cursor-default"
+          class="bg-white dark:bg-elevated rounded-lg p-5 sm:p-5 shadow-sm border border-default dark:border-default hover:shadow-md transition-all hover:scale-105 duration-200 cursor-default"
         >
           <div class="flex flex-col items-center text-center gap-3 sm:gap-3">
             <div
@@ -111,10 +113,10 @@ const platforms = [
               <PlatformIcon :platform="platform.name" size="xl" />
             </div>
             <div>
-              <h3 class="font-semibold text-gray-900 dark:text-white text-base sm:text-base">
+              <h3 class="font-semibold text-primary dark:text-white text-base sm:text-base">
                 {{ platform.name }}
               </h3>
-              <p class="text-sm sm:text-xs text-gray-500 dark:text-gray-400 mt-1 sm:mt-0.5">
+              <p class="text-sm sm:text-xs text-muted dark:text-dimmed mt-1 sm:mt-0.5">
                 {{ platform.type }}
               </p>
             </div>
@@ -124,17 +126,15 @@ const platforms = [
     </div>
 
     <div class="mt-6 sm:mt-8 text-center">
-      <p class="text-sm sm:text-sm text-gray-600 dark:text-gray-400 mb-3">
+      <p class="text-sm sm:text-sm text-muted dark:text-dimmed mb-3">
         All platforms support the Open Graph protocol for rich link previews
       </p>
       <NuxtLink
         to="/guides"
-        class="inline-flex items-center gap-2 text-blue-600 dark:text-blue-400 hover:text-blue-700 dark:hover:text-blue-300 font-medium text-sm transition-colors"
+        class="inline-flex items-center gap-2 text-muted dark:text-dimmed hover:text-primary dark:hover:text-dimmed font-medium text-sm transition-colors"
       >
         Learn more about Open Graph optimization
-        <svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
-        </svg>
+        <UIcon name="i-lucide-arrow-right" class="w-4 h-4" />
       </NuxtLink>
     </div>
   </section>

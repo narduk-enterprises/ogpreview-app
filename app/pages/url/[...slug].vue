@@ -54,7 +54,7 @@ const { data: initialData } = await useAsyncData(
   async () => {
     if (initialUrl && isValidUrlHelper(initialUrl)) {
       try {
-        // Use $fetch directly to get the response structure
+        // eslint-disable-next-line atx/no-fetch-in-component
         const response = await $fetch<UnfurlResponse>('/api/unfurl', {
           method: 'GET',
           params: { url: normalizeUrlHelper(initialUrl) }
@@ -515,8 +515,8 @@ onMounted(() => {
 </script>
 
 <template>
-  <main
-    class="min-h-screen py-4 sm:py-4 px-3 sm:px-3 md:px-4 lg:px-6 bg-linear-to-br from-gray-50 via-blue-50 to-purple-50 dark:from-gray-900 dark:via-gray-900 dark:to-gray-800"
+  <div
+    class="min-h-screen py-4 sm:py-4 px-3 sm:px-3 md:px-4 lg:px-6 bg-linear-to-br from-primary-500 via-primary-500 to-primary-500 dark:from-primary-500 dark:via-primary-500 dark:to-primary-500"
     data-test="preview-page">
     <div class="max-w-[95rem] mx-auto" role="main">
       <!-- Hero Section -->
@@ -525,7 +525,7 @@ onMounted(() => {
       <!-- URL Input Section with Refresh -->
       <div class="mb-4 sm:mb-4">
         <UCard
-          class="shadow-lg hover:shadow-xl transition-shadow duration-300 ring-1 ring-gray-200/50 dark:ring-gray-700/50"
+          class="shadow-lg hover:shadow-xl transition-shadow duration-300 ring-1 border-default/50 dark:border-default/50"
           :ui="{
             root: 'overflow-visible',
             body: 'p-3 sm:p-3'
@@ -537,14 +537,14 @@ class="flex flex-col sm:flex-row gap-2.5 sm:gap-2 items-stretch sm:items-center"
               aria-label="URL input section">
               <UInput
 ref="urlInputRef" v-model="urlInput" type="url" :disabled="isLoading" placeholder="example.com"
-                size="lg" variant="outline" :leading-icon="isLoading ? 'i-lucide-loader-circle' : 'i-lucide-globe'"
+                size="lg" variant="outline" :icon="isLoading ? 'i-lucide-loader-circle' : 'i-lucide-globe'"
                 :loading="isLoading" class="flex-1 min-w-0 w-full text-base"
                 aria-label="Enter website URL to preview Open Graph tags" data-test="url-input" :ui="{
                   base: 'text-base sm:text-base py-3',
                   trailing: 'pe-1'
                 }"
-                @pointerdown="markUserUrlFocusIntent"
-                @pointerup="handleUrlInputPointerUp"
+                @mousedown="markUserUrlFocusIntent"
+                @mouseup="handleUrlInputPointerUp"
                 @focus="handleUrlInputFocus"
                 @keydown.enter.prevent.stop="handlePreview">
                 <template v-if="urlInput && !isLoading" #trailing>
@@ -580,7 +580,7 @@ v-if="ogData" :disabled="!urlInput || isLoading" icon="i-lucide-refresh-cw" colo
             <ClientOnly>
               <UrlHistoryQuick
 v-if="recentHistory.length > 0" :recent-history="recentHistory"
-                class="pt-2 border-t border-gray-200/50 dark:border-gray-700/50" @select="handleHistorySelect"
+                class="pt-2 border-t border-default/50 dark:border-default/50" @select="handleHistorySelect"
                 @show-full="showHistoryModal = true" />
             </ClientOnly>
 
@@ -588,7 +588,7 @@ v-if="recentHistory.length > 0" :recent-history="recentHistory"
             <ClientOnly>
               <div
 v-if="fetchedScores"
-                class="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-3 pt-3 border-t border-gray-200/50 dark:border-gray-700/50">
+                class="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-3 pt-3 border-t border-default/50 dark:border-default/50">
                 <!-- Score Display -->
                 <div class="flex items-center gap-3 sm:gap-3 w-full sm:w-auto">
                   <div class="flex items-center gap-2.5 sm:gap-2">
@@ -601,7 +601,7 @@ v-if="fetchedScores"
                     </div>
                     <div>
                       <div
-                        class="text-xs sm:text-xs font-medium text-gray-500 dark:text-gray-400 uppercase tracking-wide">
+                        class="text-xs sm:text-xs font-medium text-muted dark:text-dimmed uppercase tracking-wide">
                         Quality Score
                       </div>
                       <div
@@ -655,19 +655,13 @@ v-model="showHistoryModal" :history="history" @select="handleHistorySelect"
           </div>
           <div v-else class="text-center py-12 sm:py-16 px-4">
             <div
-              class="inline-flex items-center justify-center w-20 h-20 sm:w-20 sm:h-20 rounded-full bg-gray-100 dark:bg-gray-800 mb-4 sm:mb-4">
-              <svg
-class="w-10 h-10 sm:w-10 sm:h-10 text-gray-400" fill="none" stroke="currentColor"
-                viewBox="0 0 24 24">
-                <path
-stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                  d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
-              </svg>
+              class="inline-flex items-center justify-center w-20 h-20 sm:w-20 sm:h-20 rounded-full bg-muted dark:bg-elevated mb-4 sm:mb-4">
+              <UIcon name="i-lucide-search" class="w-10 h-10 sm:w-10 sm:h-10 text-dimmed" />
             </div>
-            <h3 class="text-xl sm:text-lg font-semibold text-gray-900 dark:text-white mb-3 sm:mb-2">
+            <h3 class="text-xl sm:text-lg font-semibold text-primary dark:text-white mb-3 sm:mb-2">
               Enter a URL to preview
             </h3>
-            <p class="text-base sm:text-base text-gray-600 dark:text-gray-400 max-w-md mx-auto leading-relaxed">
+            <p class="text-base sm:text-base text-muted dark:text-dimmed max-w-md mx-auto leading-relaxed">
               Enter any website URL above to see how it appears when shared on social media platforms.
             </p>
           </div>
@@ -676,16 +670,10 @@ stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
           <!-- Server-side fallback - show loading state -->
           <div class="mb-6 sm:mb-4 mt-4 text-center py-12 sm:py-16 px-4" data-test="preview-area">
             <div
-              class="inline-flex items-center justify-center w-20 h-20 sm:w-20 sm:h-20 rounded-full bg-gray-100 dark:bg-gray-800 mb-4 sm:mb-4">
-              <svg
-class="w-10 h-10 sm:w-10 sm:h-10 text-gray-400 animate-pulse" fill="none" stroke="currentColor"
-                viewBox="0 0 24 24">
-                <path
-stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                  d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
-              </svg>
+              class="inline-flex items-center justify-center w-20 h-20 sm:w-20 sm:h-20 rounded-full bg-muted dark:bg-elevated mb-4 sm:mb-4">
+              <UIcon name="i-lucide-search" class="w-10 h-10 sm:w-10 sm:h-10 text-dimmed animate-pulse" />
             </div>
-            <h3 class="text-xl sm:text-lg font-semibold text-gray-900 dark:text-white mb-3 sm:mb-2">
+            <h3 class="text-xl sm:text-lg font-semibold text-primary dark:text-white mb-3 sm:mb-2">
               Loading preview...
             </h3>
           </div>
@@ -697,5 +685,5 @@ stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
       <HowItWorksSection />
       <FAQSection />
     </div>
-  </main>
+  </div>
 </template>

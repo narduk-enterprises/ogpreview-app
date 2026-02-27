@@ -42,44 +42,22 @@ function formatTimestamp(timestamp: number): string {
 <template>
   <div
     v-if="debugInfo"
-    class="mt-4 p-4 bg-gray-50 dark:bg-gray-900 rounded-lg border border-gray-200 dark:border-gray-700"
+    class="mt-4 p-4 bg-muted dark:bg-elevated rounded-lg border border-default dark:border-default"
   >
     <div class="flex items-center justify-between mb-3">
-      <h3 class="text-sm font-semibold text-gray-900 dark:text-white flex items-center gap-2">
-        <svg
-          class="w-4 h-4"
-          fill="none"
-          stroke="currentColor"
-          viewBox="0 0 24 24"
-        >
-          <path
-            stroke-linecap="round"
-            stroke-linejoin="round"
-            stroke-width="2"
-            d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"
-          />
-        </svg>
+      <h3 class="text-sm font-semibold text-primary dark:text-white flex items-center gap-2">
+        <UIcon name="i-lucide-file-text" class="w-4 h-4" />
         Cache Debug Info
       </h3>
-      <button
-        class="text-gray-400 hover:text-gray-600 dark:hover:text-gray-300"
-        title="Hide debug info"
+      <UButton
+        color="neutral"
+        variant="ghost"
+        icon="i-lucide-x"
+        size="xs"
+        aria-label="Hide debug info"
         @click="$emit('close')"
-      >
-        <svg
-          class="w-4 h-4"
-          fill="none"
-          stroke="currentColor"
-          viewBox="0 0 24 24"
-        >
-          <path
-            stroke-linecap="round"
-            stroke-linejoin="round"
-            stroke-width="2"
-            d="M6 18L18 6M6 6l12 12"
-          />
-        </svg>
-      </button>
+        class="text-dimmed hover:text-muted dark:hover:text-dimmed"
+      />
     </div>
 
     <div class="space-y-2 text-xs font-mono">
@@ -87,16 +65,16 @@ function formatTimestamp(timestamp: number): string {
         class="flex items-start gap-2"
         data-test="debug-endpoint"
       >
-        <span class="text-gray-500 dark:text-gray-400 min-w-[120px]">Endpoint:</span>
-        <span class="text-gray-900 dark:text-white font-semibold">
+        <span class="text-muted dark:text-dimmed min-w-[120px]">Endpoint:</span>
+        <span class="text-primary dark:text-white font-semibold">
           {{ debugInfo.endpoint === 'cached' ? '/api/unfurl' : '/api/unfurl/refresh' }}
         </span>
         <span
           :class="[
             'px-2 py-0.5 rounded text-xs font-medium',
             debugInfo.endpoint === 'cached'
-              ? 'bg-blue-100 text-blue-800 dark:bg-blue-900 dark:text-blue-200'
-              : 'bg-purple-100 text-purple-800 dark:bg-purple-900 dark:text-purple-200'
+              ? 'bg-muted text-primary dark:bg-elevated dark:text-primary'
+              : 'bg-muted text-primary dark:bg-elevated dark:text-primary'
           ]"
           data-test="debug-endpoint-label"
         >
@@ -110,8 +88,8 @@ function formatTimestamp(timestamp: number): string {
         v-if="debugInfo.age"
         class="flex items-start gap-2"
       >
-        <span class="text-gray-500 dark:text-gray-400 min-w-[120px]">Age:</span>
-        <span class="text-gray-900 dark:text-white">
+        <span class="text-muted dark:text-dimmed min-w-[120px]">Age:</span>
+        <span class="text-primary dark:text-white">
           {{ formatAge(debugInfo.age) }}
         </span>
       </div>
@@ -120,22 +98,22 @@ function formatTimestamp(timestamp: number): string {
         v-if="debugInfo.cacheControl"
         class="flex items-start gap-2"
       >
-        <span class="text-gray-500 dark:text-gray-400 min-w-[120px]">Cache-Control:</span>
-        <span class="text-gray-900 dark:text-white break-all">
+        <span class="text-muted dark:text-dimmed min-w-[120px]">Cache-Control:</span>
+        <span class="text-primary dark:text-white break-all">
           {{ debugInfo.cacheControl }}
         </span>
       </div>
 
       <div class="flex items-start gap-2">
-        <span class="text-gray-500 dark:text-gray-400 min-w-[120px]">Timestamp:</span>
-        <span class="text-gray-900 dark:text-white">
+        <span class="text-muted dark:text-dimmed min-w-[120px]">Timestamp:</span>
+        <span class="text-primary dark:text-white">
           {{ formatTimestamp(debugInfo.timestamp) }}
         </span>
       </div>
     </div>
 
-    <div class="mt-3 pt-3 border-t border-gray-200 dark:border-gray-700">
-      <p class="text-xs text-gray-600 dark:text-gray-400">
+    <div class="mt-3 pt-3 border-t border-default dark:border-default">
+      <p class="text-xs text-muted dark:text-dimmed">
         <strong>Tip:</strong>
         <template v-if="debugInfo.endpoint === 'cached'">
           First request is usually a MISS. Subsequent requests within 1 hour should be HIT.

@@ -84,11 +84,11 @@ function formatTimestamp(timestamp: number): string {
     <template #header>
       <div class="flex items-center justify-between w-full">
         <div class="flex items-center gap-2">
-          <UIcon name="i-lucide-history" class="w-5 h-5 text-gray-700 dark:text-gray-300" />
-          <h3 class="text-lg font-semibold text-gray-900 dark:text-white">
+          <UIcon name="i-lucide-history" class="w-5 h-5 text-primary dark:text-dimmed" />
+          <h3 class="text-lg font-semibold text-primary dark:text-white">
             URL History
           </h3>
-          <span class="text-sm text-gray-500 dark:text-gray-400">
+          <span class="text-sm text-muted dark:text-dimmed">
             ({{ history.length }})
           </span>
         </div>
@@ -108,30 +108,30 @@ function formatTimestamp(timestamp: number): string {
       <div class="max-h-[60vh] overflow-y-auto">
         <!-- Empty State -->
         <div v-if="history.length === 0" class="text-center py-12 px-4">
-          <div class="inline-flex items-center justify-center w-16 h-16 rounded-full bg-gray-100 dark:bg-gray-800 mb-4">
-            <UIcon name="i-lucide-history" class="w-8 h-8 text-gray-400" />
+          <div class="inline-flex items-center justify-center w-16 h-16 rounded-full bg-muted dark:bg-elevated mb-4">
+            <UIcon name="i-lucide-history" class="w-8 h-8 text-dimmed" />
           </div>
-          <h4 class="text-base font-semibold text-gray-900 dark:text-white mb-2">
+          <h4 class="text-base font-semibold text-primary dark:text-white mb-2">
             No history yet
           </h4>
-          <p class="text-sm text-gray-600 dark:text-gray-400">
+          <p class="text-sm text-muted dark:text-dimmed">
             URLs you preview will appear here
           </p>
         </div>
 
         <!-- History List -->
-        <div v-else class="divide-y divide-gray-200 dark:divide-gray-700">
+        <div v-else class="divide-y border-default dark:border-default">
           <div
             v-for="entry in history"
             :key="entry.url"
-            class="p-4 hover:bg-gray-50 dark:hover:bg-gray-800/50 transition-colors cursor-pointer group"
+            class="p-4 hover:bg-muted dark:hover:bg-elevated/50 transition-colors cursor-pointer group"
             @click="handleSelect(entry.url)">
             <div class="flex gap-3">
               <!-- Thumbnail -->
               <div class="shrink-0">
                 <div
                   v-if="entry.image"
-                  class="w-16 h-16 rounded-lg overflow-hidden bg-gray-100 dark:bg-gray-800 ring-1 ring-gray-200 dark:ring-gray-700">
+                  class="w-16 h-16 rounded-lg overflow-hidden bg-muted dark:bg-elevated ring-1 border-default dark:border-default">
                   <img
                     :src="entry.image"
                     :alt="entry.title || 'Preview'"
@@ -140,20 +140,20 @@ function formatTimestamp(timestamp: number): string {
                 </div>
                 <div
                   v-else
-                  class="w-16 h-16 rounded-lg bg-gray-100 dark:bg-gray-800 ring-1 ring-gray-200 dark:ring-gray-700 flex items-center justify-center">
-                  <UIcon name="i-lucide-globe" class="w-6 h-6 text-gray-400" />
+                  class="w-16 h-16 rounded-lg bg-muted dark:bg-elevated ring-1 border-default dark:border-default flex items-center justify-center">
+                  <UIcon name="i-lucide-globe" class="w-6 h-6 text-dimmed" />
                 </div>
               </div>
 
               <!-- Content -->
               <div class="flex-1 min-w-0">
-                <h4 class="font-medium text-gray-900 dark:text-white truncate mb-1 group-hover:text-primary-600 dark:group-hover:text-primary-400 transition-colors">
+                <h4 class="font-medium text-primary dark:text-white truncate mb-1 group-hover:text-primary-600 dark:group-hover:text-primary-400 transition-colors">
                   {{ entry.title || 'Untitled' }}
                 </h4>
-                <p class="text-sm text-gray-600 dark:text-gray-400 truncate mb-1">
+                <p class="text-sm text-muted dark:text-dimmed truncate mb-1">
                   {{ entry.url }}
                 </p>
-                <p class="text-xs text-gray-500 dark:text-gray-500">
+                <p class="text-xs text-muted dark:text-muted">
                   {{ formatTimestamp(entry.timestamp) }}
                 </p>
               </div>

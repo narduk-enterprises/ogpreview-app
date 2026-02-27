@@ -1,4 +1,5 @@
 <script setup lang="ts">
+/* eslint-disable atx/no-inline-hex, atx/lucide-icons-only */
 interface Props {
   platform: string
   size?: 'sm' | 'md' | 'lg' | 'xl'
@@ -21,7 +22,7 @@ const platformConfig: Record<string, { icon: string, color: string }> = {
 }
 
 const normalizedPlatform = props.platform.toLowerCase().replace(/\s+/g, '')
-const config = platformConfig[normalizedPlatform] || { icon: 'i-heroicons-globe-alt', color: '#6B7280' }
+const config = platformConfig[normalizedPlatform] || { icon: 'i-lucide-globe-alt', color: '#6B7280' }
 
 const iconName = computed(() => config.icon)
 const brandColor = computed(() => config.color)

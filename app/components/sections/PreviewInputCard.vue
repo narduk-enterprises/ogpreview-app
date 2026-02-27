@@ -191,7 +191,7 @@ defineExpose({
 <template>
   <div class="mb-4 sm:mb-4">
     <UCard
-      class="shadow-lg hover:shadow-xl transition-shadow duration-300 ring-1 ring-gray-200/50 dark:ring-gray-700/50"
+      class="shadow-lg hover:shadow-xl transition-shadow duration-300 ring-1 border-default/50 dark:border-default/50"
       :ui="{
         root: 'overflow-visible',
         body: 'p-3 sm:p-3'
@@ -203,14 +203,14 @@ defineExpose({
             <UInput
 ref="urlInputRef" v-model="localUrlInput" type="url" :disabled="isLoading"
               placeholder="example.com" size="lg" variant="outline"
-              :leading-icon="isLoading ? 'i-lucide-loader-circle' : 'i-lucide-globe'" :loading="isLoading"
+              :icon="isLoading ? 'i-lucide-loader-circle' : 'i-lucide-globe'" :loading="isLoading"
               :color="showValidationError ? 'error' : undefined"
               class="w-full text-base" aria-label="Enter website URL to preview Open Graph tags" data-test="url-input" :ui="{
                 base: 'text-base sm:text-base py-3',
                 trailing: 'pe-1'
               }"
-              @pointerdown="markUserUrlFocusIntent"
-              @pointerup="handleUrlInputPointerUp"
+              @mousedown="markUserUrlFocusIntent"
+              @mouseup="handleUrlInputPointerUp"
               @focus="handleUrlInputFocus"
               @blur="handleUrlInputBlur"
               @keydown.enter.prevent="handlePreview">
@@ -222,7 +222,7 @@ icon="i-lucide-x-circle" color="neutral" variant="ghost" size="sm" aria-label="C
               </template>
             </UInput>
             <!-- Validation Error Message -->
-            <div v-if="showValidationError" class="mt-1.5 text-sm text-red-600 dark:text-red-400 flex items-center gap-1.5">
+            <div v-if="showValidationError" class="mt-1.5 text-sm text-muted dark:text-dimmed flex items-center gap-1.5">
               <UIcon name="i-lucide-alert-circle" class="w-4 h-4 flex-shrink-0" />
               <span>Please enter a valid URL (e.g., example.com or https://example.com)</span>
             </div>
@@ -268,7 +268,7 @@ icon="i-lucide-x-circle" color="neutral" variant="ghost" size="sm" aria-label="C
           <UrlHistoryQuick
             v-if="recentHistory.length > 0"
             :recent-history="recentHistory"
-            class="pt-2 border-t border-gray-200/50 dark:border-gray-700/50"
+            class="pt-2 border-t border-default/50 dark:border-default/50"
             @select="handleHistorySelect"
             @show-full="$emit('show-history-modal')" />
         </ClientOnly>
@@ -277,7 +277,7 @@ icon="i-lucide-x-circle" color="neutral" variant="ghost" size="sm" aria-label="C
         <ClientOnly>
           <div
 v-if="fetchedScores"
-            class="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-3 pt-3 border-t border-gray-200/50 dark:border-gray-700/50">
+            class="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-3 pt-3 border-t border-default/50 dark:border-default/50">
             <!-- Score Display -->
             <div class="flex items-center gap-3 sm:gap-3 w-full sm:w-auto">
               <div class="flex items-center gap-2.5 sm:gap-2">
@@ -289,7 +289,7 @@ v-if="fetchedScores"
                   {{ fetchedScores.overall }}
                 </div>
                 <div>
-                  <div class="text-xs sm:text-xs font-medium text-gray-500 dark:text-gray-400 uppercase tracking-wide">
+                  <div class="text-xs sm:text-xs font-medium text-muted dark:text-dimmed uppercase tracking-wide">
                     Quality Score
                   </div>
                   <div :class="['text-sm sm:text-sm font-bold leading-tight', getScoreTextColor(fetchedScores.overall)]">

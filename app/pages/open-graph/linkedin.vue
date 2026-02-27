@@ -105,85 +105,85 @@ const relatedPlatforms = [
 
     <template #related>
       <div class="not-prose mt-12">
-        <h2 class="text-2xl font-bold text-gray-900 dark:text-white mb-6">
+        <h2 class="text-2xl font-bold text-primary dark:text-white mb-6">
           Other Platform Specs
         </h2>
         <PlatformGrid :platforms="relatedPlatforms" />
       </div>
     </template>
 
-    <ContentCallout variant="info" title="Quick Answer" icon="i-heroicons-light-bulb">
+    <ContentCallout variant="info" title="Quick Answer" icon="i-lucide-light-bulb">
       LinkedIn recommends a <strong>1200×627px</strong> image (1.91:1 ratio). It perfectly accepts standard 1200x630px OG images. It heavily relies on the <code>og:title</code>, <code>og:image</code>, and <code>author</code> tags.
     </ContentCallout>
 
     <!-- Specs Dashboard -->
     <div class="my-12">
-      <h2 class="text-2xl font-bold text-gray-900 dark:text-white mb-6">LinkedIn Image Specs</h2>
+      <h2 class="text-2xl font-bold text-primary dark:text-white mb-6">LinkedIn Image Specs</h2>
       <div class="grid sm:grid-cols-2 gap-4">
         <UCard>
           <div class="flex items-center gap-3 mb-2">
-            <UIcon name="i-heroicons-photo" class="w-6 h-6 text-blue-600" />
-            <h3 class="font-semibold text-gray-900 dark:text-white">Recommended Size</h3>
+            <UIcon name="i-lucide-photo" class="w-6 h-6 text-muted" />
+            <h3 class="font-semibold text-primary dark:text-white">Recommended Size</h3>
           </div>
-          <p class="text-2xl font-bold text-gray-900 dark:text-white">
+          <p class="text-2xl font-bold text-primary dark:text-white">
             1200 × 627px
           </p>
-          <p class="text-sm text-gray-500 mt-1">1.91:1 Aspect Ratio</p>
+          <p class="text-sm text-muted mt-1">1.91:1 Aspect Ratio</p>
         </UCard>
         
         <UCard>
           <div class="flex items-center gap-3 mb-2">
-            <UIcon name="i-heroicons-document-arrow-down" class="w-6 h-6 text-blue-600" />
-            <h3 class="font-semibold text-gray-900 dark:text-white">File Limitations</h3>
+            <UIcon name="i-lucide-document-arrow-down" class="w-6 h-6 text-muted" />
+            <h3 class="font-semibold text-primary dark:text-white">File Limitations</h3>
           </div>
-          <p class="text-2xl font-bold text-gray-900 dark:text-white">
+          <p class="text-2xl font-bold text-primary dark:text-white">
             Max 5MB
           </p>
-          <p class="text-sm text-gray-500 mt-1">Formats: JPG, PNG, GIF</p>
+          <p class="text-sm text-muted mt-1">Formats: JPG, PNG, GIF</p>
         </UCard>
       </div>
     </div>
 
-    <h2 class="text-2xl font-bold text-gray-900 dark:text-white mb-6">Required Meta Tags</h2>
+    <h2 class="text-2xl font-bold text-primary dark:text-white mb-6">Required Meta Tags</h2>
     <div class="space-y-6">
       <div>
-        <h3 class="font-semibold text-gray-900 dark:text-white mb-2">Basic HTML</h3>
+        <h3 class="font-semibold text-primary dark:text-white mb-2">Basic HTML</h3>
         <ContentCodeBlock :code="requiredTagsCode" language="html" />
       </div>
       <div>
-        <h3 class="font-semibold text-gray-900 dark:text-white mb-2">Nuxt 3</h3>
+        <h3 class="font-semibold text-primary dark:text-white mb-2">Nuxt 3</h3>
         <ContentCodeBlock :code="nuxtExampleCode" language="typescript" />
       </div>
       <div>
-        <h3 class="font-semibold text-gray-900 dark:text-white mb-2">Next.js</h3>
+        <h3 class="font-semibold text-primary dark:text-white mb-2">Next.js</h3>
         <ContentCodeBlock :code="nextjsExampleCode" language="typescript" />
       </div>
     </div>
 
     <div class="my-12 grid md:grid-cols-2 gap-8">
       <div>
-        <h2 class="text-2xl font-bold text-gray-900 dark:text-white mb-4">Top 3 Best Practices</h2>
+        <h2 class="text-2xl font-bold text-primary dark:text-white mb-4">Top 3 Best Practices</h2>
         <ul class="space-y-3">
           <li class="flex items-start gap-2">
-            <UIcon name="i-heroicons-check-circle" class="w-5 h-5 text-green-500 shrink-0 mt-0.5" />
-            <span class="text-gray-700 dark:text-gray-300"><strong>Add the author tag</strong> specifically (<code>article:author</code>) as LinkedIn surfaces this heavily in feeds.</span>
+            <UIcon name="i-lucide-check-circle" class="w-5 h-5 text-muted shrink-0 mt-0.5" />
+            <span class="text-primary dark:text-dimmed"><strong>Add the author tag</strong> specifically (<code>article:author</code>) as LinkedIn surfaces this heavily in feeds.</span>
           </li>
           <li class="flex items-start gap-2">
-            <UIcon name="i-heroicons-check-circle" class="w-5 h-5 text-green-500 shrink-0 mt-0.5" />
-            <span class="text-gray-700 dark:text-gray-300"><strong>Use professional imagery</strong>. Memes or clickbait perform exceptionally poorly on LinkedIn algorithms.</span>
+            <UIcon name="i-lucide-check-circle" class="w-5 h-5 text-muted shrink-0 mt-0.5" />
+            <span class="text-primary dark:text-dimmed"><strong>Use professional imagery</strong>. Memes or clickbait perform exceptionally poorly on LinkedIn algorithms.</span>
           </li>
           <li class="flex items-start gap-2">
-            <UIcon name="i-heroicons-check-circle" class="w-5 h-5 text-green-500 shrink-0 mt-0.5" />
-            <span class="text-gray-700 dark:text-gray-300"><strong>Avoid changing imagery often</strong>, as LinkedIn caches content heavily for 7 days.</span>
+            <UIcon name="i-lucide-check-circle" class="w-5 h-5 text-muted shrink-0 mt-0.5" />
+            <span class="text-primary dark:text-dimmed"><strong>Avoid changing imagery often</strong>, as LinkedIn caches content heavily for 7 days.</span>
           </li>
         </ul>
       </div>
 
       <div>
-        <h2 class="text-2xl font-bold text-gray-900 dark:text-white mb-4">Troubleshooting</h2>
-        <UCard class="bg-blue-50 dark:bg-blue-900/10 border-blue-100 dark:border-blue-900">
-          <h3 class="font-semibold text-blue-900 dark:text-blue-300 mb-2">Force Cache Refresh</h3>
-          <p class="text-sm text-blue-800 dark:text-blue-200 mb-4">
+        <h2 class="text-2xl font-bold text-primary dark:text-white mb-4">Troubleshooting</h2>
+        <UCard class="bg-muted dark:bg-elevated/10 border-default dark:border-default">
+          <h3 class="font-semibold text-primary dark:text-dimmed mb-2">Force Cache Refresh</h3>
+          <p class="text-sm text-primary dark:text-primary mb-4">
             LinkedIn will cache your meta tags for up to a week. You can use their official Post Inspector tool to clear it immediately.
           </p>
           <UButton 
@@ -191,7 +191,7 @@ const relatedPlatforms = [
             target="_blank" 
             color="primary" 
             variant="soft"
-            icon="i-heroicons-arrow-top-right-on-square"
+            icon="i-lucide-arrow-top-right-on-square"
           >
             Open LinkedIn Post Inspector
           </UButton>

@@ -11,6 +11,8 @@ const props = withDefaults(defineProps<Props>(), {
   showSeoSections: true
 })
 
+defineOptions({ inheritAttrs: false })
+
 const router = useRouter()
 
 // State
@@ -47,6 +49,7 @@ const { data: initialData } = await useAsyncData(
   async () => {
     if (props.initialUrl && isValidUrlHelper(props.initialUrl)) {
       try {
+        // eslint-disable-next-line atx/no-fetch-in-component
         const response = await $fetch<UnfurlResponse>('/api/unfurl', {
           method: 'GET',
           params: { url: normalizeUrlHelper(props.initialUrl) }
@@ -247,8 +250,8 @@ const handleClear = () => {
 </script>
 
 <template>
-  <main
-    class="min-h-screen py-4 sm:py-4 px-3 sm:px-3 md:px-4 lg:px-6 bg-linear-to-br from-gray-50 via-blue-50 to-purple-50 dark:from-gray-900 dark:via-gray-900 dark:to-gray-800"
+  <div
+    class="min-h-screen py-4 sm:py-4 px-3 sm:px-3 md:px-4 lg:px-6 bg-linear-to-br from-primary-500 via-primary-500 to-primary-500 dark:from-primary-500 dark:via-primary-500 dark:to-primary-500"
     data-test="preview-page">
     <div class="max-w-[95rem] mx-auto" role="main">
       <!-- Hero Section -->
@@ -295,17 +298,13 @@ v-if="showDebug" :debug-info="cacheDebugInfo" data-test="cache-debug-panel"
           </div>
           <div v-else class="text-center py-12 sm:py-16 px-4">
             <div
-              class="inline-flex items-center justify-center w-20 h-20 sm:w-20 sm:h-20 rounded-full bg-gray-100 dark:bg-gray-800 mb-4 sm:mb-4">
-              <svg class="w-10 h-10 sm:w-10 sm:h-10 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path
-stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                  d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
-              </svg>
+              class="inline-flex items-center justify-center w-20 h-20 sm:w-20 sm:h-20 rounded-full bg-muted dark:bg-elevated mb-4 sm:mb-4">
+              <UIcon name="i-lucide-search" class="w-10 h-10 sm:w-10 sm:h-10 text-dimmed" />
             </div>
-            <h3 class="text-xl sm:text-lg font-semibold text-gray-900 dark:text-white mb-3 sm:mb-2">
+            <h3 class="text-xl sm:text-lg font-semibold text-primary dark:text-white mb-3 sm:mb-2">
               Enter a URL to preview
             </h3>
-            <p class="text-base sm:text-base text-gray-600 dark:text-gray-400 max-w-md mx-auto leading-relaxed">
+            <p class="text-base sm:text-base text-muted dark:text-dimmed max-w-md mx-auto leading-relaxed">
               Enter any website URL above to see how it appears when shared on social media platforms.
             </p>
           </div>
@@ -314,16 +313,10 @@ stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
           <!-- Server-side fallback - show loading state -->
           <div class="mb-6 sm:mb-4 mt-4 text-center py-12 sm:py-16 px-4" data-test="preview-area">
             <div
-              class="inline-flex items-center justify-center w-20 h-20 sm:w-20 sm:h-20 rounded-full bg-gray-100 dark:bg-gray-800 mb-4 sm:mb-4">
-              <svg
-class="w-10 h-10 sm:w-10 sm:h-10 text-gray-400 animate-pulse" fill="none" stroke="currentColor"
-                viewBox="0 0 24 24">
-                <path
-stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                  d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
-              </svg>
+              class="inline-flex items-center justify-center w-20 h-20 sm:w-20 sm:h-20 rounded-full bg-muted dark:bg-elevated mb-4 sm:mb-4">
+              <UIcon name="i-lucide-search" class="w-10 h-10 sm:w-10 sm:h-10 text-dimmed animate-pulse" />
             </div>
-            <h3 class="text-xl sm:text-lg font-semibold text-gray-900 dark:text-white mb-3 sm:mb-2">
+            <h3 class="text-xl sm:text-lg font-semibold text-primary dark:text-white mb-3 sm:mb-2">
               Loading preview...
             </h3>
           </div>
@@ -338,5 +331,5 @@ stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
 
     <!-- Footer -->
     <AppFooter />
-  </main>
+  </div>
 </template>

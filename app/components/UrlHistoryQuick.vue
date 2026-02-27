@@ -29,7 +29,7 @@ function getDisplayText(entry: UrlHistoryEntry): string {
 
 <template>
   <div v-if="recentHistory.length > 0" class="flex flex-wrap items-center gap-2 sm:gap-2">
-    <span class="text-xs sm:text-xs font-medium text-gray-500 dark:text-gray-400 uppercase tracking-wide">
+    <span class="text-xs sm:text-xs font-medium text-muted dark:text-dimmed uppercase tracking-wide">
       Recent:
     </span>
     <div class="flex flex-wrap gap-2 sm:gap-1.5">

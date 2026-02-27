@@ -15,6 +15,7 @@ import { defineTemplateBodyVisitor } from '../utils.mjs'
 export default {
   meta: {
     type: 'suggestion',
+    fixable: 'code',
     docs: {
       description: 'Prefer <ULink> over <NuxtLink> and <a> for consistent theming',
       category: 'ATX Design System',
@@ -34,6 +35,16 @@ export default {
           node: node.startTag,
           messageId: 'preferULink',
           data: { element: node.name },
+          fix(fixer) {
+            const startNameLength = node.name.length;
+            const fixes = [
+              fixer.replaceTextRange([node.startTag.range[0] + 1, node.startTag.range[0] + 1 + startNameLength], 'ULink')
+            ];
+            if (node.endTag) {
+              fixes.push(fixer.replaceTextRange([node.endTag.range[0] + 2, node.endTag.range[0] + 2 + startNameLength], 'ULink'));
+            }
+            return fixes;
+          }
         })
       },
     })

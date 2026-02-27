@@ -1,4 +1,5 @@
 <script setup lang="ts">
+/* eslint-disable atx/lucide-icons-only */
 useSeoMeta({
   title: 'Open Graph Preview: Complete Developer Guide',
   description: 'The definitive technical guide for Open Graph. Learn exact implementations for Nuxt, Next.js, and raw HTML to ensure perfect link unfurling.',
@@ -65,8 +66,8 @@ const platformGuides = [
   { name: 'LinkedIn Specs', to: '/open-graph/linkedin', icon: 'i-simple-icons-linkedin' },
   { name: 'Discord Specs', to: '/open-graph/discord', icon: 'i-simple-icons-discord' },
   { name: 'Slack Specs', to: '/open-graph/slack', icon: 'i-simple-icons-slack' },
-  { name: 'Image Size Reference', to: '/guides/og-image-sizes', icon: 'i-heroicons-photo' },
-  { name: 'Clear Cached Previews', to: '/guides/og-cache-refresh', icon: 'i-heroicons-arrow-path' }
+  { name: 'Image Size Reference', to: '/guides/og-image-sizes', icon: 'i-lucide-photo' },
+  { name: 'Clear Cached Previews', to: '/guides/og-cache-refresh', icon: 'i-lucide-arrow-path' }
 ]
 </script>
 
@@ -87,72 +88,72 @@ const platformGuides = [
       />
     </template>
 
-    <ContentCallout variant="info" title="The Golden Rule of Open Graph" icon="i-heroicons-star">
+    <ContentCallout variant="info" title="The Golden Rule of Open Graph" icon="i-lucide-star">
       For 99% of use cases, you only need four tags: <code>og:title</code>, <code>og:description</code>, <code>og:image</code>, and <code>og:url</code>. 
       Use a <strong>1200x630px JPG</strong> and ensure your tags are rendered <strong>Server-Side (SSR)</strong>.
     </ContentCallout>
 
-    <h2 id="required-tags" class="text-2xl font-bold text-gray-900 dark:text-white mb-6 mt-12">Required Implementation</h2>
+    <h2 id="required-tags" class="text-2xl font-bold text-primary dark:text-white mb-6 mt-12">Required Implementation</h2>
     
     <div class="space-y-6">
       <div class="grid md:grid-cols-2 gap-6">
         <div>
-          <h3 class="font-semibold text-gray-900 dark:text-white mb-2">Nuxt 3 (useSeoMeta)</h3>
+          <h3 class="font-semibold text-primary dark:text-white mb-2">Nuxt 3 (useSeoMeta)</h3>
           <ContentCodeBlock :code="nuxtExampleCode" language="typescript" />
         </div>
         <div>
-          <h3 class="font-semibold text-gray-900 dark:text-white mb-2">Next.js 14+ (App Router)</h3>
+          <h3 class="font-semibold text-primary dark:text-white mb-2">Next.js 14+ (App Router)</h3>
           <ContentCodeBlock :code="nextjsExampleCode" language="typescript" />
         </div>
       </div>
       <div>
-        <h3 class="font-semibold text-gray-900 dark:text-white mb-2">Raw HTML (&lt;head&gt;)</h3>
+        <h3 class="font-semibold text-primary dark:text-white mb-2">Raw HTML (&lt;head&gt;)</h3>
         <ContentCodeBlock :code="basicExampleCode" language="html" />
       </div>
     </div>
 
     <!-- Common Failures section -->
     <div class="my-12">
-      <h2 class="text-2xl font-bold text-gray-900 dark:text-white mb-6">Why Your Previews Are Breaking</h2>
+      <h2 class="text-2xl font-bold text-primary dark:text-white mb-6">Why Your Previews Are Breaking</h2>
       
       <div class="grid sm:grid-cols-2 gap-4">
-        <UCard class="border-red-200 dark:border-red-900/50">
+        <UCard class="border-default dark:border-default/50">
           <div class="flex items-center gap-2 mb-2">
-            <UIcon name="i-heroicons-x-circle" class="w-5 h-5 text-red-500" />
-            <h3 class="font-bold text-gray-900 dark:text-white">Client-Side Rendering (SPA)</h3>
+            <UIcon name="i-lucide-x-circle" class="w-5 h-5 text-muted" />
+            <h3 class="font-bold text-primary dark:text-white">Client-Side Rendering (SPA)</h3>
           </div>
-          <p class="text-sm text-gray-600 dark:text-gray-300">
+          <p class="text-sm text-muted dark:text-dimmed">
             Social bots (Facebook, Twitter, Slack) do not execute JavaScript. If you are using standard React/Vue without SSR/SSG, the bots will scrape an empty <code>&lt;head&gt;</code> tag and default to nothing.
           </p>
         </UCard>
         
-        <UCard class="border-red-200 dark:border-red-900/50">
+        <UCard class="border-default dark:border-default/50">
           <div class="flex items-center gap-2 mb-2">
-            <UIcon name="i-heroicons-x-circle" class="w-5 h-5 text-red-500" />
-            <h3 class="font-bold text-gray-900 dark:text-white">Relative Image URLs</h3>
+            <UIcon name="i-lucide-x-circle" class="w-5 h-5 text-muted" />
+            <h3 class="font-bold text-primary dark:text-white">Relative Image URLs</h3>
           </div>
-          <p class="text-sm text-gray-600 dark:text-gray-300">
+          <p class="text-sm text-muted dark:text-dimmed">
             Using <code>content="/img/og.png"</code> will fail. Social crawlers resolve absolute paths. You MUST use <code>content="https://yoursite.com/img/og.png"</code>.
           </p>
         </UCard>
 
-        <UCard class="border-red-200 dark:border-red-900/50">
+        <UCard class="border-default dark:border-default/50">
           <div class="flex items-center gap-2 mb-2">
-            <UIcon name="i-heroicons-x-circle" class="w-5 h-5 text-red-500" />
-            <h3 class="font-bold text-gray-900 dark:text-white">Missing Twitter Card Type</h3>
+            <UIcon name="i-lucide-x-circle" class="w-5 h-5 text-muted" />
+            <h3 class="font-bold text-primary dark:text-white">Missing Twitter Card Type</h3>
           </div>
-          <p class="text-sm text-gray-600 dark:text-gray-300">
+          <p class="text-sm text-muted dark:text-dimmed">
             Even with perfect OG tags, Twitter will crop your 1200x630px image into a tiny thumbnail square unless you explicitly provide <code>&lt;meta name="twitter:card" content="summary_large_image"&gt;</code>.
           </p>
         </UCard>
         
-        <UCard class="border-red-200 dark:border-red-900/50">
+        <UCard class="border-default dark:border-default/50">
           <div class="flex items-center gap-2 mb-2">
-            <UIcon name="i-heroicons-x-circle" class="w-5 h-5 text-red-500" />
-            <h3 class="font-bold text-gray-900 dark:text-white">Aggressive Caching</h3>
+            <UIcon name="i-lucide-x-circle" class="w-5 h-5 text-muted" />
+            <h3 class="font-bold text-primary dark:text-white">Aggressive Caching</h3>
           </div>
-          <p class="text-sm text-gray-600 dark:text-gray-300">
-            If you just pushed a fix to your production OG tags, they <strong>will not update automatically</strong>. You must read our <NuxtLink to="/guides/og-cache-refresh" class="text-blue-500 hover:underline">Cache Refresh Guide</NuxtLink> to force bots to re-scrape.
+          <p class="text-sm text-muted dark:text-dimmed">
+            If you just pushed a fix to your production OG tags, they <strong>will not update automatically</strong>. You must read our <NuxtLink to="/guides/og-cache-refresh" class="text-muted hover:underline">Cache Refresh Guide</NuxtLink> to force bots to re-scrape.
           </p>
         </UCard>
       </div>
@@ -160,7 +161,7 @@ const platformGuides = [
 
     <!-- Platform Specs Grid -->
     <div class="my-12">
-      <h2 class="text-2xl font-bold text-gray-900 dark:text-white mb-6">Platform Quick Specs</h2>
+      <h2 class="text-2xl font-bold text-primary dark:text-white mb-6">Platform Quick Specs</h2>
       <PlatformGrid :platforms="platformGuides" />
     </div>
 

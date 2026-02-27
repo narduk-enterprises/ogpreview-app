@@ -106,85 +106,85 @@ const relatedPlatforms = [
 
     <template #related>
       <div class="not-prose mt-12">
-        <h2 class="text-2xl font-bold text-gray-900 dark:text-white mb-6">
+        <h2 class="text-2xl font-bold text-primary dark:text-white mb-6">
           Other Platform Specs
         </h2>
         <PlatformGrid :platforms="relatedPlatforms" />
       </div>
     </template>
 
-    <ContentCallout variant="info" title="Quick Answer" icon="i-heroicons-light-bulb">
+    <ContentCallout variant="info" title="Quick Answer" icon="i-lucide-light-bulb">
       Facebook recommends a <strong>1200×630px</strong> image (1.91:1 ratio). Always use absolute HTTPS URLs and include the <code>og:title</code>, <code>og:description</code>, <code>og:image</code>, and <code>og:url</code> tags.
     </ContentCallout>
 
     <!-- Specs Dashboard -->
     <div class="my-12">
-      <h2 class="text-2xl font-bold text-gray-900 dark:text-white mb-6">Facebook Image Specs</h2>
+      <h2 class="text-2xl font-bold text-primary dark:text-white mb-6">Facebook Image Specs</h2>
       <div class="grid sm:grid-cols-2 gap-4">
         <UCard>
           <div class="flex items-center gap-3 mb-2">
-            <UIcon name="i-heroicons-photo" class="w-6 h-6 text-blue-500" />
-            <h3 class="font-semibold text-gray-900 dark:text-white">Recommended Size</h3>
+            <UIcon name="i-lucide-photo" class="w-6 h-6 text-muted" />
+            <h3 class="font-semibold text-primary dark:text-white">Recommended Size</h3>
           </div>
-          <p class="text-2xl font-bold text-gray-900 dark:text-white">
+          <p class="text-2xl font-bold text-primary dark:text-white">
             1200 × 630px
           </p>
-          <p class="text-sm text-gray-500 mt-1">1.91:1 Aspect Ratio</p>
+          <p class="text-sm text-muted mt-1">1.91:1 Aspect Ratio</p>
         </UCard>
         
         <UCard>
           <div class="flex items-center gap-3 mb-2">
-            <UIcon name="i-heroicons-document-arrow-down" class="w-6 h-6 text-blue-500" />
-            <h3 class="font-semibold text-gray-900 dark:text-white">File Limitations</h3>
+            <UIcon name="i-lucide-document-arrow-down" class="w-6 h-6 text-muted" />
+            <h3 class="font-semibold text-primary dark:text-white">File Limitations</h3>
           </div>
-          <p class="text-2xl font-bold text-gray-900 dark:text-white">
+          <p class="text-2xl font-bold text-primary dark:text-white">
             Max 8MB
           </p>
-          <p class="text-sm text-gray-500 mt-1">Formats: JPG, PNG, WebP, GIF</p>
+          <p class="text-sm text-muted mt-1">Formats: JPG, PNG, WebP, GIF</p>
         </UCard>
       </div>
     </div>
 
-    <h2 class="text-2xl font-bold text-gray-900 dark:text-white mb-6">Required Meta Tags</h2>
+    <h2 class="text-2xl font-bold text-primary dark:text-white mb-6">Required Meta Tags</h2>
     <div class="space-y-6">
       <div>
-        <h3 class="font-semibold text-gray-900 dark:text-white mb-2">Basic HTML</h3>
+        <h3 class="font-semibold text-primary dark:text-white mb-2">Basic HTML</h3>
         <ContentCodeBlock :code="requiredTagsCode" language="html" />
       </div>
       <div>
-        <h3 class="font-semibold text-gray-900 dark:text-white mb-2">Nuxt 3</h3>
+        <h3 class="font-semibold text-primary dark:text-white mb-2">Nuxt 3</h3>
         <ContentCodeBlock :code="nuxtExampleCode" language="typescript" />
       </div>
       <div>
-        <h3 class="font-semibold text-gray-900 dark:text-white mb-2">Next.js</h3>
+        <h3 class="font-semibold text-primary dark:text-white mb-2">Next.js</h3>
         <ContentCodeBlock :code="nextjsExampleCode" language="typescript" />
       </div>
     </div>
 
     <div class="my-12 grid md:grid-cols-2 gap-8">
       <div>
-        <h2 class="text-2xl font-bold text-gray-900 dark:text-white mb-4">Top 3 Best Practices</h2>
+        <h2 class="text-2xl font-bold text-primary dark:text-white mb-4">Top 3 Best Practices</h2>
         <ul class="space-y-3">
           <li class="flex items-start gap-2">
-            <UIcon name="i-heroicons-check-circle" class="w-5 h-5 text-green-500 shrink-0 mt-0.5" />
-            <span class="text-gray-700 dark:text-gray-300"><strong>Use absolute image URLs</strong> (e.g., <code>https://your-site.com/image.jpg</code>) instead of relative paths.</span>
+            <UIcon name="i-lucide-check-circle" class="w-5 h-5 text-muted shrink-0 mt-0.5" />
+            <span class="text-primary dark:text-dimmed"><strong>Use absolute image URLs</strong> (e.g., <code>https://your-site.com/image.jpg</code>) instead of relative paths.</span>
           </li>
           <li class="flex items-start gap-2">
-            <UIcon name="i-heroicons-check-circle" class="w-5 h-5 text-green-500 shrink-0 mt-0.5" />
-            <span class="text-gray-700 dark:text-gray-300"><strong>Ensure og:url matches the canonical URL</strong> of the page to consolidate likes and shares.</span>
+            <UIcon name="i-lucide-check-circle" class="w-5 h-5 text-muted shrink-0 mt-0.5" />
+            <span class="text-primary dark:text-dimmed"><strong>Ensure og:url matches the canonical URL</strong> of the page to consolidate likes and shares.</span>
           </li>
           <li class="flex items-start gap-2">
-            <UIcon name="i-heroicons-check-circle" class="w-5 h-5 text-green-500 shrink-0 mt-0.5" />
-            <span class="text-gray-700 dark:text-gray-300"><strong>Keep text out of the bottom 20%</strong> of the image, as Facebook occasionally overlays the domain there.</span>
+            <UIcon name="i-lucide-check-circle" class="w-5 h-5 text-muted shrink-0 mt-0.5" />
+            <span class="text-primary dark:text-dimmed"><strong>Keep text out of the bottom 20%</strong> of the image, as Facebook occasionally overlays the domain there.</span>
           </li>
         </ul>
       </div>
 
       <div>
-        <h2 class="text-2xl font-bold text-gray-900 dark:text-white mb-4">Troubleshooting</h2>
-        <UCard class="bg-red-50 dark:bg-red-900/10 border-red-100 dark:border-red-900">
-          <h3 class="font-semibold text-red-900 dark:text-red-300 mb-2">Cache Won't Clear?</h3>
-          <p class="text-sm text-red-800 dark:text-red-200 mb-4">
+        <h2 class="text-2xl font-bold text-primary dark:text-white mb-4">Troubleshooting</h2>
+        <UCard class="bg-muted dark:bg-elevated/10 border-default dark:border-default">
+          <h3 class="font-semibold text-primary dark:text-dimmed mb-2">Cache Won't Clear?</h3>
+          <p class="text-sm text-primary dark:text-primary mb-4">
             Facebook caches metadata aggressively. If your updated tags aren't showing up, you must force Facebook's scraper to fetch the new version.
           </p>
           <UButton 
@@ -192,7 +192,7 @@ const relatedPlatforms = [
             target="_blank" 
             color="primary" 
             variant="soft"
-            icon="i-heroicons-arrow-top-right-on-square"
+            icon="i-lucide-arrow-top-right-on-square"
           >
             Open Facebook Sharing Debugger
           </UButton>

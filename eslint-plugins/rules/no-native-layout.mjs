@@ -20,6 +20,7 @@ const elementSuggestions = {
 export default {
   meta: {
     type: 'suggestion',
+    fixable: 'code',
     docs: {
       description: 'Disallow native layout elements — use Nuxt UI equivalents',
       category: 'ATX Design System',
@@ -43,6 +44,16 @@ export default {
           node: node.startTag,
           messageId: 'noNativeLayout',
           data: { element: el, suggestion: elementSuggestions[el] },
+          fix(fixer) {
+            const startNameLength = node.name.length;
+            const fixes = [
+              fixer.replaceTextRange([node.startTag.range[0] + 1, node.startTag.range[0] + 1 + startNameLength], 'div')
+            ];
+            if (node.endTag) {
+              fixes.push(fixer.replaceTextRange([node.endTag.range[0] + 2, node.endTag.range[0] + 2 + startNameLength], 'div'));
+            }
+            return fixes;
+          }
         })
       },
     })

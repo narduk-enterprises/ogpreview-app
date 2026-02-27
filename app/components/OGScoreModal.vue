@@ -94,12 +94,12 @@ function getButtonColor(score: number): ButtonColor {
             </div>
           </div>
           <div class="flex items-center justify-center gap-2">
-            <span class="text-lg font-medium text-gray-700 dark:text-gray-300">Overall Score:</span>
+            <span class="text-lg font-medium text-primary dark:text-dimmed">Overall Score:</span>
             <span :class="['text-lg font-bold', getScoreTextColor(props.scores.overall)]">
               {{ getScoreLabel(props.scores.overall) }}
             </span>
           </div>
-          <div class="w-full bg-gray-200 dark:bg-gray-700 rounded-full h-4 overflow-hidden mt-4 max-w-md mx-auto">
+          <div class="w-full bg-muted dark:bg-elevated rounded-full h-4 overflow-hidden mt-4 max-w-md mx-auto">
             <div
               :class="['h-full transition-all duration-500', getScoreColorClass(props.scores.overall)]"
               :style="{ width: `${props.scores.overall}%` }"
@@ -111,6 +111,7 @@ function getButtonColor(score: number): ButtonColor {
 
         <!-- Platform Tabs -->
         <div class="flex flex-wrap gap-2">
+          <!-- eslint-disable-next-line atx/no-native-button -->
           <button
             v-for="platform in selectablePlatforms"
             :key="platform"
@@ -118,7 +119,7 @@ function getButtonColor(score: number): ButtonColor {
               'px-4 py-2 rounded-lg text-sm font-medium transition-colors',
               selectedPlatform === platform
                 ? 'bg-primary-600 text-white'
-                : 'bg-gray-100 dark:bg-gray-800 text-gray-700 dark:text-gray-300 hover:bg-gray-200 dark:hover:bg-gray-700'
+                : 'bg-muted dark:bg-elevated text-primary dark:text-dimmed hover:bg-muted dark:hover:bg-elevated'
             ]"
             @click="selectedPlatform = platform"
           >
@@ -127,9 +128,9 @@ function getButtonColor(score: number): ButtonColor {
         </div>
 
         <!-- Selected Platform Details -->
-        <div class="p-5 bg-gray-50 dark:bg-gray-800 rounded-lg">
+        <div class="p-5 bg-muted dark:bg-elevated rounded-lg">
           <div class="flex items-center justify-between mb-4">
-            <h4 class="text-lg font-semibold text-gray-800 dark:text-gray-200 capitalize">
+            <h4 class="text-lg font-semibold text-primary dark:text-primary capitalize">
               {{ selectedPlatform }}
             </h4>
             <span :class="['text-2xl font-bold', getScoreTextColor(props.scores[selectedPlatform].score)]">
@@ -137,7 +138,7 @@ function getButtonColor(score: number): ButtonColor {
             </span>
           </div>
 
-          <div class="w-full bg-gray-200 dark:bg-gray-700 rounded-full h-3 overflow-hidden mb-5">
+          <div class="w-full bg-muted dark:bg-elevated rounded-full h-3 overflow-hidden mb-5">
             <div
               :class="['h-full transition-all duration-500', getScoreColorClass(props.scores[selectedPlatform].score)]"
               :style="{ width: `${props.scores[selectedPlatform].score}%` }"
@@ -149,7 +150,7 @@ function getButtonColor(score: number): ButtonColor {
             v-if="props.scores[selectedPlatform].reasons.length > 0"
             class="mb-4"
           >
-            <h5 class="text-sm font-semibold text-green-600 dark:text-green-400 mb-2 flex items-center gap-2">
+            <h5 class="text-sm font-semibold text-muted dark:text-dimmed mb-2 flex items-center gap-2">
               <span class="i-lucide-check-circle w-4 h-4" />
               What's Good
             </h5>
@@ -157,7 +158,7 @@ function getButtonColor(score: number): ButtonColor {
               <li
                 v-for="(reason, idx) in props.scores[selectedPlatform].reasons"
                 :key="idx"
-                class="text-sm text-gray-700 dark:text-gray-300 pl-4"
+                class="text-sm text-primary dark:text-dimmed pl-4"
               >
                 • {{ reason }}
               </li>
@@ -169,7 +170,7 @@ function getButtonColor(score: number): ButtonColor {
             v-if="props.scores[selectedPlatform].issues.length > 0"
             class="mb-4"
           >
-            <h5 class="text-sm font-semibold text-yellow-600 dark:text-yellow-400 mb-2 flex items-center gap-2">
+            <h5 class="text-sm font-semibold text-muted dark:text-dimmed mb-2 flex items-center gap-2">
               <span class="i-lucide-alert-circle w-4 h-4" />
               Issues Found
             </h5>
@@ -177,7 +178,7 @@ function getButtonColor(score: number): ButtonColor {
               <li
                 v-for="(issue, idx) in props.scores[selectedPlatform].issues"
                 :key="idx"
-                class="text-sm text-gray-700 dark:text-gray-300 pl-4"
+                class="text-sm text-primary dark:text-dimmed pl-4"
               >
                 • {{ issue }}
               </li>
@@ -186,7 +187,7 @@ function getButtonColor(score: number): ButtonColor {
 
           <!-- Recommendations -->
           <div v-if="props.scores[selectedPlatform].recommendations.length > 0">
-            <h5 class="text-sm font-semibold text-blue-600 dark:text-blue-400 mb-2 flex items-center gap-2">
+            <h5 class="text-sm font-semibold text-muted dark:text-dimmed mb-2 flex items-center gap-2">
               <span class="i-lucide-lightbulb w-4 h-4" />
               Recommendations
             </h5>
@@ -194,7 +195,7 @@ function getButtonColor(score: number): ButtonColor {
               <li
                 v-for="(rec, idx) in props.scores[selectedPlatform].recommendations"
                 :key="idx"
-                class="text-sm text-gray-700 dark:text-gray-300 pl-4"
+                class="text-sm text-primary dark:text-dimmed pl-4"
               >
                 • {{ rec }}
               </li>

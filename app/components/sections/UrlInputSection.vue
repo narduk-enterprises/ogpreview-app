@@ -202,7 +202,7 @@ function getScoreLabel(score: number): string {
 <template>
   <div class="mb-4">
     <UCard
-      class="shadow-lg hover:shadow-xl transition-shadow duration-300 ring-1 ring-gray-200/50 dark:ring-gray-700/50"
+      class="shadow-lg hover:shadow-xl transition-shadow duration-300 ring-1 border-default/50 dark:border-default/50"
       :ui="{
         root: 'overflow-visible',
         body: 'p-3'
@@ -213,13 +213,13 @@ function getScoreLabel(score: number): string {
           <UInput
 ref="urlInputRef" v-model="localUrl" type="url" :disabled="isLoading"
             placeholder="example.com or https://example.com" size="md" variant="outline"
-            :leading-icon="isLoading ? 'i-lucide-loader-circle' : 'i-lucide-globe'" :loading="isLoading" class="flex-1"
+            :icon="isLoading ? 'i-lucide-loader-circle' : 'i-lucide-globe'" :loading="isLoading" class="flex-1"
             aria-label="Enter website URL to preview Open Graph tags" autofocus :ui="{
               base: 'text-sm',
               trailing: 'pe-1'
             }"
-            @pointerdown="markUserUrlFocusIntent"
-            @pointerup="handleUrlInputPointerUp"
+            @mousedown="markUserUrlFocusIntent"
+            @mouseup="handleUrlInputPointerUp"
             @focus="handleUrlInputFocus"
             @keydown.enter.prevent="handleFetch">
             <template v-if="localUrl && !isLoading" #trailing>
@@ -240,7 +240,7 @@ icon="i-lucide-x-circle" color="neutral" variant="ghost" size="xs" aria-label="C
         <!-- Score Display and Action Buttons -->
         <div
 v-if="hasScores && scores"
-          class="flex items-center justify-between gap-3 pt-2 border-t border-gray-200/50 dark:border-gray-700/50 score-appear">
+          class="flex items-center justify-between gap-3 pt-2 border-t border-default/50 dark:border-default/50 score-appear">
           <!-- Score Display -->
           <div class="flex items-center gap-3">
             <div class="flex items-center gap-2">
@@ -252,7 +252,7 @@ v-if="hasScores && scores"
                 {{ scores.overall }}
               </div>
               <div>
-                <div class="text-xs font-medium text-gray-500 dark:text-gray-400 uppercase tracking-wide">
+                <div class="text-xs font-medium text-muted dark:text-dimmed uppercase tracking-wide">
                   Quality Score
                 </div>
                 <div :class="['text-sm font-bold leading-tight', getScoreTextColor(scores.overall)]">
@@ -263,7 +263,7 @@ v-if="hasScores && scores"
 
             <!-- Mini Progress Bar -->
             <div class="hidden md:flex items-center gap-2">
-              <div class="w-24 bg-gray-200 dark:bg-gray-700 rounded-full h-2 overflow-hidden">
+              <div class="w-24 bg-muted dark:bg-elevated rounded-full h-2 overflow-hidden">
                 <div
 :class="['h-full transition-all duration-500', getScoreColorClass(scores.overall)]"
                   :style="{ width: `${scores.overall}%` }" />

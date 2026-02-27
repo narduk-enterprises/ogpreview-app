@@ -7,6 +7,7 @@ interface Props {
 }
 
 withDefaults(defineProps<Props>(), {
+  description: '',
   color: 'info',
   icon: 'i-lucide-lightbulb'
 })
@@ -19,14 +20,10 @@ withDefaults(defineProps<Props>(), {
     :icon="icon"
     :title="title"
     class="not-prose my-6"
-    :ui="{
-      wrapper: 'rounded-lg',
-      title: 'font-semibold text-base',
-      description: 'text-sm leading-relaxed mt-2'
-    }"
   >
     <template v-if="description" #description>
       <slot name="description">
+        <!-- eslint-disable-next-line vue/no-v-html -->
         <p v-html="description"></p>
       </slot>
     </template>

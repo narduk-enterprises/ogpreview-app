@@ -36,12 +36,12 @@ defineProps<Props>()
           <UIcon
             v-else-if="platform.iconName"
             :name="platform.iconName"
-            class="w-12 h-12 mb-3 text-gray-600 dark:text-gray-400"
+            class="w-12 h-12 mb-3 text-muted dark:text-dimmed"
           />
-          <h3 class="font-semibold text-gray-900 dark:text-white mb-1">
+          <h3 class="font-semibold text-primary dark:text-white mb-1">
             {{ platform.name }}
           </h3>
-          <p v-if="platform.description" class="text-sm text-gray-600 dark:text-gray-400">
+          <p v-if="platform.description" class="text-sm text-muted dark:text-dimmed">
             {{ platform.description }}
           </p>
         </div>

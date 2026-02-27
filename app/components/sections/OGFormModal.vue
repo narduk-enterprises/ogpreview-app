@@ -61,6 +61,7 @@ const twitterCardOptions = [
     />
 
     <template #body>
+      <!-- eslint-disable atx/no-native-form, nuxt-ui/prefer-uform -->
       <form
         class="space-y-6"
         @submit.prevent
@@ -68,7 +69,7 @@ const twitterCardOptions = [
         <!-- Basic Fields Section -->
         <div class="space-y-4">
           <div class="flex items-center justify-between mb-2">
-            <h3 class="text-lg font-semibold text-gray-900 dark:text-gray-100">
+            <h3 class="text-lg font-semibold text-primary dark:text-primary">
               Basic Information
             </h3>
             <UBadge
@@ -121,7 +122,7 @@ const twitterCardOptions = [
               placeholder="https://example.com/image.jpg"
               size="lg"
               variant="outline"
-              leading-icon="i-lucide-image"
+              icon="i-lucide-image"
               class="w-full"
             />
           </UFormField>
@@ -132,7 +133,7 @@ const twitterCardOptions = [
         <!-- Advanced Options Section -->
         <div class="space-y-4">
           <div class="flex items-center justify-between mb-2">
-            <h3 class="text-lg font-semibold text-gray-900 dark:text-gray-100">
+            <h3 class="text-lg font-semibold text-primary dark:text-primary">
               Advanced Options
             </h3>
             <UButton

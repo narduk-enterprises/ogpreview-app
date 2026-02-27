@@ -40,36 +40,36 @@ useSchemaOrg([
 </script>
 
 <template>
-  <main class="min-h-screen py-8 px-4 sm:px-6 lg:px-8 bg-linear-to-br from-gray-50 via-blue-50 to-purple-50 dark:from-gray-900 dark:via-gray-900 dark:to-gray-800">
+  <div class="min-h-screen py-8 px-4 sm:px-6 lg:px-8 bg-linear-to-br from-primary-500 via-primary-500 to-primary-500 dark:from-primary-500 dark:via-primary-500 dark:to-primary-500">
     <article class="max-w-4xl mx-auto">
       <!-- Navigation -->
-      <nav class="mb-8">
+      <div class="mb-8">
         <NuxtLink
           to="/"
-          class="inline-flex items-center gap-2 text-blue-600 dark:text-blue-400 hover:underline"
+          class="inline-flex items-center gap-2 text-muted dark:text-dimmed hover:underline"
         >
           ← Back to Tool
         </NuxtLink>
-      </nav>
+      </div>
 
       <!-- Header -->
-      <header class="mb-12">
-        <h1 class="text-4xl sm:text-5xl font-bold text-gray-900 dark:text-white mb-4">
+      <div class="mb-12">
+        <h1 class="text-4xl sm:text-5xl font-bold text-primary dark:text-white mb-4">
           Changelog
         </h1>
-        <p class="text-xl text-gray-600 dark:text-gray-400 mb-6">
+        <p class="text-xl text-muted dark:text-dimmed mb-6">
           Track updates, improvements, and new features to ogpreview.app. See what's changed and what's coming next.
         </p>
-        <div class="flex flex-wrap gap-4 text-sm text-gray-600 dark:text-gray-400">
+        <div class="flex flex-wrap gap-4 text-sm text-muted dark:text-dimmed">
           <span class="flex items-center gap-1.5">
-            <UIcon name="i-heroicons-calendar" class="w-4 h-4" />
+            <UIcon name="i-lucide-calendar" class="w-4 h-4" />
             Last updated: December 2025
           </span>
         </div>
-      </header>
+      </div>
 
       <!-- Content -->
-      <div class="prose prose-lg dark:prose-invert max-w-none bg-white dark:bg-gray-800 rounded-xl p-8 shadow-lg">
+      <div class="prose prose-lg dark:prose-invert max-w-none bg-white dark:bg-elevated rounded-xl p-8 shadow-lg">
         <h2 id="december-2025">December 2025</h2>
 
         <h3>🎯 SEO & Content Expansion</h3>
@@ -119,7 +119,7 @@ useSchemaOrg([
 
         <h2 id="contributing">Contributing</h2>
         <p>
-          Want to contribute? We welcome contributions! Check out our <a href="https://github.com" target="_blank" rel="noopener" class="font-semibold">GitHub repository</a> to:
+          Want to contribute? We welcome contributions! Check out our <ULink href="https://github.com" target="_blank" rel="noopener" class="font-semibold">GitHub repository</ULink> to:
         </p>
         <ul>
           <li>Report bugs</li>
@@ -130,22 +130,22 @@ useSchemaOrg([
       </div>
 
       <!-- CTA -->
-      <div class="mt-12 bg-linear-to-br from-blue-600 to-purple-600 rounded-xl p-8 text-center text-white">
+      <div class="mt-12 bg-linear-to-br from-primary-500 to-primary-500 rounded-xl p-8 text-center text-white">
         <h2 class="text-2xl sm:text-3xl font-bold mb-4">
           Try the Latest Features
         </h2>
-        <p class="text-blue-100 mb-6 max-w-2xl mx-auto">
+        <p class="text-primary mb-6 max-w-2xl mx-auto">
           Experience all the improvements we've made to the Open Graph preview tool.
         </p>
         <NuxtLink
           to="/"
-          class="inline-block bg-white text-blue-600 px-8 py-3 rounded-lg font-semibold hover:bg-blue-50 transition-colors"
+          class="inline-block bg-white text-muted px-8 py-3 rounded-lg font-semibold hover:bg-muted transition-colors"
         >
           Try the Free Preview Tool
         </NuxtLink>
       </div>
     </article>
-  </main>
+  </div>
 </template>
 
 

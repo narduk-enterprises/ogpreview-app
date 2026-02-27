@@ -1,4 +1,6 @@
 <script setup lang="ts">
+defineOptions({ inheritAttrs: false })
+
 interface Props {
   src?: string
   alt?: string
@@ -103,9 +105,11 @@ const onImageError = () => {
 
     // Force reload with proxy URL after a short delay
     setTimeout(() => {
-      const imgElement = document.querySelector(`img[alt="${props.alt}"], img[src*="${props.src}"]`) as HTMLImageElement
-      if (imgElement) {
-        imgElement.src = imageSrc.value
+      if (import.meta.client) {
+        const imgElement = document.querySelector(`img[alt="${props.alt}"], img[src*="${props.src}"]`) as HTMLImageElement
+        if (imgElement) {
+          imgElement.src = imageSrc.value
+        }
       }
     }, 300)
     return
@@ -120,9 +124,11 @@ const onImageError = () => {
     // Retry after a short delay
     setTimeout(() => {
       // Force reload by temporarily clearing and resetting src
-      const imgElement = document.querySelector(`img[alt="${props.alt}"], img[src*="${imageSrc.value}"]`) as HTMLImageElement
-      if (imgElement) {
-        imgElement.src = retrySrc
+      if (import.meta.client) {
+        const imgElement = document.querySelector(`img[alt="${props.alt}"], img[src*="${imageSrc.value}"]`) as HTMLImageElement
+        if (imgElement) {
+          imgElement.src = retrySrc
+        }
       }
     }, 300)
   }
@@ -159,19 +165,21 @@ onMounted(() => {
     setTimeout(() => {
       if (!imageLoaded.value && !imageError.value) {
         // Check if image element exists and is loaded
-        const imgElement = document.querySelector(`img[src="${imageSrc.value}"]`) as HTMLImageElement
-        if (imgElement && imgElement.complete) {
-          imageLoaded.value = true
-        }
-        else {
-          // If image hasn't loaded after 5 seconds, treat as error
-          // This handles CORS-blocked images that don't fire error events
-          setTimeout(() => {
-            if (!imageLoaded.value && !imageError.value) {
-              imageError.value = true
-              console.warn('[PreviewImage] Image load timeout:', imageSrc.value)
-            }
-          }, 5000)
+        if (import.meta.client) {
+          const imgElement = document.querySelector(`img[src="${imageSrc.value}"]`) as HTMLImageElement
+          if (imgElement && imgElement.complete) {
+            imageLoaded.value = true
+          }
+          else {
+            // If image hasn't loaded after 5 seconds, treat as error
+            // This handles CORS-blocked images that don't fire error events
+            setTimeout(() => {
+              if (!imageLoaded.value && !imageError.value) {
+                imageError.value = true
+                console.warn('[PreviewImage] Image load timeout:', imageSrc.value)
+              }
+            }, 5000)
+          }
         }
       }
     }, 100)
@@ -180,7 +188,7 @@ onMounted(() => {
 </script>
 
 <template>
-  <div v-if="src && !imageError" :class="['overflow-hidden bg-gray-200 dark:bg-gray-700 relative', aspectClass]">
+  <div v-if="src && !imageError" :class="['overflow-hidden bg-muted dark:bg-elevated relative', aspectClass]">
     <Transition name="image-fade" mode="out-in">
       <!-- Use NuxtImg only for internal assets or explicitly allowed domains -->
       <NuxtImg
@@ -197,21 +205,21 @@ v-else :key="`img-${imageSrc}`" :src="imageSrc" :alt="alt" class="w-full h-full 
     <ClientOnly>
       <div
 v-if="!imageLoaded && !imageError"
-        class="absolute inset-0 flex items-center justify-center bg-gray-200 dark:bg-gray-700" role="status"
+        class="absolute inset-0 flex items-center justify-center bg-muted dark:bg-elevated" role="status"
         aria-live="polite" aria-label="Loading image">
         <UIcon
-name="i-lucide-loader-circle" class="w-8 h-8 text-gray-400 dark:text-gray-500 animate-spin"
+name="i-lucide-loader-circle" class="w-8 h-8 text-dimmed dark:text-muted animate-spin"
           aria-hidden="true" />
       </div>
     </ClientOnly>
   </div>
   <!-- Show "No Image" when src is empty OR when image fails to load -->
   <div
-v-else :class="['flex items-center justify-center bg-gray-200 dark:bg-gray-700', aspectClass]" role="img"
+v-else :class="['flex items-center justify-center bg-muted dark:bg-elevated', aspectClass]" role="img"
     aria-label="No image available">
     <div class="text-center">
-      <UIcon name="i-lucide-image-off" class="w-12 h-12 text-gray-400 dark:text-gray-500 mb-2" aria-hidden="true" />
-      <span class="text-sm text-gray-400 dark:text-gray-500">No Image</span>
+      <UIcon name="i-lucide-image-off" class="w-12 h-12 text-dimmed dark:text-muted mb-2" aria-hidden="true" />
+      <span class="text-sm text-dimmed dark:text-muted">No Image</span>
     </div>
   </div>
 </template>

@@ -30,15 +30,15 @@ async function copyToClipboard() {
 
 <template>
   <div class="not-prose my-8">
-    <div class="relative rounded-xl overflow-hidden bg-gray-900 dark:bg-gray-950 border border-gray-800 dark:border-gray-700 shadow-xl">
+    <div class="relative rounded-xl overflow-hidden bg-elevated dark:bg-muted border border-default dark:border-default shadow-xl">
       <!-- Header with language label and copy button -->
       <div
         v-if="language || showCopy"
-        class="flex items-center justify-between px-4 py-2.5 bg-gray-800 dark:bg-gray-900 border-b border-gray-700 dark:border-gray-800"
+        class="flex items-center justify-between px-4 py-2.5 bg-elevated dark:bg-elevated border-b border-default dark:border-default"
       >
         <span
           v-if="language"
-          class="text-xs font-mono text-gray-400 dark:text-gray-400 uppercase tracking-wider font-semibold"
+          class="text-xs font-mono text-dimmed dark:text-dimmed uppercase tracking-wider font-semibold"
         >
           {{ language }}
         </span>
@@ -48,8 +48,8 @@ async function copyToClipboard() {
           variant="ghost"
           size="xs"
           color="neutral"
-          :icon="copied ? 'i-heroicons-check' : 'i-heroicons-clipboard'"
-          :class="copied ? 'text-green-500 dark:text-green-400' : ''"
+          :icon="copied ? 'i-lucide-check' : 'i-lucide-clipboard'"
+          :class="copied ? 'text-muted dark:text-dimmed' : ''"
           @click="copyToClipboard"
         >
           {{ copied ? 'Copied!' : 'Copy' }}
@@ -62,7 +62,7 @@ async function copyToClipboard() {
           'overflow-x-auto p-6 text-sm leading-loose',
           language ? 'font-mono' : 'font-mono'
         ]"
-      ><code :class="language ? `language-${language}` : ''" class="text-gray-100 dark:text-gray-200">{{ code }}</code></pre>
+      ><code :class="language ? `language-${language}` : ''" class="text-primary dark:text-primary">{{ code }}</code></pre>
     </div>
   </div>
 </template>

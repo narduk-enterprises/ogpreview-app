@@ -24,22 +24,24 @@ export function useUrlHistory() {
   })
 
   function loadHistory() {
-    if (import.meta.server) return
-    try {
-      const stored = localStorage.getItem(HISTORY_KEY)
-      if (stored) history.value = JSON.parse(stored)
-    }
-    catch {
-      history.value = []
+    if (import.meta.client) {
+      try {
+        const stored = localStorage.getItem(HISTORY_KEY)
+        if (stored) history.value = JSON.parse(stored)
+      }
+      catch {
+        history.value = []
+      }
     }
   }
 
   function saveHistory() {
-    if (import.meta.server) return
-    try {
-      localStorage.setItem(HISTORY_KEY, JSON.stringify(history.value))
+    if (import.meta.client) {
+      try {
+        localStorage.setItem(HISTORY_KEY, JSON.stringify(history.value))
+      }
+      catch { /* storage full or unavailable */ }
     }
-    catch { /* storage full or unavailable */ }
   }
 
   function addToHistory(url: string, ogData?: OGData | null) {

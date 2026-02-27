@@ -161,38 +161,39 @@ class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 2xl:grid-co
 v-for="item in filteredPreviewItems" :key="item.id" class="flex flex-col min-w-0"
         :data-test="`platform-card-${item.id}`">
         <div class="flex items-center justify-center mb-2.5 sm:mb-2">
+          <!-- eslint-disable-next-line atx/no-native-button -->
           <button
             v-if="item.id !== 'sponsored'"
             :aria-label="`View ${item.name} preview in detail`"
             type="button"
-            class="inline-flex items-center gap-2 sm:gap-1.5 px-4 py-2 sm:px-2 sm:py-0.5 bg-linear-to-r from-blue-500/10 via-purple-500/10 to-pink-500/10 dark:from-blue-500/20 dark:via-purple-500/20 dark:to-pink-500/20 rounded-full border border-blue-200/50 dark:border-blue-700/50 shadow-sm hover:shadow-md transition-all hover:scale-105 cursor-pointer focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 active:scale-95 min-h-[44px] sm:min-h-0"
+            class="inline-flex items-center gap-2 sm:gap-1.5 px-4 py-2 sm:px-2 sm:py-0.5 bg-linear-to-r from-primary-500/10 via-primary-500/10 to-primary-500/10 dark:from-primary-500/20 dark:via-primary-500/20 dark:to-primary-500/20 rounded-full border border-default/50 dark:border-default/50 shadow-sm hover:shadow-md transition-all hover:scale-105 cursor-pointer focus:outline-none focus:ring-2 focus:border-default focus:ring-offset-2 active:scale-95 min-h-[44px] sm:min-h-0"
             :disabled="!hasData"
             @click="hasData ? openModal(item) : null">
             <UIcon
-:name="item.icon" class="w-4 h-4 sm:w-3 sm:h-3 text-blue-600 dark:text-blue-400"
+:name="item.icon" class="w-4 h-4 sm:w-3 sm:h-3 text-muted dark:text-dimmed"
               aria-hidden="true" />
-            <span class="text-base sm:text-xs font-bold text-gray-900 dark:text-gray-100">{{ item.name }}</span>
+            <span class="text-base sm:text-xs font-bold text-primary dark:text-primary">{{ item.name }}</span>
           </button>
           <div
             v-else
-            class="inline-flex items-center gap-2 sm:gap-1.5 px-4 py-2 sm:px-2 sm:py-0.5 bg-linear-to-r from-amber-500/10 via-orange-500/10 to-yellow-500/10 dark:from-amber-500/20 dark:via-orange-500/20 dark:to-yellow-500/20 rounded-full border border-amber-200/50 dark:border-amber-700/50 shadow-sm min-h-[44px] sm:min-h-0">
+            class="inline-flex items-center gap-2 sm:gap-1.5 px-4 py-2 sm:px-2 sm:py-0.5 bg-linear-to-r from-primary-500/10 via-primary-500/10 to-primary-500/10 dark:from-primary-500/20 dark:via-primary-500/20 dark:to-primary-500/20 rounded-full border border-default/50 dark:border-default/50 shadow-sm min-h-[44px] sm:min-h-0">
             <UIcon
-name="i-lucide-sparkles" class="w-4 h-4 sm:w-3 sm:h-3 text-amber-600 dark:text-amber-400"
+name="i-lucide-sparkles" class="w-4 h-4 sm:w-3 sm:h-3 text-muted dark:text-dimmed"
               aria-hidden="true" />
-            <span class="text-base sm:text-xs font-bold text-gray-900 dark:text-gray-100">Sponsored</span>
+            <span class="text-base sm:text-xs font-bold text-primary dark:text-primary">Sponsored</span>
           </div>
         </div>
 
         <div
 :aria-label="`${item.name} preview card`" role="region"
-          class="flex items-start justify-center flex-1 p-2.5 sm:p-1.5 bg-linear-to-br from-gray-50 to-gray-100/50 dark:from-gray-900 dark:to-gray-800/50 rounded-lg border border-gray-200/50 dark:border-gray-700/50 shadow-inner overflow-hidden">
+          class="flex items-start justify-center flex-1 p-2.5 sm:p-1.5 bg-linear-to-br from-primary-500 to-primary-500/50 dark:from-primary-500 dark:to-primary-500/50 rounded-lg border border-default/50 dark:border-default/50 shadow-inner overflow-hidden">
           <!-- Show skeleton when no data loaded (skip for sponsored) -->
           <div v-if="!hasData && item.id !== 'sponsored'" class="w-full h-full flex items-center justify-center min-h-[200px] sm:min-h-[200px]">
             <div class="w-full space-y-3 p-4 sm:p-4 animate-pulse">
-              <div class="h-4 sm:h-4 bg-gray-300 dark:bg-gray-600 rounded w-3/4" />
-              <div class="h-32 sm:h-32 bg-gray-300 dark:bg-gray-600 rounded" />
-              <div class="h-3 sm:h-3 bg-gray-300 dark:bg-gray-600 rounded w-full" />
-              <div class="h-3 sm:h-3 bg-gray-300 dark:bg-gray-600 rounded w-5/6" />
+              <div class="h-4 sm:h-4 bg-elevated dark:bg-elevated rounded w-3/4" />
+              <div class="h-32 sm:h-32 bg-elevated dark:bg-elevated rounded" />
+              <div class="h-3 sm:h-3 bg-elevated dark:bg-elevated rounded w-full" />
+              <div class="h-3 sm:h-3 bg-elevated dark:bg-elevated rounded w-5/6" />
             </div>
           </div>
 
@@ -208,7 +209,7 @@ name="i-lucide-sparkles" class="w-4 h-4 sm:w-3 sm:h-3 text-amber-600 dark:text-a
                 <component :is="item.component" :data="data" />
               </template>
               <template #fallback>
-                <div class="animate-pulse bg-gray-200 dark:bg-gray-800 w-full h-40 sm:h-48 rounded-lg" :aria-label="`Loading ${item.name} preview`" />
+                <div class="animate-pulse bg-muted dark:bg-elevated w-full h-40 sm:h-48 rounded-lg" :aria-label="`Loading ${item.name} preview`" />
               </template>
             </Suspense>
           </div>
@@ -221,16 +222,11 @@ name="i-lucide-sparkles" class="w-4 h-4 sm:w-3 sm:h-3 text-amber-600 dark:text-a
       <UAlert
 v-if="validationResult.isComplete" color="success" variant="subtle" icon="i-lucide-circle-check"
         title="All Required Fields Complete" description="Your Open Graph tags are ready for all platforms!"
-        data-test="validation-complete" :ui="{
-          title: 'text-base sm:text-base',
-          description: 'text-sm sm:text-sm'
-        }" />
+        data-test="validation-complete" />
 
       <UAlert
 v-else color="warning" variant="subtle" icon="i-lucide-alert-triangle" title="Missing Required Fields"
-        data-test="validation-missing" :ui="{
-          title: 'text-base sm:text-base'
-        }">
+        data-test="validation-missing">
         <template #description>
           <p class="mb-2 sm:mb-2 text-sm sm:text-sm">
             Complete these fields for optimal social media previews:
@@ -245,9 +241,7 @@ v-else color="warning" variant="subtle" icon="i-lucide-alert-triangle" title="Mi
 
       <UAlert
 v-if="validationResult.warnings.length > 0" color="info" variant="subtle" icon="i-lucide-lightbulb"
-        title="Optimization Tips" data-test="validation-warnings" :ui="{
-          title: 'text-base sm:text-base'
-        }">
+        title="Optimization Tips" data-test="validation-warnings">
         <template #description>
           <ul class="space-y-1 sm:space-y-1">
             <li
@@ -269,8 +263,8 @@ v-model:open="isModalOpen"
       }">
       <template v-if="selectedPlatform" #header>
         <div class="flex items-center gap-2 sm:gap-2.5">
-          <UIcon :name="selectedPlatform.icon" class="w-5 h-5 text-blue-600 dark:text-blue-400" aria-hidden="true" />
-          <h2 :id="`${selectedPlatform.id}-modal-title`" class="text-lg font-bold text-gray-900 dark:text-gray-100">
+          <UIcon :name="selectedPlatform.icon" class="w-5 h-5 text-muted dark:text-dimmed" aria-hidden="true" />
+          <h2 :id="`${selectedPlatform.id}-modal-title`" class="text-lg font-bold text-primary dark:text-primary">
             {{ selectedPlatform.name }} Preview
           </h2>
         </div>
@@ -279,7 +273,7 @@ v-model:open="isModalOpen"
       <template #body>
         <div
 v-if="selectedPlatform" role="region" :aria-label="`Detailed ${selectedPlatform.name} preview`"
-          class="flex items-center justify-center p-6 bg-linear-to-br from-gray-50 to-gray-100/50 dark:from-gray-900 dark:to-gray-800/50 rounded-xl border border-gray-200/50 dark:border-gray-700/50 min-h-[300px]">
+          class="flex items-center justify-center p-6 bg-linear-to-br from-primary-500 to-primary-500/50 dark:from-primary-500 dark:to-primary-500/50 rounded-xl border border-default/50 dark:border-default/50 min-h-[300px]">
           <Suspense>
             <template #default>
               <div class="w-full max-w-lg mx-auto">
@@ -288,7 +282,7 @@ v-if="selectedPlatform" role="region" :aria-label="`Detailed ${selectedPlatform.
             </template>
             <template #fallback>
               <div
-class="animate-pulse bg-gray-200 dark:bg-gray-800 w-full h-64 rounded-lg max-w-lg mx-auto"
+class="animate-pulse bg-muted dark:bg-elevated w-full h-64 rounded-lg max-w-lg mx-auto"
                 :aria-label="`Loading ${selectedPlatform.name} preview`" />
             </template>
           </Suspense>

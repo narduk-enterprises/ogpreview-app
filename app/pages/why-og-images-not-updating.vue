@@ -102,46 +102,46 @@ useSchemaOrg([
 </script>
 
 <template>
-  <main class="min-h-screen py-8 px-4 sm:px-6 lg:px-8 bg-linear-to-br from-gray-50 via-blue-50 to-purple-50 dark:from-gray-900 dark:via-gray-900 dark:to-gray-800">
+  <div class="min-h-screen py-8 px-4 sm:px-6 lg:px-8 bg-linear-to-br from-primary-500 via-primary-500 to-primary-500 dark:from-primary-500 dark:via-primary-500 dark:to-primary-500">
     <article class="max-w-4xl mx-auto">
       <!-- Navigation -->
-      <nav class="mb-8">
+      <div class="mb-8">
         <NuxtLink
           to="/"
-          class="inline-flex items-center gap-2 text-blue-600 dark:text-blue-400 hover:underline"
+          class="inline-flex items-center gap-2 text-muted dark:text-dimmed hover:underline"
         >
           ← Back to Tool
         </NuxtLink>
-      </nav>
+      </div>
 
       <!-- Header -->
-      <header class="mb-12">
-        <h1 class="text-4xl sm:text-5xl font-bold text-gray-900 dark:text-white mb-4">
+      <div class="mb-12">
+        <h1 class="text-4xl sm:text-5xl font-bold text-primary dark:text-white mb-4">
           Why Are My Open Graph Images Not Updating?
         </h1>
-        <p class="text-xl text-gray-600 dark:text-gray-400 mb-6">
+        <p class="text-xl text-muted dark:text-dimmed mb-6">
           Understand why your Open Graph images aren't updating and learn how to force platforms to refresh cached previews. Complete troubleshooting guide for OG image cache issues.
         </p>
-        <div class="flex flex-wrap gap-4 text-sm text-gray-600 dark:text-gray-400">
+        <div class="flex flex-wrap gap-4 text-sm text-muted dark:text-dimmed">
           <span class="flex items-center gap-1.5">
-            <UIcon name="i-heroicons-calendar" class="w-4 h-4" />
+            <UIcon name="i-lucide-calendar" class="w-4 h-4" />
             Updated December 2025
           </span>
           <span class="flex items-center gap-1.5">
-            <UIcon name="i-heroicons-clock" class="w-4 h-4" />
+            <UIcon name="i-lucide-clock" class="w-4 h-4" />
             8 min read
           </span>
         </div>
-      </header>
+      </div>
 
       <!-- Content -->
-      <div class="prose prose-lg dark:prose-invert max-w-none bg-white dark:bg-gray-800 rounded-xl p-8 shadow-lg">
+      <div class="prose prose-lg dark:prose-invert max-w-none bg-white dark:bg-elevated rounded-xl p-8 shadow-lg">
         <!-- Featured snippet answer -->
-        <div class="not-prose my-8 bg-blue-50 dark:bg-blue-900/20 border-l-4 border-blue-500 rounded-lg p-6">
-          <p class="text-lg text-blue-900 dark:text-blue-100 font-semibold mb-2">
+        <div class="not-prose my-8 bg-muted dark:bg-elevated/20 border-l-4 border-default rounded-lg p-6">
+          <p class="text-lg text-primary dark:text-primary font-semibold mb-2">
             Quick Answer
           </p>
-          <p class="text-blue-800 dark:text-blue-200">
+          <p class="text-primary dark:text-primary">
             Open Graph images don't update because social media platforms cache OG data aggressively (7-30 days). To force an update, use platform debuggers to clear cache: Facebook Sharing Debugger, LinkedIn Post Inspector, or Twitter Card Validator. You can also wait 24-48 hours or add query parameters to create a "new" URL.
           </p>
         </div>
@@ -169,21 +169,21 @@ useSchemaOrg([
         <h3>Facebook</h3>
         <ul>
           <li><strong>Cache duration:</strong> 7-30 days</li>
-          <li><strong>Clear cache tool:</strong> <a href="https://developers.facebook.com/tools/debug/" target="_blank" rel="noopener">Facebook Sharing Debugger</a></li>
+          <li><strong>Clear cache tool:</strong> <ULink href="https://developers.facebook.com/tools/debug/" target="_blank" rel="noopener">Facebook Sharing Debugger</ULink></li>
           <li><strong>How to clear:</strong> Enter URL → Click "Scrape Again"</li>
         </ul>
 
         <h3>LinkedIn</h3>
         <ul>
           <li><strong>Cache duration:</strong> 7-14 days</li>
-          <li><strong>Clear cache tool:</strong> <a href="https://www.linkedin.com/post-inspector/" target="_blank" rel="noopener">LinkedIn Post Inspector</a></li>
+          <li><strong>Clear cache tool:</strong> <ULink href="https://www.linkedin.com/post-inspector/" target="_blank" rel="noopener">LinkedIn Post Inspector</ULink></li>
           <li><strong>How to clear:</strong> Enter URL → Click "Clear cache"</li>
         </ul>
 
         <h3>Twitter</h3>
         <ul>
           <li><strong>Cache duration:</strong> 7 days</li>
-          <li><strong>Clear cache tool:</strong> <a href="https://cards-dev.twitter.com/validator" target="_blank" rel="noopener">Twitter Card Validator</a></li>
+          <li><strong>Clear cache tool:</strong> <ULink href="https://cards-dev.twitter.com/validator" target="_blank" rel="noopener">Twitter Card Validator</ULink></li>
           <li><strong>How to clear:</strong> Re-validate URL in validator</li>
         </ul>
 
@@ -206,7 +206,7 @@ useSchemaOrg([
 
         <h4>Facebook</h4>
         <ol>
-          <li>Go to <a href="https://developers.facebook.com/tools/debug/" target="_blank" rel="noopener">Facebook Sharing Debugger</a></li>
+          <li>Go to <ULink href="https://developers.facebook.com/tools/debug/" target="_blank" rel="noopener">Facebook Sharing Debugger</ULink></li>
           <li>Enter your URL</li>
           <li>Click "Scrape Again"</li>
           <li>Wait a few minutes for cache to clear</li>
@@ -215,7 +215,7 @@ useSchemaOrg([
 
         <h4>LinkedIn</h4>
         <ol>
-          <li>Go to <a href="https://www.linkedin.com/post-inspector/" target="_blank" rel="noopener">LinkedIn Post Inspector</a></li>
+          <li>Go to <ULink href="https://www.linkedin.com/post-inspector/" target="_blank" rel="noopener">LinkedIn Post Inspector</ULink></li>
           <li>Enter your URL</li>
           <li>Click "Inspect"</li>
           <li>Click "Clear cache"</li>
@@ -224,7 +224,7 @@ useSchemaOrg([
 
         <h4>Twitter</h4>
         <ol>
-          <li>Go to <a href="https://cards-dev.twitter.com/validator" target="_blank" rel="noopener">Twitter Card Validator</a></li>
+          <li>Go to <ULink href="https://cards-dev.twitter.com/validator" target="_blank" rel="noopener">Twitter Card Validator</ULink></li>
           <li>Enter your URL</li>
           <li>Click "Preview card"</li>
           <li>Re-validate to refresh cache</li>
@@ -378,67 +378,67 @@ New: https://example.com/og-image-v2.jpg</code></pre>
       </div>
 
       <!-- CTA -->
-      <div class="mt-12 bg-linear-to-br from-blue-600 to-purple-600 rounded-xl p-8 text-center text-white">
+      <div class="mt-12 bg-linear-to-br from-primary-500 to-primary-500 rounded-xl p-8 text-center text-white">
         <h2 class="text-2xl sm:text-3xl font-bold mb-4">
           Test Your Open Graph Images
         </h2>
-        <p class="text-blue-100 mb-6 max-w-2xl mx-auto">
+        <p class="text-primary mb-6 max-w-2xl mx-auto">
           Use our free tool to preview your Open Graph images and verify they're working correctly.
         </p>
         <NuxtLink
           to="/"
-          class="inline-block bg-white text-blue-600 px-8 py-3 rounded-lg font-semibold hover:bg-blue-50 transition-colors"
+          class="inline-block bg-white text-muted px-8 py-3 rounded-lg font-semibold hover:bg-muted transition-colors"
         >
           Try the Free Preview Tool
         </NuxtLink>
       </div>
 
       <!-- Related Platform Pages -->
-      <nav class="mt-12">
-        <h2 class="text-2xl font-bold text-gray-900 dark:text-white mb-6">
+      <div class="mt-12">
+        <h2 class="text-2xl font-bold text-primary dark:text-white mb-6">
           Platform-Specific Guides
         </h2>
         <div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-4">
           <NuxtLink
             to="/open-graph/facebook"
-            class="bg-white dark:bg-gray-800 rounded-lg p-4 shadow border border-gray-200 dark:border-gray-700 hover:shadow-lg hover:scale-105 transition-all"
+            class="bg-white dark:bg-elevated rounded-lg p-4 shadow border border-default dark:border-default hover:shadow-lg hover:scale-105 transition-all"
           >
             <div class="text-2xl mb-2">📘</div>
-            <h3 class="font-semibold text-gray-900 dark:text-white text-sm">
+            <h3 class="font-semibold text-primary dark:text-white text-sm">
               Facebook
             </h3>
           </NuxtLink>
           <NuxtLink
             to="/open-graph/twitter"
-            class="bg-white dark:bg-gray-800 rounded-lg p-4 shadow border border-gray-200 dark:border-gray-700 hover:shadow-lg hover:scale-105 transition-all"
+            class="bg-white dark:bg-elevated rounded-lg p-4 shadow border border-default dark:border-default hover:shadow-lg hover:scale-105 transition-all"
           >
             <div class="text-2xl mb-2">𝕏</div>
-            <h3 class="font-semibold text-gray-900 dark:text-white text-sm">
+            <h3 class="font-semibold text-primary dark:text-white text-sm">
               Twitter
             </h3>
           </NuxtLink>
           <NuxtLink
             to="/open-graph/linkedin"
-            class="bg-white dark:bg-gray-800 rounded-lg p-4 shadow border border-gray-200 dark:border-gray-700 hover:shadow-lg hover:scale-105 transition-all"
+            class="bg-white dark:bg-elevated rounded-lg p-4 shadow border border-default dark:border-default hover:shadow-lg hover:scale-105 transition-all"
           >
             <div class="text-2xl mb-2">💼</div>
-            <h3 class="font-semibold text-gray-900 dark:text-white text-sm">
+            <h3 class="font-semibold text-primary dark:text-white text-sm">
               LinkedIn
             </h3>
           </NuxtLink>
           <NuxtLink
             to="/open-graph/discord"
-            class="bg-white dark:bg-gray-800 rounded-lg p-4 shadow border border-gray-200 dark:border-gray-700 hover:shadow-lg hover:scale-105 transition-all"
+            class="bg-white dark:bg-elevated rounded-lg p-4 shadow border border-default dark:border-default hover:shadow-lg hover:scale-105 transition-all"
           >
             <div class="text-2xl mb-2">🎮</div>
-            <h3 class="font-semibold text-gray-900 dark:text-white text-sm">
+            <h3 class="font-semibold text-primary dark:text-white text-sm">
               Discord
             </h3>
           </NuxtLink>
         </div>
-      </nav>
+      </div>
     </article>
-  </main>
+  </div>
 </template>
 
 

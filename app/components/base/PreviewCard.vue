@@ -14,7 +14,7 @@ withDefaults(defineProps<Props>(), {
 
 <template>
   <div
-    class="border rounded-lg overflow-hidden bg-white dark:bg-gray-800 preview-card content-stable max-h-[500px] sm:max-h-[500px] overflow-y-auto"
+    class="border rounded-lg overflow-hidden bg-white dark:bg-elevated preview-card content-stable max-h-[500px] sm:max-h-[500px] overflow-y-auto"
     :class="[
       borderClass,
       shadowClass

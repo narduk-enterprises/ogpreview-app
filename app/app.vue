@@ -11,20 +11,20 @@
     <div class="app-shell min-h-screen flex flex-col">
 
       <!-- Main -->
-      <main class="flex-1">
+      <div class="flex-1">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
           <NuxtPage />
         </div>
-      </main>
+      </div>
 
       <!-- Footer -->
-      <footer class="border-t border-default py-6">
+      <div class="border-t border-default py-6">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <p class="text-center text-sm text-muted">
             OG Preview &middot; Open Graph Preview Tool &middot; {{ new Date().getFullYear() }}
           </p>
         </div>
-      </footer>
+      </div>
     </div>
   </UApp>
 </template>

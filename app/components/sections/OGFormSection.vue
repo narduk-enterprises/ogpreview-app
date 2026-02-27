@@ -43,7 +43,7 @@ const twitterCardOptions = [
   <UCard :ui="{ body: 'p-6' }">
     <template #header>
       <div class="flex items-center justify-between">
-        <h2 class="text-xl font-bold text-gray-800 dark:text-gray-100">
+        <h2 class="text-xl font-bold text-primary dark:text-primary">
           Additional Details
         </h2>
         <UButton
@@ -57,6 +57,7 @@ const twitterCardOptions = [
       </div>
     </template>
 
+    <!-- eslint-disable atx/no-native-form, nuxt-ui/prefer-uform -->
     <form
       class="space-y-4"
       @submit.prevent
@@ -102,7 +103,7 @@ const twitterCardOptions = [
           placeholder="https://example.com/image.jpg"
           size="md"
           variant="outline"
-          leading-icon="i-lucide-image"
+          icon="i-lucide-image"
           class="w-full"
         />
       </UFormField>
@@ -110,7 +111,7 @@ const twitterCardOptions = [
       <!-- Advanced Options -->
       <div
         v-show="showAdvanced"
-        class="space-y-4 pt-4 border-t border-gray-200 dark:border-gray-700"
+        class="space-y-4 pt-4 border-t border-default dark:border-default"
       >
         <UFormField
           label="Site Name"

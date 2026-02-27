@@ -94,46 +94,46 @@ useSchemaOrg([
 </script>
 
 <template>
-  <main class="min-h-screen py-8 px-4 sm:px-6 lg:px-8 bg-linear-to-br from-gray-50 via-blue-50 to-purple-50 dark:from-gray-900 dark:via-gray-900 dark:to-gray-800">
+  <div class="min-h-screen py-8 px-4 sm:px-6 lg:px-8 bg-linear-to-br from-primary-500 via-primary-500 to-primary-500 dark:from-primary-500 dark:via-primary-500 dark:to-primary-500">
     <article class="max-w-4xl mx-auto">
       <!-- Navigation -->
-      <nav class="mb-8">
+      <div class="mb-8">
         <NuxtLink
           to="/"
-          class="inline-flex items-center gap-2 text-blue-600 dark:text-blue-400 hover:underline"
+          class="inline-flex items-center gap-2 text-muted dark:text-dimmed hover:underline"
         >
           ← Back to Tool
         </NuxtLink>
-      </nav>
+      </div>
 
       <!-- Header -->
-      <header class="mb-12">
-        <h1 class="text-4xl sm:text-5xl font-bold text-gray-900 dark:text-white mb-4">
+      <div class="mb-12">
+        <h1 class="text-4xl sm:text-5xl font-bold text-primary dark:text-white mb-4">
           Open Graph Debugging Guide
         </h1>
-        <p class="text-xl text-gray-600 dark:text-gray-400 mb-6">
+        <p class="text-xl text-muted dark:text-dimmed mb-6">
           Troubleshoot and fix Open Graph tag issues. Learn how to debug missing images, incorrect previews, caching problems, and common OG tag errors.
         </p>
-        <div class="flex flex-wrap gap-4 text-sm text-gray-600 dark:text-gray-400">
+        <div class="flex flex-wrap gap-4 text-sm text-muted dark:text-dimmed">
           <span class="flex items-center gap-1.5">
-            <UIcon name="i-heroicons-calendar" class="w-4 h-4" />
+            <UIcon name="i-lucide-calendar" class="w-4 h-4" />
             Updated December 2025
           </span>
           <span class="flex items-center gap-1.5">
-            <UIcon name="i-heroicons-clock" class="w-4 h-4" />
+            <UIcon name="i-lucide-clock" class="w-4 h-4" />
             10 min read
           </span>
         </div>
-      </header>
+      </div>
 
       <!-- Content -->
-      <div class="prose prose-lg dark:prose-invert max-w-none bg-white dark:bg-gray-800 rounded-xl p-8 shadow-lg">
+      <div class="prose prose-lg dark:prose-invert max-w-none bg-white dark:bg-elevated rounded-xl p-8 shadow-lg">
         <!-- Featured snippet answer -->
-        <div class="not-prose my-8 bg-blue-50 dark:bg-blue-900/20 border-l-4 border-blue-500 rounded-lg p-6">
-          <p class="text-lg text-blue-900 dark:text-blue-100 font-semibold mb-2">
+        <div class="not-prose my-8 bg-muted dark:bg-elevated/20 border-l-4 border-default rounded-lg p-6">
+          <p class="text-lg text-primary dark:text-primary font-semibold mb-2">
             Quick Answer
           </p>
-          <p class="text-blue-800 dark:text-blue-200">
+          <p class="text-primary dark:text-primary">
             To debug Open Graph tags, use platform-specific validators (Facebook Sharing Debugger, Twitter Card Validator, LinkedIn Post Inspector), check that tags are in the HTML source (not injected by JavaScript), verify absolute HTTPS image URLs, and clear platform caches. Use our preview tool to test across all platforms at once.
           </p>
         </div>
@@ -150,9 +150,9 @@ useSchemaOrg([
 
         <h3>Platform-Specific Validators</h3>
         <ul>
-          <li><strong>Facebook:</strong> <a href="https://developers.facebook.com/tools/debug/" target="_blank" rel="noopener">Facebook Sharing Debugger</a> - Preview, debug, and clear cache</li>
-          <li><strong>Twitter:</strong> <a href="https://cards-dev.twitter.com/validator" target="_blank" rel="noopener">Twitter Card Validator</a> - Test Twitter Cards</li>
-          <li><strong>LinkedIn:</strong> <a href="https://www.linkedin.com/post-inspector/" target="_blank" rel="noopener">LinkedIn Post Inspector</a> - Preview and clear cache</li>
+          <li><strong>Facebook:</strong> <ULink href="https://developers.facebook.com/tools/debug/" target="_blank" rel="noopener">Facebook Sharing Debugger</ULink> - Preview, debug, and clear cache</li>
+          <li><strong>Twitter:</strong> <ULink href="https://cards-dev.twitter.com/validator" target="_blank" rel="noopener">Twitter Card Validator</ULink> - Test Twitter Cards</li>
+          <li><strong>LinkedIn:</strong> <ULink href="https://www.linkedin.com/post-inspector/" target="_blank" rel="noopener">LinkedIn Post Inspector</ULink> - Preview and clear cache</li>
           <li><strong>Slack/Discord:</strong> No official validators, but you can test by sharing in your workspace</li>
         </ul>
 
@@ -337,10 +337,10 @@ useSchemaOrg([
         </p>
 
         <h3>Relative vs Absolute URLs</h3>
-        <p class="text-red-600 dark:text-red-400">
+        <p class="text-muted dark:text-dimmed">
           ❌ <code>&lt;meta property="og:image" content="/images/og.jpg" /&gt;</code>
         </p>
-        <p class="text-green-600 dark:text-green-400">
+        <p class="text-muted dark:text-dimmed">
           ✅ <code>&lt;meta property="og:image" content="https://example.com/images/og.jpg" /&gt;</code>
         </p>
         <p>
@@ -420,67 +420,67 @@ useSchemaOrg([
       </div>
 
       <!-- CTA -->
-      <div class="mt-12 bg-linear-to-br from-blue-600 to-purple-600 rounded-xl p-8 text-center text-white">
+      <div class="mt-12 bg-linear-to-br from-primary-500 to-primary-500 rounded-xl p-8 text-center text-white">
         <h2 class="text-2xl sm:text-3xl font-bold mb-4">
           Debug Your Open Graph Tags
         </h2>
-        <p class="text-blue-100 mb-6 max-w-2xl mx-auto">
+        <p class="text-primary mb-6 max-w-2xl mx-auto">
           Use our free tool to test and debug your Open Graph tags across all platforms.
         </p>
         <NuxtLink
           to="/"
-          class="inline-block bg-white text-blue-600 px-8 py-3 rounded-lg font-semibold hover:bg-blue-50 transition-colors"
+          class="inline-block bg-white text-muted px-8 py-3 rounded-lg font-semibold hover:bg-muted transition-colors"
         >
           Try the Free Preview Tool
         </NuxtLink>
       </div>
 
       <!-- Related Platform Pages -->
-      <nav class="mt-12">
-        <h2 class="text-2xl font-bold text-gray-900 dark:text-white mb-6">
+      <div class="mt-12">
+        <h2 class="text-2xl font-bold text-primary dark:text-white mb-6">
           Platform-Specific Guides
         </h2>
         <div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-4">
           <NuxtLink
             to="/open-graph/facebook"
-            class="bg-white dark:bg-gray-800 rounded-lg p-4 shadow border border-gray-200 dark:border-gray-700 hover:shadow-lg hover:scale-105 transition-all"
+            class="bg-white dark:bg-elevated rounded-lg p-4 shadow border border-default dark:border-default hover:shadow-lg hover:scale-105 transition-all"
           >
             <div class="text-2xl mb-2">📘</div>
-            <h3 class="font-semibold text-gray-900 dark:text-white text-sm">
+            <h3 class="font-semibold text-primary dark:text-white text-sm">
               Facebook
             </h3>
           </NuxtLink>
           <NuxtLink
             to="/open-graph/twitter"
-            class="bg-white dark:bg-gray-800 rounded-lg p-4 shadow border border-gray-200 dark:border-gray-700 hover:shadow-lg hover:scale-105 transition-all"
+            class="bg-white dark:bg-elevated rounded-lg p-4 shadow border border-default dark:border-default hover:shadow-lg hover:scale-105 transition-all"
           >
             <div class="text-2xl mb-2">𝕏</div>
-            <h3 class="font-semibold text-gray-900 dark:text-white text-sm">
+            <h3 class="font-semibold text-primary dark:text-white text-sm">
               Twitter
             </h3>
           </NuxtLink>
           <NuxtLink
             to="/open-graph/linkedin"
-            class="bg-white dark:bg-gray-800 rounded-lg p-4 shadow border border-gray-200 dark:border-gray-700 hover:shadow-lg hover:scale-105 transition-all"
+            class="bg-white dark:bg-elevated rounded-lg p-4 shadow border border-default dark:border-default hover:shadow-lg hover:scale-105 transition-all"
           >
             <div class="text-2xl mb-2">💼</div>
-            <h3 class="font-semibold text-gray-900 dark:text-white text-sm">
+            <h3 class="font-semibold text-primary dark:text-white text-sm">
               LinkedIn
             </h3>
           </NuxtLink>
           <NuxtLink
             to="/open-graph/discord"
-            class="bg-white dark:bg-gray-800 rounded-lg p-4 shadow border border-gray-200 dark:border-gray-700 hover:shadow-lg hover:scale-105 transition-all"
+            class="bg-white dark:bg-elevated rounded-lg p-4 shadow border border-default dark:border-default hover:shadow-lg hover:scale-105 transition-all"
           >
             <div class="text-2xl mb-2">🎮</div>
-            <h3 class="font-semibold text-gray-900 dark:text-white text-sm">
+            <h3 class="font-semibold text-primary dark:text-white text-sm">
               Discord
             </h3>
           </NuxtLink>
         </div>
-      </nav>
+      </div>
     </article>
-  </main>
+  </div>
 </template>
 
 
