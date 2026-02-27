@@ -1,0 +1,45 @@
+/**
+ * GET /api/unfurl/refresh
+ *
+ * Force refresh endpoint that bypasses all caching
+ * Used when user explicitly clicks "Refresh" button
+ *
+ * Query Parameters:
+ *   - url (required): The URL to unfurl
+ *
+ * Cache Headers:
+ *   Cache-Control: no-store
+ *   - Never cached anywhere (browser or CDN)
+ */
+
+import { getQuery, setResponseHeaders, setResponseStatus } from 'h3'
+import { unfurlUrl } from '../../utils/unfurlCore'
+import type { UnfurlResponse } from '~~/types/og'
+
+export default defineEventHandler(async (event): Promise<UnfurlResponse> => {
+  const query = getQuery(event)
+  // Ignore cache busting parameter (_t)
+  const url = query.url as string
+
+  // Use shared core unfurl logic with no-store cache mode
+  const { response, status } = await unfurlUrl(url, { cacheMode: 'no-store' })
+
+  // If error, return early with status
+  if (!response.ok) {
+    setResponseStatus(event, status)
+    return response
+  }
+
+  // Set no-store headers to prevent all caching
+  setResponseHeaders(event, {
+    'Cache-Control': 'no-store, no-cache, must-revalidate, max-age=0',
+    'CDN-Cache-Control': 'no-store',
+    'Vercel-CDN-Cache-Control': 'no-store',
+    'Pragma': 'no-cache',
+    'Expires': '0'
+  })
+
+  // Return successful response
+  setResponseStatus(event, status)
+  return response
+})

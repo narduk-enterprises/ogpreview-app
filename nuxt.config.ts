@@ -7,6 +7,7 @@ export default defineNuxtConfig({
     '@nuxt/content',
     '@nuxtjs/seo',
     '@nuxt/eslint',
+    'nuxt-og-image',
   ],
   css: ['~/assets/css/main.css'],
 
@@ -33,8 +34,8 @@ export default defineNuxtConfig({
     gaPropertyId: process.env.GA_PROPERTY_ID || '',
     posthogProjectId: process.env.POSTHOG_PROJECT_ID || '',
     public: {
-      appUrl: process.env.SITE_URL || 'https://nuxt-v4-template.workers.dev',
-      appName: process.env.APP_NAME || 'Nuxt 4 Demo',
+      appUrl: process.env.SITE_URL || 'https://ogpreview-app.workers.dev',
+      appName: process.env.APP_NAME || 'OG Preview',
       // Analytics
       posthogPublicKey: process.env.POSTHOG_PUBLIC_KEY || '',
       posthogHost: process.env.POSTHOG_HOST || 'https://us.i.posthog.com',
@@ -51,8 +52,8 @@ export default defineNuxtConfig({
   // these via the `useSeo()` composable.
 
   site: {
-    url: process.env.SITE_URL || 'https://nuxt-v4-template.workers.dev',
-    name: 'Nuxt 4 Demo',
+    url: process.env.SITE_URL || 'https://ogpreview-app.workers.dev',
+    name: 'OG Preview',
     description: 'A production-ready demo template showcasing Nuxt 4, Nuxt UI 4, Tailwind CSS 4, and Cloudflare Workers with D1 database.',
     defaultLocale: 'en',
   },
@@ -66,8 +67,8 @@ export default defineNuxtConfig({
   schemaOrg: {
     identity: {
       type: 'Organization',
-      name: 'Nuxt 4 Demo',
-      url: process.env.SITE_URL || 'https://nuxt-v4-template.workers.dev',
+      name: 'OG Preview',
+      url: process.env.SITE_URL || 'https://ogpreview-app.workers.dev',
       logo: '/favicon.svg',
     },
   },
@@ -75,8 +76,18 @@ export default defineNuxtConfig({
   image: {
     provider: 'cloudflare',
     cloudflare: {
-      baseURL: process.env.SITE_URL || 'https://nuxt-v4-template.workers.dev',
+      baseURL: process.env.SITE_URL || 'https://ogpreview-app.workers.dev',
     },
+    domains: ['images.unsplash.com'],
+    presets: {
+      ogImage: {
+        modifiers: {
+          quality: 85,
+          width: 1200,
+          height: 630
+        }
+      }
+    }
   },
 
   content: {
@@ -106,6 +117,35 @@ export default defineNuxtConfig({
 
   nitro: {
     preset: 'cloudflare-module',
+    prerender: {
+      crawlLinks: false,
+      routes: [
+        '/',
+        '/preview/twitter',
+        '/preview/facebook',
+        '/preview/linkedin',
+        '/open-graph/twitter',
+        '/open-graph/facebook',
+        '/open-graph/linkedin',
+        '/open-graph/discord',
+        '/open-graph/slack',
+        '/what-is-open-graph',
+        '/og-image-size-guide',
+        '/open-graph-debugging',
+        '/why-og-images-not-updating',
+        '/guides',
+        '/guides/open-graph-preview',
+        '/guides/og-image-sizes',
+        '/guides/twitter-card-preview',
+        '/guides/og-cache-refresh',
+        '/guides/facebook-link-preview',
+        '/guides/linkedin-link-preview',
+        '/about',
+        '/changelog',
+        '/sitemap.xml',
+        '/robots.txt'
+      ]
+    },
     esbuild: {
       options: {
         target: 'esnext'

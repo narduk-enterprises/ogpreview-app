@@ -1,20 +1,20 @@
 # AGENTS.md — AI Agent Instructions
 
-> **🚨 CRITICAL: DO NOT PUSH TO `loganrenz/nuxt-v4-template` 🚨**
+> **🚨 CRITICAL: DO NOT PUSH TO `loganrenz/ogpreview-app` 🚨**
 >
 > This is a **read-only template repository**. Before writing ANY code, you MUST create your own repo:
 >
 > ```bash
-> gh repo create <project-name> --template loganrenz/nuxt-v4-template --private --clone
+> gh repo create <project-name> --template loganrenz/ogpreview-app --private --clone
 > cd <project-name>
 > pnpm install
 > ```
 >
-> **Verify your remote** with `git remote -v` — it must NOT point to `loganrenz/nuxt-v4-template`.
+> **Verify your remote** with `git remote -v` — it must NOT point to `loganrenz/ogpreview-app`.
 
 This is a **minimal Nuxt 4 + Nuxt UI 4** boilerplate deployed to **Cloudflare Workers** with **D1 SQLite** (Drizzle ORM).
 
-For full-featured example implementations (auth, analytics, blog, dashboard, forms, etc.), see the companion repo: **[`loganrenz/nuxt-v4-template-examples`](https://github.com/loganrenz/nuxt-v4-template-examples)**.
+For full-featured example implementations (auth, analytics, blog, dashboard, forms, etc.), see the companion repo: **[`loganrenz/ogpreview-app-examples`](https://github.com/loganrenz/ogpreview-app-examples)**.
 
 ## Project Structure
 
@@ -81,7 +81,7 @@ Sitemap and robots.txt are automatic. OG image templates live in `app/components
 ## Starting a New Project from This Template
 
 1. Install dependencies: `pnpm install`
-2. **Change `name` in `package.json`** away from `"nuxt-v4-template"`.
+2. **Change `name` in `package.json`** away from `"ogpreview-app"`.
 3. Remove the git origin: `git remote remove origin`
 4. Update `nuxt.config.ts` `site` block with your domain and site name.
 5. Set up secrets in **Doppler** (see Secrets recipe below).
@@ -89,7 +89,7 @@ Sitemap and robots.txt are automatic. OG image templates live in `app/components
 
 ## 🚨 CRITICAL RULE: NEVER COMMIT TO THIS REPOSITORY 🚨
 
-If you are an agent building a new project inside a clone of this repository, **DO NOT COMMIT OR PUSH** directly back to `loganrenz/nuxt-v4-template`. Verify the user has set up a new remote origin first.
+If you are an agent building a new project inside a clone of this repository, **DO NOT COMMIT OR PUSH** directly back to `loganrenz/ogpreview-app`. Verify the user has set up a new remote origin first.
 
 ## Quality Audit Workflows
 
@@ -106,7 +106,7 @@ Run these during development (Antigravity slash-commands):
 
 # 📖 Recipes
 
-These are opt-in feature recipes. Follow them when the project needs a specific capability. For working reference implementations of each, clone **[`loganrenz/nuxt-v4-template-examples`](https://github.com/loganrenz/nuxt-v4-template-examples)**.
+These are opt-in feature recipes. Follow them when the project needs a specific capability. For working reference implementations of each, clone **[`loganrenz/ogpreview-app-examples`](https://github.com/loganrenz/ogpreview-app-examples)**.
 
 ---
 
@@ -166,7 +166,7 @@ All template derivatives should utilize **Doppler Cross-Project Secret Referenci
    - `CLOUDFLARE_API_TOKEN` = `${narduk-enterprise-apps.prd.CLOUDFLARE_API_TOKEN}`
    - `CLOUDFLARE_ACCOUNT_ID` = `${narduk-enterprise-apps.prd.CLOUDFLARE_ACCOUNT_ID}`
 
-**Reference:** See `nuxt-v4-template-examples/nuxt.config.ts` for the full runtimeConfig block and `nuxt-v4-template-examples/AGENT_ANALYTICS.md` for automation script details.
+**Reference:** See `ogpreview-app-examples/nuxt.config.ts` for the full runtimeConfig block and `ogpreview-app-examples/AGENT_ANALYTICS.md` for automation script details.
 
 ---
 
@@ -220,7 +220,7 @@ All template derivatives should utilize **Doppler Cross-Project Secret Referenci
 
 5. Place unit tests in `tests/composables/`, E2E tests in `tests/e2e/`.
 
-**Reference:** See `nuxt-v4-template-examples/tests/` for example test files.
+**Reference:** See `ogpreview-app-examples/tests/` for example test files.
 
 ---
 
@@ -238,7 +238,7 @@ All template derivatives should utilize **Doppler Cross-Project Secret Referenci
 
 **Key constraint:** All crypto MUST use Web Crypto API (`crypto.subtle.deriveKey` with PBKDF2). Node.js `crypto` and `bcrypt` are forbidden on Cloudflare Workers.
 
-**Reference:** See `nuxt-v4-template-examples/server/utils/auth.ts` and `nuxt-v4-template-examples/app/composables/useAuth.ts`.
+**Reference:** See `ogpreview-app-examples/server/utils/auth.ts` and `ogpreview-app-examples/app/composables/useAuth.ts`.
 
 ---
 
@@ -279,7 +279,7 @@ All plugins **no-op gracefully** when their keys are empty — safe for dev with
 
 **Key gotcha:** On Cloudflare Workers, Nuxt Content auto-switches to D1 database storage. Make sure the `DB` binding is configured in `wrangler.json`.
 
-**Reference:** See `nuxt-v4-template-examples/content/templates/blog/` and `nuxt-v4-template-examples/app/pages/templates/blog/`.
+**Reference:** See `ogpreview-app-examples/content/templates/blog/` and `ogpreview-app-examples/app/pages/templates/blog/`.
 
 ---
 
@@ -308,12 +308,12 @@ All plugins **no-op gracefully** when their keys are empty — safe for dev with
 
 **Steps:**
 
-1. Browse the components in `nuxt-v4-template-examples/app/components/ui/` — includes `HeroSection`, `FeatureGrid`, `PricingTable`, `TestimonialCarousel`, `ContactForm`, `CTABanner`.
-2. Browse layouts in `nuxt-v4-template-examples/app/layouts/` — includes `blog.vue`, `dashboard.vue`, `landing.vue`.
+1. Browse the components in `ogpreview-app-examples/app/components/ui/` — includes `HeroSection`, `FeatureGrid`, `PricingTable`, `TestimonialCarousel`, `ContactForm`, `CTABanner`.
+2. Browse layouts in `ogpreview-app-examples/app/layouts/` — includes `blog.vue`, `dashboard.vue`, `landing.vue`.
 3. Copy what you need into your project's `app/components/` or `app/layouts/`.
 4. Customize colors via `app/app.config.ts` and fonts via `app/assets/css/main.css`.
 
-**Reference:** See `nuxt-v4-template-examples/app/components/ui/` for the full set.
+**Reference:** See `ogpreview-app-examples/app/components/ui/` for the full set.
 
 ---
 
@@ -328,4 +328,4 @@ All plugins **no-op gracefully** when their keys are empty — safe for dev with
 3. For consistent card chrome, create an `AppFormCard` wrapper component (see examples repo).
 4. Use layout utility classes in `main.css`: `.form-section` (vertical gap), `.form-row` (2-col grid), `.form-actions` (button alignment).
 
-**Reference:** See `nuxt-v4-template-examples/app/components/AppFormCard.vue` and `nuxt-v4-template-examples/app/composables/useFormHandler.ts`.
+**Reference:** See `ogpreview-app-examples/app/components/AppFormCard.vue` and `ogpreview-app-examples/app/composables/useFormHandler.ts`.

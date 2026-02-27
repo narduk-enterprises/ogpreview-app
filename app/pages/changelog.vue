@@ -1,0 +1,166 @@
+<template>
+  <main class="min-h-screen py-8 px-4 sm:px-6 lg:px-8 bg-gradient-to-br from-gray-50 via-blue-50 to-purple-50 dark:from-gray-900 dark:via-gray-900 dark:to-gray-800">
+    <article class="max-w-4xl mx-auto">
+      <!-- Navigation -->
+      <nav class="mb-8">
+        <NuxtLink
+          to="/"
+          class="inline-flex items-center gap-2 text-blue-600 dark:text-blue-400 hover:underline"
+        >
+          ← Back to Tool
+        </NuxtLink>
+      </nav>
+
+      <!-- Header -->
+      <header class="mb-12">
+        <h1 class="text-4xl sm:text-5xl font-bold text-gray-900 dark:text-white mb-4">
+          Changelog
+        </h1>
+        <p class="text-xl text-gray-600 dark:text-gray-400 mb-6">
+          Track updates, improvements, and new features to ogpreview.app. See what's changed and what's coming next.
+        </p>
+        <div class="flex flex-wrap gap-4 text-sm text-gray-600 dark:text-gray-400">
+          <span class="flex items-center gap-1.5">
+            <UIcon name="i-heroicons-calendar" class="w-4 h-4" />
+            Last updated: December 2025
+          </span>
+        </div>
+      </header>
+
+      <!-- Content -->
+      <div class="prose prose-lg dark:prose-invert max-w-none bg-white dark:bg-gray-800 rounded-xl p-8 shadow-lg">
+        <h2 id="december-2025">December 2025</h2>
+
+        <h3>🎯 SEO & Content Expansion</h3>
+        <ul>
+          <li><strong>Platform-specific guides:</strong> Added comprehensive guides for Twitter, Facebook, LinkedIn, Discord, and Slack Open Graph optimization</li>
+          <li><strong>Search intent pages:</strong> Created pages for "What is Open Graph?", OG image sizes, debugging, and cache issues</li>
+          <li><strong>Indexable preview routes:</strong> Added platform-specific preview routes (/preview/twitter, /preview/facebook, /preview/linkedin)</li>
+          <li><strong>EEAT signals:</strong> Added About and Changelog pages for trust and credibility</li>
+          <li><strong>Enhanced schema:</strong> Implemented comprehensive structured data (WebPage, FAQPage, BreadcrumbList, Organization) across all pages</li>
+          <li><strong>Internal linking:</strong> Improved internal linking strategy with descriptive anchor text</li>
+        </ul>
+
+        <h3>📊 Sitemap & Crawl Optimization</h3>
+        <ul>
+          <li>Updated sitemap to include all new SEO pages</li>
+          <li>Configured proper priority and changefreq for all routes</li>
+          <li>Added prerendering for all new content pages</li>
+        </ul>
+
+        <h2 id="previous-updates">Previous Updates</h2>
+
+        <h3>Security & Performance</h3>
+        <ul>
+          <li><strong>Rate limiting:</strong> Added in-memory token bucket rate limiter to API endpoint (30 requests per 5 minutes per IP)</li>
+          <li><strong>Logging hygiene:</strong> Implemented URL sanitization for logs (removes query strings, fragments, and caps length)</li>
+          <li><strong>Error handling:</strong> Improved error response consistency (no stack traces leaked to clients)</li>
+          <li><strong>SSRF protection:</strong> Maintained and improved existing SSRF protections in URL validation</li>
+        </ul>
+
+        <h3>Removed Features</h3>
+        <ul>
+          <li>Removed admin functionality and authentication system</li>
+          <li>Removed Google Ads API integration</li>
+          <li>Simplified codebase to focus on core Open Graph preview functionality</li>
+        </ul>
+
+        <h2 id="upcoming">Upcoming Features</h2>
+        <p>
+          We're constantly working to improve ogpreview.app. Here's what's coming:
+        </p>
+        <ul>
+          <li>More platform-specific optimization guides</li>
+          <li>Enhanced validation and error messages</li>
+          <li>Performance improvements</li>
+          <li>Additional platform support</li>
+        </ul>
+
+        <h2 id="contributing">Contributing</h2>
+        <p>
+          Want to contribute? We welcome contributions! Check out our <a href="https://github.com" target="_blank" rel="noopener" class="font-semibold">GitHub repository</a> to:
+        </p>
+        <ul>
+          <li>Report bugs</li>
+          <li>Suggest new features</li>
+          <li>Submit pull requests</li>
+          <li>Improve documentation</li>
+        </ul>
+      </div>
+
+      <!-- CTA -->
+      <div class="mt-12 bg-gradient-to-br from-blue-600 to-purple-600 rounded-xl p-8 text-center text-white">
+        <h2 class="text-2xl sm:text-3xl font-bold mb-4">
+          Try the Latest Features
+        </h2>
+        <p class="text-blue-100 mb-6 max-w-2xl mx-auto">
+          Experience all the improvements we've made to the Open Graph preview tool.
+        </p>
+        <NuxtLink
+          to="/"
+          class="inline-block bg-white text-blue-600 px-8 py-3 rounded-lg font-semibold hover:bg-blue-50 transition-colors"
+        >
+          Try the Free Preview Tool
+        </NuxtLink>
+      </div>
+    </article>
+  </main>
+</template>
+
+<script setup lang="ts">
+// SEO Meta Tags
+useSeoMeta({
+  title: 'Changelog - ogpreview.app Updates & Improvements',
+  description: 'Track updates, improvements, and new features to ogpreview.app. See what\'s changed, what\'s new, and what\'s coming next.',
+  keywords: 'ogpreview changelog, open graph tool updates, og preview tool changelog, what\'s new ogpreview',
+  robots: 'index, follow',
+  ogTitle: 'Changelog - ogpreview.app Updates & Improvements',
+  ogDescription: 'Track updates, improvements, and new features to ogpreview.app. See what\'s changed and what\'s coming next.',
+  ogType: 'website',
+  ogUrl: 'https://ogpreview.app/changelog'
+})
+
+// Structured Data
+useSchemaOrg([
+  {
+    '@type': 'WebPage',
+    'name': 'Changelog - ogpreview.app',
+    'description': 'Track updates, improvements, and new features to ogpreview.app',
+    'url': 'https://ogpreview.app/changelog'
+  },
+  {
+    '@type': 'BreadcrumbList',
+    'itemListElement': [
+      {
+        '@type': 'ListItem',
+        'position': 1,
+        'name': 'Home',
+        'item': 'https://ogpreview.app'
+      },
+      {
+        '@type': 'ListItem',
+        'position': 2,
+        'name': 'Changelog',
+        'item': 'https://ogpreview.app/changelog'
+      }
+    ]
+  }
+])
+</script>
+
+<style scoped>
+.prose :deep(a) {
+  color: rgb(37 99 235);
+  text-decoration: none;
+}
+
+.prose :deep(a:hover) {
+  text-decoration: underline;
+}
+
+@media (prefers-color-scheme: dark) {
+  .prose :deep(a) {
+    color: rgb(96 165 250);
+  }
+}
+</style>
