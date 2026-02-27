@@ -9,7 +9,7 @@
         class="h-7! w-7! sm:h-7! sm:w-7! shrink-0 transform transition-transform hover:scale-105 duration-300"
       >
       <h1
-        class="text-lg sm:text-lg md:text-xl lg:text-2xl font-bold text-transparent bg-clip-text bg-linear-to-r from-primary-500 via-primary-500 to-primary-500 animate-gradient leading-tight"
+        class="text-lg sm:text-lg md:text-xl lg:text-2xl font-bold text-transparent bg-clip-text bg-linear-to-r from-blue-600 via-purple-600 to-pink-600 animate-gradient leading-tight"
       >
         <span class="hidden sm:inline">Open Graph Preview Tool</span>
         <span class="sm:hidden">OG Preview</span>

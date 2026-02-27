@@ -186,7 +186,7 @@ name="i-lucide-sparkles" class="w-4 h-4 sm:w-3 sm:h-3 text-muted dark:text-dimme
 
         <div
 :aria-label="`${item.name} preview card`" role="region"
-          class="flex items-start justify-center flex-1 p-2.5 sm:p-1.5 bg-linear-to-br from-primary-500 to-primary-500/50 dark:from-primary-500 dark:to-primary-500/50 rounded-lg border border-default/50 dark:border-default/50 shadow-inner overflow-hidden">
+          class="flex items-start justify-center flex-1 p-2.5 sm:p-1.5 bg-muted dark:bg-elevated rounded-lg border border-default/50 dark:border-default/50 shadow-inner overflow-hidden">
           <!-- Show skeleton when no data loaded (skip for sponsored) -->
           <div v-if="!hasData && item.id !== 'sponsored'" class="w-full h-full flex items-center justify-center min-h-[200px] sm:min-h-[200px]">
             <div class="w-full space-y-3 p-4 sm:p-4 animate-pulse">
@@ -273,7 +273,7 @@ v-model:open="isModalOpen"
       <template #body>
         <div
 v-if="selectedPlatform" role="region" :aria-label="`Detailed ${selectedPlatform.name} preview`"
-          class="flex items-center justify-center p-6 bg-linear-to-br from-primary-500 to-primary-500/50 dark:from-primary-500 dark:to-primary-500/50 rounded-xl border border-default/50 dark:border-default/50 min-h-[300px]">
+          class="flex items-center justify-center p-6 bg-muted dark:bg-elevated rounded-xl border border-default/50 dark:border-default/50 min-h-[300px]">
           <Suspense>
             <template #default>
               <div class="w-full max-w-lg mx-auto">

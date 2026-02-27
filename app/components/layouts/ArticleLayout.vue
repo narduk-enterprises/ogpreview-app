@@ -28,7 +28,7 @@ withDefaults(defineProps<Props>(), {
 </script>
 
 <template>
-  <div class="min-h-screen py-8 px-4 sm:px-6 lg:px-8 bg-linear-to-br from-primary-500 via-primary-500 to-primary-500 dark:from-primary-500 dark:via-primary-500 dark:to-primary-500">
+  <div class="min-h-screen py-8 px-4 sm:px-6 lg:px-8 bg-linear-to-br from-gray-50 via-blue-50 to-purple-50 dark:from-gray-900 dark:via-gray-900 dark:to-gray-800">
     <article class="max-w-4xl mx-auto">
       <!-- Navigation -->
       <div v-if="backLink" class="mb-8">
@@ -44,7 +44,7 @@ withDefaults(defineProps<Props>(), {
       <!-- Header -->
       <div class="mb-6">
         <div v-if="platformIcon" class="mb-6 flex items-center gap-4">
-          <div class="w-16 h-16 rounded-2xl bg-linear-to-br from-primary-500 to-primary-500 dark:from-primary-500 dark:to-primary-500 flex items-center justify-center shadow-lg">
+          <div class="w-16 h-16 rounded-2xl bg-linear-to-br from-blue-600 to-purple-600 flex items-center justify-center shadow-lg">
             <PlatformIcon :platform="platformIcon" size="xl" />
           </div>
         </div>

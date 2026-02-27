@@ -18,7 +18,7 @@ defineProps<Props>()
 
 <template>
   <div class="max-w-sm mx-auto max-h-[500px] overflow-y-auto">
-    <div class="bg-linear-to-br from-primary-500 to-primary-500 p-1 rounded-3xl shadow-lg">
+    <div class="bg-muted dark:bg-elevated p-1 rounded-3xl shadow-lg">
       <div class="bg-white dark:bg-elevated rounded-3xl overflow-hidden">
         <!-- Chat Header -->
         <div class="p-2.5 border-b border-default dark:border-default">

@@ -17,7 +17,7 @@ defineProps<Props>()
 </script>
 
 <template>
-  <div class="max-w-md mx-auto bg-linear-to-b from-primary-500 to-primary-500 dark:from-primary-500 dark:to-primary-500 p-3 rounded-lg max-h-[500px] overflow-y-auto">
+  <div class="max-w-md mx-auto bg-muted dark:bg-elevated p-3 rounded-lg max-h-[500px] overflow-y-auto">
     <!-- Chat Header -->
     <div class="flex items-center gap-2.5 mb-3 pb-2.5 border-b border-default dark:border-default">
       <div class="w-10 h-10 bg-muted rounded-full flex items-center justify-center text-white font-bold shadow-md">
