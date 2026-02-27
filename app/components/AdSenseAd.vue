@@ -1,6 +1,6 @@
 <template>
   <ClientOnly>
-    <div class="adsense-container min-h-[100px]">
+    <div class="adsense-container">
       <ins
         ref="adSlotRef"
         class="adsbygoogle"
@@ -12,7 +12,7 @@
       />
     </div>
     <template #fallback>
-      <div class="adsense-container min-h-[100px]" aria-hidden="true" />
+      <div class="adsense-container" aria-hidden="true" />
     </template>
   </ClientOnly>
 </template>

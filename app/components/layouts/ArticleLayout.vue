@@ -13,7 +13,7 @@
       </nav>
 
       <!-- Header -->
-      <header class="mb-12">
+      <header class="mb-6">
         <div v-if="platformIcon" class="mb-6 flex items-center gap-4">
           <div class="w-16 h-16 rounded-2xl bg-linear-to-br from-blue-50 to-purple-50 dark:from-gray-800 dark:to-gray-700 flex items-center justify-center shadow-lg">
             <PlatformIcon :platform="platformIcon" size="xl" />
@@ -38,7 +38,7 @@
       </header>
 
       <!-- AdSense Ad - Top of Article -->
-      <div class="mb-8 flex justify-center">
+      <div class="mb-4 flex justify-center">
         <div class="w-full max-w-[728px]">
           <AdSenseAd />
         </div>
