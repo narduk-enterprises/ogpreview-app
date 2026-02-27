@@ -25,7 +25,6 @@
     "@nuxt/ui": "^4.3.0",
     "@nuxtjs/seo": "^3.4.0",
     "@vercel/og": "^0.9.0",
-    "better-sqlite3": "^12.6.2",
     "cheerio": "^1.2.0",
     "drizzle-orm": "^0.45.1",
     "html2canvas": "^1.4.1",
@@ -56,11 +55,11 @@
     "tsx": "^4.21.0",
     "typescript-eslint": "^8.56.1",
     "vue-eslint-parser": "^10.4.0",
-    "wrangler": "^4.20.0"
+    "wrangler": "^4.20.0",
+    "tsup": "^8.5.1"
   },
   "pnpm": {
     "onlyBuiltDependencies": [
-      "better-sqlite3",
       "esbuild"
     ]
   },
