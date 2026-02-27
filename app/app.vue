@@ -32,9 +32,9 @@ watch(route, () => {
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-16 flex items-center justify-between">
           <NuxtLink to="/" class="flex items-center gap-2.5 group">
             <div class="size-8 rounded-lg bg-primary flex items-center justify-center text-white font-bold text-sm">
-              N4
+              OG
             </div>
-            <span class="font-display font-semibold text-lg hidden sm:block">Nuxt 4 Demo</span>
+            <span class="font-display font-semibold text-lg hidden sm:block">OG Preview</span>
           </NuxtLink>
 
           <!-- Desktop nav -->
@@ -97,7 +97,7 @@ watch(route, () => {
       <footer class="border-t border-default py-6">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <p class="text-center text-sm text-muted">
-            Nuxt 4 Demo Template &middot; Nuxt UI 4 &middot; Cloudflare Workers &middot; {{ new Date().getFullYear() }}
+            OG Preview &middot; Open Graph Preview Tool &middot; {{ new Date().getFullYear() }}
           </p>
         </div>
       </footer>
