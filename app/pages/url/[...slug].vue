@@ -135,7 +135,7 @@ v-model="showHistoryModal" :history="history" @select="handleHistorySelect"
       <ClientOnly>
         <template #default>
           <div v-if="ogData" class="mb-6 sm:mb-4 mt-4" data-test="preview-area">
-            <PreviewSection :data="displayData" :validation-result="validationResult" />
+            <SectionsPreviewSection :data="displayData" :validation-result="validationResult" />
           </div>
           <div v-else class="text-center py-12 sm:py-16 px-4">
             <div

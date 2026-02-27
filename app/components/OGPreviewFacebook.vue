@@ -28,7 +28,7 @@
 
     <!-- Link Preview -->
     <div class="border-t border-gray-200 dark:border-gray-700">
-      <PreviewImage
+      <BasePreviewImage
         :src="data.image"
         :alt="data.imageAlt || data.title"
         aspect-class="aspect-[1.91/1]"

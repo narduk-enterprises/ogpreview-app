@@ -26,7 +26,7 @@
         <!-- Link Preview Card -->
         <div class="bg-white dark:bg-gray-800 rounded-lg overflow-hidden shadow-md hover:shadow-lg transition-shadow">
           <!-- Image -->
-          <PreviewImage
+          <BasePreviewImage
             :src="data.image"
             :alt="data.imageAlt || data.title"
             aspect-class="max-h-64"

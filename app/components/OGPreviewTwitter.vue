@@ -35,7 +35,7 @@
 
     <!-- Link Card -->
     <div class="border border-gray-200 dark:border-gray-700 rounded-xl sm:rounded-2xl mx-2 sm:mx-3 mb-2 sm:mb-3 overflow-hidden hover:bg-gray-50 dark:hover:bg-gray-700/30 transition-colors">
-      <PreviewImage
+      <BasePreviewImage
         :src="data.image"
         :alt="data.imageAlt || data.title"
         aspect-class="aspect-[2/1]"

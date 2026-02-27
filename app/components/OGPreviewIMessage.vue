@@ -30,7 +30,7 @@
 
           <!-- Link Preview Card -->
           <div class="bg-gray-100 dark:bg-gray-700 rounded-2xl overflow-hidden shadow-md hover:shadow-lg transition-shadow max-w-[90%]">
-            <PreviewImage
+            <BasePreviewImage
               :src="data.image"
               :alt="data.imageAlt || data.title"
               aspect-class="aspect-[16/9]"

@@ -4,10 +4,10 @@
     data-test="preview-page">
     <div class="max-w-[95rem] mx-auto" role="main">
       <!-- Hero Section -->
-      <HeroSection />
+      <SectionsHeroSection />
 
       <!-- URL Input Section with Refresh -->
-      <PreviewInputCard
+      <SectionsPreviewInputCard
         ref="previewInputCardRef"
         v-model:url-input="urlInput"
         :is-loading="isLoading"
@@ -43,7 +43,7 @@ v-if="showDebug" :debug-info="cacheDebugInfo" data-test="cache-debug-panel"
       <ClientOnly>
         <template #default>
           <div v-if="ogData" class="mb-6 sm:mb-4 mt-4" data-test="preview-area">
-            <PreviewSection :data="displayData" :validation-result="validationResult" />
+            <SectionsPreviewSection :data="displayData" :validation-result="validationResult" />
           </div>
           <div v-else class="text-center py-12 sm:py-16 px-4">
             <div
@@ -83,9 +83,9 @@ stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
       </ClientOnly>
 
       <!-- SEO Content Sections (only show on homepage) -->
-      <PlatformsSection v-if="showSeoSections" />
-      <HowItWorksSection v-if="showSeoSections" />
-      <FAQSection v-if="showSeoSections" />
+      <SectionsPlatformsSection v-if="showSeoSections" />
+      <SectionsHowItWorksSection v-if="showSeoSections" />
+      <SectionsFAQSection v-if="showSeoSections" />
     </div>
 
     <!-- Footer -->

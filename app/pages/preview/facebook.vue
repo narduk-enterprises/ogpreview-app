@@ -1,6 +1,6 @@
 <template>
   <div>
-    <PreviewPage :show-seo-sections="false" />
+    <PagesPreviewPage :show-seo-sections="false" />
   </div>
 </template>
 

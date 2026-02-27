@@ -1,5 +1,5 @@
 <template>
-  <PreviewPage :initial-url="initialUrl" :show-seo-sections="true" />
+  <PagesPreviewPage :initial-url="initialUrl" :show-seo-sections="true" />
 </template>
 
 <script setup lang="ts">
