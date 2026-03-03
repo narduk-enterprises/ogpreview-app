@@ -26,7 +26,11 @@
     "setup:ga": "npx jiti tools/setup-analytics.ts ga",
     "setup:indexnow": "npx jiti tools/setup-analytics.ts indexnow",
     "submit:indexnow": "npx tsx tools/indexnow.ts",
-    "build:plugins": "cd eslint-plugin-nuxt-ui && pnpm run build && cd ../eslint-plugin-nuxt-guardrails && pnpm run build && cd ../tools/eslint-plugin-vue-official-best-practices && pnpm run build"
+    "build:plugins": "cd eslint-plugin-nuxt-ui && pnpm run build && cd ../eslint-plugin-nuxt-guardrails && pnpm run build && cd ../tools/eslint-plugin-vue-official-best-practices && pnpm run build",
+    "predev": "node tools/check-setup.js",
+    "prebuild": "node tools/check-setup.js",
+    "predeploy": "node tools/check-setup.js",
+    "update-layer": "npx tsx tools/update-layer.ts"
   },
   "dependencies": {
     "@nuxt/image": "^2.0.0",
@@ -77,5 +81,6 @@
   },
   "volta": {
     "node": "22.14.0"
-  }
+  },
+  "packageManager": "pnpm@10.28.0"
 }
