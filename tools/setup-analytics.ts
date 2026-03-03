@@ -254,7 +254,6 @@ function findVerificationFiles(): string[] {
   const publicDir = join(process.cwd(), 'public')
   const found: string[] = []
   try {
-
     for (const file of readdirSync(publicDir)) {
       if (file.startsWith('google') && (file.endsWith('.html') || /^google[0-9a-z]+$/.test(file))) {
         found.push(`public/${file}`)
@@ -314,6 +313,7 @@ async function runGaSetup() {
     process.exit(1)
   }
 
+  // @ts-expect-error googleapis is used as an optional dev script dependency
   const { google } = await import('googleapis')
   const credentials = loadCredentials()
   const auth = new google.auth.GoogleAuth({
@@ -427,6 +427,7 @@ async function runGscPipeline() {
     process.exit(1)
   }
 
+  // @ts-expect-error googleapis is used as an optional dev script dependency
   const { google } = await import('googleapis')
 
   const credentials = loadCredentials()
@@ -508,6 +509,7 @@ async function runGscVerify() {
     process.exit(1)
   }
 
+  // @ts-expect-error googleapis is used as an optional dev script dependency
   const { google } = await import('googleapis')
 
   const credentials = loadCredentials()
