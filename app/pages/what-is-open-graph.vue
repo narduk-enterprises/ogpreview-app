@@ -102,7 +102,7 @@ useSchemaOrg([
 </script>
 
 <template>
-  <div class="min-h-screen py-8 px-4 sm:px-6 lg:px-8 bg-linear-to-br from-gray-50 via-blue-50 to-purple-50 dark:from-gray-900 dark:via-gray-900 dark:to-gray-800">
+  <div class="min-h-screen py-8 px-4 sm:px-6 lg:px-8 bg-linear-to-br from-primary-500 via-primary-500 to-primary-500 dark:from-primary-500 dark:via-primary-500 dark:to-primary-500">
     <article class="max-w-4xl mx-auto">
       <!-- Navigation -->
       <div class="mb-8">
@@ -386,7 +386,7 @@ Test with platform-specific validators:
       </div>
 
       <!-- CTA -->
-      <div class="mt-12 bg-linear-to-br from-blue-600 to-purple-600 rounded-xl p-8 text-center text-white">
+      <div class="mt-12 bg-linear-to-br from-primary-500 to-primary-500 rounded-xl p-8 text-center text-white">
         <h2 class="text-2xl sm:text-3xl font-bold mb-4">
           Test Your Open Graph Tags
         </h2>

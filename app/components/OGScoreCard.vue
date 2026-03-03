@@ -51,7 +51,7 @@ function getScoreLabel(score: number): string {
 
 <template>
   <div
-    class="mt-6 p-4 sm:p-6 bg-linear-to-br from-blue-50/50 to-purple-50/50 dark:from-gray-800/50 dark:to-gray-900/50 rounded-xl border border-default dark:border-default"
+    class="mt-6 p-4 sm:p-6 bg-linear-to-br from-primary-500/50 to-primary-500/50 dark:from-primary-500/50 dark:to-primary-500/50 rounded-xl border border-default dark:border-default"
   >
     <div class="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-3 sm:gap-0 mb-4">
       <h3 class="text-lg sm:text-lg font-bold text-primary dark:text-primary">
