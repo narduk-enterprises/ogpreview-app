@@ -44,7 +44,7 @@ withDefaults(defineProps<Props>(), {
       <!-- Header -->
       <div class="mb-6">
         <div v-if="platformIcon" class="mb-6 flex items-center gap-4">
-          <div class="w-16 h-16 rounded-2xl bg-linear-to-br from-blue-600 to-purple-600 flex items-center justify-center shadow-lg">
+          <div class="w-16 h-16 rounded-2xl bg-primary flex items-center justify-center shadow-lg">
             <PlatformIcon :platform="platformIcon" size="xl" />
           </div>
         </div>

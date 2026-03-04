@@ -386,7 +386,7 @@ Test with platform-specific validators:
       </div>
 
       <!-- CTA -->
-      <div class="mt-12 bg-linear-to-br from-blue-600 to-purple-600 rounded-xl p-8 text-center text-white">
+      <div class="mt-12 bg-primary rounded-xl p-8 text-center text-white">
         <h2 class="text-2xl sm:text-3xl font-bold mb-4">
           Test Your Open Graph Tags
         </h2>

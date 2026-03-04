@@ -36,7 +36,7 @@ const steps = [
         :key="index"
         class="bg-white dark:bg-elevated rounded-lg p-6 sm:p-6 shadow-sm border border-default dark:border-default relative"
       >
-        <div class="absolute -top-3 -left-3 w-10 h-10 sm:w-10 sm:h-10 bg-linear-to-br from-blue-600 to-purple-600 rounded-full flex items-center justify-center text-white font-bold text-base sm:text-base shadow-lg">
+        <div class="absolute -top-3 -left-3 w-10 h-10 sm:w-10 sm:h-10 bg-primary rounded-full flex items-center justify-center text-white font-bold text-base sm:text-base shadow-lg">
           {{ index + 1 }}
         </div>
         <div class="pt-3 sm:pt-2">

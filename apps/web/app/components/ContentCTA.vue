@@ -20,7 +20,7 @@ const props = withDefaults(defineProps<Props>(), {
 
 const gradientClasses = computed(() => {
   const variants = {
-    blue: 'bg-linear-to-br from-blue-600 via-blue-700 to-blue-800',
+    blue: 'bg-primary',
     purple: 'bg-linear-to-br from-purple-600 via-purple-700 to-purple-800',
     green: 'bg-linear-to-br from-green-600 via-green-700 to-green-800',
     orange: 'bg-linear-to-br from-orange-600 via-orange-700 to-orange-800'
