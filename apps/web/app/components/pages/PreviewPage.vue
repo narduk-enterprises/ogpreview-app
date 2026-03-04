@@ -232,7 +232,7 @@ const handleClear = () => {
 
 <template>
   <div
-    class="min-h-screen py-4 sm:py-4 px-3 sm:px-3 md:px-4 lg:px-6 bg-linear-to-br from-gray-50 via-blue-50 to-purple-50 dark:from-gray-900 dark:via-gray-900 dark:to-gray-800"
+    class="min-h-screen py-4 sm:py-4 px-3 sm:px-3 md:px-4 lg:px-6 bg-default"
     data-test="preview-page">
     <div class="max-w-[95rem] mx-auto" role="main">
       <!-- Hero Section -->

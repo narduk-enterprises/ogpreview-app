@@ -53,7 +53,7 @@ const steps = [
       </div>
     </div>
 
-    <div class="bg-linear-to-br from-blue-50/50 to-purple-50/50 dark:from-gray-800/50 dark:to-gray-900/50 rounded-xl p-6 sm:p-6 border border-default dark:border-default">
+    <div class="bg-linear-to-br bg-elevated rounded-xl p-6 sm:p-6 border border-default dark:border-default">
       <h3 class="font-semibold text-primary dark:text-white mb-3 text-lg sm:text-lg">
         💡 What are Open Graph tags?
       </h3>
