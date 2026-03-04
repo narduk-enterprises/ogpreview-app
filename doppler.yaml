@@ -1,0 +1,3 @@
+setup:
+  project: ogpreview-app
+  config: prd

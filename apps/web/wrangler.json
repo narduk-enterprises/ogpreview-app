@@ -1,0 +1,28 @@
+{
+  "$schema": "https://raw.githubusercontent.com/cloudflare/workers-sdk/main/packages/wrangler/schemas/config/wrangler.json",
+  "name": "ogpreview-app",
+  "main": ".output/server/index.mjs",
+  "assets": {
+    "directory": ".output/public"
+  },
+  "compatibility_date": "2026-03-04",
+  "compatibility_flags": [
+    "nodejs_compat"
+  ],
+  "observability": {
+    "enabled": true
+  },
+  "d1_databases": [
+    {
+      "binding": "DB",
+      "database_name": "ogpreview-app-db",
+      "database_id": "cfd0824d-ebe0-4ec5-ba10-f913f914e8c6"
+    }
+  ],
+  "routes": [
+    {
+      "pattern": "ogpreview.app",
+      "custom_domain": true
+    }
+  ]
+}
