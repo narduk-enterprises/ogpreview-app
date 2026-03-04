@@ -70,7 +70,7 @@ const guides = [
 </script>
 
 <template>
-  <div class="min-h-screen py-8 px-4 sm:px-6 lg:px-8 bg-linear-to-br from-primary-500 via-primary-500 to-primary-500 dark:from-primary-500 dark:via-primary-500 dark:to-primary-500">
+  <div class="min-h-screen py-8 px-4 sm:px-6 lg:px-8 bg-linear-to-br from-gray-50 via-blue-50 to-purple-50 dark:from-gray-900 dark:via-gray-900 dark:to-gray-800">
     <div class="max-w-5xl mx-auto">
       <!-- Header -->
       <div class="text-center mb-12">
@@ -96,7 +96,7 @@ const guides = [
           :to="`/guides/${guide.slug}`"
           class="group bg-white dark:bg-elevated rounded-xl p-6 shadow-lg border border-default dark:border-default hover:shadow-xl hover:scale-105 transition-all duration-200"
         >
-          <div class="mb-4 flex items-center justify-center w-12 h-12 rounded-xl bg-linear-to-br from-primary-500 to-primary-500 group-hover:scale-110 transition-transform">
+          <div class="mb-4 flex items-center justify-center w-12 h-12 rounded-xl bg-linear-to-br from-blue-600 to-purple-600 group-hover:scale-110 transition-transform">
             <UIcon :name="guide.icon" class="w-6 h-6 text-muted dark:text-dimmed" />
           </div>
           <h2 class="text-xl font-bold text-primary dark:text-white mb-2 group-hover:text-muted dark:group-hover:text-dimmed transition-colors">
@@ -248,7 +248,7 @@ const guides = [
       </div>
 
       <!-- CTA -->
-      <div class="bg-linear-to-br from-primary-500 to-primary-500 rounded-xl p-8 text-center text-white">
+      <div class="bg-linear-to-br from-blue-600 to-purple-600 rounded-xl p-8 text-center text-white">
         <h2 class="text-2xl sm:text-3xl font-bold mb-4">
           Ready to test your Open Graph tags?
         </h2>
