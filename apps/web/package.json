@@ -25,7 +25,7 @@
     "@vercel/og": "^0.9.0",
     "cheerio": "^1.2.0",
     "html2canvas": "^1.4.1",
-    "nuxt-og-image": "^5.1.13"
+    "nuxt-og-image": "6.0.0-beta.42"
   },
   "devDependencies": {
     "@tailwindcss/vite": "^4.0.0",
@@ -45,7 +45,8 @@
   },
   "overrides": {
     "@cloudflare/unenv-preset": "2.12.1",
-    "vite": "npm:rolldown-vite@7.3.1"
+    "vite": "npm:rolldown-vite@7.3.1",
+    "nuxt-og-image": "6.0.0-beta.42"
   },
   "volta": {
     "node": "22.22.0"

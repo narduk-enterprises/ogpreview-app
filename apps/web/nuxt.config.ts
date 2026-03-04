@@ -8,9 +8,6 @@ export default defineNuxtConfig({
   modules: ['nitro-cloudflare-dev', 'nuxt-og-image'],
   css: ['~/assets/css/main.css'],
 
-  compatibilityDate: '2025-07-15',
-
-  devtools: { enabled: true },
 
   future: {
     compatibilityVersion: 4
@@ -107,8 +104,9 @@ export default defineNuxtConfig({
   // ─── Nitro (Cloudflare Workers) ────────────────────────────────
 
   nitro: {
-    cloudflareDev: { configPath: resolve(__dirname, 'wrangler.json') },
-    preset: 'cloudflare-module',
+    cloudflareDev: {
+      configPath: resolve(__dirname, 'wrangler.json'),
+    },
     prerender: {
       crawlLinks: false,
       routes: [
@@ -136,26 +134,6 @@ export default defineNuxtConfig({
         '/sitemap.xml',
         '/robots.txt'
       ]
-    },
-    esbuild: {
-      options: {
-        target: 'esnext'
-      }
-    },
-    externals: {
-      inline: ['drizzle-orm']
-    },
-    rollupConfig: {
-      plugins: [
-        {
-          name: 'fix-og-image-mock',
-          resolveId(id: string) {
-            if (id.includes('nuxt-og-image') && id.includes('proxy-cjs')) {
-              return { id: './node_modules/nuxt-og-image/dist/runtime/mock/proxy-cjs.js', external: false }
-            }
-          },
-        },
-      ],
     },
   },
 
