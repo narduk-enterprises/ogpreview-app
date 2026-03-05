@@ -106,6 +106,7 @@ export default defineNuxtConfig({
     },
     prerender: {
       crawlLinks: false,
+      ignore: ['/_og/'],
       routes: [
         '/',
         '/preview/twitter',
