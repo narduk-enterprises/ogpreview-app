@@ -1,41 +1,25 @@
 <script setup lang="ts">
-// SEO Meta Tags
-useSeoMeta({
+// SEO
+useSeo({
   title: 'Changelog - ogpreview.app Updates & Improvements',
   description: 'Track updates, improvements, and new features to ogpreview.app. See what\'s changed, what\'s new, and what\'s coming next.',
-  keywords: 'ogpreview changelog, open graph tool updates, og preview tool changelog, what\'s new ogpreview',
-  robots: 'index, follow',
-  ogTitle: 'Changelog - ogpreview.app Updates & Improvements',
-  ogDescription: 'Track updates, improvements, and new features to ogpreview.app. See what\'s changed and what\'s coming next.',
-  ogType: 'website',
-  ogUrl: 'https://ogpreview.app/changelog'
+  keywords: ['ogpreview changelog', 'open graph tool updates', 'og preview tool changelog', "what's new ogpreview"],
+  ogImage: {
+    title: 'Changelog',
+    description: 'Track updates and improvements',
+    icon: 'i-lucide-history'
+  }
 })
 
 // Structured Data
-useSchemaOrg([
-  {
-    '@type': 'WebPage',
-    'name': 'Changelog - ogpreview.app',
-    'description': 'Track updates, improvements, and new features to ogpreview.app',
-    'url': 'https://ogpreview.app/changelog'
-  },
-  {
-    '@type': 'BreadcrumbList',
-    'itemListElement': [
-      {
-        '@type': 'ListItem',
-        'position': 1,
-        'name': 'Home',
-        'item': 'https://ogpreview.app'
-      },
-      {
-        '@type': 'ListItem',
-        'position': 2,
-        'name': 'Changelog',
-        'item': 'https://ogpreview.app/changelog'
-      }
-    ]
-  }
+useWebPageSchema({
+  name: 'Changelog - ogpreview.app',
+  description: 'Track updates, improvements, and new features to ogpreview.app'
+})
+
+useBreadcrumbSchema([
+  { name: 'Home', url: 'https://ogpreview.app' },
+  { name: 'Changelog', url: 'https://ogpreview.app/changelog' }
 ])
 </script>
 
