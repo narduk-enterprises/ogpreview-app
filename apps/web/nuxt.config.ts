@@ -132,6 +132,18 @@ export default defineNuxtConfig({
         '/robots.txt'
       ]
     },
+    rollupConfig: {
+      plugins: [
+        {
+          name: 'fix-og-image-mock',
+          resolveId(id: string) {
+            if (id.includes('nuxt-og-image') && id.includes('proxy-cjs')) {
+              return { id: './node_modules/nuxt-og-image/dist/runtime/mock/proxy-cjs.js', external: false }
+            }
+          },
+        },
+      ],
+    },
   },
 
   app: {
