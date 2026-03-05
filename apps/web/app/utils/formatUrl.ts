@@ -21,7 +21,7 @@ export function extractDomain(url: string): string {
   try {
     const urlObj = new URL(url)
     const parts = urlObj.hostname.split('.')
-    return parts.length > 1 ? (parts[parts.length - 2] ?? urlObj.hostname) : urlObj.hostname
+    return parts.length > 1 ? (parts.at(-2) ?? urlObj.hostname) : urlObj.hostname
   }
   catch {
     return 'domain'

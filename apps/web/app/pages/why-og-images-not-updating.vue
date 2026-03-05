@@ -1,17 +1,13 @@
 <script setup lang="ts">
 // SEO Meta Tags
-useSeoMeta({
+useSeo({
   title: 'Why Are My Open Graph Images Not Updating? Fix Cache Issues (2025)',
   description: 'Learn why Open Graph images don\'t update and how to force platforms to refresh cached previews. Complete guide to fixing OG image cache issues on Facebook, Twitter, LinkedIn, Slack, and Discord.',
-  keywords: 'og image not updating, open graph image cache, og image not changing, facebook og image cache, linkedin og cache, twitter card cache, clear og image cache, force og image update',
-  robots: 'index, follow',
-  ogTitle: 'Why Are My Open Graph Images Not Updating? Fix Cache Issues',
-  ogDescription: 'Understand why your Open Graph images aren\'t updating and learn how to force platforms to refresh cached previews. Complete troubleshooting guide.',
-  ogType: 'article',
-  articlePublishedTime: '2025-12-16T00:00:00Z',
-  articleModifiedTime: '2025-12-16T00:00:00Z',
-  articleAuthor: ['ogpreview.app'],
-  articleSection: 'Web Development'
+  keywords: ['og image not updating', 'open graph image cache', 'og image not changing', 'facebook og image cache', 'linkedin og cache', 'twitter card cache', 'clear og image cache', 'force og image update'],
+  type: 'article',
+  publishedAt: '2025-12-16T00:00:00Z',
+  modifiedAt: '2025-12-16T00:00:00Z',
+  author: 'ogpreview.app',
 })
 
 // Structured Data

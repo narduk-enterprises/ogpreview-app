@@ -142,15 +142,16 @@ export default defineEventHandler(async (event) => {
     // Return buffer - H3 will handle binary response correctly
     return buffer
   }
-  catch (error: any) {
-    const sanitizedError = sanitizeUrlForLog(error.message || String(error))
+  catch (error: unknown) {
+    const err = error instanceof Error ? error : new Error(String(error))
+    const sanitizedError = sanitizeUrlForLog(err.message)
     const sanitizedUrl = sanitizeUrlForLog(urlToFetch)
     console.error(`[image] Error fetching image ${sanitizedUrl}:`, sanitizedError)
 
     setResponseHeader(event, 'Content-Type', 'application/json')
 
     // Handle timeout
-    if (error.name === 'TimeoutError' || error.name === 'AbortError') {
+    if (err.name === 'TimeoutError' || err.name === 'AbortError') {
       setResponseStatus(event, 504)
       return {
         ok: false,

@@ -1,16 +1,12 @@
 <script setup lang="ts">
-useSeoMeta({
+useSeo({
   title: 'Slack Open Graph Meta Tags & Specs',
   description: 'The exact open graph specifications for Slack workspaces. Build properly scaled image links, copy-paste starter tags, and configure unfurling correctly.',
-  keywords: 'slack og tags, slack open graph, slack link preview, slackbot link fetch, default slack unfurl',
-  robots: 'index, follow',
-  ogTitle: 'Slack Open Graph Meta Tags & Specs',
-  ogDescription: 'The exact open graph specifications for Slack workspaces. Build properly scaled image links and configure unfurling.',
-  ogType: 'article',
-  articlePublishedTime: '2025-12-16T00:00:00Z',
-  articleModifiedTime: '2025-12-16T00:00:00Z',
-  articleAuthor: ['ogpreview.app'],
-  articleSection: 'Social Media Optimization'
+  keywords: ['slack og tags', 'slack open graph', 'slack link preview', 'slackbot link fetch', 'default slack unfurl'],
+  type: 'article',
+  publishedAt: '2025-12-16T00:00:00Z',
+  modifiedAt: '2025-12-16T00:00:00Z',
+  author: 'ogpreview.app',
 })
 
 useSchemaOrg([

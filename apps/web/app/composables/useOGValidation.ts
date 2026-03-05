@@ -66,11 +66,11 @@ export const useOGValidation = () => {
     const required = ['title', 'description', 'image', 'url']
     const missing: string[] = []
 
-    required.forEach((field) => {
+    for (const field of required) {
       if (!data[field as keyof typeof data]) {
         missing.push(field)
       }
-    })
+    }
 
     const warnings: string[] = []
 

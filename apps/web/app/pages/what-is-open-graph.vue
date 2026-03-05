@@ -1,17 +1,13 @@
 <script setup lang="ts">
 // SEO Meta Tags
-useSeoMeta({
+useSeo({
   title: 'What is Open Graph? Complete Beginner\'s Guide (2025)',
   description: 'Learn what Open Graph is, how it works, and why it\'s essential for social media link previews. Complete guide to OG tags, implementation examples, and best practices.',
-  keywords: 'what is open graph, open graph protocol, og tags explained, open graph meta tags, social media preview tags, og:title og:description, open graph tutorial',
-  robots: 'index, follow',
-  ogTitle: 'What is Open Graph? Complete Beginner\'s Guide',
-  ogDescription: 'Learn the fundamentals of Open Graph protocol, how it works, and why it\'s essential for social media link previews. Complete beginner\'s guide with examples.',
-  ogType: 'article',
-  articlePublishedTime: '2025-12-16T00:00:00Z',
-  articleModifiedTime: '2025-12-16T00:00:00Z',
-  articleAuthor: ['ogpreview.app'],
-  articleSection: 'Web Development'
+  keywords: ['what is open graph', 'open graph protocol', 'og tags explained', 'open graph meta tags', 'social media preview tags', 'og:title og:description', 'open graph tutorial'],
+  type: 'article',
+  publishedAt: '2025-12-16T00:00:00Z',
+  modifiedAt: '2025-12-16T00:00:00Z',
+  author: 'ogpreview.app',
 })
 
 // Structured Data

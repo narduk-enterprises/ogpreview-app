@@ -1,14 +1,21 @@
 <script setup lang="ts">
-useSeoMeta({
+useSeo({
   title: 'Privacy Policy - ogpreview.app',
-  description: 'Privacy Policy for ogpreview.app - Learn how we collect, use, and protect your information.'
+  description: 'Privacy Policy for ogpreview.app - Learn how we collect, use, and protect your information.',
 })
+
+useWebPageSchema({
+  name: 'Privacy Policy - ogpreview.app',
+  description: 'Privacy Policy for ogpreview.app - Learn how we collect, use, and protect your information.',
+})
+
+const lastUpdated = new Date().toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric' })
 </script>
 
 <template>
   <LayoutsSimpleLayout
 title="Privacy Policy"
-    :subtitle="`Last updated: ${new Date().toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric' })}`">
+    :subtitle="`Last updated: ${lastUpdated}`">
     <section class="mb-8">
       <h2 class="text-2xl font-semibold text-primary dark:text-white mb-4">
         1. Introduction

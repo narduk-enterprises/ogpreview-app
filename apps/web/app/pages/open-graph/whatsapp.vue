@@ -1,16 +1,12 @@
 <script setup lang="ts">
-useSeoMeta({
+useSeo({
   title: 'WhatsApp Open Graph Meta Tags & Specs',
   description: 'The exact open graph specifications for WhatsApp link previews. Keep images under 300KB for them to appear reliably in chats.',
-  keywords: 'whatsapp og tags, whatsapp open graph, whatsapp link preview, whatsapp image limit',
-  robots: 'index, follow',
-  ogTitle: 'WhatsApp Open Graph Meta Tags & Specs',
-  ogDescription: 'The exact open graph specifications for WhatsApp previews. Keep images under 300KB.',
-  ogType: 'article',
-  articlePublishedTime: '2025-12-16T00:00:00Z',
-  articleModifiedTime: '2025-12-16T00:00:00Z',
-  articleAuthor: ['ogpreview.app'],
-  articleSection: 'Social Media Optimization'
+  keywords: ['whatsapp og tags', 'whatsapp open graph', 'whatsapp link preview', 'whatsapp image limit'],
+  type: 'article',
+  publishedAt: '2025-12-16T00:00:00Z',
+  modifiedAt: '2025-12-16T00:00:00Z',
+  author: 'ogpreview.app',
 })
 
 useSchemaOrg([

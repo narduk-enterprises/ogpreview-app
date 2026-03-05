@@ -3,7 +3,7 @@ import type { PlatformScores } from '~~/types/og'
 
 interface Props {
   modelValue: string
-  ogData: any
+  ogData: Record<string, unknown> | null
   isLoading?: boolean
   error?: string
   scores?: PlatformScores | null
@@ -12,7 +12,7 @@ interface Props {
 
 interface Emits {
   (e: 'update:modelValue', value: string): void
-  (e: 'update:ogData', value: any): void
+  (e: 'update:ogData', value: Record<string, unknown> | null): void
   (e: 'fetch' | 'clear' | 'clear-error' | 'reset'): void
 }
 
@@ -25,7 +25,7 @@ const props = withDefaults(defineProps<Props>(), {
 
 const emit = defineEmits<Emits>()
 
-// Template ref for the input
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
 const urlInputRef = ref<any>(null)
 const userUrlFocusIntent = ref(false)
 const selectedAllAtMs = ref<number | null>(null)
@@ -86,7 +86,7 @@ function triggerUrlInputSelectAndAnimate() {
   // Re-trigger a subtle focus animation (remove -> reflow -> add).
   el.classList.remove('addressbar-focus-anim')
 
-  void (el as any).offsetWidth
+  void (el as HTMLElement).offsetWidth
   el.classList.add('addressbar-focus-anim')
   el.addEventListener('animationend', () => el.classList.remove('addressbar-focus-anim'), { once: true })
 }
@@ -96,7 +96,7 @@ function markUserUrlFocusIntent() {
 }
 
 function handleUrlInputFocus(e: FocusEvent) {
-  const isTrusted = (e as any).isTrusted !== false
+  const isTrusted = (e as FocusEvent).isTrusted !== false
   const shouldHandle = userUrlFocusIntent.value || isTrusted
   userUrlFocusIntent.value = false
 
@@ -197,6 +197,9 @@ function getScoreLabel(score: number): string {
     return 'Needs Improvement'
   }
 }
+
+const buttonIcon = computed(() => props.isLoading ? undefined : props.hasScores ? 'i-lucide-refresh-cw' : 'i-lucide-search')
+const buttonLabel = computed(() => props.isLoading ? 'Loading...' : props.hasScores ? 'Refresh' : 'Load Preview')
 </script>
 
 <template>
@@ -232,8 +235,8 @@ icon="i-lucide-x-circle" color="neutral" variant="ghost" size="xs" aria-label="C
           <!-- Load Preview Button -->
           <UButton
 :disabled="!localUrl || isLoading || !isValidUrl" :loading="isLoading"
-            :icon="isLoading ? undefined : hasScores ? 'i-lucide-refresh-cw' : 'i-lucide-search'"
-            :label="isLoading ? 'Loading...' : hasScores ? 'Refresh' : 'Load Preview'" color="primary" variant="solid"
+            :icon="buttonIcon"
+            :label="buttonLabel" color="primary" variant="solid"
             size="sm" class="shadow-sm hover:shadow-md transition-shadow duration-200 shrink-0" @click="handleFetch" />
         </div>
 

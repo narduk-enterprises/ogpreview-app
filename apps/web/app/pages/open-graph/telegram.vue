@@ -1,16 +1,12 @@
 <script setup lang="ts">
-useSeoMeta({
+useSeo({
   title: 'Telegram Open Graph Meta Tags & Specs',
   description: 'The exact open graph specifications for Telegram link previews. Add proper image sizing and tags for large rich previews.',
-  keywords: 'telegram og tags, telegram open graph, telegram link preview, webpagebot cache',
-  robots: 'index, follow',
-  ogTitle: 'Telegram Open Graph Meta Tags & Specs',
-  ogDescription: 'The exact open graph specifications for Telegram previews. Include the right image sizes.',
-  ogType: 'article',
-  articlePublishedTime: '2025-12-16T00:00:00Z',
-  articleModifiedTime: '2025-12-16T00:00:00Z',
-  articleAuthor: ['ogpreview.app'],
-  articleSection: 'Social Media Optimization'
+  keywords: ['telegram og tags', 'telegram open graph', 'telegram link preview', 'webpagebot cache'],
+  type: 'article',
+  publishedAt: '2025-12-16T00:00:00Z',
+  modifiedAt: '2025-12-16T00:00:00Z',
+  author: 'ogpreview.app',
 })
 
 useSchemaOrg([

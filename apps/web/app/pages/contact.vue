@@ -1,10 +1,7 @@
 <script setup lang="ts">
-useSeoMeta({
+useSeo({
   title: 'Contact Us - ogpreview.app',
   description: 'Get in touch with the ogpreview.app team. Contact us for support, partnerships, or general inquiries about our Open Graph preview tool.',
-  ogTitle: 'Contact Us - ogpreview.app',
-  ogDescription: 'Get in touch with the ogpreview.app team. Contact us for support, partnerships, or general inquiries.',
-  ogType: 'website'
 })
 
 // Schema.org LocalBusiness/Organization

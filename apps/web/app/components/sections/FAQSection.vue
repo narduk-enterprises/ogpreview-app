@@ -3,67 +3,74 @@
 const faqs = [
   {
     question: 'What is an Open Graph preview?',
-    answer: 'An Open Graph preview is the visual card that appears when you share a link on social media platforms like Facebook, Twitter, LinkedIn, or Slack. It includes your page title, description, and featured image, making your content more engaging and clickable. Open Graph previews help increase click-through rates by showing users what to expect before they click.'
+    answer:
+      'An Open Graph preview is the visual card that appears when you share a link on social media platforms like Facebook, Twitter, LinkedIn, or Slack. It includes your page title, description, and featured image, making your content more engaging and clickable. Open Graph previews help increase click-through rates by showing users what to expect before they click.',
   },
   {
     question: 'How do I preview Open Graph tags?',
-    answer: 'Use our free Open Graph preview tool above to instantly see how your links will appear on social media. Simply enter your website URL, and you\'ll see previews for Facebook, Twitter, LinkedIn, Slack, Discord, WhatsApp, Telegram, and iMessage. You can also manually edit tags to test different titles, descriptions, and images without changing your actual website.'
+    answer:
+      "Use our free Open Graph preview tool above to instantly see how your links will appear on social media. Simply enter your website URL, and you'll see previews for Facebook, Twitter, LinkedIn, Slack, Discord, WhatsApp, Telegram, and iMessage. You can also manually edit tags to test different titles, descriptions, and images without changing your actual website.",
   },
   {
     question: 'What is an Open Graph preview tool?',
-    answer: 'An Open Graph preview tool lets you test and preview how your website links will appear when shared on social media platforms. Our tool shows you exactly how your Open Graph meta tags (title, description, image) will render across Facebook, Twitter, LinkedIn, Slack, Discord, WhatsApp, Telegram, and iMessage—all in one place.'
+    answer:
+      'An Open Graph preview tool lets you test and preview how your website links will appear when shared on social media platforms. Our tool shows you exactly how your Open Graph meta tags (title, description, image) will render across Facebook, Twitter, LinkedIn, Slack, Discord, WhatsApp, Telegram, and iMessage—all in one place.',
   },
   {
     question: 'How do I preview my Open Graph tags before publishing?',
-    answer: 'Simply enter your website URL in the tool above, and you\'ll instantly see how your Open Graph meta tags will appear across different platforms. You can also manually edit the tags to test different titles, descriptions, and images without changing your actual website.'
+    answer:
+      "Simply enter your website URL in the tool above, and you'll instantly see how your Open Graph meta tags will appear across different platforms. You can also manually edit the tags to test different titles, descriptions, and images without changing your actual website.",
   },
   {
     question: 'Which platforms does this Open Graph preview tool support?',
-    answer: 'Our tool supports Facebook, Twitter (X), LinkedIn, Slack, Discord, WhatsApp, Telegram, and iMessage. Each platform renders Open Graph tags slightly differently, so you can preview exactly how your link will look on each one.'
+    answer:
+      'Our tool supports Facebook, Twitter (X), LinkedIn, Slack, Discord, WhatsApp, Telegram, and iMessage. Each platform renders Open Graph tags slightly differently, so you can preview exactly how your link will look on each one.',
   },
   {
     question: 'What are the recommended Open Graph image sizes?',
-    answer: 'The recommended size is 1200×630 pixels for most platforms. Facebook and LinkedIn work best with 1200×630px, Twitter prefers 1200×675px for large cards, and Discord/Slack work well with 1200×630px. Always use high-quality images in JPG, PNG, or WebP format.'
+    answer:
+      'The recommended size is 1200×630 pixels for most platforms. Facebook and LinkedIn work best with 1200×630px, Twitter prefers 1200×675px for large cards, and Discord/Slack work well with 1200×630px. Always use high-quality images in JPG, PNG, or WebP format.',
   },
   {
     question: 'Do I need to create an account to use this tool?',
-    answer: 'No! Our Open Graph preview tool is completely free and requires no registration or login. Just paste your URL or enter your content details and start previewing immediately.'
+    answer:
+      'No! Our Open Graph preview tool is completely free and requires no registration or login. Just paste your URL or enter your content details and start previewing immediately.',
   },
   {
-    question: 'Why isn\'t my Open Graph preview updating?',
-    answer: 'Social media platforms cache Open Graph data aggressively. After updating your meta tags, use the platform\'s debugging tool to force a cache refresh: <a href="https://developers.facebook.com/tools/debug/" target="_blank" rel="noopener" class="text-blue-600 dark:text-blue-400 hover:underline">Facebook Debugger</a>, <a href="https://cards-dev.twitter.com/validator" target="_blank" rel="noopener" class="text-blue-600 dark:text-blue-400 hover:underline">Twitter Card Validator</a>, or <a href="https://www.linkedin.com/post-inspector/" target="_blank" rel="noopener" class="text-blue-600 dark:text-blue-400 hover:underline">LinkedIn Post Inspector</a>.'
+    question: "Why isn't my Open Graph preview updating?",
+    answer:
+      'Social media platforms cache Open Graph data aggressively. After updating your meta tags, use the platform\'s debugging tool to force a cache refresh: <a href="https://developers.facebook.com/tools/debug/" target="_blank" rel="noopener" class="text-blue-600 dark:text-blue-400 hover:underline">Facebook Debugger</a>, <a href="https://cards-dev.twitter.com/validator" target="_blank" rel="noopener" class="text-blue-600 dark:text-blue-400 hover:underline">Twitter Card Validator</a>, or <a href="https://www.linkedin.com/post-inspector/" target="_blank" rel="noopener" class="text-blue-600 dark:text-blue-400 hover:underline">LinkedIn Post Inspector</a>.',
   },
   {
-    question: 'What\'s the difference between Open Graph and Twitter Cards?',
-    answer: 'Twitter Cards are Twitter\'s extension of Open Graph. While Twitter falls back to standard OG tags, using specific <code>twitter:card</code>, <code>twitter:title</code>, and <code>twitter:image</code> tags gives you better control over how links appear on Twitter/X.'
+    question: "What's the difference between Open Graph and Twitter Cards?",
+    answer:
+      "Twitter Cards are Twitter's extension of Open Graph. While Twitter falls back to standard OG tags, using specific <code>twitter:card</code>, <code>twitter:title</code>, and <code>twitter:image</code> tags gives you better control over how links appear on Twitter/X.",
   },
   {
     question: 'Can I test Open Graph tags without a live website?',
-    answer: 'Yes! You can use the manual editing feature to input your desired title, description, and image URL without fetching from a live website. This is perfect for testing designs before deployment or for planning your social media strategy.'
-  }
-]
+    answer:
+      'Yes! You can use the manual editing feature to input your desired title, description, and image URL without fetching from a live website. This is perfect for testing designs before deployment or for planning your social media strategy.',
+  },
+];
 
 // Generate FAQ Schema.org structured data for SEO
 useSchemaOrg([
   {
     '@type': 'FAQPage',
-    'mainEntity': faqs.map(faq => ({
+    mainEntity: faqs.map((faq) => ({
       '@type': 'Question',
-      'name': faq.question,
-      'acceptedAnswer': {
+      name: faq.question,
+      acceptedAnswer: {
         '@type': 'Answer',
-        'text': faq.answer.replace(/<[^>]*>/g, '') // Strip HTML for schema
-      }
-    }))
-  }
-])
+        text: faq.answer.replaceAll(/<[^>]*>/g, ''), // Strip HTML for schema
+      },
+    })),
+  },
+]);
 </script>
 
 <template>
-  <section
-    class="mt-8 sm:mt-8 max-w-4xl mx-auto px-4 sm:px-4 mb-8"
-    aria-labelledby="faq-heading"
-  >
+  <section class="mt-8 sm:mt-8 max-w-4xl mx-auto px-4 sm:px-4 mb-8" aria-labelledby="faq-heading">
     <h2
       id="faq-heading"
       class="text-2xl sm:text-2xl font-bold text-primary dark:text-white text-center mb-6 sm:mb-6"
@@ -85,14 +92,18 @@ useSchemaOrg([
         :key="index"
         class="group bg-white dark:bg-elevated rounded-lg shadow-sm border border-default dark:border-default overflow-hidden transition-all hover:shadow-md"
       >
-        <summary class="flex justify-between items-center cursor-pointer px-5 sm:px-6 py-4 sm:py-4 font-medium text-primary dark:text-white text-base sm:text-base list-none min-h-[60px] sm:min-h-0">
+        <summary
+          class="flex justify-between items-center cursor-pointer px-5 sm:px-6 py-4 sm:py-4 font-medium text-primary dark:text-white text-base sm:text-base list-none min-h-[60px] sm:min-h-0"
+        >
           <span class="pr-4 leading-snug">{{ faq.question }}</span>
           <UIcon
             name="i-lucide-chevron-down"
             class="w-6 h-6 sm:w-5 sm:h-5 text-muted transition-transform group-open:rotate-180 shrink-0"
           />
         </summary>
-        <div class="px-5 sm:px-6 pb-4 sm:pb-4 pt-2 text-muted dark:text-dimmed text-base sm:text-base leading-relaxed">
+        <div
+          class="px-5 sm:px-6 pb-4 sm:pb-4 pt-2 text-muted dark:text-dimmed text-base sm:text-base leading-relaxed"
+        >
           <!-- eslint-disable-next-line vue/no-v-html -->
           <p v-html="faq.answer" />
         </div>
@@ -100,5 +111,3 @@ useSchemaOrg([
     </div>
   </section>
 </template>
-
-

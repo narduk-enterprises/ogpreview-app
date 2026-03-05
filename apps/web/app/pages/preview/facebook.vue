@@ -1,14 +1,10 @@
 <script setup lang="ts">
 // SEO Meta Tags - Platform-specific for Facebook preview
-useSeoMeta({
+useSeo({
   title: 'Facebook Open Graph Preview Tool - Test Your Facebook Link Previews',
-  description: 'Preview how your links will appear on Facebook. Test your Open Graph tags with our free Facebook preview tool. See exactly how your content looks in Facebook posts and messages.',
-  keywords: 'facebook preview tool, facebook og preview, facebook link preview, test facebook cards, facebook sharing debugger alternative, facebook meta tags preview',
-  robots: 'index, follow',
-  ogTitle: 'Facebook Open Graph Preview Tool - Test Your Facebook Link Previews',
-  ogDescription: 'Preview how your links will appear on Facebook. Test your Open Graph tags instantly with our free preview tool.',
-  ogType: 'website',
-  ogUrl: 'https://ogpreview.app/preview/facebook'
+  description: 'Preview how your links will appear on Facebook. Test your Open Graph tags with our free Facebook preview tool.',
+  canonicalUrl: 'https://ogpreview.app/preview/facebook',
+  keywords: ['facebook preview tool', 'facebook og preview', 'facebook link preview', 'test facebook cards'],
 })
 
 // Structured Data
@@ -45,15 +41,6 @@ useSchemaOrg([
   }
 ])
 
-// Canonical URL
-useHead({
-  link: [
-    {
-      rel: 'canonical',
-      href: 'https://ogpreview.app/preview/facebook'
-    }
-  ]
-})
 </script>
 
 <template>

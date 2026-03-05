@@ -1,17 +1,13 @@
 <script setup lang="ts">
 // SEO Meta Tags
-useSeoMeta({
+useSeo({
   title: 'Open Graph Debugging Guide - Fix OG Tag Issues (2025)',
   description: 'Complete guide to debugging Open Graph tags. Learn how to fix missing images, incorrect previews, caching problems, JavaScript issues, and common OG tag errors with step-by-step solutions.',
-  keywords: 'open graph debugging, og tag debugging, fix og tags, og image not showing, open graph not working, og preview not updating, debug open graph, og tag validator',
-  robots: 'index, follow',
-  ogTitle: 'Open Graph Debugging Guide - Fix OG Tag Issues',
-  ogDescription: 'Troubleshoot and fix Open Graph tag issues. Learn how to debug missing images, incorrect previews, caching problems, and common OG tag errors.',
-  ogType: 'article',
-  articlePublishedTime: '2025-12-16T00:00:00Z',
-  articleModifiedTime: '2025-12-16T00:00:00Z',
-  articleAuthor: ['ogpreview.app'],
-  articleSection: 'Web Development'
+  keywords: ['open graph debugging', 'og tag debugging', 'fix og tags', 'og image not showing', 'open graph not working', 'og preview not updating', 'debug open graph', 'og tag validator'],
+  type: 'article',
+  publishedAt: '2025-12-16T00:00:00Z',
+  modifiedAt: '2025-12-16T00:00:00Z',
+  author: 'ogpreview.app',
 })
 
 // Structured Data

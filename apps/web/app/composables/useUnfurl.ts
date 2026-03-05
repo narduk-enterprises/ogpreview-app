@@ -69,9 +69,10 @@ export const useUnfurl = (options: UseUnfurlOptions = {}) => {
         return null
       }
     }
-    catch (error: any) {
-      const errorData = error.data as UnfurlResponse | undefined
-      _errorMessage.value = errorData?.error?.message || error.message || 'Failed to fetch URL'
+    catch (error: unknown) {
+      const fetchError = error as { data?: UnfurlResponse; message?: string }
+      const errorData = fetchError.data
+      _errorMessage.value = errorData?.error?.message || fetchError.message || 'Failed to fetch URL'
       return null
     }
     finally {
@@ -121,9 +122,10 @@ export const useUnfurl = (options: UseUnfurlOptions = {}) => {
         return null
       }
     }
-    catch (error: any) {
-      const errorData = error.data as UnfurlResponse | undefined
-      _errorMessage.value = errorData?.error?.message || error.message || 'Failed to fetch URL'
+    catch (error: unknown) {
+      const fetchError = error as { data?: UnfurlResponse; message?: string }
+      const errorData = fetchError.data
+      _errorMessage.value = errorData?.error?.message || fetchError.message || 'Failed to fetch URL'
       return null
     }
     finally {

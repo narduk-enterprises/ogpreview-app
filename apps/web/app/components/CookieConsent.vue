@@ -1,43 +1,45 @@
 <script setup lang="ts">
-const consent = useCookie<{ necessary: boolean, analytics: boolean, advertising: boolean } | null>(
+const consent = useCookie<{ necessary: boolean; analytics: boolean; advertising: boolean } | null>(
   'ogpreview_cookie_consent',
   { maxAge: 365 * 24 * 60 * 60, default: () => null }
-)
+);
 
-const showBanner = ref(false)
+const showBanner = ref(false);
 
 onMounted(() => {
   if (!consent.value) {
     // Show banner after a short delay for a smoother UX
-    setTimeout(() => { showBanner.value = true }, 1000)
+    setTimeout(() => {
+      showBanner.value = true;
+    }, 1000);
+  } else if (consent.value.analytics && consent.value.advertising) {
+    updateGtagConsent('granted');
   }
-  else if (consent.value.analytics && consent.value.advertising) {
-    updateGtagConsent('granted')
-  }
-})
+});
 
 function acceptAll() {
-  consent.value = { necessary: true, analytics: true, advertising: true }
-  updateGtagConsent('granted')
-  showBanner.value = false
+  consent.value = { necessary: true, analytics: true, advertising: true };
+  updateGtagConsent('granted');
+  showBanner.value = false;
 }
 
 function acceptNecessary() {
-  consent.value = { necessary: true, analytics: false, advertising: false }
-  updateGtagConsent('denied')
-  showBanner.value = false
+  consent.value = { necessary: true, analytics: false, advertising: false };
+  updateGtagConsent('denied');
+  showBanner.value = false;
 }
 
 function updateGtagConsent(state: 'granted' | 'denied') {
-  if (import.meta.server) return
-  const gtag = (window as any).gtag
+  if (import.meta.server) return;
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  const gtag = (window as any).gtag;
   if (typeof gtag === 'function') {
     gtag('consent', 'update', {
       analytics_storage: state,
       ad_storage: state,
       ad_user_data: state,
-      ad_personalization: state
-    })
+      ad_personalization: state,
+    });
   }
 }
 </script>
@@ -60,21 +62,20 @@ function updateGtagConsent(state: 'granted' | 'denied') {
         <div class="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4">
           <div class="flex-1">
             <p id="cookie-banner-description" class="text-sm text-primary dark:text-dimmed">
-              We use cookies and similar technologies to enhance your browsing experience, serve personalized
-              ads or content, and analyze our traffic. We also share information about your use of our site
-              with our advertising and analytics partners, including Google AdSense.
-              <NuxtLink to="/privacy" class="text-muted dark:text-dimmed hover:underline font-medium ml-1">
+              We use cookies and similar technologies to enhance your browsing experience, serve
+              personalized ads or content, and analyze our traffic. We also share information about
+              your use of our site with our advertising and analytics partners, including Google
+              AdSense.
+              <NuxtLink
+                to="/privacy"
+                class="text-muted dark:text-dimmed hover:underline font-medium ml-1"
+              >
                 Learn more in our Privacy Policy
               </NuxtLink>
             </p>
           </div>
           <div class="flex flex-col sm:flex-row gap-2 w-full sm:w-auto">
-            <UButton
-              color="primary"
-              size="sm"
-              aria-label="Accept all cookies"
-              @click="acceptAll"
-            >
+            <UButton color="primary" size="sm" aria-label="Accept all cookies" @click="acceptAll">
               Accept All
             </UButton>
             <UButton
@@ -92,4 +93,3 @@ function updateGtagConsent(state: 'granted' | 'denied') {
     </div>
   </Transition>
 </template>
-

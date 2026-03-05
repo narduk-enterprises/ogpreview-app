@@ -66,15 +66,16 @@ export async function unfurlUrl(
     fetchResult = await fetchWithValidatedRedirects(validation.normalizedUrl!)
     if (DEBUG) console.log(`[unfurlCore] Fetch completed, ok: ${fetchResult.ok}`)
   }
-  catch (error: any) {
-    const sanitizedError = sanitizeErrorForLog(error)
+  catch (error: unknown) {
+    const err = error instanceof Error ? error : new Error(String(error))
+    const sanitizedError = sanitizeErrorForLog(err)
     console.error(`[unfurlCore] Fetch error for ${sanitizedUrl}:`, sanitizedError)
     return {
       response: {
         ok: false,
         error: {
           code: 'FETCH_ERROR',
-          message: error?.message || 'Failed to fetch URL'
+          message: err.message || 'Failed to fetch URL'
         }
       },
       status: 502

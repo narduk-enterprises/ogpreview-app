@@ -1,10 +1,7 @@
 <script setup lang="ts">
-useSeoMeta({
+useSeo({
   title: 'About Us - ogpreview.app',
   description: 'Learn about ogpreview.app, the free Open Graph preview tool trusted by developers and marketers. Discover our mission, technology, and commitment to privacy.',
-  ogTitle: 'About ogpreview.app - Free Open Graph Preview Tool',
-  ogDescription: 'Learn about our mission to provide the best free Open Graph preview tool for developers and content creators.',
-  ogType: 'website'
 })
 
 // Schema.org AboutPage

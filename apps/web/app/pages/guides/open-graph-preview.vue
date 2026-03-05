@@ -1,13 +1,9 @@
 <script setup lang="ts">
 /* eslint-disable atx/lucide-icons-only */
-useSeoMeta({
+useSeo({
   title: 'Open Graph Preview: Complete Developer Guide',
   description: 'The definitive technical guide for Open Graph. Learn exact implementations for Nuxt, Next.js, and raw HTML to ensure perfect link unfurling.',
-  keywords: 'open graph preview, og tags guide, social media preview tutorial, facebook preview optimization, twitter card guide, linkedin og tags, open graph protocol, og image best practices',
-  robots: 'index, follow',
-  ogTitle: 'Open Graph Preview: Developer Implementation Guide',
-  ogDescription: 'Master Open Graph tags and social media previews. Learn exact Next.js and Nuxt code snippets to fix unfurling bugs.',
-  ogType: 'article'
+  keywords: ['open graph preview', 'og tags guide', 'social media preview tutorial', 'facebook preview optimization', 'twitter card guide', 'open graph protocol'],
 })
 
 useSchemaOrg([

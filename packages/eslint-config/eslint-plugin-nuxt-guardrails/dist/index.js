@@ -801,12 +801,15 @@ var prefer_use_seo_over_bare_meta_default = {
 
 // src/rules/require-schema-on-pages.ts
 var SCHEMA_COMPOSABLES = /* @__PURE__ */ new Set([
+  "useSchemaOrg",
   "useWebPageSchema",
   "useArticleSchema",
   "useProductSchema",
   "useOrganizationSchema",
   "usePersonSchema",
-  "useBreadcrumbSchema"
+  "useBreadcrumbSchema",
+  "useFAQSchema",
+  "useLocalBusinessSchema"
 ]);
 var require_schema_on_pages_default = {
   meta: {

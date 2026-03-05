@@ -1,10 +1,9 @@
 <script setup lang="ts">
 // SEO Meta Tags
-useSeoMeta({
-  title: 'Open Graph Guides & Tutorials - Learn Social Media Preview Optimization',
-  description: 'Complete guides on Open Graph tags, Twitter Cards, and social media link previews. Learn how to optimize your content for Facebook, Twitter, LinkedIn, Slack, and Discord.',
-  keywords: 'open graph guide, og tags tutorial, social media preview optimization, facebook link preview guide, twitter card tutorial, linkedin preview best practices',
-  robots: 'index, follow'
+useSeo({
+  title: 'Open Graph Guides - Learn OG Tag Optimization',
+  description: 'Comprehensive guides on Open Graph meta tags, image sizes, preview debugging, and cache management. Learn everything about OG tags.',
+  keywords: ['open graph guides', 'og tag guides', 'open graph tutorials', 'social media preview guides'],
 })
 
 // Structured Data

@@ -161,6 +161,7 @@ export function validateUrl(urlString: string): ValidationResult {
   const hostname = urlObj.hostname.toLowerCase()
 
   // Block localhost variations (except in test mode for fixtures)
+  // eslint-disable-next-line nuxt-guardrails/prefer-import-meta-dev
   const isTestMode = process.env.NODE_ENV === 'test'
   const isFixturePath = urlObj.pathname.includes('/__fixtures__/')
   if (!isTestMode && !isFixturePath && (hostname === 'localhost' || hostname === '0.0.0.0')) {
@@ -240,6 +241,7 @@ export async function fetchWithValidatedRedirects(url: string): Promise<SafeFetc
       if (DEBUG) console.log(`[fetchWithValidatedRedirects] Validated URL: ${sanitizeUrlForLog(normalizedUrl)}, redirects: ${redirects}`)
 
       // Skip DNS validation for localhost in test mode or fixture paths
+      // eslint-disable-next-line nuxt-guardrails/prefer-import-meta-dev
       const isTestMode = process.env.NODE_ENV === 'test'
       const isLocalhost = urlObj.hostname === 'localhost' || urlObj.hostname === '127.0.0.1' || urlObj.hostname === '0.0.0.0'
       const isFixturePath = urlObj.pathname.includes('/__fixtures__/')
@@ -250,14 +252,15 @@ export async function fetchWithValidatedRedirects(url: string): Promise<SafeFetc
           await resolveAndAssertPublicHost(urlObj.hostname)
           if (DEBUG) console.log(`[fetchWithValidatedRedirects] DNS resolution successful for: ${urlObj.hostname}`)
         }
-        catch (err: any) {
-          console.error(`[fetchWithValidatedRedirects] DNS resolution failed for ${urlObj.hostname}:`, err?.message)
+        catch (err: unknown) {
+          const dnsError = err instanceof Error ? err : new Error(String(err))
+          console.error(`[fetchWithValidatedRedirects] DNS resolution failed for ${urlObj.hostname}:`, dnsError.message)
           return {
             ok: false,
             error: {
               code: 'SSRF_BLOCKED',
               message: 'URL resolves to a private or disallowed address',
-              details: err?.message
+              details: dnsError.message
             }
           }
         }
@@ -422,9 +425,9 @@ export async function fetchWithValidatedRedirects(url: string): Promise<SafeFetc
               continue
             }
           }
-          catch (fallbackError: any) {
+          catch (fallbackError: unknown) {
             // If fallback fails, try next one
-            if (DEBUG) console.log(`[fetchWithValidatedRedirects] Fallback ${fallbackIndex + 1} failed:`, fallbackError.message)
+            if (DEBUG) console.log(`[fetchWithValidatedRedirects] Fallback ${fallbackIndex + 1} failed:`, fallbackError instanceof Error ? fallbackError.message : String(fallbackError))
             continue
           }
         }
@@ -593,16 +596,18 @@ export async function fetchWithValidatedRedirects(url: string): Promise<SafeFetc
       }
     }
   }
-  catch (error: any) {
+  catch (error: unknown) {
+    const err = error instanceof Error ? error : new Error(String(error))
+    const errWithCode = error as { code?: string }
     const totalTime = Date.now() - startTime
     console.error(`[fetchWithValidatedRedirects] Error after ${totalTime}ms:`, {
-      name: error?.name,
-      message: error?.message,
-      code: error?.code,
-      stack: error?.stack
+      name: err.name,
+      message: err.message,
+      code: errWithCode.code,
+      stack: err.stack
     })
 
-    if (error.name === 'AbortError') {
+    if (err.name === 'AbortError') {
       console.error(`[fetchWithValidatedRedirects] Request timeout after ${FETCH_TIMEOUT}ms`)
       return {
         ok: false,
@@ -614,7 +619,7 @@ export async function fetchWithValidatedRedirects(url: string): Promise<SafeFetc
       }
     }
 
-    if (error.code === 'ENOTFOUND') {
+    if (errWithCode.code === 'ENOTFOUND') {
       console.error(`[fetchWithValidatedRedirects] DNS error: Domain not found`)
       return {
         ok: false,
@@ -626,7 +631,7 @@ export async function fetchWithValidatedRedirects(url: string): Promise<SafeFetc
       }
     }
 
-    if (error.code === 'ECONNREFUSED') {
+    if (errWithCode.code === 'ECONNREFUSED') {
       console.error(`[fetchWithValidatedRedirects] Connection refused`)
       return {
         ok: false,
@@ -638,7 +643,7 @@ export async function fetchWithValidatedRedirects(url: string): Promise<SafeFetc
       }
     }
 
-    if (error.code === 'ECONNRESET') {
+    if (errWithCode.code === 'ECONNRESET') {
       console.error(`[fetchWithValidatedRedirects] Connection reset`)
       return {
         ok: false,
@@ -650,13 +655,13 @@ export async function fetchWithValidatedRedirects(url: string): Promise<SafeFetc
       }
     }
 
-    console.error(`[fetchWithValidatedRedirects] Unknown fetch error:`, error)
+    console.error(`[fetchWithValidatedRedirects] Unknown fetch error:`, err)
     return {
       ok: false,
       error: {
         code: 'FETCH_ERROR',
-        message: error.message || 'Failed to fetch URL',
-        details: error.code || error.toString()
+        message: err.message || 'Failed to fetch URL',
+        details: errWithCode.code || err.toString()
       }
     }
   }

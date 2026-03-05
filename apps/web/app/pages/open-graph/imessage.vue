@@ -1,16 +1,12 @@
 <script setup lang="ts">
-useSeoMeta({
+useSeo({
   title: 'iMessage Open Graph Meta Tags & Specs',
   description: 'The exact open graph specifications for iMessage previews. Ensure iOS devices display rich links to your site correctly.',
-  keywords: 'imessage og tags, imessage open graph, ios link preview, apple message preview',
-  robots: 'index, follow',
-  ogTitle: 'iMessage Open Graph Meta Tags & Specs',
-  ogDescription: 'The exact open graph specifications for iMessage previews. Ensure iOS devices display rich links successfully.',
-  ogType: 'article',
-  articlePublishedTime: '2025-12-16T00:00:00Z',
-  articleModifiedTime: '2025-12-16T00:00:00Z',
-  articleAuthor: ['ogpreview.app'],
-  articleSection: 'Social Media Optimization'
+  keywords: ['imessage og tags', 'imessage open graph', 'ios link preview', 'apple message preview'],
+  type: 'article',
+  publishedAt: '2025-12-16T00:00:00Z',
+  modifiedAt: '2025-12-16T00:00:00Z',
+  author: 'ogpreview.app',
 })
 
 useSchemaOrg([

@@ -8,7 +8,7 @@ import type { OGData, PlatformScores } from '~~/types/og'
  */
 export function generateETag(ogData: OGData, scores?: PlatformScores | null): string {
   // Normalize payload with sorted keys for stable ETag generation
-  const normalizeObject = (obj: any): any => {
+  const normalizeObject = (obj: unknown): unknown => {
     if (obj === null || obj === undefined) {
       return obj
     }
@@ -16,10 +16,10 @@ export function generateETag(ogData: OGData, scores?: PlatformScores | null): st
       return obj.map(normalizeObject)
     }
     if (typeof obj === 'object') {
-      const sorted: Record<string, any> = {}
-      const keys = Object.keys(obj).sort()
+      const sorted: Record<string, unknown> = {}
+      const keys = Object.keys(obj as Record<string, unknown>).sort()
       for (const key of keys) {
-        sorted[key] = normalizeObject(obj[key])
+        sorted[key] = normalizeObject((obj as Record<string, unknown>)[key])
       }
       return sorted
     }

@@ -1,13 +1,13 @@
 <script setup lang="ts">
-useSeoMeta({
-  title: 'How to Refresh & Clear Open Graph Text/Image Cache',
-  description: 'Force social media platforms like Facebook, Twitter, and LinkedIn to update your cached Open Graph tags instantly with these dev tools.',
-  keywords: 'refresh og cache, clear facebook cache, facebook sharing debugger, linkedin post inspector, twitter card validator, clear og tags cache',
-  robots: 'index, follow',
-  ogTitle: 'How to Refresh Open Graph Cache Instantly',
-  ogDescription: 'Force Facebook, LinkedIn, Twitter, and Slack to drop their cached previews and show your newest Open Graph tags.',
-  ogType: 'article'
+useSeo({
+  title: 'How to Clear the Open Graph Cache',
+  description: 'Learn how to force Facebook, Twitter, LinkedIn, and other platforms to refresh their Open Graph cache and display your updated meta tags and images.',
+  keywords: ['open graph cache', 'clear facebook cache', 'clear twitter cache', 'refresh linkedin og image', 'facebook sharing debugger', 'twitter card validator', 'linkedin post inspector'],
+  type: 'article',
+  canonicalUrl: 'https://ogpreview.app/guides/og-cache-refresh'
 })
+
+useWebPageSchema()
 
 const scriptExampleCode = `// Batch clear Facebook Open Graph cache via Node.js
 const urlsToClear = ['https://mysite.com/1', 'https://mysite.com/2'];
@@ -109,7 +109,7 @@ console.log('Cache purging complete');`
       </p>
 
       <div class="bg-elevated rounded-xl p-6 shadow-lg text-primary/20 relative overflow-hidden">
-        <div class="absolute inset-0 bg-linear-to-br from-primary-500/10 to-transparent"></div>
+        <div class="absolute inset-0 bg-linear-to-br from-primary-500/10 to-transparent"/>
         <div class="relative">
           <h3 class="text-sm font-semibold text-dimmed mb-2 uppercase tracking-wider">Instead of sharing:</h3>
           <p class="font-mono text-dimmed mb-4 line-through">https://yourwebsite.com/article</p>

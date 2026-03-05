@@ -1,16 +1,12 @@
 <script setup lang="ts">
-useSeoMeta({
+useSeo({
   title: 'Twitter Card Meta Tags & Specs',
   description: 'The exact open graph and twitter card specifications for X/Twitter. Get the correct 1200x600 image size and copy-paste starter tags.',
-  keywords: 'twitter card tags, summary_large_image, twitter link preview, twitter card metadata, twitter card image size',
-  robots: 'index, follow',
-  ogTitle: 'Twitter Card Meta Tags & Specs',
-  ogDescription: 'The exact open graph and twitter card specifications for X/Twitter. Copy-paste the required meta tags and image sizes.',
-  ogType: 'article',
-  articlePublishedTime: '2025-12-16T00:00:00Z',
-  articleModifiedTime: '2025-12-16T00:00:00Z',
-  articleAuthor: ['ogpreview.app'],
-  articleSection: 'Social Media Optimization'
+  keywords: ['twitter card tags', 'summary_large_image', 'twitter link preview', 'twitter card metadata', 'twitter card image size'],
+  type: 'article',
+  publishedAt: '2025-12-16T00:00:00Z',
+  modifiedAt: '2025-12-16T00:00:00Z',
+  author: 'ogpreview.app',
 })
 
 useSchemaOrg([

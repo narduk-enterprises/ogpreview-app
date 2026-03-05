@@ -1,16 +1,12 @@
 <script setup lang="ts">
-useSeoMeta({
+useSeo({
   title: 'LinkedIn Open Graph Meta Tags & Specs',
   description: 'The exact open graph specifications for LinkedIn metadata. Get the correct 1200x627 image size and copy-paste starter tags.',
-  keywords: 'linkedin og tags, linkedin open graph, linkedin link preview, linkedin post inspector, linkedin og image size',
-  robots: 'index, follow',
-  ogTitle: 'LinkedIn Open Graph Meta Tags & Specs',
-  ogDescription: 'The exact Open Graph specifications for LinkedIn. Copy-paste the required meta tags and image sizes.',
-  ogType: 'article',
-  articlePublishedTime: '2025-12-16T00:00:00Z',
-  articleModifiedTime: '2025-12-16T00:00:00Z',
-  articleAuthor: ['ogpreview.app'],
-  articleSection: 'Social Media Optimization'
+  keywords: ['linkedin og tags', 'linkedin open graph', 'linkedin link preview', 'linkedin post inspector', 'linkedin og image size'],
+  type: 'article',
+  publishedAt: '2025-12-16T00:00:00Z',
+  modifiedAt: '2025-12-16T00:00:00Z',
+  author: 'ogpreview.app',
 })
 
 useSchemaOrg([

@@ -33,7 +33,7 @@ export default defineEventHandler(async (event): Promise<UnfurlResponse> => {
   const rateLimitResult = checkRateLimit(event)
   if (!rateLimitResult.allowed) {
     setResponseStatus(event, 429)
-    setResponseHeader(event, 'Retry-After', String(rateLimitResult.retryAfter || 60) as any)
+    setResponseHeader(event, 'Retry-After', rateLimitResult.retryAfter || 60)
     return {
       ok: false,
       error: {
@@ -68,7 +68,7 @@ export default defineEventHandler(async (event): Promise<UnfurlResponse> => {
   try {
     result = await unfurlUrl(url, { includeRaw })
   }
-  catch (error: any) {
+  catch (error: unknown) {
     // Log sanitized error
     const sanitizedError = sanitizeErrorForLog(error)
     const sanitizedUrl = sanitizeUrlForLog(url)

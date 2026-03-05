@@ -84,12 +84,12 @@ function extractRawMetaTags($: cheerio.CheerioAPI): Record<string, string | stri
 
   // Standard meta tags
   const standardMeta = ['description', 'author', 'keywords']
-  standardMeta.forEach((name) => {
+  for (const name of standardMeta) {
     const content = extractMetaTag($, `meta[name="${name}"]`)
     if (content) {
       raw[`meta:${name}`] = content
     }
-  })
+  }
 
   return raw
 }

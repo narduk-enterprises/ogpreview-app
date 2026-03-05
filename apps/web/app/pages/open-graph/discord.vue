@@ -1,16 +1,12 @@
 <script setup lang="ts">
-useSeoMeta({
+useSeo({
   title: 'Discord Open Graph Meta Tags & Specs',
   description: 'The exact open graph specifications for Discord previews. Add theme colors and proper image sizing for your web links.',
-  keywords: 'discord og tags, discord open graph, discord link preview, discord theme color embed',
-  robots: 'index, follow',
-  ogTitle: 'Discord Open Graph Meta Tags & Specs',
-  ogDescription: 'The exact open graph specifications for Discord previews. Add theme colors and proper image sizing.',
-  ogType: 'article',
-  articlePublishedTime: '2025-12-16T00:00:00Z',
-  articleModifiedTime: '2025-12-16T00:00:00Z',
-  articleAuthor: ['ogpreview.app'],
-  articleSection: 'Social Media Optimization'
+  keywords: ['discord og tags', 'discord open graph', 'discord link preview', 'discord theme color embed'],
+  type: 'article',
+  publishedAt: '2025-12-16T00:00:00Z',
+  modifiedAt: '2025-12-16T00:00:00Z',
+  author: 'ogpreview.app',
 })
 
 useSchemaOrg([

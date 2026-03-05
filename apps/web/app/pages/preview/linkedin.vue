@@ -1,14 +1,10 @@
 <script setup lang="ts">
 // SEO Meta Tags - Platform-specific for LinkedIn preview
-useSeoMeta({
+useSeo({
   title: 'LinkedIn Open Graph Preview Tool - Test Your LinkedIn Link Previews',
-  description: 'Preview how your links will appear on LinkedIn. Test your Open Graph tags with our free LinkedIn preview tool. See exactly how your professional content looks in LinkedIn posts.',
-  keywords: 'linkedin preview tool, linkedin og preview, linkedin link preview, test linkedin cards, linkedin post inspector alternative, linkedin meta tags preview',
-  robots: 'index, follow',
-  ogTitle: 'LinkedIn Open Graph Preview Tool - Test Your LinkedIn Link Previews',
-  ogDescription: 'Preview how your links will appear on LinkedIn. Test your Open Graph tags instantly with our free preview tool.',
-  ogType: 'website',
-  ogUrl: 'https://ogpreview.app/preview/linkedin'
+  description: 'Preview how your links will appear on LinkedIn. Test your Open Graph tags with our free LinkedIn preview tool.',
+  canonicalUrl: 'https://ogpreview.app/preview/linkedin',
+  keywords: ['linkedin preview tool', 'linkedin og preview', 'linkedin link preview', 'test linkedin cards'],
 })
 
 // Structured Data
@@ -45,15 +41,6 @@ useSchemaOrg([
   }
 ])
 
-// Canonical URL
-useHead({
-  link: [
-    {
-      rel: 'canonical',
-      href: 'https://ogpreview.app/preview/linkedin'
-    }
-  ]
-})
 </script>
 
 <template>

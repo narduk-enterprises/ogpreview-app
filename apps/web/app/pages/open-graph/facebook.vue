@@ -1,16 +1,12 @@
 <script setup lang="ts">
-useSeoMeta({
+useSeo({
   title: 'Facebook Open Graph Meta Tags & Image Specs',
   description: 'The exact open graph specifications for Facebook meta tags. Get the correct 1200x630 image size, copy-paste starter tags, and learn to clear cached previews.',
-  keywords: 'facebook og tags, facebook open graph, facebook link preview, facebook sharing debugger, facebook og image size, facebook meta tags',
-  robots: 'index, follow',
-  ogTitle: 'Facebook Open Graph Meta Tags & Image Specs',
-  ogDescription: 'The exact Open Graph specifications for Facebook. Copy-paste the required meta tags, image sizes, and best practices.',
-  ogType: 'article',
-  articlePublishedTime: '2025-12-16T00:00:00Z',
-  articleModifiedTime: '2025-12-16T00:00:00Z',
-  articleAuthor: ['ogpreview.app'],
-  articleSection: 'Social Media Optimization'
+  keywords: ['facebook og tags', 'facebook open graph', 'facebook link preview', 'facebook sharing debugger', 'facebook og image size', 'facebook meta tags'],
+  type: 'article',
+  publishedAt: '2025-12-16T00:00:00Z',
+  modifiedAt: '2025-12-16T00:00:00Z',
+  author: 'ogpreview.app',
 })
 
 useSchemaOrg([

@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import type { UnfurlResponse } from '~~/types/og'
+import type { UnfurlResponse as _UnfurlResponse } from '~~/types/og'
 
 // SEO Meta Tags - Dynamic based on preview URL
 const route = useRoute()
@@ -55,12 +55,11 @@ const urlToFetch = computed(() =>
 const { data: initialData } = useUnfurlPreview(urlToFetch)
 
 // Set initial SEO meta tags
-useSeoMeta({
+useSeo({
   title: previewUrl ? `Preview: ${previewUrl} - ogpreview.app` : 'Open Graph Preview Tool — Preview Facebook, Twitter, LinkedIn & More',
   description: previewUrl
     ? `Preview how ${previewUrl} appears when shared on social media platforms`
     : 'Free Open Graph preview tool — see how your link looks on Facebook, Twitter (X), LinkedIn, Slack, Discord, WhatsApp, iMessage & Telegram before you post. Test OG tags instantly.',
-  ogUrl: previewUrl ? `https://ogpreview.app/url/${encodeURIComponent(previewUrl)}` : 'https://ogpreview.app'
 })
 
 // Structured Data
@@ -77,6 +76,7 @@ useSchemaOrg([
 
 // State
 const urlInput = ref('')
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
 const urlInputRef = ref<any>(null)
 const userUrlFocusIntent = ref(false)
 const selectedAllAtMs = ref<number | null>(null)
@@ -118,7 +118,7 @@ function triggerUrlInputSelectAndAnimate() {
 
   el.classList.remove('addressbar-focus-anim')
 
-  void (el as any).offsetWidth
+  void (el as HTMLElement).offsetWidth
   el.classList.add('addressbar-focus-anim')
   el.addEventListener('animationend', () => el.classList.remove('addressbar-focus-anim'), { once: true })
 }
@@ -128,7 +128,7 @@ function markUserUrlFocusIntent() {
 }
 
 function handleUrlInputFocus(e: FocusEvent) {
-  const isTrusted = (e as any).isTrusted !== false
+  const isTrusted = (e as FocusEvent).isTrusted !== false
   const shouldHandle = userUrlFocusIntent.value || isTrusted
   userUrlFocusIntent.value = false
 
@@ -240,7 +240,7 @@ if (import.meta.client && initialData.value && !ogData.value) {
 
 // Track conversion event for URL preview (client-side only)
 if (import.meta.client && initialUrl && isValidUrl(initialUrl) && ogData.value) {
-  const gtag = (window as any).gtag
+  const gtag = (window as Window & { gtag?: (...args: unknown[]) => void }).gtag
   if (gtag) {
     gtag('event', 'preview_generated', {
       event_category: 'engagement',
@@ -284,17 +284,15 @@ watchEffect(() => {
   if (ogData.value) {
     const title = ogData.value.title
     const description = ogData.value.description
-
-    if (title) {
-      useSeoMeta({
-        title: `OGPreview - ${title}`
-      })
-    }
-
-    if (description) {
-      useSeoMeta({
-        description
-      })
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
+    const seoOpts: Record<string, any> = {}
+    
+    if (title) seoOpts.title = `OGPreview - ${title}`
+    if (description) seoOpts.description = description
+    
+    if (Object.keys(seoOpts).length > 0) {
+      // eslint-disable-next-line @typescript-eslint/no-explicit-any
+      useSeo(seoOpts as any)
     }
   }
 })
@@ -372,7 +370,7 @@ const handlePreview = async (event?: Event) => {
 
   // Track conversion event
   if (import.meta.client && typeof window !== 'undefined') {
-    const gtag = (window as any).gtag
+    const gtag = (window as Window & { gtag?: (...args: unknown[]) => void }).gtag
     if (gtag) {
       gtag('event', isSameUrl ? 'preview_refreshed' : 'preview_generated', {
         event_category: 'engagement',
@@ -402,7 +400,7 @@ const handleRefresh = async () => {
 
   // Track refresh event
   if (import.meta.client && typeof window !== 'undefined') {
-    const gtag = (window as any).gtag
+    const gtag = (window as Window & { gtag?: (...args: unknown[]) => void }).gtag
     if (gtag) {
       gtag('event', 'preview_refreshed', {
         event_category: 'engagement',
@@ -432,7 +430,7 @@ const handleHistorySelect = async (url: string) => {
 
   // Track history selection event
   if (import.meta.client && typeof window !== 'undefined') {
-    const gtag = (window as any).gtag
+    const gtag = (window as Window & { gtag?: (...args: unknown[]) => void }).gtag
     if (gtag) {
       gtag('event', 'preview_from_history', {
         event_category: 'engagement',
@@ -496,7 +494,7 @@ onMounted(() => {
   <div
     class="min-h-screen py-4 sm:py-4 px-3 sm:px-3 md:px-4 lg:px-6 bg-default"
     data-test="preview-page">
-    <div class="max-w-[95rem] mx-auto" role="main">
+    <div class="max-w-380 mx-auto" role="main">
       <!-- Hero Section -->
       <HeroSection />
 

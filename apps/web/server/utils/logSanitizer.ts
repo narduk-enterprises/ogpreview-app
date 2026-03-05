@@ -41,16 +41,18 @@ export function sanitizeUrlForLog(url: string): string {
  * Sanitize an error object for logging
  * Only includes safe fields, excludes stack traces in production
  */
-export function sanitizeErrorForLog(error: any): Record<string, any> {
-  const sanitized: Record<string, any> = {
-    message: error?.message || String(error),
-    code: error?.code,
-    name: error?.name
+export function sanitizeErrorForLog(error: unknown): Record<string, unknown> {
+  const err = error instanceof Error ? error : new Error(String(error))
+  const errWithCode = error as { code?: string }
+  const sanitized: Record<string, unknown> = {
+    message: err.message,
+    code: errWithCode.code,
+    name: err.name
   }
 
   // Only include stack in development
-  if (process.env.NODE_ENV === 'development' && error?.stack) {
-    sanitized.stack = error.stack.substring(0, 500) // Limit stack trace length
+  if (import.meta.dev && err.stack) {
+    sanitized.stack = err.stack.substring(0, 500) // Limit stack trace length
   }
 
   return sanitized

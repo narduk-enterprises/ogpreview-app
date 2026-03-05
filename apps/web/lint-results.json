@@ -1,0 +1,9 @@
+
+> web@1.0.17 prelint /Users/narduk/new-code/template-apps/ogpreview-app/apps/web
+> test -f .nuxt/eslint.config.mjs || nuxt prepare
+
+
+> web@1.0.17 lint /Users/narduk/new-code/template-apps/ogpreview-app/apps/web
+> eslint . --max-warnings 0 -- --format json
+
+ ELIFECYCLE  Command failed with exit code 2.

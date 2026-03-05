@@ -6,6 +6,7 @@
  * consider using Redis or a dedicated rate limiting service.
  */
 
+import type { H3Event } from 'h3'
 import { getRequestIP, getRequestHeader } from 'h3'
 
 interface TokenBucket {
@@ -79,12 +80,12 @@ function refillBucket(bucket: TokenBucket): void {
  * Generate a rate limit key from request
  * Uses IP address + user agent hash for identification
  */
-function getRateLimitKey(event: any): string {
+function getRateLimitKey(event: H3Event): string {
   const ip = getRequestIP(event) || 'unknown'
   const userAgent = getRequestHeader(event, 'user-agent') || 'unknown'
 
   // Simple hash of user agent (just use first 20 chars for simplicity)
-  const uaHash = userAgent.substring(0, 20).replace(/[^a-z0-9]/gi, '')
+  const uaHash = userAgent.substring(0, 20).replaceAll(/[^a-z0-9]/gi, '')
 
   return `${ip}:${uaHash}`
 }
@@ -93,7 +94,7 @@ function getRateLimitKey(event: any): string {
  * Check if a request should be rate limited
  * @returns { allowed: boolean, retryAfter?: number }
  */
-export function checkRateLimit(event: any): { allowed: boolean, retryAfter?: number } {
+export function checkRateLimit(event: H3Event): { allowed: boolean, retryAfter?: number } {
   cleanupOldBuckets()
 
   const key = getRateLimitKey(event)

@@ -1,14 +1,21 @@
 <script setup lang="ts">
-useSeoMeta({
+useSeo({
   title: 'Terms of Service - ogpreview.app',
-  description: 'Terms of Service for ogpreview.app - Read our terms and conditions for using our service.'
+  description: 'Terms of Service for ogpreview.app - Read our terms and conditions for using our service.',
 })
+
+useWebPageSchema({
+  name: 'Terms of Service - ogpreview.app',
+  description: 'Terms of Service for ogpreview.app - Read our terms and conditions for using our service.',
+})
+
+const lastUpdated = new Date().toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric' })
 </script>
 
 <template>
   <LayoutsSimpleLayout
 title="Terms of Service"
-    :subtitle="`Last updated: ${new Date().toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric' })}`">
+    :subtitle="`Last updated: ${lastUpdated}`">
     <section class="mb-8">
       <h2 class="text-2xl font-semibold text-primary dark:text-white mb-4">
         1. Acceptance of Terms

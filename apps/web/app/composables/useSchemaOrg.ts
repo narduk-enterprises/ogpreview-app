@@ -76,10 +76,12 @@ export function useArticleSchema(options: ArticleOptions) {
         name: a.name,
         url: a.url,
       })),
+      // eslint-disable-next-line @typescript-eslint/no-explicit-any
       image: image as any,
-      articleSection: section,
+      // eslint-disable-next-line @typescript-eslint/no-explicit-any
+      articleSection: section as any,
       keywords: tags,
-    } as any),
+    }),
   ])
 }
 
@@ -100,7 +102,7 @@ interface ProductOptions {
 export function useProductSchema(options: ProductOptions) {
   const { name, description, image, brand, sku, price, priceCurrency = 'USD', availability, ratingValue, reviewCount } = options
 
-  const product: Record<string, any> = {
+  const product: Record<string, unknown> = {
     name,
     description,
     image,
@@ -177,7 +179,7 @@ interface LocalBusinessOptions {
 export function useLocalBusinessSchema(options: LocalBusinessOptions) {
   const { name, description, image, telephone, email, address, geo, openingHours, priceRange, url } = options
 
-  const business: Record<string, any> = {
+  const business: Record<string, unknown> = {
     '@type': 'LocalBusiness',
     name,
     description,

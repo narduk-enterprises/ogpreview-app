@@ -24,7 +24,7 @@ withDefaults(defineProps<Props>(), {
     <template v-if="description" #description>
       <slot name="description">
         <!-- eslint-disable-next-line vue/no-v-html -->
-        <p v-html="description"></p>
+        <p v-html="description"/>
       </slot>
     </template>
     <template v-else-if="$slots.default" #description>

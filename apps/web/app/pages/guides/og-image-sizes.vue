@@ -1,15 +1,14 @@
 <script setup lang="ts">
 /* eslint-disable atx/lucide-icons-only */
-useSeoMeta({
-  title: 'OG Image Size & Dimensions Guide (2026 Reference)',
-  description: 'The definitive cheat sheet for Open Graph image dimensions. Get exact pixel sizes, aspect ratios, and compression limits for Facebook, Twitter, Slack, and Discord.',
-  keywords: 'og image dimensions, og image size, facebook og image size, twitter card image size, linkedin og image, og:image dimensions, social media image sizes, ideal og image size',
-  robots: 'index, follow',
-  ogTitle: 'OG Image Size Master Reference',
-  ogDescription: 'Stop guessing what size your previews should be. Check the universal 1200x630 pixel breakdown.',
-  ogType: 'article'
+useSeo({
+  title: 'Open Graph Image Sizes strictly and Guidelines',
+  description: 'The ultimate guide to Open Graph image sizes for Facebook, Twitter, LinkedIn, Discord, slack, and messaging apps. Get the perfect dimensions for every platform.',
+  keywords: ['open graph image size', 'og image dimensions', 'facebook link preview image size', 'twitter card image size', 'linkedin og image format', 'discord link preview dimensions'],
+  type: 'article',
+  canonicalUrl: 'https://ogpreview.app/guides/og-image-sizes'
 })
 
+useWebPageSchema()
 const platformSpecs = [
   { name: 'Facebook', icon: 'i-simple-icons-facebook', colorClass: 'text-blue-600', optimal: '1200x630px', ratio: '1.91:1', maxSize: '8MB' },
   { name: 'X / Twitter', icon: 'i-simple-icons-x', colorClass: 'text-zinc-900 dark:text-white', optimal: '1200x600px', ratio: '2:1', maxSize: '5MB' },

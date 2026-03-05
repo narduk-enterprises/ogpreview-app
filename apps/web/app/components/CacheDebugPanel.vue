@@ -55,8 +55,8 @@ function formatTimestamp(timestamp: number): string {
         icon="i-lucide-x"
         size="xs"
         aria-label="Hide debug info"
-        @click="$emit('close')"
         class="text-dimmed hover:text-muted dark:hover:text-dimmed"
+        @click="$emit('close')"
       />
     </div>
 
