@@ -5,19 +5,16 @@
  * See: check-seo-compliance workflow.
  */
 
-import type { Rule } from 'eslint';
+import type { Rule } from 'eslint'
 
 const SCHEMA_COMPOSABLES = new Set([
-  'useSchemaOrg',
   'useWebPageSchema',
   'useArticleSchema',
   'useProductSchema',
   'useOrganizationSchema',
   'usePersonSchema',
   'useBreadcrumbSchema',
-  'useFAQSchema',
-  'useLocalBusinessSchema',
-]);
+])
 
 export default {
   meta: {
@@ -34,25 +31,25 @@ export default {
     },
   },
   create(context: Rule.RuleContext): Rule.RuleListener {
-    const filename = context.filename ?? (context as any).getFilename?.() ?? '';
-    const normalized = filename.replace(/\\/g, '/');
-    if (!normalized.includes('/app/pages/') || !normalized.endsWith('.vue')) return {};
+    const filename = context.filename ?? (context as any).getFilename?.() ?? ''
+    const normalized = filename.replace(/\\/g, '/')
+    if (!normalized.includes('/app/pages/') || !normalized.endsWith('.vue')) return {}
 
-    let hasSchema = false;
+    let hasSchema = false
 
     return {
       CallExpression(node: any) {
-        const name = node.callee?.type === 'Identifier' ? node.callee.name : null;
-        if (name && SCHEMA_COMPOSABLES.has(name)) hasSchema = true;
+        const name = node.callee?.type === 'Identifier' ? node.callee.name : null
+        if (name && SCHEMA_COMPOSABLES.has(name)) hasSchema = true
       },
       'Program:exit'(node: any) {
         if (!hasSchema) {
           context.report({
             node,
             messageId: 'missingSchema',
-          });
+          })
         }
       },
-    };
+    }
   },
-};
+}
