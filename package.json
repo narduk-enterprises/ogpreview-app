@@ -59,7 +59,7 @@
     "@iconify-json/lucide": "^1.2.94",
     "@iconify-json/simple-icons": "^1.2.71",
     "@nuxt/eslint": "^1.15.2",
-    "@nuxt/fonts": "^0.13.0",
+    "@nuxt/fonts": "^0.14.0",
     "@playwright/test": "^1.58.2",
     "@types/node": "^22.15.0",
     "drizzle-kit": "^0.31.9",
