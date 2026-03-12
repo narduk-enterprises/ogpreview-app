@@ -1,5 +1,5 @@
 <script setup lang="ts">
-/* eslint-disable atx/no-inline-hex, atx/lucide-icons-only */
+/* eslint-disable narduk/no-inline-hex, narduk/lucide-icons-only -- Brand platform icons require exact hex colors and brand-specific simple-icons for visual identity; lucide has no social brand icons */
 interface Props {
   platform: string;
   size?: 'sm' | 'md' | 'lg' | 'xl';

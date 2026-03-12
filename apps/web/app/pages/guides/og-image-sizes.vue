@@ -1,5 +1,5 @@
 <script setup lang="ts">
-/* eslint-disable atx/lucide-icons-only */
+/* eslint-disable narduk/lucide-icons-only -- Platform brand icons used for visual platform identification in image spec table; lucide has no social brand icons */
 useSeo({
   title: 'Open Graph Image Sizes strictly and Guidelines',
   description: 'The ultimate guide to Open Graph image sizes for Facebook, Twitter, LinkedIn, Discord, slack, and messaging apps. Get the perfect dimensions for every platform.',

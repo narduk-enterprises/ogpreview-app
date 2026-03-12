@@ -57,7 +57,7 @@ const twitterCardOptions = [
       </div>
     </template>
 
-    <!-- eslint-disable atx/no-native-form, nuxt-ui/prefer-uform -->
+    <!-- eslint-disable narduk/no-native-form -- Semantic HTML form element required for @submit.prevent event handling and native form accessibility semantics -->
     <form
       class="space-y-4"
       @submit.prevent

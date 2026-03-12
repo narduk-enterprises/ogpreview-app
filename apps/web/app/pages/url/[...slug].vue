@@ -76,7 +76,7 @@ useSchemaOrg([
 
 // State
 const urlInput = ref('')
-// eslint-disable-next-line @typescript-eslint/no-explicit-any
+// eslint-disable-next-line @typescript-eslint/no-explicit-any -- UInput component instance type is not exported; any is required to access the underlying DOM element via $el
 const urlInputRef = ref<any>(null)
 const userUrlFocusIntent = ref(false)
 const selectedAllAtMs = ref<number | null>(null)
@@ -284,15 +284,13 @@ watchEffect(() => {
   if (ogData.value) {
     const title = ogData.value.title
     const description = ogData.value.description
-    // eslint-disable-next-line @typescript-eslint/no-explicit-any
-    const seoOpts: Record<string, any> = {}
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any -- useSeo accepts a partial config; casting to any avoids enumerating all optional fields in the dynamic seoOpts object
     
     if (title) seoOpts.title = `OGPreview - ${title}`
     if (description) seoOpts.description = description
     
     if (Object.keys(seoOpts).length > 0) {
-      // eslint-disable-next-line @typescript-eslint/no-explicit-any
-      useSeo(seoOpts as any)
+      // eslint-disable-next-line @typescript-eslint/no-explicit-any -- useSeo accepts a partial config; casting to any avoids enumerating all optional fields in the dynamic seoOpts object
     }
   }
 })

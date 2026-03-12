@@ -23,7 +23,7 @@ withDefaults(defineProps<Props>(), {
   >
     <template v-if="description" #description>
       <slot name="description">
-        <!-- eslint-disable-next-line vue/no-v-html -->
+        <!-- eslint-disable-next-line vue/no-v-html -- description prop is trusted rich-text content passed from parent; XSS risk is accepted at the call site -->
         <p v-html="description"/>
       </slot>
     </template>

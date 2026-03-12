@@ -30,7 +30,7 @@ const emit = defineEmits<{
   'toggle-debug': [];
 }>();
 
-// eslint-disable-next-line @typescript-eslint/no-explicit-any
+// eslint-disable-next-line @typescript-eslint/no-explicit-any -- UInput component instance type is not exported; any is required to access the underlying DOM element via $el
 const urlInputRef = ref<any>(null);
 const userUrlFocusIntent = ref(false);
 const selectedAllAtMs = ref<number | null>(null);

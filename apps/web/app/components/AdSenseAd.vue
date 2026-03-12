@@ -14,8 +14,7 @@ onBeforeUnmount(() => {
 });
 
 function initializeAd() {
-  // eslint-disable-next-line @typescript-eslint/no-explicit-any
-  const adsbygoogle = (window as any).adsbygoogle;
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any -- adsbygoogle is a globally injected Google AdSense object with no TypeScript type definitions
   if (adsbygoogle && typeof adsbygoogle.push === 'function') {
     const status = adSlotRef.value?.getAttribute('data-adsbygoogle-status');
     if (status === 'done' || status === 'filled') return;
@@ -23,8 +22,7 @@ function initializeAd() {
   } else {
     // Retry once after 1 second if script hasn't loaded yet
     retryTimeout = setTimeout(() => {
-      // eslint-disable-next-line @typescript-eslint/no-explicit-any
-      const ads = (window as any).adsbygoogle;
+      // eslint-disable-next-line @typescript-eslint/no-explicit-any -- adsbygoogle is a globally injected Google AdSense object with no TypeScript type definitions
       if (ads && typeof ads.push === 'function') {
         ads.push({});
       }

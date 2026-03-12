@@ -161,7 +161,7 @@ export function validateUrl(urlString: string): ValidationResult {
   const hostname = urlObj.hostname.toLowerCase()
 
   // Block localhost variations (except in test mode for fixtures)
-  // eslint-disable-next-line nuxt-guardrails/prefer-import-meta-dev
+  // eslint-disable-next-line narduk/prefer-import-meta-dev -- server-side test mode check requires process.env; import.meta.dev is only available in Nuxt build context
   const isTestMode = process.env.NODE_ENV === 'test'
   const isFixturePath = urlObj.pathname.includes('/__fixtures__/')
   if (!isTestMode && !isFixturePath && (hostname === 'localhost' || hostname === '0.0.0.0')) {
@@ -175,7 +175,7 @@ export function validateUrl(urlString: string): ValidationResult {
 
   // Check for valid domain (must have a dot unless it's an IP literal or localhost)
   // Bounded IPv4 pattern — not susceptible to ReDoS
-  // eslint-disable-next-line security/detect-unsafe-regex
+  // eslint-disable-next-line security/detect-unsafe-regex -- IPv4 pattern is bounded by anchors and quantifiers are not nested; not susceptible to ReDoS
   const isIPv4 = /^\d{1,3}(?:\.\d{1,3}){3}$/.test(hostname)
   const isIPv6 = hostname.includes(':') || hostname.startsWith('[')
   const isLocalhost = hostname === 'localhost'
@@ -241,7 +241,7 @@ export async function fetchWithValidatedRedirects(url: string): Promise<SafeFetc
       if (DEBUG) console.log(`[fetchWithValidatedRedirects] Validated URL: ${sanitizeUrlForLog(normalizedUrl)}, redirects: ${redirects}`)
 
       // Skip DNS validation for localhost in test mode or fixture paths
-      // eslint-disable-next-line nuxt-guardrails/prefer-import-meta-dev
+      // eslint-disable-next-line narduk/prefer-import-meta-dev -- server-side test mode check requires process.env; import.meta.dev is only available in Nuxt build context
       const isTestMode = process.env.NODE_ENV === 'test'
       const isLocalhost = urlObj.hostname === 'localhost' || urlObj.hostname === '127.0.0.1' || urlObj.hostname === '0.0.0.0'
       const isFixturePath = urlObj.pathname.includes('/__fixtures__/')

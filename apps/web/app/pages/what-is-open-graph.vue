@@ -207,7 +207,7 @@ useSchemaOrg([
           While Open Graph has many optional tags, these four are considered essential:
         </p>
 
-        <!-- eslint-disable atx/no-native-table -->
+        <!-- eslint-disable narduk/no-native-table -- Data comparison table requires native HTML table semantics for proper screen reader accessibility and tabular data presentation -->
         <table>
           <thead>
             <tr>
