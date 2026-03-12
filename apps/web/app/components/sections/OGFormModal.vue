@@ -61,7 +61,7 @@ const twitterCardOptions = [
     />
 
     <template #body>
-      <!-- eslint-disable narduk/no-native-form -- Semantic HTML form element required for @submit.prevent event handling and native form accessibility semantics -->
+      <!-- eslint-disable-next-line narduk/no-native-form, narduk/prefer-uform -- Modal form uses custom submit handling; native form kept for semantics -->
       <form
         class="space-y-6"
         @submit.prevent

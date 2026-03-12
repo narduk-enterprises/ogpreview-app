@@ -54,13 +54,14 @@ const urlToFetch = computed(() =>
 )
 const { data: initialData } = useUnfurlPreview(urlToFetch)
 
-// Set initial SEO meta tags
-useSeo({
+// SEO meta tags — reactive so watchEffect can update when ogData loads
+const seoOpts = reactive({
   title: previewUrl ? `Preview: ${previewUrl} - ogpreview.app` : 'Open Graph Preview Tool — Preview Facebook, Twitter, LinkedIn & More',
   description: previewUrl
     ? `Preview how ${previewUrl} appears when shared on social media platforms`
     : 'Free Open Graph preview tool — see how your link looks on Facebook, Twitter (X), LinkedIn, Slack, Discord, WhatsApp, iMessage & Telegram before you post. Test OG tags instantly.',
 })
+useSeo(seoOpts)
 
 // Structured Data
 useSchemaOrg([
@@ -284,14 +285,9 @@ watchEffect(() => {
   if (ogData.value) {
     const title = ogData.value.title
     const description = ogData.value.description
-    // eslint-disable-next-line @typescript-eslint/no-explicit-any -- useSeo accepts a partial config; casting to any avoids enumerating all optional fields in the dynamic seoOpts object
-    
+
     if (title) seoOpts.title = `OGPreview - ${title}`
     if (description) seoOpts.description = description
-    
-    if (Object.keys(seoOpts).length > 0) {
-      // eslint-disable-next-line @typescript-eslint/no-explicit-any -- useSeo accepts a partial config; casting to any avoids enumerating all optional fields in the dynamic seoOpts object
-    }
   }
 })
 

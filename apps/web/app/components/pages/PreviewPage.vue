@@ -15,9 +15,9 @@ const router = useRouter();
 
 // State
 const urlInput = ref('');
-// eslint-disable-next-line @typescript-eslint/no-explicit-any -- component instance type is not exported; any is required to access template ref methods
 const showDebug = ref(false);
 const showHistoryModal = ref(false);
+const previewInputCardRef = ref<{ focus?: () => void } | null>(null);
 
 // Helper functions for URL validation (needed before useAsyncData)
 const isValidUrlHelper = (urlString: string): boolean => {

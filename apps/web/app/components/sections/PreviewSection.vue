@@ -12,12 +12,12 @@ const OGPreviewIMessage = defineAsyncComponent(() => import('../OGPreviewIMessag
 const OGPreviewSponsored = defineAsyncComponent(() => import('../OGPreviewSponsored.vue'));
 
 interface Props {
-  // eslint-disable-next-line @typescript-eslint/no-explicit-any -- OG data shape is dynamic and varies per URL; a strict type would require casting on every property access
   validationResult: {
     isComplete: boolean;
     missing: string[];
     warnings: string[];
   };
+  data?: Record<string, unknown> | null;
 }
 
 const props = defineProps<Props>();
@@ -141,7 +141,7 @@ const handleSponsoredAdStatus = (filled: boolean) => {
   }
 };
 
-// eslint-disable-next-line @typescript-eslint/no-explicit-any -- preview item shape includes optional isSponsored property; typed union would be verbose without benefit
+function openModal(platform: (typeof basePreviewItems)[number]) {
   // Don't open modal for sponsored ads
   if (platform.id === 'sponsored') {
     return;

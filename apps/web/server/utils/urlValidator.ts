@@ -175,7 +175,6 @@ export function validateUrl(urlString: string): ValidationResult {
 
   // Check for valid domain (must have a dot unless it's an IP literal or localhost)
   // Bounded IPv4 pattern — not susceptible to ReDoS
-  // eslint-disable-next-line security/detect-unsafe-regex -- IPv4 pattern is bounded by anchors and quantifiers are not nested; not susceptible to ReDoS
   const isIPv4 = /^\d{1,3}(?:\.\d{1,3}){3}$/.test(hostname)
   const isIPv6 = hostname.includes(':') || hostname.startsWith('[')
   const isLocalhost = hostname === 'localhost'

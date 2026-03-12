@@ -14,15 +14,15 @@ onBeforeUnmount(() => {
 });
 
 function initializeAd() {
-  // eslint-disable-next-line @typescript-eslint/no-explicit-any -- adsbygoogle is a globally injected Google AdSense object with no TypeScript type definitions
+  const w = typeof window !== 'undefined' ? window : undefined;
+  const adsbygoogle = w && (w as unknown as { adsbygoogle?: { push: (x: object) => void } }).adsbygoogle;
   if (adsbygoogle && typeof adsbygoogle.push === 'function') {
     const status = adSlotRef.value?.getAttribute('data-adsbygoogle-status');
     if (status === 'done' || status === 'filled') return;
     adsbygoogle.push({});
   } else {
-    // Retry once after 1 second if script hasn't loaded yet
     retryTimeout = setTimeout(() => {
-      // eslint-disable-next-line @typescript-eslint/no-explicit-any -- adsbygoogle is a globally injected Google AdSense object with no TypeScript type definitions
+      const ads = w && (w as unknown as { ads?: { push: (x: object) => void } }).ads;
       if (ads && typeof ads.push === 'function') {
         ads.push({});
       }

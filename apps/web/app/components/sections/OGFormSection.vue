@@ -57,7 +57,7 @@ const twitterCardOptions = [
       </div>
     </template>
 
-    <!-- eslint-disable narduk/no-native-form -- Semantic HTML form element required for @submit.prevent event handling and native form accessibility semantics -->
+    <!-- eslint-disable-next-line narduk/no-native-form, narduk/prefer-uform -- Section form uses custom submit handling; native form kept for semantics -->
     <form
       class="space-y-4"
       @submit.prevent
