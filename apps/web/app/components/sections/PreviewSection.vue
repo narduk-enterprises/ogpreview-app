@@ -1,5 +1,4 @@
 <script setup lang="ts">
-import { markRaw } from 'vue';
 
 // Lazy load preview components for better performance
 const OGPreviewFacebook = defineAsyncComponent(() => import('../OGPreviewFacebook.vue'));
@@ -13,8 +12,7 @@ const OGPreviewIMessage = defineAsyncComponent(() => import('../OGPreviewIMessag
 const OGPreviewSponsored = defineAsyncComponent(() => import('../OGPreviewSponsored.vue'));
 
 interface Props {
-  // eslint-disable-next-line @typescript-eslint/no-explicit-any
-  data: any;
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any -- OG data shape is dynamic and varies per URL; a strict type would require casting on every property access
   validationResult: {
     isComplete: boolean;
     missing: string[];
@@ -31,7 +29,7 @@ const hasData = computed(() => {
 
 // Modal state
 const isModalOpen = ref(false);
-// eslint-disable-next-line @typescript-eslint/no-explicit-any
+// eslint-disable-next-line @typescript-eslint/no-explicit-any -- preview item shape includes optional properties; typed union would be verbose without benefit
 const selectedPlatform = ref<any>(null);
 
 // Shuffle function to randomize array order (Fisher-Yates algorithm)
@@ -143,8 +141,7 @@ const handleSponsoredAdStatus = (filled: boolean) => {
   }
 };
 
-// eslint-disable-next-line @typescript-eslint/no-explicit-any
-function openModal(platform: any) {
+// eslint-disable-next-line @typescript-eslint/no-explicit-any -- preview item shape includes optional isSponsored property; typed union would be verbose without benefit
   // Don't open modal for sponsored ads
   if (platform.id === 'sponsored') {
     return;
@@ -168,13 +165,12 @@ function openModal(platform: any) {
         :data-test="`platform-card-${item.id}`"
       >
         <div class="flex items-center justify-center mb-2.5 sm:mb-2">
-          <!-- eslint-disable-next-line atx/no-native-button -->
-          <button
+          <UButton
             v-if="item.id !== 'sponsored'"
             :aria-label="`View ${item.name} preview in detail`"
-            type="button"
-            class="inline-flex items-center gap-2 sm:gap-1.5 px-4 py-2 sm:px-2 sm:py-0.5 bg-linear-to-r from-primary-500/10 via-primary-500/10 to-primary-500/10 dark:from-primary-500/20 dark:via-primary-500/20 dark:to-primary-500/20 rounded-full border border-default/50 dark:border-default/50 shadow-sm hover:shadow-md transition-all hover:scale-105 cursor-pointer focus:outline-none focus:ring-2 focus:border-default focus:ring-offset-2 active:scale-95 min-h-[44px] sm:min-h-0"
+            variant="ghost"
             :disabled="!hasData"
+            class="inline-flex items-center gap-2 sm:gap-1.5 px-4 py-2 sm:px-2 sm:py-0.5 bg-linear-to-r from-primary-500/10 via-primary-500/10 to-primary-500/10 dark:from-primary-500/20 dark:via-primary-500/20 dark:to-primary-500/20 rounded-full border border-default/50 dark:border-default/50 shadow-sm hover:shadow-md transition-all hover:scale-105 cursor-pointer focus:ring-2 focus:border-default focus:ring-offset-2 active:scale-95 min-h-[44px] sm:min-h-0"
             @click="hasData ? openModal(item) : null"
           >
             <UIcon
@@ -185,7 +181,7 @@ function openModal(platform: any) {
             <span class="text-base sm:text-xs font-bold text-primary dark:text-primary">{{
               item.name
             }}</span>
-          </button>
+          </UButton>
           <div
             v-else
             class="inline-flex items-center gap-2 sm:gap-1.5 px-4 py-2 sm:px-2 sm:py-0.5 bg-linear-to-r from-primary-500/10 via-primary-500/10 to-primary-500/10 dark:from-primary-500/20 dark:via-primary-500/20 dark:to-primary-500/20 rounded-full border border-default/50 dark:border-default/50 shadow-sm min-h-[44px] sm:min-h-0"

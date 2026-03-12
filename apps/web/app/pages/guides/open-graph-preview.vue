@@ -1,5 +1,5 @@
 <script setup lang="ts">
-/* eslint-disable atx/lucide-icons-only */
+/* eslint-disable narduk/lucide-icons-only -- Platform brand icons used for social platform navigation links; lucide has no social brand icons */
 useSeo({
   title: 'Open Graph Preview: Complete Developer Guide',
   description: 'The definitive technical guide for Open Graph. Learn exact implementations for Nuxt, Next.js, and raw HTML to ensure perfect link unfurling.',

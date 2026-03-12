@@ -86,7 +86,7 @@ useSchemaOrg([
     </div>
 
     <div class="space-y-3 sm:space-y-4">
-      <!-- eslint-disable atx/no-native-details -->
+      <!-- eslint-disable narduk/no-native-details -- Native <details>/<summary> provides accessible progressive enhancement for FAQ accordion without JavaScript dependency -->
       <details
         v-for="(faq, index) in faqs"
         :key="index"
@@ -104,7 +104,7 @@ useSchemaOrg([
         <div
           class="px-5 sm:px-6 pb-4 sm:pb-4 pt-2 text-muted dark:text-dimmed text-base sm:text-base leading-relaxed"
         >
-          <!-- eslint-disable-next-line vue/no-v-html -->
+          <!-- eslint-disable-next-line vue/no-v-html -- FAQ answers contain trusted rich-text HTML with links; content is authored internally, not from user input -->
           <p v-html="faq.answer" />
         </div>
       </details>

@@ -111,20 +111,15 @@ function getButtonColor(score: number): ButtonColor {
 
         <!-- Platform Tabs -->
         <div class="flex flex-wrap gap-2">
-          <!-- eslint-disable-next-line atx/no-native-button -->
-          <button
+          <UButton
             v-for="platform in selectablePlatforms"
             :key="platform"
-            :class="[
-              'px-4 py-2 rounded-lg text-sm font-medium transition-colors',
-              selectedPlatform === platform
-                ? 'bg-primary-600 text-white'
-                : 'bg-muted dark:bg-elevated text-primary dark:text-dimmed hover:bg-muted dark:hover:bg-elevated'
-            ]"
+            :color="selectedPlatform === platform ? 'primary' : 'neutral'"
+            :variant="selectedPlatform === platform ? 'solid' : 'soft'"
+            size="sm"
+            :label="platform.charAt(0).toUpperCase() + platform.slice(1)"
             @click="selectedPlatform = platform"
-          >
-            {{ platform.charAt(0).toUpperCase() + platform.slice(1) }}
-          </button>
+          />
         </div>
 
         <!-- Selected Platform Details -->

@@ -107,8 +107,7 @@
               class="text-muted dark:text-dimmed hover:text-muted dark:hover:text-dimmed transition-colors"
               aria-label="Follow us on Twitter"
             >
-              <!-- eslint-disable-next-line atx/lucide-icons-only -->
-              <UIcon name="i-simple-icons-x" class="w-5 h-5" />
+              <UIcon name="i-lucide-twitter" class="w-5 h-5" />
             </ULink>
           </div>
         </div>

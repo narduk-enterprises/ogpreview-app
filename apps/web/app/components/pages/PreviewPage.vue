@@ -15,8 +15,7 @@ const router = useRouter();
 
 // State
 const urlInput = ref('');
-// eslint-disable-next-line @typescript-eslint/no-explicit-any
-const previewInputCardRef = ref<any>(null);
+// eslint-disable-next-line @typescript-eslint/no-explicit-any -- component instance type is not exported; any is required to access template ref methods
 const showDebug = ref(false);
 const showHistoryModal = ref(false);
 
@@ -153,7 +152,7 @@ const handlePreview = async () => {
 
   // Track conversion event
   if (import.meta.client && typeof window !== 'undefined') {
-    // eslint-disable-next-line @typescript-eslint/no-explicit-any
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any -- gtag is a globally injected Google Analytics function with no TypeScript type definitions
     const gtag = (window as any).gtag;
     if (gtag) {
       gtag('event', 'preview_generated', {
@@ -182,7 +181,7 @@ const handleRefresh = async () => {
 
   // Track refresh event
   if (import.meta.client && typeof window !== 'undefined') {
-    // eslint-disable-next-line @typescript-eslint/no-explicit-any
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any -- gtag is a globally injected Google Analytics function with no TypeScript type definitions
     const gtag = (window as any).gtag;
     if (gtag) {
       gtag('event', 'preview_refreshed', {
@@ -210,7 +209,7 @@ const handleHistorySelect = async (url: string) => {
 
   // Track history selection event
   if (import.meta.client && typeof window !== 'undefined') {
-    // eslint-disable-next-line @typescript-eslint/no-explicit-any
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any -- gtag is a globally injected Google Analytics function with no TypeScript type definitions
     const gtag = (window as any).gtag;
     if (gtag) {
       gtag('event', 'preview_from_history', {

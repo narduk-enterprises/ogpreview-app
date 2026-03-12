@@ -1,5 +1,4 @@
 <script setup lang="ts">
-import { computed } from 'vue'
 
 type GradientVariant = 'blue' | 'purple' | 'green' | 'orange'
 

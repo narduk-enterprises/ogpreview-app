@@ -1,5 +1,5 @@
 <script setup lang="ts">
-/* eslint-disable atx/no-inline-hex */
+/* eslint-disable narduk/no-inline-hex -- Platform brand colors must be exact hex values for visual identity; no Tailwind semantic tokens exist for these brand-specific colors */
  
 const platforms = [
   {

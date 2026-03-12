@@ -31,7 +31,7 @@ function acceptNecessary() {
 
 function updateGtagConsent(state: 'granted' | 'denied') {
   if (import.meta.server) return;
-  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any -- gtag is a globally injected Google Analytics function with no TypeScript type definitions
   const gtag = (window as any).gtag;
   if (typeof gtag === 'function') {
     gtag('consent', 'update', {

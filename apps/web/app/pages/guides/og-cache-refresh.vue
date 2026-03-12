@@ -24,7 +24,7 @@ console.log('Cache purging complete');`
 </script>
 
 <template>
-  <!-- eslint-disable atx/lucide-icons-only -->
+  <!-- eslint-disable narduk/lucide-icons-only -- Platform brand icons (Facebook, Twitter, LinkedIn, Slack) are used for platform identification; lucide has no social brand icons -->
   <LayoutsArticleLayout
     title="How to Refresh Open Graph Cache"
     description="Force social media platforms to update your cached Open Graph tags and see your changes immediately. Skip the wait with these direct debugging tools."

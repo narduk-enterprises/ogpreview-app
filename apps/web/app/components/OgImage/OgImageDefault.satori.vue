@@ -1,5 +1,5 @@
 <script setup lang="ts">
-/* eslint-disable atx/no-inline-hex */
+/* eslint-disable narduk/no-inline-hex -- Satori OG image rendering requires literal color values; CSS variables are not supported in Satori edge rendering context */
 withDefaults(defineProps<{
   title?: string
   description?: string
