@@ -40,3 +40,10 @@ eslint-plugin-nuxt-guardrails/dist/
 .dev.vars
 doppler.yaml
 doppler.json
+
+# User-global skills: per-agent symlinks to ~/.skills (pnpm run skills:link / sync-template)
+.skills
+.cursor/skills
+.codex/skills
+.agent/skills
+.github/skills
