@@ -28,7 +28,7 @@
     "cheerio": "^1.2.0",
     "html2canvas": "^1.4.1",
     "nuxt-og-image": "6.0.0-beta.42",
-    "@narduk-enterprises/eslint-config": "^1.0.14"
+    "@narduk-enterprises/eslint-config": "^1.0.17"
   },
   "devDependencies": {
     "@tailwindcss/vite": "^4.0.0",
