@@ -17,10 +17,10 @@
 
 import { getQuery, getRequestHeader, setResponseHeader, setResponseHeaders, setResponseStatus } from 'h3'
 import { z } from 'zod'
-import { generateETag } from '../utils/etag'
-import { unfurlUrl } from '../utils/unfurlCore'
-import { checkRateLimit } from '../utils/rateLimiter'
-import { sanitizeUrlForLog, sanitizeErrorForLog } from '../utils/logSanitizer'
+import { generateETag } from '#server/utils/etag'
+import { unfurlUrl } from '#server/utils/unfurlCore'
+import { checkRateLimit } from '#server/utils/rateLimiter'
+import { sanitizeUrlForLog, sanitizeErrorForLog } from '#server/utils/logSanitizer'
 import type { UnfurlResponse } from '~~/types/og'
 
 const QuerySchema = z.object({
@@ -64,9 +64,15 @@ export default defineEventHandler(async (event): Promise<UnfurlResponse> => {
   }
 
   // Use shared core unfurl logic
+  const runtimeConfig = useRuntimeConfig(event)
+  const workerEnv = {
+    nodeEnv: String(runtimeConfig.nodeEnv || 'production'),
+    unfurlDebug: String(runtimeConfig.unfurlDebug) === '1',
+  }
+
   let result
   try {
-    result = await unfurlUrl(url, { includeRaw })
+    result = await unfurlUrl(url, { includeRaw, workerEnv })
   }
   catch (error: unknown) {
     // Log sanitized error

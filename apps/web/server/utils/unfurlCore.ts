@@ -3,7 +3,12 @@
  * Extracted to prevent code duplication and drift
  */
 
-import { validateUrl, fetchWithValidatedRedirects } from './urlValidator'
+import {
+  validateUrl,
+  fetchWithValidatedRedirects,
+  DEFAULT_URL_WORKER_ENV,
+  type UrlWorkerEnv,
+} from './urlValidator'
 import { parseOGTags, hasMinimalData } from './ogParser'
 import { calculatePlatformScores } from './ogScorer'
 import { sanitizeUrlForLog, sanitizeErrorForLog } from './logSanitizer'
@@ -12,6 +17,7 @@ import type { UnfurlResponse } from '~~/types/og'
 export interface UnfurlOptions {
   includeRaw?: boolean
   cacheMode?: 'cacheable' | 'no-store'
+  workerEnv?: UrlWorkerEnv
 }
 
 /**
@@ -22,7 +28,8 @@ export async function unfurlUrl(
   options: UnfurlOptions = {}
 ): Promise<{ response: UnfurlResponse, status: number }> {
   const { includeRaw = false } = options
-  const DEBUG = process.env.UNFURL_DEBUG === '1'
+  const workerEnv = options.workerEnv ?? DEFAULT_URL_WORKER_ENV
+  const DEBUG = workerEnv.unfurlDebug
 
   // Validate URL parameter
   if (!url) {
@@ -40,7 +47,7 @@ export async function unfurlUrl(
   }
 
   // Validate URL format and SSRF protection
-  const validation = validateUrl(url)
+  const validation = validateUrl(url, workerEnv)
   if (!validation.valid) {
     const sanitizedUrl = sanitizeUrlForLog(url)
     console.error(`[unfurlCore] Invalid URL: ${sanitizedUrl}`, validation.error)
@@ -63,7 +70,7 @@ export async function unfurlUrl(
   let fetchResult
   try {
     if (DEBUG) console.log(`[unfurlCore] Fetching HTML for: ${sanitizedUrl}`)
-    fetchResult = await fetchWithValidatedRedirects(validation.normalizedUrl!)
+    fetchResult = await fetchWithValidatedRedirects(validation.normalizedUrl!, workerEnv)
     if (DEBUG) console.log(`[unfurlCore] Fetch completed, ok: ${fetchResult.ok}`)
   }
   catch (error: unknown) {

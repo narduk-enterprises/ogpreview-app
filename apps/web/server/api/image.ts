@@ -15,8 +15,8 @@
 
 import { getQuery, setResponseHeader, setResponseHeaders, setResponseStatus } from 'h3'
 import { z } from 'zod'
-import { validateUrl } from '../utils/urlValidator'
-import { sanitizeUrlForLog } from '../utils/logSanitizer'
+import { validateUrl } from '#server/utils/urlValidator'
+import { sanitizeUrlForLog } from '#server/utils/logSanitizer'
 
 const MAX_IMAGE_SIZE = 5 * 1024 * 1024 // 5MB limit
 
@@ -40,8 +40,14 @@ export default defineEventHandler(async (event) => {
     }
   }
 
+  const runtimeConfig = useRuntimeConfig(event)
+  const workerEnv = {
+    nodeEnv: String(runtimeConfig.nodeEnv || 'production'),
+    unfurlDebug: String(runtimeConfig.unfurlDebug) === '1',
+  }
+
   // Validate the URL
-  const validation = validateUrl(imageUrl)
+  const validation = validateUrl(imageUrl, workerEnv)
   if (!validation.valid) {
     setResponseStatus(event, 400)
     setResponseHeader(event, 'Content-Type', 'application/json')

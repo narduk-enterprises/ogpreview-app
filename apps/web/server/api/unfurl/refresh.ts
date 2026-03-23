@@ -14,7 +14,7 @@
 
 import { getQuery, setResponseHeaders, setResponseStatus } from 'h3'
 import { z } from 'zod'
-import { unfurlUrl } from '../../utils/unfurlCore'
+import { unfurlUrl } from '#server/utils/unfurlCore'
 import type { UnfurlResponse } from '~~/types/og'
 
 const QuerySchema = z.object({ url: z.string().optional() })
@@ -30,7 +30,12 @@ export default defineEventHandler(async (event): Promise<UnfurlResponse> => {
   }
 
   // Use shared core unfurl logic with no-store cache mode
-  const { response, status } = await unfurlUrl(url, { cacheMode: 'no-store' })
+  const runtimeConfig = useRuntimeConfig(event)
+  const workerEnv = {
+    nodeEnv: String(runtimeConfig.nodeEnv || 'production'),
+    unfurlDebug: String(runtimeConfig.unfurlDebug) === '1',
+  }
+  const { response, status } = await unfurlUrl(url, { cacheMode: 'no-store', workerEnv })
 
   // If error, return early with status
   if (!response.ok) {

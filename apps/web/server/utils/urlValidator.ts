@@ -18,6 +18,17 @@ const MAX_REDIRECTS = 5
 const FETCH_TIMEOUT = 30000 // 30 seconds
 const MAX_RESPONSE_SIZE = 2 * 1024 * 1024 // 2MB
 
+/** Passed from handlers via useRuntimeConfig — avoids process.env in Worker runtime. */
+export interface UrlWorkerEnv {
+  nodeEnv: string
+  unfurlDebug: boolean
+}
+
+export const DEFAULT_URL_WORKER_ENV: UrlWorkerEnv = {
+  nodeEnv: 'production',
+  unfurlDebug: false,
+}
+
 /**
  * Crawler User-Agent string following Open Graph protocol best practices
  * Identifies the service honestly as a crawler/bot rather than masquerading as a browser
@@ -128,7 +139,10 @@ export async function resolveAndAssertPublicHost(hostname: string): Promise<void
 /**
  * Validates URL format, protocol, and checks for SSRF vulnerabilities
  */
-export function validateUrl(urlString: string): ValidationResult {
+export function validateUrl(
+  urlString: string,
+  env: UrlWorkerEnv = DEFAULT_URL_WORKER_ENV,
+): ValidationResult {
   // Check URL length
   if (!urlString || urlString.length === 0) {
     return { valid: false, error: 'URL is required' }
@@ -161,8 +175,7 @@ export function validateUrl(urlString: string): ValidationResult {
   const hostname = urlObj.hostname.toLowerCase()
 
   // Block localhost variations (except in test mode for fixtures)
-  // eslint-disable-next-line narduk/prefer-import-meta-dev -- server-side test mode check requires process.env; import.meta.dev is only available in Nuxt build context
-  const isTestMode = process.env.NODE_ENV === 'test'
+  const isTestMode = env.nodeEnv === 'test'
   const isFixturePath = urlObj.pathname.includes('/__fixtures__/')
   if (!isTestMode && !isFixturePath && (hostname === 'localhost' || hostname === '0.0.0.0')) {
     return { valid: false, error: 'Localhost URLs are not allowed' }
@@ -209,11 +222,14 @@ interface SafeFetchResult {
 /**
  * Fetches HTML from a URL with DNS-based SSRF protection, manual redirects, and streaming size limits.
  */
-export async function fetchWithValidatedRedirects(url: string): Promise<SafeFetchResult> {
+export async function fetchWithValidatedRedirects(
+  url: string,
+  env: UrlWorkerEnv = DEFAULT_URL_WORKER_ENV,
+): Promise<SafeFetchResult> {
   const controller = new AbortController()
   const timeoutId = setTimeout(() => controller.abort(), FETCH_TIMEOUT)
   const startTime = Date.now()
-  const DEBUG = process.env.UNFURL_DEBUG === '1'
+  const DEBUG = env.unfurlDebug
 
   let currentUrl = url
   let redirects = 0
@@ -222,7 +238,7 @@ export async function fetchWithValidatedRedirects(url: string): Promise<SafeFetc
 
   try {
     while (true) {
-      const validation = validateUrl(currentUrl)
+      const validation = validateUrl(currentUrl, env)
       if (!validation.valid) {
         console.error(`[fetchWithValidatedRedirects] Invalid URL: ${sanitizeUrlForLog(currentUrl)}`, validation.error)
         return {
@@ -240,8 +256,7 @@ export async function fetchWithValidatedRedirects(url: string): Promise<SafeFetc
       if (DEBUG) console.log(`[fetchWithValidatedRedirects] Validated URL: ${sanitizeUrlForLog(normalizedUrl)}, redirects: ${redirects}`)
 
       // Skip DNS validation for localhost in test mode or fixture paths
-      // eslint-disable-next-line narduk/prefer-import-meta-dev -- server-side test mode check requires process.env; import.meta.dev is only available in Nuxt build context
-      const isTestMode = process.env.NODE_ENV === 'test'
+      const isTestMode = env.nodeEnv === 'test'
       const isLocalhost = urlObj.hostname === 'localhost' || urlObj.hostname === '127.0.0.1' || urlObj.hostname === '0.0.0.0'
       const isFixturePath = urlObj.pathname.includes('/__fixtures__/')
 

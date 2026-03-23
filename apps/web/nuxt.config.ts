@@ -30,6 +30,8 @@ export default defineNuxtConfig({
   },
 
   runtimeConfig: {
+    nodeEnv: process.env.NODE_ENV || 'production',
+    unfurlDebug: process.env.UNFURL_DEBUG || '',
     session: {
       password:
         process.env.NUXT_SESSION_PASSWORD ||
