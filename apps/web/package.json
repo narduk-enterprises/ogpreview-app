@@ -18,7 +18,8 @@
     "db:reset": "bash ../../tools/db-migrate.sh ogpreview-app-db --local --dir node_modules/@narduk-enterprises/narduk-nuxt-template-layer/drizzle --dir drizzle --reset && pnpm run db:seed",
     "db:ready": "pnpm run db:migrate && pnpm run db:seed",
     "db:verify": "node node_modules/@narduk-enterprises/narduk-nuxt-template-layer/testing/verify-local-db.mjs .",
-    "predev": "pnpm run db:ready"
+    "predev": "pnpm run db:ready",
+    "db:seed": "wrangler d1 execute ogpreview-app-db --local --file=node_modules/@narduk-enterprises/narduk-nuxt-template-layer/drizzle/seed.sql"
   },
   "dependencies": {
     "@narduk-enterprises/narduk-nuxt-template-layer": "workspace:*",
