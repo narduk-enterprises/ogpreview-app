@@ -35,3 +35,5 @@ export type NewUser = typeof users.$inferInsert
 export type Session = typeof sessions.$inferSelect
 export type Todo = typeof todos.$inferSelect
 export type NewTodo = typeof todos.$inferInsert
+
+export * from '#server/database/auth-bridge-schema'

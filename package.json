@@ -47,7 +47,8 @@
     "cleanup:node-leaks": "sh scripts/cleanup-node-leaks.sh",
     "validate": "pnpm exec tsx tools/validate.ts",
     "test:e2e": "playwright test",
-    "test:e2e:web": "pnpm --filter web test:e2e"
+    "test:e2e:web": "pnpm --filter web test:e2e",
+    "sync:github-skills": "pnpm exec tsx tools/sync-github-skills.ts"
   },
   "dependencies": {
     "@nuxt/image": "^2.0.0",

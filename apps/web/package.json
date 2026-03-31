@@ -11,7 +11,7 @@
     "generate": "nuxt generate",
     "preview": "nuxt preview",
     "typecheck": "nuxt typecheck",
-    "deploy": "nuxt build && wrangler deploy",
+    "deploy": "node ../../tools/web-deploy.cjs",
     "prelint": "test -f .nuxt/eslint.config.mjs || nuxt prepare",
     "lint": "eslint . --max-warnings 0",
     "quality": "echo 'Turbo dependsOn handles lint + typecheck + format:check'",
@@ -30,7 +30,9 @@
     "cheerio": "^1.2.0",
     "html2canvas": "^1.4.1",
     "nuxt-og-image": "6.0.0-beta.42",
-    "@narduk-enterprises/eslint-config": "^1.0.17"
+    "@narduk-enterprises/eslint-config": "^1.0.17",
+    "@supabase/auth-js": "^2.100.1",
+    "@supabase/supabase-js": "^2.100.1"
   },
   "devDependencies": {
     "@tailwindcss/vite": "^4.0.0",
