@@ -26,7 +26,7 @@ useSchemaOrg([
     browserRequirements: 'Requires JavaScript. Compatible with all modern browsers.',
     softwareVersion: '1.0',
     datePublished: '2024-01-01',
-    dateModified: new Date().toISOString().split('T')[0],
+    dateModified: '2026-03-31',
     offers: {
       price: '0',
       priceCurrency: 'USD',

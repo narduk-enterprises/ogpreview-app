@@ -9,7 +9,7 @@ useWebPageSchema({
   description: 'Privacy Policy for ogpreview.app - Learn how we collect, use, and protect your information.',
 })
 
-const lastUpdated = new Date().toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric' })
+const lastUpdated = 'March 31, 2026'
 </script>
 
 <template>

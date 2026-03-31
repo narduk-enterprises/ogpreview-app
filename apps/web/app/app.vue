@@ -4,6 +4,7 @@
  * The titleTemplate is automatically set to `%s %separator %siteName`.
  * Individual pages use the `useSeo()` composable to set their own title/description/OG.
  */
+const currentYear = new Date().getFullYear()
 </script>
 
 <template>
@@ -21,7 +22,7 @@
       <div class="border-t border-default py-6">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <p class="text-center text-sm text-muted">
-            OG Preview &middot; Open Graph Preview Tool &middot; {{ new Date().getFullYear() }}
+            OG Preview &middot; Open Graph Preview Tool &middot; {{ currentYear }}
           </p>
         </div>
       </div>

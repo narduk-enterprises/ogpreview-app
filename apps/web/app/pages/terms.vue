@@ -9,7 +9,7 @@ useWebPageSchema({
   description: 'Terms of Service for ogpreview.app - Read our terms and conditions for using our service.',
 })
 
-const lastUpdated = new Date().toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric' })
+const lastUpdated = 'March 31, 2026'
 </script>
 
 <template>
